@@ -10,6 +10,7 @@ import { HistoryPage } from '../features/history/HistoryPage';
 import { ProgressPage } from '../features/progress/ProgressPage';
 import { BodyPage } from '../features/body/BodyPage';
 import { NutritionPage } from '../features/nutrition/NutritionPage';
+import { DataManagement } from '../features/settings/DataManagement';
 import { commonFoods } from '../data/foods/catalog';
 import '../styles/global.css';
 
@@ -40,7 +41,7 @@ function useIsMobile() {
 export function App() {
   const [route, setRoute] = useState<AppRoute>('today');
   const isMobile = useIsMobile();
-  const { data, error, saveProgram, deleteProgram, saveExercise, startWorkout, updateSession, finishWorkout, discardWorkout, saveBodyProfile, saveBodyMeasurement, deleteBodyMeasurement, saveNutritionTarget, saveCustomFood, addFoodEntry, deleteFoodEntry } = useAppData();
+  const { data, error, saveProgram, deleteProgram, saveExercise, startWorkout, updateSession, finishWorkout, discardWorkout, saveBodyProfile, saveBodyMeasurement, deleteBodyMeasurement, saveNutritionTarget, saveCustomFood, addFoodEntry, deleteFoodEntry, replaceData, resetData } = useAppData();
   const navRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const active = routes.find((item) => item.id === route) ?? routes[0]!;
   const navigationRoutes = isMobile ? mobileRoutes : desktopRoutes;
@@ -128,6 +129,8 @@ export function App() {
           <BodyPage profile={data.body.profile} measurements={data.body.measurements} onSaveProfile={saveBodyProfile} onSaveMeasurement={saveBodyMeasurement} onDeleteMeasurement={deleteBodyMeasurement} onSaveNutritionTarget={saveNutritionTarget} />
         ) : route === 'nutrition' ? (
           <NutritionPage foods={[...commonFoods, ...data.nutrition.customFoods]} entries={data.nutrition.diary} targets={data.nutrition.targets} onAddEntry={addFoodEntry} onDeleteEntry={deleteFoodEntry} onSaveCustomFood={saveCustomFood} />
+        ) : route === 'settings' ? (
+          <DataManagement data={data} onImport={replaceData} onReset={resetData} />
         ) : route === 'more' ? (
           <section className="more-page" aria-label="More destinations">
             <p className="more-intro">Your history, body log, meals, and local data controls.</p>

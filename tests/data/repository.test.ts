@@ -1,5 +1,5 @@
 import { createDefaultData } from '../../src/data/defaults';
-import { LocalStorageWorkoutRepository, StorageDataError } from '../../src/data/localStorageRepository';
+import { LocalStorageWorkoutRepository, StorageDataError, resetDataScope } from '../../src/data/localStorageRepository';
 
 describe('local workout repository', () => {
   it('loads defaults without writing them on first use', () => {
@@ -43,5 +43,30 @@ describe('local workout repository', () => {
     expect(repository.exportJson()).toContain('Dumbbell Chest Press');
     repository.clear();
     expect(localStorage.getItem('workout-tracker:data')).toBeNull();
+  });
+
+  it('atomically replaces a complete backup and leaves current data untouched when validation fails', () => {
+    const repository = new LocalStorageWorkoutRepository(localStorage);
+    const current = createDefaultData();
+    const imported = createDefaultData();
+    imported.body.measurements.push({ id: 'body-1', recordedAt: '2026-09-24T07:00:00.000Z', weightKg: 80, bodyFatPercent: null, waistCm: null, chestCm: null, hipsCm: null, upperArmCm: null, thighCm: null, notes: '' });
+    repository.save(current);
+
+    expect(repository.replaceFromJson(JSON.stringify(imported)).body.measurements).toHaveLength(1);
+    expect(repository.load().body.measurements).toHaveLength(1);
+    expect(() => repository.replaceFromJson('{"version":99}')).toThrow(/version/i);
+    expect(repository.load().body.measurements).toHaveLength(1);
+  });
+
+  it('resets only the requested data scope', () => {
+    const data = createDefaultData();
+    data.body.measurements.push({ id: 'body-1', recordedAt: '2026-09-24T07:00:00.000Z', weightKg: 80, bodyFatPercent: null, waistCm: null, chestCm: null, hipsCm: null, upperArmCm: null, thighCm: null, notes: '' });
+    data.nutrition.diary.push({ id: 'entry-1', localDate: '2026-09-24', meal: 'breakfast', foodId: null, foodName: 'Quick calories', grams: 0, servingDescription: 'Quick add', nutrients: { caloriesKcal: 200, proteinG: 0, carbsG: 0, fatG: 0, fiberG: null, sodiumMg: null }, source: 'custom', sourceId: null });
+
+    const reset = resetDataScope(data, 'body');
+
+    expect(reset.body).toEqual({ profile: null, measurements: [] });
+    expect(reset.nutrition.diary).toHaveLength(1);
+    expect(reset.programs).toHaveLength(data.programs.length);
   });
 });

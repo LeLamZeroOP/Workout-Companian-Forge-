@@ -2,6 +2,7 @@ import { useState } from 'react';
 import type { AppDataV2, BodyMeasurement, BodyProfile, ExerciseDefinition, FoodDefinition, FoodLogEntry, NutritionTarget, Program, WorkoutSession } from '../domain/models';
 import { createDefaultData } from '../data/defaults';
 import { LocalStorageWorkoutRepository } from '../data/localStorageRepository';
+import { resetDataScope, type DataResetScope } from '../data/localStorageRepository';
 import { createSession } from '../domain/workout';
 
 const repository = typeof window === 'undefined' ? null : new LocalStorageWorkoutRepository(window.localStorage);
@@ -104,5 +105,13 @@ export function useAppData() {
     updateData((current) => ({ ...current, nutrition: { ...current.nutrition, diary: current.nutrition.diary.filter((entry) => entry.id !== entryId) } }));
   }
 
-  return { data, error, updateData, saveProgram, deleteProgram, saveExercise, startWorkout, updateSession, finishWorkout, discardWorkout, saveBodyProfile, saveBodyMeasurement, deleteBodyMeasurement, saveNutritionTarget, saveCustomFood, addFoodEntry, deleteFoodEntry };
+  function replaceData(next: AppDataV2) {
+    updateData(() => next);
+  }
+
+  function resetData(scope: DataResetScope) {
+    updateData((current) => resetDataScope(current, scope));
+  }
+
+  return { data, error, updateData, saveProgram, deleteProgram, saveExercise, startWorkout, updateSession, finishWorkout, discardWorkout, saveBodyProfile, saveBodyMeasurement, deleteBodyMeasurement, saveNutritionTarget, saveCustomFood, addFoodEntry, deleteFoodEntry, replaceData, resetData };
 }

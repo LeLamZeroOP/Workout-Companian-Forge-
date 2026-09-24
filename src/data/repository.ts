@@ -5,5 +5,6 @@ export interface WorkoutRepository {
   save(data: AppDataV2): void;
   exportJson(): string;
   importJson(json: string): AppDataV2;
+  replaceFromJson(json: string): AppDataV2;
   clear(): void;
 }

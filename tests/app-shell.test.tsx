@@ -25,6 +25,14 @@ describe('application shell', () => {
     expect(screen.getByText(/start with today's weight/i)).toBeInTheDocument();
   });
 
+  it('opens local data controls from Settings', async () => {
+    render(<App />);
+    await userEvent.click(screen.getByRole('button', { name: 'Settings' }));
+    expect(screen.getByRole('heading', { level: 1, name: 'Settings' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 2, name: 'Your data' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /download backup/i })).toBeInTheDocument();
+  });
+
   it('places muscle analytics inside Progress instead of desktop navigation', async () => {
     render(<App />);
     const navigation = screen.getByRole('navigation', { name: /desktop primary/i });
