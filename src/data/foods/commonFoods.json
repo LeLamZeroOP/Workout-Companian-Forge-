@@ -1,0 +1,578 @@
+[
+  {
+    "id": "chicken-breast-roasted",
+    "name": "Chicken breast",
+    "brand": null,
+    "category": "Meat",
+    "preparation": "Roasted, skinless",
+    "source": "usda",
+    "sourceId": "171477",
+    "dataVersion": "USDA SR Legacy 2018-04",
+    "nutrientsPer100g": {
+      "caloriesKcal": 165,
+      "proteinG": 31,
+      "carbsG": 0,
+      "fatG": 3.6,
+      "fiberG": 0,
+      "sodiumMg": 74
+    },
+    "servings": [
+      {
+        "name": "1 breast",
+        "grams": 174
+      }
+    ]
+  },
+  {
+    "id": "chicken-thigh-roasted",
+    "name": "Chicken thigh",
+    "brand": null,
+    "category": "Meat",
+    "preparation": "Roasted, skinless",
+    "source": "usda",
+    "sourceId": "172388",
+    "dataVersion": "USDA SR Legacy 2018-04",
+    "nutrientsPer100g": {
+      "caloriesKcal": 179,
+      "proteinG": 24.8,
+      "carbsG": 0,
+      "fatG": 8.2,
+      "fiberG": 0,
+      "sodiumMg": 106
+    },
+    "servings": [
+      {
+        "name": "1 thigh",
+        "grams": 116
+      }
+    ]
+  },
+  {
+    "id": "egg-cooked",
+    "name": "Egg",
+    "brand": null,
+    "category": "Protein",
+    "preparation": "Hard-boiled",
+    "source": "usda",
+    "sourceId": "173424",
+    "dataVersion": "USDA SR Legacy 2018-04",
+    "nutrientsPer100g": {
+      "caloriesKcal": 155,
+      "proteinG": 12.6,
+      "carbsG": 1.1,
+      "fatG": 10.6,
+      "fiberG": 0,
+      "sodiumMg": 124
+    },
+    "servings": [
+      {
+        "name": "1 large",
+        "grams": 50
+      }
+    ]
+  },
+  {
+    "id": "ground-beef-cooked",
+    "name": "Ground beef",
+    "brand": null,
+    "category": "Meat",
+    "preparation": "Cooked, 90% lean",
+    "source": "usda",
+    "sourceId": "173114",
+    "dataVersion": "USDA SR Legacy 2018-04",
+    "nutrientsPer100g": {
+      "caloriesKcal": 154,
+      "proteinG": 27.6,
+      "carbsG": 0,
+      "fatG": 4.1,
+      "fiberG": 0,
+      "sodiumMg": 56
+    },
+    "servings": [
+      {
+        "name": "1 patty",
+        "grams": 85
+      }
+    ]
+  },
+  {
+    "id": "beef-sirloin-grilled",
+    "name": "Beef sirloin",
+    "brand": null,
+    "category": "Meat",
+    "preparation": "Grilled",
+    "source": "usda",
+    "sourceId": "172171",
+    "dataVersion": "USDA SR Legacy 2018-04",
+    "nutrientsPer100g": {
+      "caloriesKcal": 189,
+      "proteinG": 28.2,
+      "carbsG": 1.1,
+      "fatG": 8,
+      "fiberG": 0,
+      "sodiumMg": 62
+    },
+    "servings": [
+      {
+        "name": "1 steak",
+        "grams": 170
+      }
+    ]
+  },
+  {
+    "id": "pork-loin-roasted",
+    "name": "Pork loin",
+    "brand": null,
+    "category": "Meat",
+    "preparation": "Roasted",
+    "source": "usda",
+    "sourceId": "168233",
+    "dataVersion": "USDA SR Legacy 2018-04",
+    "nutrientsPer100g": {
+      "caloriesKcal": 209,
+      "proteinG": 28.6,
+      "carbsG": 0,
+      "fatG": 9.6,
+      "fiberG": 0,
+      "sodiumMg": 58
+    },
+    "servings": [
+      {
+        "name": "1 serving",
+        "grams": 100
+      }
+    ]
+  },
+  {
+    "id": "salmon-cooked",
+    "name": "Salmon",
+    "brand": null,
+    "category": "Seafood",
+    "preparation": "Cooked, dry heat",
+    "source": "usda",
+    "sourceId": "171998",
+    "dataVersion": "USDA SR Legacy 2018-04",
+    "nutrientsPer100g": {
+      "caloriesKcal": 182,
+      "proteinG": 25.4,
+      "carbsG": 0,
+      "fatG": 8.1,
+      "fiberG": 0,
+      "sodiumMg": 56
+    },
+    "servings": [
+      {
+        "name": "1 fillet",
+        "grams": 170
+      }
+    ]
+  },
+  {
+    "id": "tuna-canned-water",
+    "name": "Canned tuna",
+    "brand": null,
+    "category": "Seafood",
+    "preparation": "In water, drained",
+    "source": "usda",
+    "sourceId": "171986",
+    "dataVersion": "USDA SR Legacy 2018-04",
+    "nutrientsPer100g": {
+      "caloriesKcal": 116,
+      "proteinG": 25.5,
+      "carbsG": 0,
+      "fatG": 0.8,
+      "fiberG": 0,
+      "sodiumMg": 50
+    },
+    "servings": [
+      {
+        "name": "1 can",
+        "grams": 142
+      }
+    ]
+  },
+  {
+    "id": "shrimp-cooked",
+    "name": "Shrimp",
+    "brand": null,
+    "category": "Seafood",
+    "preparation": "Cooked",
+    "source": "usda",
+    "sourceId": "175180",
+    "dataVersion": "USDA SR Legacy 2018-04",
+    "nutrientsPer100g": {
+      "caloriesKcal": 99,
+      "proteinG": 24,
+      "carbsG": 0.2,
+      "fatG": 0.3,
+      "fiberG": null,
+      "sodiumMg": 111
+    },
+    "servings": [
+      {
+        "name": "1 serving",
+        "grams": 85
+      }
+    ]
+  },
+  {
+    "id": "milk-whole",
+    "name": "Whole milk",
+    "brand": null,
+    "category": "Dairy",
+    "preparation": "Ready to drink",
+    "source": "usda",
+    "sourceId": "171265",
+    "dataVersion": "USDA SR Legacy 2018-04",
+    "nutrientsPer100g": {
+      "caloriesKcal": 61,
+      "proteinG": 3.2,
+      "carbsG": 4.8,
+      "fatG": 3.3,
+      "fiberG": 0,
+      "sodiumMg": 43
+    },
+    "servings": [
+      {
+        "name": "1 cup",
+        "grams": 244
+      }
+    ]
+  },
+  {
+    "id": "greek-yogurt-plain",
+    "name": "Greek yogurt",
+    "brand": null,
+    "category": "Dairy",
+    "preparation": "Plain, nonfat",
+    "source": "usda",
+    "sourceId": "171312",
+    "dataVersion": "USDA SR Legacy 2018-04",
+    "nutrientsPer100g": {
+      "caloriesKcal": 54,
+      "proteinG": 9.5,
+      "carbsG": 3.4,
+      "fatG": 0.2,
+      "fiberG": 0.2,
+      "sodiumMg": 37
+    },
+    "servings": [
+      {
+        "name": "1 cup",
+        "grams": 245
+      }
+    ]
+  },
+  {
+    "id": "cheddar-cheese",
+    "name": "Cheddar cheese",
+    "brand": null,
+    "category": "Dairy",
+    "preparation": "Natural",
+    "source": "usda",
+    "sourceId": "170899",
+    "dataVersion": "USDA SR Legacy 2018-04",
+    "nutrientsPer100g": {
+      "caloriesKcal": 410,
+      "proteinG": 24.3,
+      "carbsG": 2.1,
+      "fatG": 33.8,
+      "fiberG": 0,
+      "sodiumMg": 644
+    },
+    "servings": [
+      {
+        "name": "1 slice",
+        "grams": 28
+      }
+    ]
+  },
+  {
+    "id": "rice-white-cooked",
+    "name": "White rice",
+    "brand": null,
+    "category": "Grains",
+    "preparation": "Cooked",
+    "source": "usda",
+    "sourceId": "168878",
+    "dataVersion": "USDA SR Legacy 2018-04",
+    "nutrientsPer100g": {
+      "caloriesKcal": 130,
+      "proteinG": 2.7,
+      "carbsG": 28.2,
+      "fatG": 0.3,
+      "fiberG": 0.4,
+      "sodiumMg": 1
+    },
+    "servings": [
+      {
+        "name": "1 cup",
+        "grams": 158
+      }
+    ]
+  },
+  {
+    "id": "oats-dry",
+    "name": "Rolled oats",
+    "brand": null,
+    "category": "Grains",
+    "preparation": "Dry",
+    "source": "usda",
+    "sourceId": "170685",
+    "dataVersion": "USDA SR Legacy 2018-04",
+    "nutrientsPer100g": {
+      "caloriesKcal": 346,
+      "proteinG": 11.7,
+      "carbsG": 75,
+      "fatG": 2.7,
+      "fiberG": 10.3,
+      "sodiumMg": 11
+    },
+    "servings": [
+      {
+        "name": "1/2 cup",
+        "grams": 40
+      }
+    ]
+  },
+  {
+    "id": "bread-whole-wheat",
+    "name": "Whole-wheat bread",
+    "brand": null,
+    "category": "Grains",
+    "preparation": "Sliced",
+    "source": "usda",
+    "sourceId": "174916",
+    "dataVersion": "USDA SR Legacy 2018-04",
+    "nutrientsPer100g": {
+      "caloriesKcal": 262,
+      "proteinG": 9.8,
+      "carbsG": 55.9,
+      "fatG": 1.7,
+      "fiberG": 6.1,
+      "sodiumMg": 421
+    },
+    "servings": [
+      {
+        "name": "1 slice",
+        "grams": 28
+      }
+    ]
+  },
+  {
+    "id": "potato-baked",
+    "name": "Baked potato",
+    "brand": null,
+    "category": "Vegetables",
+    "preparation": "Baked, with skin",
+    "source": "usda",
+    "sourceId": "170435",
+    "dataVersion": "USDA SR Legacy 2018-04",
+    "nutrientsPer100g": {
+      "caloriesKcal": 87,
+      "proteinG": 2.3,
+      "carbsG": 19.6,
+      "fatG": 0.2,
+      "fiberG": 1.8,
+      "sodiumMg": 12
+    },
+    "servings": [
+      {
+        "name": "1 medium",
+        "grams": 173
+      }
+    ]
+  },
+  {
+    "id": "black-beans-cooked",
+    "name": "Black beans",
+    "brand": null,
+    "category": "Legumes",
+    "preparation": "Cooked",
+    "source": "usda",
+    "sourceId": "175237",
+    "dataVersion": "USDA SR Legacy 2018-04",
+    "nutrientsPer100g": {
+      "caloriesKcal": 132,
+      "proteinG": 8.9,
+      "carbsG": 23.7,
+      "fatG": 0.5,
+      "fiberG": 8.7,
+      "sodiumMg": 237
+    },
+    "servings": [
+      {
+        "name": "1 cup",
+        "grams": 172
+      }
+    ]
+  },
+  {
+    "id": "tofu-firm",
+    "name": "Firm tofu",
+    "brand": null,
+    "category": "Protein",
+    "preparation": "Prepared with calcium",
+    "source": "usda",
+    "sourceId": "172475",
+    "dataVersion": "USDA SR Legacy 2018-04",
+    "nutrientsPer100g": {
+      "caloriesKcal": 144,
+      "proteinG": 17.3,
+      "carbsG": 2.8,
+      "fatG": 8.7,
+      "fiberG": 2.3,
+      "sodiumMg": 14
+    },
+    "servings": [
+      {
+        "name": "1/2 cup",
+        "grams": 126
+      }
+    ]
+  },
+  {
+    "id": "banana-raw",
+    "name": "Banana",
+    "brand": null,
+    "category": "Fruit",
+    "preparation": "Raw",
+    "source": "usda",
+    "sourceId": "173944",
+    "dataVersion": "USDA SR Legacy 2018-04",
+    "nutrientsPer100g": {
+      "caloriesKcal": 89,
+      "proteinG": 1.1,
+      "carbsG": 22.8,
+      "fatG": 0.3,
+      "fiberG": 2.6,
+      "sodiumMg": 1
+    },
+    "servings": [
+      {
+        "name": "1 medium",
+        "grams": 118
+      }
+    ]
+  },
+  {
+    "id": "apple-raw",
+    "name": "Apple",
+    "brand": null,
+    "category": "Fruit",
+    "preparation": "Raw, with skin",
+    "source": "usda",
+    "sourceId": "171689",
+    "dataVersion": "USDA SR Legacy 2018-04",
+    "nutrientsPer100g": {
+      "caloriesKcal": 48,
+      "proteinG": 0.3,
+      "carbsG": 12.8,
+      "fatG": 0.1,
+      "fiberG": 1.3,
+      "sodiumMg": 0
+    },
+    "servings": [
+      {
+        "name": "1 medium",
+        "grams": 182
+      }
+    ]
+  },
+  {
+    "id": "broccoli-cooked",
+    "name": "Broccoli",
+    "brand": null,
+    "category": "Vegetables",
+    "preparation": "Cooked, drained",
+    "source": "usda",
+    "sourceId": "168510",
+    "dataVersion": "USDA SR Legacy 2018-04",
+    "nutrientsPer100g": {
+      "caloriesKcal": 35,
+      "proteinG": 2.4,
+      "carbsG": 7.2,
+      "fatG": 0.4,
+      "fiberG": 3.3,
+      "sodiumMg": 262
+    },
+    "servings": [
+      {
+        "name": "1 cup",
+        "grams": 156
+      }
+    ]
+  },
+  {
+    "id": "olive-oil",
+    "name": "Olive oil",
+    "brand": null,
+    "category": "Fats",
+    "preparation": "Ready to use",
+    "source": "usda",
+    "sourceId": "171413",
+    "dataVersion": "USDA SR Legacy 2018-04",
+    "nutrientsPer100g": {
+      "caloriesKcal": 884,
+      "proteinG": 0,
+      "carbsG": 0,
+      "fatG": 100,
+      "fiberG": 0,
+      "sodiumMg": 2
+    },
+    "servings": [
+      {
+        "name": "1 tbsp",
+        "grams": 13.5
+      }
+    ]
+  },
+  {
+    "id": "peanut-butter",
+    "name": "Peanut butter",
+    "brand": null,
+    "category": "Protein",
+    "preparation": "Smooth",
+    "source": "usda",
+    "sourceId": "172458",
+    "dataVersion": "USDA SR Legacy 2018-04",
+    "nutrientsPer100g": {
+      "caloriesKcal": 520,
+      "proteinG": 25.9,
+      "carbsG": 35.7,
+      "fatG": 34,
+      "fiberG": 5.2,
+      "sodiumMg": 540
+    },
+    "servings": [
+      {
+        "name": "2 tbsp",
+        "grams": 32
+      }
+    ]
+  },
+  {
+    "id": "avocado-raw",
+    "name": "Avocado",
+    "brand": null,
+    "category": "Fruit",
+    "preparation": "Raw",
+    "source": "usda",
+    "sourceId": "171705",
+    "dataVersion": "USDA SR Legacy 2018-04",
+    "nutrientsPer100g": {
+      "caloriesKcal": 160,
+      "proteinG": 2,
+      "carbsG": 8.5,
+      "fatG": 14.7,
+      "fiberG": 6.7,
+      "sodiumMg": 7
+    },
+    "servings": [
+      {
+        "name": "1/2 fruit",
+        "grams": 100
+      }
+    ]
+  }
+]
