@@ -27,4 +27,17 @@ describe('NutritionPage', () => {
     expect(screen.getByText(/of 2,200 kcal/i)).toBeInTheDocument();
     expect(screen.getByText('My lunch')).toBeInTheDocument();
   });
+
+  it('closes the food dialog with Escape and returns focus to its opener', async () => {
+    const user = userEvent.setup();
+    render(<NutritionPage foods={commonFoods} entries={[]} targets={[]} onAddEntry={vi.fn()} onDeleteEntry={vi.fn()} onSaveCustomFood={vi.fn()} date="2026-09-24" />);
+    const opener = screen.getByRole('button', { name: /add breakfast/i });
+
+    await user.click(opener);
+    expect(screen.getByRole('dialog', { name: /add food/i })).toBeInTheDocument();
+    await user.keyboard('{Escape}');
+
+    expect(screen.queryByRole('dialog', { name: /add food/i })).not.toBeInTheDocument();
+    expect(opener).toHaveFocus();
+  });
 });

@@ -1,0 +1,18 @@
+{
+  "name": "Forge — Workout Companion",
+  "short_name": "Forge",
+  "description": "A private, local-first workout, body, and nutrition companion.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f5f5f4",
+  "theme_color": "#040506",
+  "icons": [
+    {
+      "src": "/icons/forge.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
