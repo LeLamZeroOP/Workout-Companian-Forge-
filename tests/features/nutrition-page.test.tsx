@@ -11,9 +11,12 @@ describe('NutritionPage', () => {
     await userEvent.click(screen.getByRole('button', { name: /add breakfast/i }));
     await userEvent.type(screen.getByLabelText(/search foods/i), 'chicken breast');
     await userEvent.click(screen.getByRole('button', { name: /chicken breast/i }));
+    const serving = screen.getByRole('button', { name: /1 breast/i });
+    expect(serving).toHaveAttribute('aria-pressed', 'true');
     const amount = screen.getByLabelText(/amount in grams/i);
     await userEvent.clear(amount);
     await userEvent.type(amount, '150');
+    expect(serving).toHaveAttribute('aria-pressed', 'false');
     await userEvent.click(screen.getByRole('button', { name: /add to breakfast/i }));
     expect(onAddEntry).toHaveBeenCalledWith(expect.objectContaining({ meal: 'breakfast', localDate: '2026-09-24', grams: 150, nutrients: expect.objectContaining({ proteinG: 46.5 }) }));
   });

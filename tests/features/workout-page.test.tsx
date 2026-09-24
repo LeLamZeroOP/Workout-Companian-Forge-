@@ -26,6 +26,7 @@ describe('workout flow', () => {
     const current = createSession(program, program.workouts[0]!, data.exercises, '2026-09-23T10:00:00.000Z');
     const onChange = vi.fn();
     render(<GuidedWorkout session={current} onChange={onChange} onFinish={() => undefined} onDiscard={() => undefined} now={() => '2026-09-23T10:00:00.000Z'} />);
+    expect(screen.getByRole('button', { name: /dumbbell chest press/i })).toHaveAttribute('aria-current', 'step');
     await user.type(screen.getByLabelText('Weight in kilograms'), '30');
     await user.type(screen.getByLabelText('Repetitions'), '10');
     await user.click(screen.getByRole('button', { name: 'Complete set' }));

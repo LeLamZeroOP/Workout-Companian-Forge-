@@ -16,6 +16,13 @@
   --danger-soft: #fff1f2;
   --success: #26734d;
   --focus: #0a0a0a;
+  --selection-surface: #ffffff;
+  --selection-ink: #0a0a0a;
+  --selection-muted: #ececec;
+  --selection-ring: 0 0 0 1px rgb(10 10 10 / .10), 0 4px 12px rgb(10 10 10 / .08);
+  --motion-fast: 120ms;
+  --motion-standard: 180ms;
+  --ease-out: cubic-bezier(.2, .8, .2, 1);
   --radius-small: 6px;
   --radius-nested: 10px;
   --radius-control: 18px;
