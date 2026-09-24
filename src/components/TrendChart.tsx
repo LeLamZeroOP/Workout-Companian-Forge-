@@ -2,7 +2,7 @@ import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YA
 
 export interface TrendSeries { key: string; label: string; unit: string }
 
-export function TrendChart({ data, series, tableLabel }: { data: Array<Record<string, string | number>>; series: TrendSeries[]; tableLabel: string }) {
+export function TrendChart({ data, series, tableLabel, sharedAxis = false }: { data: Array<Record<string, string | number>>; series: TrendSeries[]; tableLabel: string; sharedAxis?: boolean }) {
   return (
     <div className="trend-visual">
       <div className="chart-frame" aria-hidden="true">
@@ -11,9 +11,9 @@ export function TrendChart({ data, series, tableLabel }: { data: Array<Record<st
             <CartesianGrid vertical={false} stroke="#e5e5e5" />
             <XAxis dataKey="date" tickLine={false} axisLine={false} tick={{ fill: '#686868', fontSize: 12 }} />
             <YAxis yAxisId="primary" tickLine={false} axisLine={false} width={42} tick={{ fill: '#686868', fontSize: 12 }} />
-            {series.length > 1 && <YAxis yAxisId="secondary" orientation="right" tickLine={false} axisLine={false} width={48} tick={{ fill: '#686868', fontSize: 12 }} />}
+            {series.length > 1 && !sharedAxis && <YAxis yAxisId="secondary" orientation="right" tickLine={false} axisLine={false} width={48} tick={{ fill: '#686868', fontSize: 12 }} />}
             <Tooltip contentStyle={{ borderRadius: 10, borderColor: '#e5e5e5', boxShadow: '0 2px 10px rgb(0 0 0 / .08)' }} />
-            {series.map((item, index) => <Line key={item.key} yAxisId={index === 0 ? 'primary' : 'secondary'} type="monotone" dataKey={item.key} name={`${item.label} (${item.unit})`} stroke={index === 0 ? '#0a0a0a' : '#737373'} strokeWidth={2} dot={{ r: 3 }} activeDot={{ r: 5 }} />)}
+            {series.map((item, index) => <Line key={item.key} yAxisId={index === 0 || sharedAxis ? 'primary' : 'secondary'} type="monotone" dataKey={item.key} name={`${item.label} (${item.unit})`} stroke={index === 0 ? '#0a0a0a' : '#737373'} strokeWidth={2} dot={{ r: 3 }} activeDot={{ r: 5 }} />)}
           </LineChart>
         </ResponsiveContainer>
       </div>

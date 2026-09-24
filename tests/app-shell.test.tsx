@@ -17,4 +17,11 @@ describe('application shell', () => {
     await user.keyboard('{ArrowRight}{Enter}');
     expect(screen.getByRole('heading', { level: 1, name: 'Programs' })).toBeInTheDocument();
   });
+
+  it('opens body tracking from primary navigation', async () => {
+    render(<App />);
+    await userEvent.click(screen.getByRole('button', { name: 'Body' }));
+    expect(screen.getByRole('heading', { level: 1, name: 'Body' })).toBeInTheDocument();
+    expect(screen.getByText(/start with today's weight/i)).toBeInTheDocument();
+  });
 });

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import type { AppDataV2, ExerciseDefinition, Program, WorkoutSession } from '../domain/models';
+import type { AppDataV2, BodyMeasurement, BodyProfile, ExerciseDefinition, Program, WorkoutSession } from '../domain/models';
 import { createDefaultData } from '../data/defaults';
 import { LocalStorageWorkoutRepository } from '../data/localStorageRepository';
 import { createSession } from '../domain/workout';
@@ -73,5 +73,20 @@ export function useAppData() {
     updateData((current) => ({ ...current, sessions: current.sessions.filter((session) => session.id !== sessionId || session.completedAt !== null) }));
   }
 
-  return { data, error, updateData, saveProgram, deleteProgram, saveExercise, startWorkout, updateSession, finishWorkout, discardWorkout };
+  function saveBodyProfile(profile: BodyProfile) {
+    updateData((current) => ({ ...current, body: { ...current.body, profile } }));
+  }
+
+  function saveBodyMeasurement(measurement: BodyMeasurement) {
+    updateData((current) => {
+      const exists = current.body.measurements.some((item) => item.id === measurement.id);
+      return { ...current, body: { ...current.body, measurements: exists ? current.body.measurements.map((item) => item.id === measurement.id ? measurement : item) : [...current.body.measurements, measurement] } };
+    });
+  }
+
+  function deleteBodyMeasurement(measurementId: string) {
+    updateData((current) => ({ ...current, body: { ...current.body, measurements: current.body.measurements.filter((item) => item.id !== measurementId) } }));
+  }
+
+  return { data, error, updateData, saveProgram, deleteProgram, saveExercise, startWorkout, updateSession, finishWorkout, discardWorkout, saveBodyProfile, saveBodyMeasurement, deleteBodyMeasurement };
 }

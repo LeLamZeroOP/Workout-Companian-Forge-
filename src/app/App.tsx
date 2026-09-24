@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Activity, BarChart3, CalendarDays, Dumbbell, House, Settings, UsersRound } from 'lucide-react';
+import { Activity, BarChart3, CalendarDays, Dumbbell, House, Scale, Settings, UsersRound } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import { routes, type AppRoute } from './navigation';
 import { TodayPage } from '../features/today/TodayPage';
@@ -9,6 +9,7 @@ import { WorkoutPage } from '../features/workout/WorkoutPage';
 import { HistoryPage } from '../features/history/HistoryPage';
 import { ProgressPage } from '../features/progress/ProgressPage';
 import { MuscleSummaryPage } from '../features/muscles/MuscleSummaryPage';
+import { BodyPage } from '../features/body/BodyPage';
 import '../styles/global.css';
 
 const icons: Record<AppRoute, LucideIcon> = {
@@ -18,12 +19,13 @@ const icons: Record<AppRoute, LucideIcon> = {
   history: Activity,
   progress: BarChart3,
   muscles: UsersRound,
+  body: Scale,
   settings: Settings,
 };
 
 export function App() {
   const [route, setRoute] = useState<AppRoute>('today');
-  const { data, error, saveProgram, deleteProgram, saveExercise, startWorkout, updateSession, finishWorkout, discardWorkout } = useAppData();
+  const { data, error, saveProgram, deleteProgram, saveExercise, startWorkout, updateSession, finishWorkout, discardWorkout, saveBodyProfile, saveBodyMeasurement, deleteBodyMeasurement } = useAppData();
   const navRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const active = routes.find((item) => item.id === route) ?? routes[0]!;
 
@@ -102,6 +104,8 @@ export function App() {
           <ProgressPage sessions={data.sessions} />
         ) : route === 'muscles' ? (
           <MuscleSummaryPage sessions={data.sessions} />
+        ) : route === 'body' ? (
+          <BodyPage profile={data.body.profile} measurements={data.body.measurements} onSaveProfile={saveBodyProfile} onSaveMeasurement={saveBodyMeasurement} onDeleteMeasurement={deleteBodyMeasurement} />
         ) : (
           <section className="empty-stage" aria-labelledby="stage-title">
             <p className="eyebrow">Coming in the next build</p>
