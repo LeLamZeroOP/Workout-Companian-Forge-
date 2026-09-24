@@ -51,11 +51,11 @@ export function calculateSessionVolume(session: WorkoutSession): number {
 export function validateProgram(program: Program, exercises: ExerciseDefinition[]): Record<string, string> {
   const errors: Record<string, string> = {};
   const catalog = new Map(exercises.map((exercise) => [exercise.id, exercise]));
-  if (!program.name.trim() || program.name.trim().length > 60) errors.name = 'Program name must be 1–60 characters.';
+  if (!program.name.trim() || program.name.trim().length > 60) errors.name = 'Program name must be 1-60 characters.';
   if (program.workouts.length < 1 || program.workouts.length > 14) errors.workouts = 'Add between 1 and 14 workouts.';
   program.workouts.forEach((workout, workoutIndex) => {
     const path = `workouts.${workoutIndex}`;
-    if (!workout.name.trim() || workout.name.trim().length > 60) errors[`${path}.name`] = 'Workout name must be 1–60 characters.';
+    if (!workout.name.trim() || workout.name.trim().length > 60) errors[`${path}.name`] = 'Workout name must be 1-60 characters.';
     if (workout.exercises.length < 1 || workout.exercises.length > 20) errors[`${path}.exercises`] = 'Add between 1 and 20 exercises.';
     workout.exercises.forEach((item, exerciseIndex) => {
       const exercisePath = `${path}.exercises.${exerciseIndex}`;

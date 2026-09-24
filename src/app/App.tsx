@@ -31,6 +31,7 @@ export function App() {
 
   return (
     <div className="app-shell">
+      <a className="skip-link" href="#main-content">Skip to content</a>
       <aside className="sidebar">
         <div className="brand" aria-label="Forge">
           <span className="brand-mark" aria-hidden="true">F</span>
@@ -74,7 +75,7 @@ export function App() {
             <p className="eyebrow">Training log</p>
             <h1>{active.label}</h1>
           </div>
-          <div className="status-pill"><span aria-hidden="true" /> Local mode</div>
+          <div className="status-pill">Stored locally</div>
         </header>
         {error && <div className="error-banner" role="alert">Stored data could not be loaded. {error}</div>}
         {route === 'today' ? (
