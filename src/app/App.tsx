@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Activity, BarChart3, CalendarDays, Dumbbell, House, Settings, UsersRound } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import { routes, type AppRoute } from './navigation';
@@ -6,6 +6,9 @@ import { TodayPage } from '../features/today/TodayPage';
 import { useAppData } from '../hooks/useAppData';
 import { ProgramsPage } from '../features/programs/ProgramsPage';
 import { WorkoutPage } from '../features/workout/WorkoutPage';
+import { HistoryPage } from '../features/history/HistoryPage';
+import { ProgressPage } from '../features/progress/ProgressPage';
+import { MuscleSummaryPage } from '../features/muscles/MuscleSummaryPage';
 import '../styles/global.css';
 
 const icons: Record<AppRoute, LucideIcon> = {
@@ -23,6 +26,11 @@ export function App() {
   const { data, error, saveProgram, deleteProgram, saveExercise, startWorkout, updateSession, finishWorkout, discardWorkout } = useAppData();
   const navRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const active = routes.find((item) => item.id === route) ?? routes[0]!;
+
+  useEffect(() => {
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }, [route]);
 
   function moveFocus(index: number, direction: number) {
     const next = (index + direction + routes.length) % routes.length;
@@ -88,6 +96,12 @@ export function App() {
           <ProgramsPage programs={data.programs} exerciseCatalog={data.exercises} onSave={saveProgram} onDelete={deleteProgram} onSaveExercise={saveExercise} />
         ) : route === 'workout' ? (
           <WorkoutPage programs={data.programs} sessions={data.sessions} lastSelectedProgramId={data.settings.lastSelectedProgramId} keepScreenAwake={data.settings.keepScreenAwake} onStart={startWorkout} onChange={updateSession} onFinish={finishWorkout} onDiscard={discardWorkout} />
+        ) : route === 'history' ? (
+          <HistoryPage sessions={data.sessions} />
+        ) : route === 'progress' ? (
+          <ProgressPage sessions={data.sessions} />
+        ) : route === 'muscles' ? (
+          <MuscleSummaryPage sessions={data.sessions} />
         ) : (
           <section className="empty-stage" aria-labelledby="stage-title">
             <p className="eyebrow">Coming in the next build</p>
