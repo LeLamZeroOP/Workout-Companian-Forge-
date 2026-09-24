@@ -31,8 +31,10 @@ describe('Body page', () => {
     expect(screen.getByText(/enter your birth date/i)).toBeInTheDocument();
     await userEvent.type(screen.getByLabelText(/birth date/i), '1996-01-01');
     await userEvent.type(screen.getByLabelText(/height in centimeters/i), '180');
-    await userEvent.selectOptions(screen.getByLabelText(/equation sex/i), 'male');
-    await userEvent.selectOptions(screen.getByLabelText(/activity level/i), 'moderate');
+    await userEvent.click(screen.getByRole('button', { name: /equation sex/i }));
+    await userEvent.click(screen.getByRole('option', { name: 'Male equation' }));
+    await userEvent.click(screen.getByRole('button', { name: /activity level/i }));
+    await userEvent.click(screen.getByRole('option', { name: 'Moderately active' }));
     await userEvent.click(screen.getByLabelText(/eligible adult/i));
     await userEvent.click(screen.getByRole('button', { name: /save profile/i }));
     expect(screen.getByText(/estimated daily target/i)).toBeInTheDocument();

@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from 'react';
+import { SelectControl } from '../../components/SelectControl';
 import type { BodyProfile } from '../../domain/models';
 
 export function BodyProfileForm({ initial, onSave, onCancel }: { initial: BodyProfile | null; onSave: (profile: BodyProfile) => void; onCancel: () => void }) {
@@ -27,10 +28,10 @@ export function BodyProfileForm({ initial, onSave, onCancel }: { initial: BodyPr
     <div className="body-form-grid">
       <label>Birth date<input type="date" value={birthDate} onChange={(event) => setBirthDate(event.target.value)} />{errors.birthDate && <span className="field-error">{errors.birthDate}</span>}</label>
       <label>Height in centimeters<input type="number" inputMode="decimal" value={height} onChange={(event) => setHeight(event.target.value)} />{errors.heightCm && <span className="field-error">{errors.heightCm}</span>}</label>
-      <label>Equation sex<select value={equationSex} onChange={(event) => setEquationSex(event.target.value as BodyProfile['equationSex'])}><option value="female">Female equation</option><option value="male">Male equation</option></select><span className="field-help">Required by the selected energy equation, not an identity field.</span></label>
-      <label>Activity level<select value={activityLevel} onChange={(event) => setActivityLevel(event.target.value as BodyProfile['activityLevel'])}><option value="sedentary">Sedentary</option><option value="light">Lightly active</option><option value="moderate">Moderately active</option><option value="veryActive">Very active</option></select></label>
-      <label>Goal<select value={goal} onChange={(event) => setGoal(event.target.value as BodyProfile['goal'])}><option value="lose">Gradual loss</option><option value="maintain">Maintain</option><option value="gain">Gradual gain</option></select></label>
-      <label>Target method<select value={targetMode} onChange={(event) => setTargetMode(event.target.value as BodyProfile['targetMode'])}><option value="calculated">Show an estimate</option><option value="manual">Manual targets only</option></select></label>
+      <SelectControl label="Equation sex" value={equationSex} onChange={(value) => setEquationSex(value as BodyProfile['equationSex'])} options={[{ value: 'female', label: 'Female equation' }, { value: 'male', label: 'Male equation' }]} help="Required by the selected energy equation, not an identity field." />
+      <SelectControl label="Activity level" value={activityLevel} onChange={(value) => setActivityLevel(value as BodyProfile['activityLevel'])} options={[{ value: 'sedentary', label: 'Sedentary' }, { value: 'light', label: 'Lightly active' }, { value: 'moderate', label: 'Moderately active' }, { value: 'veryActive', label: 'Very active' }]} />
+      <SelectControl label="Goal" value={goal} onChange={(value) => setGoal(value as BodyProfile['goal'])} options={[{ value: 'lose', label: 'Gradual loss' }, { value: 'maintain', label: 'Maintain' }, { value: 'gain', label: 'Gradual gain' }]} />
+      <SelectControl label="Target method" value={targetMode} onChange={(value) => setTargetMode(value as BodyProfile['targetMode'])} options={[{ value: 'calculated', label: 'Show an estimate' }, { value: 'manual', label: 'Manual targets only' }]} />
     </div>
     {targetMode === 'calculated' && <label className="eligibility-check"><input type="checkbox" checked={eligible} onChange={(event) => setEligible(event.target.checked)} />I confirm I am an eligible adult: age 18 or older, not pregnant or breastfeeding, and not following a clinician-directed diet.<span className="sr-only">Eligible adult</span></label>}
     {errors.eligible && <p className="field-error">{errors.eligible}</p>}
