@@ -29,8 +29,8 @@ export function TodayPage({ programs, sessions, onPrimaryAction, now = new Date(
     <div className="today-grid">
       <section className="hero-panel">
         <div>
-          <p className="eyebrow">Ready when you are</p>
-          <h2>{active ? `${active.workoutName} is in progress` : isFirstUse ? 'Build your first training plan.' : 'Make today count.'}</h2>
+          <p className="eyebrow">Session control</p>
+          <h2>{active ? `${active.workoutName} is in progress` : isFirstUse ? 'Build your first training plan.' : 'Start a training session.'}</h2>
           <p>{active ? `${active.programName} · Started ${new Date(active.startedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}` : isFirstUse ? 'Create a program, order your exercises, and set rest times before your first guided session.' : 'Choose a program and Forge will guide every set and rest period.'}</p>
         </div>
         <button className="primary-action" type="button" onClick={onPrimaryAction}>
