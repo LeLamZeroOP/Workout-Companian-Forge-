@@ -1,4 +1,4 @@
-import type { AppDataV1 } from '../domain/models';
+import type { AppDataV1, AppDataV2 } from '../domain/models';
 
 const seed: AppDataV1 = {
   version: 1,
@@ -20,6 +20,10 @@ const seed: AppDataV1 = {
   settings: { weightUnit: 'kg', lastSelectedProgramId: 'starter-program', restAlertSound: true, restAlertVibration: true, keepScreenAwake: true },
 };
 
-export function createDefaultData(): AppDataV1 {
+export function createDefaultDataV1(): AppDataV1 {
   return structuredClone(seed);
+}
+
+export function createDefaultData(): AppDataV2 {
+  return { ...createDefaultDataV1(), version: 2, body: { profile: null, measurements: [] }, nutrition: { targets: [], customFoods: [], diary: [] } };
 }

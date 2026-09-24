@@ -1,9 +1,9 @@
-import type { AppDataV1 } from '../domain/models';
+import type { AppDataV2 } from '../domain/models';
 
 export interface WorkoutRepository {
-  load(): AppDataV1;
-  save(data: AppDataV1): void;
+  load(): AppDataV2;
+  save(data: AppDataV2): void;
   exportJson(): string;
-  importJson(json: string): AppDataV1;
+  importJson(json: string): AppDataV2;
   clear(): void;
 }

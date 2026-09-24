@@ -6,7 +6,7 @@ describe('local workout repository', () => {
     const repository = new LocalStorageWorkoutRepository(localStorage);
     const data = repository.load();
 
-    expect(data.version).toBe(1);
+    expect(data.version).toBe(2);
     expect(data.programs.length).toBeGreaterThan(0);
     expect(localStorage.getItem('workout-tracker:data')).toBeNull();
   });

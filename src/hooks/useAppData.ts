@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import type { AppDataV1, ExerciseDefinition, Program, WorkoutSession } from '../domain/models';
+import type { AppDataV2, ExerciseDefinition, Program, WorkoutSession } from '../domain/models';
 import { createDefaultData } from '../data/defaults';
 import { LocalStorageWorkoutRepository } from '../data/localStorageRepository';
 import { createSession } from '../domain/workout';
@@ -8,12 +8,12 @@ const repository = typeof window === 'undefined' ? null : new LocalStorageWorkou
 
 export function useAppData() {
   const [error, setError] = useState<string | null>(null);
-  const [data, setData] = useState<AppDataV1>(() => {
+  const [data, setData] = useState<AppDataV2>(() => {
     try { return repository?.load() ?? createDefaultData(); }
     catch (reason) { setTimeout(() => setError(reason instanceof Error ? reason.message : 'Could not load workout data.')); return createDefaultData(); }
   });
 
-  function updateData(update: (current: AppDataV1) => AppDataV1) {
+  function updateData(update: (current: AppDataV2) => AppDataV2) {
     setData((current) => {
       const next = update(current);
       try { repository?.save(next); setError(null); }
