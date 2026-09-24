@@ -1,10 +1,17 @@
-import type { Program, WorkoutSession } from '../../domain/models';
-import { ArrowRight, CalendarCheck, Dumbbell, Flame } from 'lucide-react';
+import type { BodyMeasurement, FoodLogEntry, NutritionTarget, Program, WorkoutSession } from '../../domain/models';
+import { ArrowRight, CalendarCheck, Dumbbell, Flame, Scale, Utensils } from 'lucide-react';
+import { getLatestMeasurement, getWeightChange } from '../../domain/bodyMeasurements';
+import { entriesForDate, getDiaryTotal, getEffectiveTarget } from '../../domain/foodDiary';
 
 export interface TodayPageProps {
   programs: Program[];
   sessions: WorkoutSession[];
   onPrimaryAction: () => void;
+  bodyMeasurements?: BodyMeasurement[];
+  nutritionEntries?: FoodLogEntry[];
+  nutritionTargets?: NutritionTarget[];
+  onLogWeight?: () => void;
+  onAddFood?: () => void;
   now?: Date;
 }
 
@@ -16,7 +23,7 @@ function startOfWeek(date: Date): Date {
   return result;
 }
 
-export function TodayPage({ programs, sessions, onPrimaryAction, now = new Date() }: TodayPageProps) {
+export function TodayPage({ programs, sessions, onPrimaryAction, bodyMeasurements = [], nutritionEntries = [], nutritionTargets = [], onLogWeight = () => undefined, onAddFood = () => undefined, now = new Date() }: TodayPageProps) {
   const active = sessions.find((session) => session.completedAt === null);
   const completed = sessions.filter((session) => session.completedAt !== null);
   const latest = [...completed].sort((a, b) => (b.completedAt ?? '').localeCompare(a.completedAt ?? ''))[0];
@@ -24,9 +31,14 @@ export function TodayPage({ programs, sessions, onPrimaryAction, now = new Date(
   const weeklyCount = completed.filter((session) => new Date(session.completedAt!).getTime() >= weekStart && new Date(session.completedAt!).getTime() <= now.getTime()).length;
   const isFirstUse = programs.length === 0;
   const actionLabel = active ? 'Resume workout' : isFirstUse ? 'Create first program' : 'Start workout';
+  const latestWeight = getLatestMeasurement(bodyMeasurements);
+  const weightChange = getWeightChange(bodyMeasurements);
+  const localDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+  const nutritionTotal = getDiaryTotal(entriesForDate(nutritionEntries, localDate));
+  const nutritionTarget = getEffectiveTarget(nutritionTargets, localDate);
 
   return (
-    <div className="today-layout">
+    <div className="today-stack"><div className="today-layout">
       <section className="session-panel">
         <div>
           <p className="eyebrow">Today</p>
@@ -48,6 +60,9 @@ export function TodayPage({ programs, sessions, onPrimaryAction, now = new Date(
           {latest ? <div className="recent-row"><div><strong>{latest.workoutName}</strong><span>{latest.programName}</span></div><time dateTime={latest.completedAt!}>{new Date(latest.completedAt!).toLocaleDateString([], { month: 'short', day: 'numeric' })}</time></div> : <p className="muted">Completed workouts will appear here.</p>}
         </section>
       </aside>
-    </div>
+    </div><div className="today-secondary-grid">
+      <section className="today-compact-card"><div><span className="metric-icon"><Scale size={18} aria-hidden="true" /></span><p className="eyebrow">Body</p><h3>{latestWeight ? `${latestWeight.weightKg} kg` : 'No weight logged'}</h3><p>{weightChange === null ? 'Start a private weight trend.' : `${weightChange > 0 ? '+' : ''}${weightChange.toFixed(1)} kg from your previous entry`}</p></div><button className="secondary-action" type="button" onClick={onLogWeight}>Log weight</button></section>
+      <section className="today-compact-card"><div><span className="metric-icon"><Utensils size={18} aria-hidden="true" /></span><p className="eyebrow">Nutrition</p><h3>{nutritionTotal.caloriesKcal ? `${Math.round(nutritionTotal.caloriesKcal).toLocaleString()}${nutritionTarget ? ` of ${nutritionTarget.caloriesKcal.toLocaleString()}` : ''} kcal` : 'No food logged today'}</h3><p>{nutritionTotal.caloriesKcal ? `${Math.round(nutritionTotal.proteinG)}g protein · ${Math.round(nutritionTotal.carbsG)}g carbs · ${Math.round(nutritionTotal.fatG)}g fat` : 'Add a meal to begin today’s totals.'}</p></div><button className="secondary-action" type="button" onClick={onAddFood}>Add food</button></section>
+    </div></div>
   );
 }

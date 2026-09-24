@@ -1,14 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
-import { Activity, BarChart3, CalendarDays, Dumbbell, House, Scale, Settings, UsersRound, Utensils } from 'lucide-react';
+import { Activity, BarChart3, CalendarDays, ChevronRight, Dumbbell, Ellipsis, House, Scale, Settings, Utensils } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
-import { routes, type AppRoute } from './navigation';
+import { desktopRoutes, mobileRoutes, routes, type AppRoute } from './navigation';
 import { TodayPage } from '../features/today/TodayPage';
 import { useAppData } from '../hooks/useAppData';
 import { ProgramsPage } from '../features/programs/ProgramsPage';
 import { WorkoutPage } from '../features/workout/WorkoutPage';
 import { HistoryPage } from '../features/history/HistoryPage';
 import { ProgressPage } from '../features/progress/ProgressPage';
-import { MuscleSummaryPage } from '../features/muscles/MuscleSummaryPage';
 import { BodyPage } from '../features/body/BodyPage';
 import { NutritionPage } from '../features/nutrition/NutritionPage';
 import { commonFoods } from '../data/foods/catalog';
@@ -20,17 +19,31 @@ const icons: Record<AppRoute, LucideIcon> = {
   workout: Dumbbell,
   history: Activity,
   progress: BarChart3,
-  muscles: UsersRound,
   body: Scale,
   nutrition: Utensils,
   settings: Settings,
+  more: Ellipsis,
 };
+
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.matchMedia?.('(max-width: 640px)').matches === true);
+  useEffect(() => {
+    const query = window.matchMedia?.('(max-width: 640px)');
+    if (!query) return;
+    const update = (event: MediaQueryListEvent) => setIsMobile(event.matches);
+    query.addEventListener('change', update);
+    return () => query.removeEventListener('change', update);
+  }, []);
+  return isMobile;
+}
 
 export function App() {
   const [route, setRoute] = useState<AppRoute>('today');
+  const isMobile = useIsMobile();
   const { data, error, saveProgram, deleteProgram, saveExercise, startWorkout, updateSession, finishWorkout, discardWorkout, saveBodyProfile, saveBodyMeasurement, deleteBodyMeasurement, saveNutritionTarget, saveCustomFood, addFoodEntry, deleteFoodEntry } = useAppData();
   const navRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const active = routes.find((item) => item.id === route) ?? routes[0]!;
+  const navigationRoutes = isMobile ? mobileRoutes : desktopRoutes;
 
   useEffect(() => {
     document.documentElement.scrollTop = 0;
@@ -38,7 +51,7 @@ export function App() {
   }, [route]);
 
   function moveFocus(index: number, direction: number) {
-    const next = (index + direction + routes.length) % routes.length;
+    const next = (index + direction + navigationRoutes.length) % navigationRoutes.length;
     navRefs.current[next]?.focus();
   }
 
@@ -50,16 +63,17 @@ export function App() {
           <span className="brand-mark" aria-hidden="true">F</span>
           <span>Forge</span>
         </div>
-        <nav className="navigation" aria-label="Primary">
-          {routes.map((item, index) => {
+        <nav className="navigation" aria-label={isMobile ? 'Mobile primary' : 'Desktop primary'}>
+          {navigationRoutes.map((item, index) => {
             const Icon = icons[item.id];
+            const isActive = route === item.id || (item.id === 'more' && ['history', 'body', 'nutrition', 'settings'].includes(route));
             return (
               <button
                 key={item.id}
                 ref={(node) => { navRefs.current[index] = node; }}
                 type="button"
-                className={route === item.id ? 'nav-item active' : 'nav-item'}
-                aria-current={route === item.id ? 'page' : undefined}
+                className={isActive ? 'nav-item active' : 'nav-item'}
+                aria-current={isActive ? 'page' : undefined}
                 onClick={() => setRoute(item.id)}
                 onKeyDown={(event) => {
                   if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
@@ -96,6 +110,11 @@ export function App() {
             programs={data.programs}
             sessions={data.sessions}
             onPrimaryAction={() => setRoute(data.programs.length === 0 ? 'programs' : 'workout')}
+            bodyMeasurements={data.body.measurements}
+            nutritionEntries={data.nutrition.diary}
+            nutritionTargets={data.nutrition.targets}
+            onLogWeight={() => setRoute('body')}
+            onAddFood={() => setRoute('nutrition')}
           />
         ) : route === 'programs' ? (
           <ProgramsPage programs={data.programs} exerciseCatalog={data.exercises} onSave={saveProgram} onDelete={deleteProgram} onSaveExercise={saveExercise} />
@@ -105,12 +124,15 @@ export function App() {
           <HistoryPage sessions={data.sessions} />
         ) : route === 'progress' ? (
           <ProgressPage sessions={data.sessions} />
-        ) : route === 'muscles' ? (
-          <MuscleSummaryPage sessions={data.sessions} />
         ) : route === 'body' ? (
           <BodyPage profile={data.body.profile} measurements={data.body.measurements} onSaveProfile={saveBodyProfile} onSaveMeasurement={saveBodyMeasurement} onDeleteMeasurement={deleteBodyMeasurement} onSaveNutritionTarget={saveNutritionTarget} />
         ) : route === 'nutrition' ? (
           <NutritionPage foods={[...commonFoods, ...data.nutrition.customFoods]} entries={data.nutrition.diary} targets={data.nutrition.targets} onAddEntry={addFoodEntry} onDeleteEntry={deleteFoodEntry} onSaveCustomFood={saveCustomFood} />
+        ) : route === 'more' ? (
+          <section className="more-page" aria-label="More destinations">
+            <p className="more-intro">Your history, body log, meals, and local data controls.</p>
+            <div className="more-list">{desktopRoutes.filter((item) => ['history', 'body', 'nutrition', 'settings'].includes(item.id)).map((item) => { const Icon = icons[item.id]; return <button type="button" key={item.id} aria-label={`Open ${item.label}`} onClick={() => setRoute(item.id)}><span className="metric-icon"><Icon size={18} aria-hidden="true" /></span><span><strong>{item.label}</strong><small>{item.description}</small></span><ChevronRight size={18} aria-hidden="true" /></button>; })}</div>
+          </section>
         ) : (
           <section className="empty-stage" aria-labelledby="stage-title">
             <p className="eyebrow">Coming in the next build</p>
