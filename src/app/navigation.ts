@@ -1,4 +1,4 @@
-export type AppRoute = 'today' | 'programs' | 'workout' | 'history' | 'progress' | 'muscles' | 'body' | 'settings';
+export type AppRoute = 'today' | 'programs' | 'workout' | 'history' | 'progress' | 'muscles' | 'body' | 'nutrition' | 'settings';
 
 export const routes: Array<{ id: AppRoute; label: string; description: string }> = [
   { id: 'today', label: 'Today', description: 'Your training day at a glance.' },
@@ -8,5 +8,6 @@ export const routes: Array<{ id: AppRoute; label: string; description: string }>
   { id: 'progress', label: 'Progress', description: 'See weight and volume change over time.' },
   { id: 'muscles', label: 'Muscles', description: 'Understand effective sets by muscle group.' },
   { id: 'body', label: 'Body', description: 'Track weight, measurements, and nutrition estimates.' },
+  { id: 'nutrition', label: 'Nutrition', description: 'Log meals and compare daily macros with your target.' },
   { id: 'settings', label: 'Settings', description: 'Control alerts, units, and your local data.' },
 ];

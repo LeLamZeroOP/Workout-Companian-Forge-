@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import type { AppDataV2, BodyMeasurement, BodyProfile, ExerciseDefinition, Program, WorkoutSession } from '../domain/models';
+import type { AppDataV2, BodyMeasurement, BodyProfile, ExerciseDefinition, FoodDefinition, FoodLogEntry, NutritionTarget, Program, WorkoutSession } from '../domain/models';
 import { createDefaultData } from '../data/defaults';
 import { LocalStorageWorkoutRepository } from '../data/localStorageRepository';
 import { createSession } from '../domain/workout';
@@ -88,5 +88,21 @@ export function useAppData() {
     updateData((current) => ({ ...current, body: { ...current.body, measurements: current.body.measurements.filter((item) => item.id !== measurementId) } }));
   }
 
-  return { data, error, updateData, saveProgram, deleteProgram, saveExercise, startWorkout, updateSession, finishWorkout, discardWorkout, saveBodyProfile, saveBodyMeasurement, deleteBodyMeasurement };
+  function saveNutritionTarget(target: NutritionTarget) {
+    updateData((current) => ({ ...current, nutrition: { ...current.nutrition, targets: [...current.nutrition.targets.filter((item) => item.id !== target.id), target] } }));
+  }
+
+  function saveCustomFood(food: FoodDefinition) {
+    updateData((current) => ({ ...current, nutrition: { ...current.nutrition, customFoods: [...current.nutrition.customFoods.filter((item) => item.id !== food.id), food] } }));
+  }
+
+  function addFoodEntry(entry: FoodLogEntry) {
+    updateData((current) => ({ ...current, nutrition: { ...current.nutrition, diary: [...current.nutrition.diary, entry] } }));
+  }
+
+  function deleteFoodEntry(entryId: string) {
+    updateData((current) => ({ ...current, nutrition: { ...current.nutrition, diary: current.nutrition.diary.filter((entry) => entry.id !== entryId) } }));
+  }
+
+  return { data, error, updateData, saveProgram, deleteProgram, saveExercise, startWorkout, updateSession, finishWorkout, discardWorkout, saveBodyProfile, saveBodyMeasurement, deleteBodyMeasurement, saveNutritionTarget, saveCustomFood, addFoodEntry, deleteFoodEntry };
 }

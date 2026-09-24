@@ -51,6 +51,6 @@ export function validateFood(food: FoodDefinition): { errors: string[]; warnings
   return { errors, warnings };
 }
 
-export function createFoodLogEntry(food: FoodDefinition, grams: number, meal: FoodLogEntry['meal'], localDate: string, id = crypto.randomUUID(), servingDescription = `${grams} g`): FoodLogEntry {
+export function createFoodLogEntry(food: FoodDefinition, grams: number, meal: FoodLogEntry['meal'], localDate: string, id: string = crypto.randomUUID(), servingDescription = `${grams} g`): FoodLogEntry {
   return { id, localDate, meal, foodId: food.id, foodName: food.name, grams, servingDescription, nutrients: scaleNutrients(food.nutrientsPer100g, grams), source: food.source, sourceId: food.sourceId };
 }

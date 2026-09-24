@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Activity, BarChart3, CalendarDays, Dumbbell, House, Scale, Settings, UsersRound } from 'lucide-react';
+import { Activity, BarChart3, CalendarDays, Dumbbell, House, Scale, Settings, UsersRound, Utensils } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import { routes, type AppRoute } from './navigation';
 import { TodayPage } from '../features/today/TodayPage';
@@ -10,6 +10,8 @@ import { HistoryPage } from '../features/history/HistoryPage';
 import { ProgressPage } from '../features/progress/ProgressPage';
 import { MuscleSummaryPage } from '../features/muscles/MuscleSummaryPage';
 import { BodyPage } from '../features/body/BodyPage';
+import { NutritionPage } from '../features/nutrition/NutritionPage';
+import { commonFoods } from '../data/foods/catalog';
 import '../styles/global.css';
 
 const icons: Record<AppRoute, LucideIcon> = {
@@ -20,12 +22,13 @@ const icons: Record<AppRoute, LucideIcon> = {
   progress: BarChart3,
   muscles: UsersRound,
   body: Scale,
+  nutrition: Utensils,
   settings: Settings,
 };
 
 export function App() {
   const [route, setRoute] = useState<AppRoute>('today');
-  const { data, error, saveProgram, deleteProgram, saveExercise, startWorkout, updateSession, finishWorkout, discardWorkout, saveBodyProfile, saveBodyMeasurement, deleteBodyMeasurement } = useAppData();
+  const { data, error, saveProgram, deleteProgram, saveExercise, startWorkout, updateSession, finishWorkout, discardWorkout, saveBodyProfile, saveBodyMeasurement, deleteBodyMeasurement, saveNutritionTarget, saveCustomFood, addFoodEntry, deleteFoodEntry } = useAppData();
   const navRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const active = routes.find((item) => item.id === route) ?? routes[0]!;
 
@@ -105,7 +108,9 @@ export function App() {
         ) : route === 'muscles' ? (
           <MuscleSummaryPage sessions={data.sessions} />
         ) : route === 'body' ? (
-          <BodyPage profile={data.body.profile} measurements={data.body.measurements} onSaveProfile={saveBodyProfile} onSaveMeasurement={saveBodyMeasurement} onDeleteMeasurement={deleteBodyMeasurement} />
+          <BodyPage profile={data.body.profile} measurements={data.body.measurements} onSaveProfile={saveBodyProfile} onSaveMeasurement={saveBodyMeasurement} onDeleteMeasurement={deleteBodyMeasurement} onSaveNutritionTarget={saveNutritionTarget} />
+        ) : route === 'nutrition' ? (
+          <NutritionPage foods={[...commonFoods, ...data.nutrition.customFoods]} entries={data.nutrition.diary} targets={data.nutrition.targets} onAddEntry={addFoodEntry} onDeleteEntry={deleteFoodEntry} onSaveCustomFood={saveCustomFood} />
         ) : (
           <section className="empty-stage" aria-labelledby="stage-title">
             <p className="eyebrow">Coming in the next build</p>
