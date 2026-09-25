@@ -15,6 +15,10 @@ export function getEffectiveTarget(targets: NutritionTarget[], localDate: string
   return [...targets].filter((target) => target.effectiveFrom <= localDate).sort((a, b) => b.effectiveFrom.localeCompare(a.effectiveFrom))[0] ?? null;
 }
 
+export function upsertNutritionTarget(targets: NutritionTarget[], target: NutritionTarget): NutritionTarget[] {
+  return [...targets.filter((item) => item.id !== target.id && item.effectiveFrom !== target.effectiveFrom), target];
+}
+
 export function getDiaryTotal(entries: FoodLogEntry[]): Nutrients {
   return sumNutrients(entries.map((entry) => entry.nutrients));
 }

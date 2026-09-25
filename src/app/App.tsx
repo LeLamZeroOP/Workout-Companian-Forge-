@@ -128,7 +128,7 @@ export function App() {
         ) : route === 'body' ? (
           <BodyPage profile={data.body.profile} measurements={data.body.measurements} onSaveProfile={saveBodyProfile} onSaveMeasurement={saveBodyMeasurement} onDeleteMeasurement={deleteBodyMeasurement} onSaveNutritionTarget={saveNutritionTarget} />
         ) : route === 'nutrition' ? (
-          <NutritionPage foods={[...commonFoods, ...data.nutrition.customFoods]} entries={data.nutrition.diary} targets={data.nutrition.targets} onAddEntry={addFoodEntry} onDeleteEntry={deleteFoodEntry} onSaveCustomFood={saveCustomFood} />
+          <NutritionPage foods={[...commonFoods, ...data.nutrition.customFoods]} entries={data.nutrition.diary} targets={data.nutrition.targets} onAddEntry={addFoodEntry} onDeleteEntry={deleteFoodEntry} onSaveCustomFood={saveCustomFood} onSaveNutritionTarget={saveNutritionTarget} />
         ) : route === 'settings' ? (
           <DataManagement data={data} onImport={replaceData} onReset={resetData} />
         ) : route === 'more' ? (

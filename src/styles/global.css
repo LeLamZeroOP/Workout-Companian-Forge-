@@ -290,6 +290,9 @@ select { padding-right: 40px; cursor: pointer; appearance: none; background-imag
 
 .nutrition-toolbar { padding: 6px 2px 14px; display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; }
 .nutrition-toolbar h2 { margin: 5px 0 0; font-size: clamp(28px, 4vw, 40px); line-height: 1.1; letter-spacing: -.04em; }
+.nutrition-target-tools { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.nutrition-target-tools .nutrition-hint { margin: 0; }
+.nutrition-target-tools > .secondary-action { margin-left: auto; flex: none; }
 .date-switcher { display: flex; align-items: center; gap: 7px; }
 .date-switcher input { width: 150px; min-height: 40px; }
 .macro-summary { display: grid; grid-template-columns: 1.35fr repeat(3, 1fr); border: 1px solid var(--border); border-radius: var(--radius-card); background: var(--surface); box-shadow: var(--shadow-key); overflow: hidden; }

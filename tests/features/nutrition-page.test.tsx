@@ -40,4 +40,20 @@ describe('NutritionPage', () => {
     expect(screen.queryByRole('dialog', { name: /add food/i })).not.toBeInTheDocument();
     expect(opener).toHaveFocus();
   });
+
+  it('opens manual target editing without requiring a body profile', async () => {
+    const user = userEvent.setup();
+    const onSaveNutritionTarget = vi.fn();
+    render(<NutritionPage foods={commonFoods} entries={[]} targets={[]} onAddEntry={vi.fn()} onDeleteEntry={vi.fn()} onSaveCustomFood={vi.fn()} onSaveNutritionTarget={onSaveNutritionTarget} date="2026-09-24" />);
+
+    await user.click(screen.getByRole('button', { name: 'Set manual target' }));
+    expect(screen.getByRole('heading', { name: 'Daily target' })).toBeInTheDocument();
+    await user.type(screen.getByLabelText('Calories per day'), '2200');
+    await user.type(screen.getByLabelText('Protein in grams'), '150');
+    await user.type(screen.getByLabelText('Carbs in grams'), '240');
+    await user.type(screen.getByLabelText('Fat in grams'), '70');
+    await user.click(screen.getByRole('button', { name: 'Save target' }));
+
+    expect(onSaveNutritionTarget).toHaveBeenCalledWith(expect.objectContaining({ effectiveFrom: '2026-09-24', mode: 'manual', caloriesKcal: 2200 }));
+  });
 });

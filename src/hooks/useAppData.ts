@@ -4,6 +4,7 @@ import { createDefaultData } from '../data/defaults';
 import { LocalStorageWorkoutRepository } from '../data/localStorageRepository';
 import { resetDataScope, type DataResetScope } from '../data/localStorageRepository';
 import { createSession } from '../domain/workout';
+import { upsertNutritionTarget } from '../domain/foodDiary';
 
 const repository = typeof window === 'undefined' ? null : new LocalStorageWorkoutRepository(window.localStorage);
 
@@ -90,7 +91,7 @@ export function useAppData() {
   }
 
   function saveNutritionTarget(target: NutritionTarget) {
-    updateData((current) => ({ ...current, nutrition: { ...current.nutrition, targets: [...current.nutrition.targets.filter((item) => item.id !== target.id), target] } }));
+    updateData((current) => ({ ...current, nutrition: { ...current.nutrition, targets: upsertNutritionTarget(current.nutrition.targets, target) } }));
   }
 
   function saveCustomFood(food: FoodDefinition) {
