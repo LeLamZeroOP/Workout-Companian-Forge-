@@ -4,6 +4,10 @@ import type { LucideIcon } from 'lucide-react';
 import { desktopRoutes, mobileRoutes, routes, type AppRoute } from './navigation';
 import { TodayPage } from '../features/today/TodayPage';
 import { useAppData } from '../hooks/useAppData';
+import { useCloudAppData } from '../hooks/useCloudAppData';
+import { isCloudConfigured } from '../data/cloudClient';
+import { SignInPage } from '../features/auth/SignInPage';
+import { CloudDataManagement } from '../features/settings/CloudDataManagement';
 import { ProgramsPage } from '../features/programs/ProgramsPage';
 import { WorkoutPage } from '../features/workout/WorkoutPage';
 import { HistoryPage } from '../features/history/HistoryPage';
@@ -41,7 +45,10 @@ function useIsMobile() {
 export function App() {
   const [route, setRoute] = useState<AppRoute>('today');
   const isMobile = useIsMobile();
-  const { data, error, saveProgram, deleteProgram, saveExercise, startWorkout, updateSession, finishWorkout, discardWorkout, saveBodyProfile, saveBodyMeasurement, deleteBodyMeasurement, saveNutritionTarget, saveCustomFood, addFoodEntry, deleteFoodEntry, replaceData, resetData } = useAppData();
+  const local = useAppData();
+  const cloud = useCloudAppData();
+  const source = isCloudConfigured ? cloud : local;
+  const { data, error, saveProgram, deleteProgram, saveExercise, startWorkout, updateSession, finishWorkout, discardWorkout, saveBodyProfile, saveBodyMeasurement, deleteBodyMeasurement, saveNutritionTarget, saveCustomFood, addFoodEntry, deleteFoodEntry } = source;
   const navRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const active = routes.find((item) => item.id === route) ?? routes[0]!;
   const navigationRoutes = isMobile ? mobileRoutes : desktopRoutes;
@@ -55,6 +62,10 @@ export function App() {
     const next = (index + direction + navigationRoutes.length) % navigationRoutes.length;
     navRefs.current[next]?.focus();
   }
+
+  if (isCloudConfigured && !cloud.authReady) return <div className="app-loading">Checking your Forge account…</div>;
+  if (isCloudConfigured && !cloud.user) return <SignInPage onGoogleSignIn={() => void cloud.signIn()} error={cloud.error} busy={cloud.authBusy} />;
+  if (!data) return <div className="app-loading" role="status">Loading your training data… {error && <span role="alert">{error} <button type="button" onClick={cloud.retry}>Retry</button></span>}</div>;
 
   return (
     <div className="app-shell">
@@ -94,7 +105,7 @@ export function App() {
             );
           })}
         </nav>
-        <p className="local-note">Saved on this device</p>
+        <p className="local-note">{isCloudConfigured ? cloud.user?.email : 'Saved on this device'}</p>
       </aside>
 
       <main id="main-content" className="main-content" tabIndex={-1}>
@@ -103,9 +114,10 @@ export function App() {
             <p className="eyebrow">Training log</p>
             <h1>{active.label}</h1>
           </div>
-          <div className="status-pill">Stored locally</div>
+          <div className={isCloudConfigured ? 'status-pill cloud-status' : 'status-pill'}>{isCloudConfigured ? (cloud.conflictCount ? 'Sync needs review' : cloud.pendingCount ? `${cloud.pendingCount} pending` : cloud.offline ? 'Offline' : 'Synced') : 'Stored locally'}</div>
         </header>
-        {error && <div className="error-banner" role="alert">Stored data could not be loaded. {error}</div>}
+        {error && <div className="error-banner" role="alert">{error}</div>}
+        {isCloudConfigured && cloud.pendingCount > 0 && <div className="sync-banner" role="status">{cloud.conflictCount ? 'A change conflicts with a newer edit. Your local copy is preserved.' : `${cloud.pendingCount} change${cloud.pendingCount === 1 ? '' : 's'} saved on this device, waiting to sync.`} <button type="button" onClick={cloud.retry}>Retry sync</button></div>}
         {route === 'today' ? (
           <TodayPage
             programs={data.programs}
@@ -130,7 +142,7 @@ export function App() {
         ) : route === 'nutrition' ? (
           <NutritionPage foods={[...commonFoods, ...data.nutrition.customFoods]} entries={data.nutrition.diary} targets={data.nutrition.targets} onAddEntry={addFoodEntry} onDeleteEntry={deleteFoodEntry} onSaveCustomFood={saveCustomFood} onSaveNutritionTarget={saveNutritionTarget} />
         ) : route === 'settings' ? (
-          <DataManagement data={data} onImport={replaceData} onReset={resetData} />
+          isCloudConfigured ? <CloudDataManagement data={data} onSignOut={() => void cloud.signOut()} pendingCount={cloud.pendingCount} onImport={cloud.importData} onGetDeviceBackup={cloud.getDeviceBackup} /> : <DataManagement data={data} onImport={local.replaceData} onReset={local.resetData} />
         ) : route === 'more' ? (
           <section className="more-page" aria-label="More destinations">
             <p className="more-intro">Your history, body log, meals, and local data controls.</p>

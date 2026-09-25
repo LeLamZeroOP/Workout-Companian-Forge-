@@ -1,6 +1,6 @@
 # Forge — Workout Companion
 
-Forge is a responsive, local-first web app for planning programs, running guided gym sessions, reviewing training volume, tracking body measurements, and keeping a simple nutrition diary. It works on desktop and mobile and can be installed as an offline-capable web app after the first successful load.
+Forge is a responsive workout web app for planning programs, running guided gym sessions, reviewing training volume, tracking body measurements, and keeping a simple nutrition diary. It works on desktop and mobile. Without cloud configuration, records remain on one device. An optional Google/Supabase mode is under development for account sync and offline logging.
 
 ## What it includes
 
@@ -49,9 +49,11 @@ pnpm exec playwright install chromium
 
 ## Privacy and storage
 
-Forge does not require an account and does not send workout, body, or nutrition records to a server. The current version stores a single versioned document in the browser's `localStorage` under `workout-tracker:data`.
+The default local mode does not require an account or send workout, body, or nutrition records to a server. It stores a versioned document in the browser's `localStorage` under `workout-tracker:data`.
 
-Browser storage is device- and browser-profile-specific. Clearing site data, using private browsing, or uninstalling a browser can remove it. Download a backup from **Settings → Export a backup** before changing devices or clearing storage.
+When the two public Supabase environment variables are configured, Forge requires Google sign-in and stores the account's document in Supabase. A local IndexedDB copy keeps pending mutations until they can sync. This hosted mode has not yet been deployed or verified against a live project. Follow [the cloud setup and acceptance guide](docs/cloud-setup.md) before relying on it.
+
+Browser storage is device- and browser-profile-specific. Clearing site data, using private browsing, or uninstalling a browser can remove local or unsynced records. Download a backup from **Settings** before changing devices or clearing storage.
 
 ## Backup, import, and recovery
 
