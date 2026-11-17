@@ -17,7 +17,7 @@ export function TodayBalance({ measurements, entries, targets, date, onLogWeight
       <span className="metric-icon"><Scale size={18} aria-hidden="true" /></span><p className="eyebrow">Body</p>
       <h3>{latest ? `${latest.weightKg} kg` : 'No weight logged'}</h3>
       {latest && <time className="today-record-date" dateTime={latest.localDate ?? latest.recordedAt}>{new Date(latest.localDate ? latest.localDate + 'T12:00:00' : latest.recordedAt).toLocaleDateString([], { month: 'short', day: 'numeric', year: 'numeric' })}</time>}
-      <p>{change === null ? latest ? 'Add another entry to see change.' : 'Start a private weight trend.' : `${change > 0 ? '+' : ''}${change.toFixed(1)} kg from your previous entry`}</p>
+      <p>{change === null ? latest ? 'Add another entry to see change.' : 'Start a private weight trend.' : `${change > 0 ? '+' : change < 0 ? '−' : ''}${Math.abs(change).toFixed(1)} kg from your previous entry`}</p>
       {weights.length > 1 && <WeightPreview weights={weights} />}
       {latest && <span className="daily-card-context">{measurements.length} recorded {measurements.length === 1 ? 'measurement' : 'measurements'} · latest value shown</span>}
     </div><button className="secondary-action" type="button" onClick={onLogWeight}>Log weight<ChevronRight size={16} aria-hidden="true" /></button></section>

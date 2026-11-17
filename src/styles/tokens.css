@@ -51,9 +51,7 @@
   --radius-panel: 1rem;
   --radius-pill: 999px;
   --radius-round: 50%;
-  /* Type scale in rem, so text follows the browser's font-size setting. */
-  --text-2xs: .625rem;
-  --text-xs: .6875rem;
+  /* Type scale in rem, so text follows the browser's font-size setting. Readable text is never below --text-sm (12px). */
   --text-sm: .75rem;
   --text-md: .8125rem;
   --text-base: .875rem;
