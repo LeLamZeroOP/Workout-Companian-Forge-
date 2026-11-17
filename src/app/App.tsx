@@ -1,5 +1,6 @@
 import { UnsavedChanges } from '../components/UnsavedChanges';
-import { ThemeControl } from '../components/ThemeControl';
+import { AppearanceSettings } from '../components/ThemeControl';
+import { useAppliedTheme } from './theme';
 import { toast } from 'sonner';
 import { useAppRoute } from '../hooks/useAppRoute';
 import { useEffect, useRef, useSyncExternalStore } from 'react';
@@ -58,6 +59,8 @@ function useIsMobile() {
 }
 
 export function App() {
+  // Applied at the root so every screen, including sign-in, uses the saved theme.
+  useAppliedTheme();
   return <UnsavedChanges>{guard => <AppContent guard={guard} />}</UnsavedChanges>;
 }
 
@@ -72,6 +75,7 @@ function AppContent({ guard }: { guard: (proceed: () => void) => void }) {
   const navRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const active = routes.find((item) => item.id === route) ?? routes[0]!;
   const navigationRoutes = isMobile ? mobileRoutes : desktopRoutes;
+  const workoutInProgress = data?.sessions.some(session => session.completedAt === null) ?? false;
 
   useEffect(() => {
     document.title = `${route === 'today' ? 'Today' : routes.find(item => item.id === route)?.label ?? 'Forge'} · Forge`;
@@ -109,6 +113,7 @@ function AppContent({ guard }: { guard: (proceed: () => void) => void }) {
                 type="button"
                 className={isActive ? 'nav-item active' : 'nav-item'}
                 aria-current={isActive ? 'page' : undefined}
+                aria-describedby={item.id === 'workout' && workoutInProgress ? 'workout-live-status' : undefined}
                 onClick={() => setRoute(item.id)}
                 onKeyDown={(event) => {
                   if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
@@ -124,10 +129,12 @@ function AppContent({ guard }: { guard: (proceed: () => void) => void }) {
               >
                 <Icon size={19} strokeWidth={1.8} aria-hidden="true" />
                 <span>{item.label}</span>
+                {item.id === 'workout' && workoutInProgress && <i className="nav-live-dot" aria-hidden="true" />}
               </button>
             );
           })}
         </nav>
+        {workoutInProgress && <span id="workout-live-status" className="sr-only">A workout is in progress</span>}
         <div className="sidebar-footer"><ShieldCheck size={17} aria-hidden="true" /><p className="local-note">{isCloudConfigured ? cloud.user?.email : 'Saved on this device'}<small>{isCloudConfigured ? 'Your connected training log' : 'Your progress stays with you'}</small></p></div>
       </aside>
 
@@ -139,7 +146,6 @@ function AppContent({ guard }: { guard: (proceed: () => void) => void }) {
             <p className="page-description">{active.description}</p>
           </div>
           <div className="header-tools">
-          <ThemeControl />
           <div className={isCloudConfigured ? 'status-pill cloud-status' : 'status-pill'}>{isCloudConfigured ? (cloud.conflictCount ? 'Sync needs review' : cloud.pendingCount ? `${cloud.pendingCount} pending` : cloud.offline ? 'Offline' : 'Synced') : 'Stored locally'}</div>
           </div>
         </header>
@@ -174,7 +180,7 @@ function AppContent({ guard }: { guard: (proceed: () => void) => void }) {
         ) : route === 'nutrition' ? (
           <NutritionPage onCopyEntries={copyFoodEntries} foods={[...commonFoods, ...data.nutrition.customFoods]} entries={data.nutrition.diary} targets={data.nutrition.targets} onAddEntry={entry => announceSave(addFoodEntry(entry), 'Food entry saved')} onDeleteEntry={deleteFoodEntry} onSaveCustomFood={saveCustomFood} onSaveNutritionTarget={saveNutritionTarget} />
         ) : route === 'settings' ? (
-          <><WorkoutPreferencesForm settings={data.settings} onSave={source.saveWorkoutPreferences} />{isCloudConfigured ? <CloudDataManagement key={cloud.user?.id} accountName={cloud.user?.email ?? 'your account'} onPrepareMerge={cloud.prepareMerge} onCommitMerge={cloud.commitMerge} onReviewConflicts={cloud.reviewConflicts} onResolveConflicts={cloud.resolveConflicts} data={data} onSignOut={() => void cloud.signOut()} pendingCount={cloud.pendingCount} onImport={cloud.importData} onGetDeviceBackup={cloud.getDeviceBackup} /> : <DataManagement data={data} onImport={local.replaceData} onReset={local.resetData} />}</>
+          <><WorkoutPreferencesForm settings={data.settings} onSave={source.saveWorkoutPreferences} /><AppearanceSettings />{isCloudConfigured ? <CloudDataManagement key={cloud.user?.id} accountName={cloud.user?.email ?? 'your account'} onPrepareMerge={cloud.prepareMerge} onCommitMerge={cloud.commitMerge} onReviewConflicts={cloud.reviewConflicts} onResolveConflicts={cloud.resolveConflicts} data={data} onSignOut={() => void cloud.signOut()} pendingCount={cloud.pendingCount} onImport={cloud.importData} onGetDeviceBackup={cloud.getDeviceBackup} /> : <DataManagement data={data} onImport={local.replaceData} onReset={local.resetData} />}</>
         ) : (
           <section className="more-page" aria-label="More destinations">
             <p className="more-intro">Your history, body log, meals, and local data controls.</p>

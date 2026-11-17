@@ -615,11 +615,11 @@ select { padding-right: 40px; cursor: pointer; appearance: none; background-imag
   .program-editor .exercise-editor-title > div:last-child { margin-left: auto; }
 }
 
-.theme-control { display: flex; margin-left: auto; gap: 2px; padding: 2px; border: 1px solid var(--border); border-radius: 10px; }
+.theme-control { display: flex; gap: 2px; padding: 2px; border: 1px solid var(--border); border-radius: 10px; }
 .theme-control button { border: 0; width: 40px; height: 40px; display: grid; place-items: center; background: transparent; color: var(--text-muted); border-radius: 7px; cursor: pointer; }
 .theme-control button[aria-pressed='true'] { background: var(--brand-soft); color: var(--brand-ink); }
 .page-header { flex-wrap: wrap; }
-@media(max-width: 640px) { .theme-control button { width: 36px; } .page-header { gap: 12px; } }
+@media(max-width: 640px) { .page-header { gap: 12px; } }
 
 .today-session-choice { display: grid; gap: 14px; }
 .today-preview { list-style: none; margin: 0; padding: 0; }
@@ -851,7 +851,6 @@ select { padding-right: 40px; cursor: pointer; appearance: none; background-imag
   .main-content:has(.active-workout) .page-header > div:first-child .eyebrow { display: none; }
   .main-content:has(.active-workout) .page-header h1 { font-size: 26px; margin: 0; }
   .main-content:has(.active-workout) .page-header .status-pill { font-size: 10px; min-height: 26px; padding: 4px 8px; }
-  .main-content:has(.active-workout) .theme-control button { width: 32px; height: 36px; }
   .training-workspace .set-tools legend { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
 }
 

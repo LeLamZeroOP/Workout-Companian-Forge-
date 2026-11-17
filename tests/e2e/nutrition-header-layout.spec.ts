@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+import { setTheme } from './helpers/theme';
 
 test('keeps the diary date readable and controls inside the toolbar at intermediate widths', async ({ page }) => {
   await page.clock.install({ time: new Date('2026-10-11T12:00:00') });
@@ -7,7 +8,7 @@ test('keeps the diary date readable and controls inside the toolbar at intermedi
     await page.setViewportSize({ width, height: 900 });
     await page.evaluate(size => { document.documentElement.style.fontSize = `${size}px`; }, textSize);
     for (const theme of ['Light', 'Dark']) {
-      await page.getByRole('button', { name: `${theme} theme`, exact: true }).click();
+      await setTheme(page, theme === 'Dark' ? 'dark' : 'light');
       const header = page.locator('.nutrition-toolbar h2');
       await expect(header).toHaveText('Sunday, October 11');
       const wordLines = await header.evaluate(element => {

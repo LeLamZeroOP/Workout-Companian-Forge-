@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+import { setTheme } from './helpers/theme';
 import { createDefaultData } from '../../src/data/defaults';
 
 test.beforeEach(async ({ page }) => {
@@ -15,7 +16,7 @@ for (const width of [320, 768, 1440]) {
       for (const route of ['today', 'programs', 'workout', 'history', 'progress', 'body', 'nutrition', 'settings', 'more']) {
         await page.goto(`/#${route}`);
         await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
-        await page.getByRole('button', { name: `${theme} theme`, exact: true }).click();
+        await setTheme(page, theme === 'Dark' ? 'dark' : 'light');
         await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
         await expect(page.getByRole('navigation')).toBeVisible();
         if (route === 'today') {
@@ -28,6 +29,33 @@ for (const width of [320, 768, 1440]) {
     }
   });
 }
+
+test('shell keeps the theme in Settings, matches nav order and marks a running workout', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.goto('/#today');
+  await expect(page.getByRole('group', { name: 'Color theme' })).toHaveCount(0);
+  const desktopOrder = await page.getByRole('navigation', { name: 'Desktop primary' }).getByRole('button').allInnerTexts();
+  expect(desktopOrder.map(text => text.trim())).toEqual(['Today', 'Workout', 'Programs', 'History', 'Progress', 'Body', 'Nutrition', 'Settings']);
+  await expect(page.locator('.nav-live-dot')).toHaveCount(0);
+  await page.getByRole('button', { name: 'Start workout', exact: true }).click();
+  await expect(page.getByRole('heading', { level: 1, name: 'Workout' })).toBeVisible();
+  const workoutNav = page.getByRole('button', { name: 'Workout', exact: true });
+  await expect(workoutNav).toHaveAccessibleDescription('A workout is in progress');
+  await expect(workoutNav.locator('.nav-live-dot')).toBeVisible();
+
+  await page.setViewportSize({ width: 390, height: 844 });
+  const mobileOrder = await page.getByRole('navigation', { name: 'Mobile primary' }).getByRole('button').allInnerTexts();
+  expect(mobileOrder.map(text => text.trim())).toEqual(['Today', 'Workout', 'Programs', 'Progress', 'More']);
+  await expect(page.getByRole('button', { name: 'Workout', exact: true }).locator('.nav-live-dot')).toBeVisible();
+  await page.goto('/#programs');
+  await expect(page.locator('.page-header .page-description')).toBeHidden();
+  await expect(page.locator('.page-header .eyebrow')).toBeHidden();
+  await page.goto('/#settings');
+  // Layout size, not the bounding box: the page entrance briefly scales its cards.
+  const heights = await page.getByRole('group', { name: 'Color theme' }).getByRole('button').evaluateAll(buttons => buttons.map(button => (button as HTMLElement).offsetHeight));
+  expect(heights).toEqual([44, 44, 44]);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+});
 
 test('keyboard selects open immediately and restore focus', async ({ page }) => {
   await page.goto('/');
@@ -43,9 +71,16 @@ test('keyboard selects open immediately and restore focus', async ({ page }) => 
 
 test('theme changes match browser chrome and pointer presses honor reduced motion', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
-  await page.goto('/');
-  await page.getByRole('button', { name: 'Dark theme', exact: true }).click();
+  await page.goto('/#settings');
+  const appearance = page.getByRole('region', { name: 'Theme' });
+  await appearance.getByRole('button', { name: 'Dark theme', exact: true }).click();
+  await expect(appearance.getByRole('button', { name: 'Dark theme', exact: true })).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
   await expect(page.locator('meta[name="theme-color"]')).toHaveAttribute('content', '#111114');
+  expect(await page.evaluate(() => localStorage.getItem('forge:theme'))).toBe('dark');
+  // Reload persistence is not checked here: this file's init script re-saves the light theme on every load.
+  await page.getByRole('button', { name: 'Today', exact: true }).click();
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
   const action = page.getByRole('button', { name: 'Start workout', exact: true });
   const box = await action.boundingBox();
   await page.mouse.move(box!.x + box!.width / 2, box!.y + box!.height / 2);

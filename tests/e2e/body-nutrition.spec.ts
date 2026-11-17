@@ -1,4 +1,5 @@
 /// <reference types="node" />
+import { setTheme } from './helpers/theme';
 import { expect, test } from '@playwright/test';
 
 test.beforeEach(async ({ page }) => {
@@ -198,7 +199,7 @@ test('editor and theme remain usable across narrow and wide screens', async ({ p
   }
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.screenshot({ animations: 'disabled', path: 'artifacts/editor-light.png' });
-  await page.getByRole('button', { name: 'Dark theme', exact: true }).click();
+  await setTheme(page, 'dark');
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
   await page.screenshot({ animations: 'disabled', path: 'artifacts/editor-dark.png' });
   await page.setViewportSize({ width: 375, height: 900 });
@@ -225,7 +226,7 @@ test('durable workout drafts, inline rest and undo work across themes and screen
   }
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.screenshot({ animations: 'disabled', path: 'artifacts/workout-light.png', fullPage: true });
-  await page.getByRole('button', { name: 'Dark theme' }).click();
+  await setTheme(page, 'dark');
   await page.screenshot({ animations: 'disabled', path: 'artifacts/workout-dark.png', fullPage: true });
   await page.setViewportSize({ width: 375, height: 900 });
   await page.screenshot({ animations: 'disabled', path: 'artifacts/workout-mobile.png', fullPage: true });
@@ -254,7 +255,7 @@ test('nutrition edits and copied meals survive reload', async ({ page }) => {
   await page.getByLabel('Diary date').fill(destination);
   await expect(page.getByText(/150 g/)).toBeVisible();
   await page.setViewportSize({ width: 375, height: 900 });
-  await page.getByRole('button', { name: 'Dark theme' }).click();
+  await setTheme(page, 'dark');
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await page.screenshot({ animations: 'disabled', path: 'artifacts/nutrition-mobile.png', fullPage: true });
 });
@@ -279,7 +280,7 @@ test('finishes a workout, corrects history and reuses compatible previous sets',
   await expect(page.getByRole('table', { name: 'Exercise trend data' }).getByText('35 kg')).toBeVisible();
   await page.getByRole('button', { name: 'Volume', exact: true }).click();
   await expect(page.getByRole('table', { name: 'Exercise trend data' }).getByText('950 kg')).toBeVisible();
-  await page.getByRole('button', { name: 'Dark theme' }).click();
+  await setTheme(page, 'dark');
   await page.screenshot({ animations: 'disabled', path: 'artifacts/progress-dark.png', fullPage: true });
   await page.getByRole('button', { name: 'Today', exact: true }).click();
   await page.screenshot({ animations: 'disabled', path: 'artifacts/today-dark.png', fullPage: true });

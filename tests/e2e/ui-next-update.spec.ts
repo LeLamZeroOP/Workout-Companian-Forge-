@@ -1,4 +1,5 @@
 import { expect, test, type Page } from '@playwright/test';
+import { setTheme } from './helpers/theme';
 import { createDefaultData } from '../../src/data/defaults';
 import { createSession } from '../../src/domain/workout';
 import { localDateString } from '../../src/domain/calendar';
@@ -14,7 +15,7 @@ test('shows a saved completion summary in both themes and keeps the next session
   session.guide.currentSetId = session.exercises[0]!.sets[1]!.id;
   data.sessions = [session]; data.settings.restAlertSound = false; data.settings.restAlertVibration = false;
   await seed(page, data); await page.setViewportSize({ width: 1440, height: 900 });
-  await page.goto('/#workout'); await page.getByRole('button', { name: 'Light theme' }).click();
+  await page.goto('/#workout'); await setTheme(page, 'light');
   await page.getByRole('button', { name: 'Finish early', exact: true }).click();
   await page.getByRole('button', { name: 'Save and finish' }).click();
   const summary = page.getByRole('region', { name: 'Finished workout' });
@@ -23,7 +24,7 @@ test('shows a saved completion summary in both themes and keeps the next session
   await page.screenshot({ path: 'output/playwright/ui-next-completion-desktop-light.png', fullPage: true });
   for (const width of [320, 375, 768]) {
     await page.setViewportSize({ width, height: 812 });
-    await page.getByRole('button', { name: 'Dark theme' }).click();
+    await setTheme(page, 'dark');
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
     await expect(summary.getByRole('button', { name: 'Choose next workout' })).toBeVisible();
     const next = summary.getByRole('button', { name: 'Choose next workout' });
@@ -43,7 +44,7 @@ test('balances real daily cards on tablet and retains incomplete nutrient contex
   data.nutrition.targets = [{ id: 'target', effectiveFrom: date, mode: 'manual', caloriesKcal: 2200, proteinG: 150, carbsG: 250, fatG: 70, formulaVersion: null }];
   data.nutrition.diary = [{ id: 'meal', localDate: date, meal: 'lunch', foodId: null, foodName: 'Example lunch', grams: 100, servingDescription: '1 bowl', nutrients: { caloriesKcal: 600, proteinG: 40, carbsG: null, fatG: null, fiberG: null, sodiumMg: null }, source: 'custom', sourceId: null }];
   await seed(page, data); await page.setViewportSize({ width: 768, height: 1024 });
-  await page.goto('/#today'); await page.getByRole('button', { name: 'Light theme' }).click();
+  await page.goto('/#today'); await setTheme(page, 'light');
   await expect(page.getByRole('region', { name: 'Daily body summary' })).toContainText('79.5 kg');
   await expect(page.getByRole('region', { name: 'Daily nutrition overview' })).toContainText('Known totals, incomplete data');
   await expect(page.getByRole('progressbar', { name: 'Recorded calories toward daily target' })).toHaveAttribute('value', '600');
@@ -51,7 +52,7 @@ test('balances real daily cards on tablet and retains incomplete nutrient contex
   expect(stats).toBeTruthy();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await page.screenshot({ path: 'output/playwright/ui-next-today-tablet-light.png', fullPage: true });
-  await page.setViewportSize({ width: 375, height: 812 }); await page.getByRole('button', { name: 'Dark theme' }).click();
+  await page.setViewportSize({ width: 375, height: 812 }); await setTheme(page, 'dark');
   await page.screenshot({ path: 'output/playwright/ui-next-today-mobile-dark.png', fullPage: true });
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 });

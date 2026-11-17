@@ -14,7 +14,8 @@ describe('application shell', () => {
     expect(screen.getByRole('link', { name: 'Skip to content' })).toHaveFocus();
     await user.tab();
     expect(screen.getByRole('button', { name: 'Today' })).toHaveFocus();
-    await user.keyboard('{ArrowRight}{Enter}');
+    // Sidebar order: Today, Workout, Programs, …
+    await user.keyboard('{ArrowRight}{ArrowRight}{Enter}');
     expect(screen.getByRole('heading', { level: 1, name: 'Programs' })).toBeInTheDocument();
   });
 

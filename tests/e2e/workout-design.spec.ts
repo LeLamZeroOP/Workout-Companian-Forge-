@@ -1,4 +1,5 @@
 import { expect, test, type Page } from '@playwright/test';
+import { setTheme } from './helpers/theme';
 import { createDefaultData } from '../../src/data/defaults';
 import { createSession } from '../../src/domain/workout';
 
@@ -26,7 +27,7 @@ test('keeps mobile set entry above the fold and updates progress through rest, u
   await page.setViewportSize({ width: 375, height: 812 });
   const { data } = workoutFixture(); await seed(page, data);
   await page.goto('/#workout');
-  await page.getByRole('button', { name: 'Dark theme' }).click();
+  await setTheme(page, 'dark');
   const progress = page.getByRole('progressbar', { name: 'Workout completion' });
   await expect(progress).toHaveAttribute('value', '0'); await expect(progress).toHaveAttribute('max', '5');
   const complete = page.getByRole('button', { name: 'Complete set', exact: true });
@@ -60,7 +61,7 @@ test('shows a compact desktop session with keyboard-accessible editing and visib
   await page.setViewportSize({ width: 1440, height: 1000 });
   const { data } = workoutFixture(); await seed(page, data);
   await page.goto('/#workout');
-  await page.getByRole('button', { name: 'Light theme' }).click();
+  await setTheme(page, 'light');
   await expect(page.getByRole('button', { name: /^Workout order/ })).toHaveAttribute('aria-expanded', 'true');
   const entry = await page.getByLabel('Weight in kilograms').boundingBox();
   const table = await page.getByRole('table', { name: 'Sets for Dumbbell Chest Press' }).boundingBox();
@@ -75,7 +76,7 @@ test('shows a compact desktop session with keyboard-accessible editing and visib
   await page.getByRole('button', { name: /^Workout order/ }).click();
   await expect(page.getByRole('button', { name: /^2 Lat Pulldown/ })).toBeHidden();
   await page.setViewportSize({ width: 768, height: 1024 });
-  await page.getByRole('button', { name: 'Dark theme' }).click();
+  await setTheme(page, 'dark');
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await page.screenshot({ path: 'output/playwright/workout-design-tablet-dark.png', fullPage: true });
 });
@@ -86,7 +87,7 @@ test('keeps set entry above navigation on a shorter mobile viewport', async ({ p
   const complete = page.getByRole('button', { name: 'Complete set', exact: true });
   const actionBox = await complete.boundingBox(); const navigationBox = await page.getByRole('navigation').boundingBox();
   expect(actionBox!.y + actionBox!.height).toBeLessThan(navigationBox!.y);
-  await page.getByRole('button', { name: 'Light theme' }).click();
+  await setTheme(page, 'light');
   await page.getByRole('button', { name: 'Use previous set' }).click();
   await page.screenshot({ path: 'output/playwright/workout-design-mobile-compact.png' });
   await complete.click();
@@ -101,7 +102,7 @@ test('handles long workout names and notes at 320px without hiding the primary a
   session.exercises[0]!.notes = 'Setup note: ' + 'longword'.repeat(20);
   session.notes = 'Session note\n' + 'longword'.repeat(20);
   await seed(page, data); await page.goto('/#workout');
-  await page.getByRole('button', { name: 'Dark theme' }).click();
+  await setTheme(page, 'dark');
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   const complete = page.getByRole('button', { name: 'Complete set', exact: true });
   await complete.scrollIntoViewIfNeeded();
@@ -118,7 +119,7 @@ test('handles long workout names and notes at 320px without hiding the primary a
 test('previews the chosen plan before starting on desktop and mobile', async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 900 });
   await page.goto('/#workout');
-  await page.getByRole('button', { name: 'Light theme' }).click();
+  await setTheme(page, 'light');
   await page.getByRole('radio', { name: /^Pull/ }).check();
   const preview = page.getByRole('complementary', { name: 'Workout preview' });
   await expect(preview.getByText('Lat Pulldown', { exact: true })).toBeVisible();
@@ -164,7 +165,7 @@ test('summarizes the active workout on Today and shows the next plan suggestion 
   const { data, session } = workoutFixture();
   Object.assign(session.exercises[0]!.sets[0]!, { weightKg: 30, reps: 10, completed: true });
   await seed(page, data); await page.goto('/#today');
-  await page.getByRole('button', { name: 'Light theme' }).click();
+  await setTheme(page, 'light');
   await expect(page.getByRole('progressbar', { name: 'Active workout completion' })).toHaveAttribute('value', '1');
   await expect(page.getByRole('list', { name: 'Workouts this week' }).getByRole('listitem')).toHaveCount(7);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);

@@ -1,9 +1,10 @@
 import { expect, test } from '@playwright/test';
+import { setTheme } from './helpers/theme';
 
 test('replacement dropdown stays inside a short desktop dialog with reachable actions', async ({ page }) => {
   await page.setViewportSize({ width: 1006, height: 510 });
   await page.goto('/');
-  await page.getByRole('button', { name: 'Dark theme', exact: true }).click();
+  await setTheme(page, 'dark');
   await page.getByRole('navigation', { name: 'Desktop primary' }).getByRole('button', { name: 'Workout', exact: true }).click();
   await page.getByRole('button', { name: 'Program', exact: true }).click();
   await page.getByRole('option', { name: /Starter Strength/ }).click();

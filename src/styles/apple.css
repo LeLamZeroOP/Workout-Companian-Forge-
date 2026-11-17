@@ -34,6 +34,8 @@ button:enabled:active, .choice-card:active { transform: scale(.97); transition-d
 .nav-item:nth-of-type(7) svg { color: var(--green); }
 .nav-item.active svg { color: var(--on-accent); }
 .nav-item:last-child { margin-top: 1.75rem; }
+/* A running workout: a small dot on the Workout icon. */
+.nav-live-dot { position: absolute; top: 7px; left: 36px; width: 9px; height: 9px; border-radius: 50%; background: var(--success); box-shadow: 0 0 0 2px var(--canvas); pointer-events: none; }
 .sidebar-footer { margin-top: auto; padding: 1rem .625rem 0; display: flex; gap: .5rem; align-items: flex-start; color: var(--text-muted); }
 .sidebar-footer svg { margin-top: 3px; flex-shrink: 0; }
 .local-note { margin: 0; min-width: 0; overflow-wrap: anywhere; font-size: .6875rem; font-weight: 500; }
@@ -45,8 +47,8 @@ button:enabled:active, .choice-card:active { transform: scale(.97); transition-d
 .page-header h1 { margin: .375rem 0 0; font-size: clamp(2rem, 3.5vw, 2.75rem); font-weight: 700; letter-spacing: -.045em; line-height: 1.13; }
 .page-description { margin: .5rem 0 0; color: var(--text-muted); font-size: .8125rem; }
 .header-tools { display: flex; align-items: center; gap: .875rem; flex-shrink: 0; }
-.theme-control { margin: 0; padding: 3px; border: 0; border-radius: 999px; background: var(--surface-soft); }
-.theme-control button { width: 34px; height: 34px; border-radius: 50%; }
+.theme-control { display: inline-flex; flex-wrap: wrap; gap: 2px; margin: .875rem 0 0; padding: 3px; border: 0; border-radius: 1.5rem; background: var(--surface-soft); }
+.theme-control button { width: auto; min-width: 5.5rem; height: 44px; padding: 0 1rem; display: inline-flex; align-items: center; justify-content: center; gap: .375rem; border-radius: 999px; font-size: .875rem; font-weight: 550; color: var(--text-secondary); }
 .theme-control button[aria-pressed='true'] { background: var(--selection-surface); color: var(--text); box-shadow: var(--selection-ring); }
 .status-pill { min-height: 30px; display: inline-flex; align-items: center; gap: .375rem; background: transparent; padding: 0; border: 0; font-size: .6875rem; color: var(--text-secondary); }
 .status-pill::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--success); }
@@ -378,13 +380,12 @@ input[type='checkbox'], input[type='radio'] { accent-color: var(--accent); }
   .nav-item.active { background: var(--accent-soft); color: var(--accent); box-shadow: none; }
   .nav-item.active svg { background: transparent; color: var(--accent); }
   .nav-item:nth-child(n) svg { color: inherit; }
+  .nav-live-dot { top: 6px; left: calc(50% + 6px); box-shadow: 0 0 0 2px var(--surface); }
   .main-content { padding: calc(1.5rem + env(safe-area-inset-top, 0px)) max(1rem, env(safe-area-inset-left, 0px)) 2rem max(1rem, env(safe-area-inset-right, 0px)); }
-  .page-header { margin-bottom: 1.5rem; gap: .75rem; }
+  .page-header { margin-bottom: 1.25rem; gap: .75rem; align-items: center; }
   .page-header h1 { font-size: 2rem; }
-  .page-description { font-size: .75rem; max-width: 30ch; }
-  .page-header .eyebrow { font-size: .625rem; }
+  .page-header .page-description, .page-header .eyebrow { display: none; }
   .header-tools { gap: .375rem; padding-top: .25rem; }
-  .theme-control button { width: 30px; height: 32px; }
   .status-pill { font-size: .625rem; min-height: 22px; }
   .today-stack { gap: 1rem; }
   .activity-band { padding: 1.25rem; gap: 1.5rem; }
@@ -455,3 +456,4 @@ input[type='checkbox'], input[type='radio'] { accent-color: var(--accent); }
   .preference-row input[type='checkbox']::after { display: none; }
   .activity-days li.is-today > div { outline-color: Highlight; }
 }
+@media (forced-colors: active) { .nav-live-dot { forced-color-adjust: none; background: Highlight; box-shadow: none; } }
