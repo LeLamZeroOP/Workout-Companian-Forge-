@@ -16,7 +16,8 @@ it('previews and customizes a sourced split before saving it', async () => {
   expect(screen.getAllByLabelText(/Workout name/)).toHaveLength(4);
   await user.click(screen.getByRole('button', { name: 'Save program' }));
   expect(save).toHaveBeenCalledWith(expect.objectContaining({ name: 'Upper / Lower', notes: expect.stringContaining('Source: https://') }));
-});
+  // Renders the full Programs page and walks a four-workout form; takes 5–6 s in jsdom on its own.
+}, 20_000);
 
 it('compares at most two splits on a shared seven-day basis', async () => {
   const user = userEvent.setup();

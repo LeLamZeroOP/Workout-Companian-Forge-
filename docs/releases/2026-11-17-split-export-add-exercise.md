@@ -1,6 +1,12 @@
 # Split export and add-exercise choices — 17 November 2026
 
-Local change; not deployed.
+Published to https://workout-companian-forge.vercel.app on 17 November 2026.
+
+- Deployment URL: https://workout-companian-forge-4bmvja8p2-lelamctin2005-3819.vercel.app
+- Deployment ID: `dpl_7H5YXKUAtoLwhuC6ibmh2iKzehSm`.
+- The build was staged with `vercel deploy --prod --skip-domain --yes`. It was Ready, and its bundle contained both features. It was then promoted with `vercel promote --yes`. `vercel inspect workout-companian-forge.vercel.app` shows this deployment as the Ready production deployment, and the public URL serves its bundle (`index-ClqsYW2b.js`).
+- The upload was the local working copy, including the uncommitted verification fixes below. There was no Git commit or push and no database migration.
+- To get the update, existing clients should finish any edits, close all Forge tabs and app windows, then reopen the main URL. Keep browser storage intact.
 
 ## Export a workout split
 
@@ -14,10 +20,32 @@ Optional **Also add to <workout> in <program> for next time** saves the same pre
 
 No schema or database migration.
 
-## Verification
+## Verification (17 November 2026, real toolchain)
 
-- TypeScript strict check (`tsc -p tsconfig.app.json`) passed.
-- New tests: `tests/domain/add-exercise-options.test.ts` (7), `tests/domain/program-export.test.ts` (5), `tests/features/workout-add-exercise.test.tsx` (7), `tests/features/program-export.test.tsx` (1). All pass.
-- Existing tests re-run and passing: all `tests/domain` (111), all `tests/data`, and feature tests for workout editing, custom exercises, workout page, workout draft, program form, edit conflicts, unsaved navigation and save-failure retention.
-- These runs used a stand-in Node test runner because the OneDrive copy of `node_modules` returned I/O errors for Vite, Vitest and ESLint. Before publishing, run on the PC: `pnpm install`, `pnpm typecheck`, `pnpm lint`, `pnpm test:run`, `pnpm build`, `pnpm test:e2e`.
-- Not visually reviewed in a browser or on a phone.
+`node_modules` was deleted and reinstalled with `pnpm install` (pnpm 11.25.0, lockfile unchanged, 323 packages). Playwright's Chromium build was installed for @playwright/test 1.63.0.
+
+| Check | Result |
+| --- | --- |
+| `pnpm typecheck` | Passed |
+| `pnpm lint` | Passed, 0 errors, 0 warnings |
+| `pnpm test:run` | 80 files, 376 tests passed |
+| `pnpm build` | Passed. Only the existing warning that the main chunk is over 500 kB |
+| `pnpm test:e2e` | 72 passed, 1 skipped (the opt-in live YouTube playback test) |
+
+Changes made during verification:
+
+- Lint first reported two `react-refresh/only-export-components` warnings in `AddExerciseSettings.tsx`. The draft type, defaults and parser moved to `src/features/workout/addExerciseDraft.ts`. There is no change in behaviour.
+- `tests/features/training-library.test.tsx` › "previews and customizes a sourced split before saving it" takes 5–6 s in jsdom, even on its own and with `master`'s `ProgramsPage`. It now has a 20 s timeout. This was not caused by this branch.
+
+Flakiness seen and not changed:
+
+- Earlier full `pnpm test:run` runs had 16–17 tests time out at 5 s while the PC was busy, including OneDrive syncing the new `node_modules`. The failing tests changed between runs, and all of them passed in isolation and in the final full run.
+- One earlier e2e run failed 8 tests at the first `page.goto` (`net::ERR_ABORTED` after 30 s) with no assertion failures. All 8 passed with `--last-failed`, and the final full run passed.
+
+Browser check (local `dev:test` server, cloud sync off, 1280 × 900 and 390 × 844):
+
+- Programs export button: 44 × 44 px with a tooltip. It saves `forge-split-starter-strength-2026-11-17.forge.json` (version 4, one program, its 3 exercise definitions, no sessions) and shows the "Starter Strength exported" toast.
+- Add exercise dialog at 1280 px: the four number fields fit on one row. Defaults are 3 × 8–12 with 90 s rest at the end. The position menu lists "At the end", "After 1. Dumbbell Chest Press (Current exercise · do it next)" and "First in the workout". The "Also add to Push in Starter Strength for next time" checkbox appears.
+- At 390 px: the number fields wrap to a 2 × 2 grid with no horizontal page scroll, and the dialog content fits its width. Lat Pulldown was added as 4 × 6–10 with 120 s rest, placed first, with "Also add" ticked. It went first in the session and first in the Push template with the same prescription, and a success toast appeared. With "Also add" unticked, only the session changed.
+- Keyboard entry works through the number fields and position menu.
+- Not checked on a physical phone.

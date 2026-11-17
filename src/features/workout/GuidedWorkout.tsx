@@ -20,7 +20,7 @@ import { WorkoutDetailsEditor } from './WorkoutDetailsEditor';
 import { addExerciseToProgramWorkout, addSessionExercise, editSessionDetails, editSessionExercise, removeSessionExercise, replaceSessionExercise } from '../../domain/sessionEditing';
 import { AddExerciseDialog } from './AddExerciseDialog';
 import { CreateWorkoutExerciseDialog } from './CreateWorkoutExerciseDialog';
-import type { AddExerciseChoice, AddExerciseDraft } from './AddExerciseSettings';
+import type { AddExerciseChoice, AddExerciseDraft } from './addExerciseDraft';
 const clockNow = () => new Date().toISOString();
 const emptyCatalog: ExerciseDefinition[] = [];
 

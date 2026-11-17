@@ -2,7 +2,8 @@ import { useLayoutEffect, useRef, useState } from 'react';
 import type { ExerciseDefinition, WorkoutExercise } from '../../domain/models';
 import { SelectControl } from '../../components/SelectControl';
 import { validateAddExerciseOptions } from '../../domain/sessionEditing';
-import { AddExerciseSettings, initialAddExerciseDraft, readAddExerciseDraft, type AddExerciseChoice, type AddExerciseDraft } from './AddExerciseSettings';
+import { AddExerciseSettings } from './AddExerciseSettings';
+import { initialAddExerciseDraft, readAddExerciseDraft, type AddExerciseChoice, type AddExerciseDraft } from './addExerciseDraft';
 import { WorkoutEditDialog } from './WorkoutEditDialog';
 
 export function AddExerciseDialog({ catalog, disabled, onAdd, onCancel, onCreate, saveError, exercises = [], currentExerciseId = null, programTarget }: {
