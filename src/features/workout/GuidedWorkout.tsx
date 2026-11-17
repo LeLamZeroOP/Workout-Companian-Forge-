@@ -2,7 +2,8 @@ import { OverlayPresence } from '../../components/OverlayPresence';
 import { ExerciseTechnique } from '../../components/ExerciseTechnique';
 import { ProgressMeter } from '../../components/ProgressMeter';
 import { ChoiceGroup } from '../../components/ChoiceGroup';
-import type { ExerciseDefinition, WorkoutSession } from '../../domain/models';
+import type { ExerciseDefinition, Program, WorkoutSession } from '../../domain/models';
+import { toast } from 'sonner';
 import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import { ArrowLeftRight, Check, ChevronDown, MoreHorizontal, Pencil, Plus, Trash2 } from 'lucide-react';
 import { completeGuidedSet, extendRest, getNextIncompleteSet, selectGuidedSet, skipRest, undoGuidedSet } from '../../domain/guidedWorkout';
@@ -16,9 +17,10 @@ import { SetValueInput } from './SetValueInput';
 import { ConfirmDialog } from '../../components/ConfirmDialog';
 import { ExerciseActions } from './ExerciseActions';
 import { WorkoutDetailsEditor } from './WorkoutDetailsEditor';
-import { addSessionExercise, editSessionDetails, editSessionExercise, removeSessionExercise, replaceSessionExercise } from '../../domain/sessionEditing';
+import { addExerciseToProgramWorkout, addSessionExercise, editSessionDetails, editSessionExercise, removeSessionExercise, replaceSessionExercise } from '../../domain/sessionEditing';
 import { AddExerciseDialog } from './AddExerciseDialog';
 import { CreateWorkoutExerciseDialog } from './CreateWorkoutExerciseDialog';
+import type { AddExerciseChoice, AddExerciseDraft } from './AddExerciseSettings';
 const clockNow = () => new Date().toISOString();
 const emptyCatalog: ExerciseDefinition[] = [];
 
@@ -27,9 +29,11 @@ type Props = {
   catalog?: ExerciseDefinition[]; history?: WorkoutSession[]; storageScope?: string;
   onChange: (session: WorkoutSession, newExercises?: ExerciseDefinition[]) => boolean | void; onFinish: () => boolean | void;
   onDiscard: () => void; now?: () => string;
+  /** The program this session was started from, when it still exists. */
+  program?: Program; onSaveProgram?: (program: Program) => boolean | void;
 };
 
-export function GuidedWorkout({ session, catalog = emptyCatalog, history = [], storageScope = 'local', onChange, onFinish, onDiscard, now = clockNow, restAlertSound = true, restAlertVibration = true }: Props) {
+export function GuidedWorkout({ session, catalog = emptyCatalog, history = [], storageScope = 'local', onChange, onFinish, onDiscard, now = clockNow, restAlertSound = true, restAlertVibration = true, program, onSaveProgram }: Props) {
   const { draft, changeCurrent, commit, commitCurrent, conflict, resolve, error } = useWorkoutDraft(session, storageScope, onChange, catalog);
   const alerts = useRestAlerts(restAlertSound, restAlertVibration);
   const [announcement, setAnnouncement] = useState('');
@@ -52,7 +56,7 @@ export function GuidedWorkout({ session, catalog = emptyCatalog, history = [], s
     const selector = request === 'rest' ? '[data-rest-skip]' : '[data-set-entry="weightKg"]';
     (workspace.current?.querySelector<HTMLElement>(selector) ?? workspace.current?.querySelector<HTMLElement>('[data-finish-workout]'))?.focus();
   });
-  const [panel, setPanel] = useState<{ kind: 'options' | 'replace' | 'edit' | 'remove'; exerciseId: string } | { kind: 'session' | 'add' } | { kind: 'create'; replacementId?: string } | null>(null);
+  const [panel, setPanel] = useState<{ kind: 'options' | 'replace' | 'edit' | 'remove'; exerciseId: string } | { kind: 'session' | 'add' } | { kind: 'create'; replacementId?: string; settings?: AddExerciseDraft } | null>(null);
   const panelExercise = panel && 'exerciseId' in panel ? draft.exercises.find(e => e.id === panel.exerciseId) : undefined;
   const closePanel = () => setPanel(null);
   const rest = draft.guide.restTimer;
@@ -72,6 +76,27 @@ export function GuidedWorkout({ session, catalog = emptyCatalog, history = [], s
   const prior = useMemo(() => previousPerformanceForOccurrence(session.id, session.startedAt, definitionId, occurrence, history, kind), [session.id, session.startedAt, definitionId, occurrence, history, kind]);
   const sameKindIndex = exercise?.sets.slice(0, setIndex + 1).filter(item => item.kind === set?.kind).length ?? 1;
   const previousSet = previousSetAt(prior?.exercise, set?.kind, sameKindIndex - 1);
+
+  const programWorkout = onSaveProgram && session.workoutTemplateId ? program?.workouts.find(item => item.id === session.workoutTemplateId) : undefined;
+  const programTarget = program && programWorkout && programWorkout.exercises.length < 20 ? `${programWorkout.name} in ${program.name}` : undefined;
+
+  function addExercise(definition: ExerciseDefinition, choice: AddExerciseChoice, created: boolean) {
+    const position = choice.options.position;
+    const anchorDefinitionId = typeof position === 'object' ? draft.exercises.find(item => item.id === position.afterExerciseId)?.exerciseId ?? null : null;
+    const accepted = commitCurrent(latest => addSessionExercise(latest, definition, choice.options), created ? definition : undefined);
+    if (!accepted) return false;
+    if (choice.saveToProgram && program && programTarget && session.workoutTemplateId && onSaveProgram) {
+      // The workout change is already saved; the program is a separate, optional save.
+      const updated = addExerciseToProgramWorkout(program, session.workoutTemplateId, definition, choice.options, anchorDefinitionId, now());
+      let saved = false;
+      try { saved = updated !== null && onSaveProgram(updated) !== false; } catch { /* Reported below; the workout keeps the exercise. */ }
+      if (saved) toast.success(`${definition.name} also added to ${programTarget}`);
+      else toast.error(`${definition.name} is in this workout, but could not be added to ${programTarget}. Add it in Programs.`);
+    }
+    closePanel(); setQueueOpen(true);
+    setAnnouncement(`${definition.name} ${created ? 'created and ' : ''}added to the workout.`);
+    return true;
+  }
 
   function finishSession() {
     setFinishError('');
@@ -167,10 +192,12 @@ export function GuidedWorkout({ session, catalog = emptyCatalog, history = [], s
       <button className="text-action danger-text queue-discard" type="button" onClick={onDiscard}><Trash2 size={15} aria-hidden="true" />Discard workout</button>
     </aside>}
     <OverlayPresence>{panel?.kind === 'session' && <WorkoutDetailsEditor mode="session" initial={draft} disabled={conflict} saveError={error} onCancel={closePanel} onSave={details => { if (commitCurrent(latest => editSessionDetails(latest, details))) { closePanel(); setAnnouncement('Workout details saved.'); } }} />}</OverlayPresence>
-    <OverlayPresence>{panel?.kind === 'add' && <AddExerciseDialog catalog={catalog} disabled={conflict || draft.exercises.length >= 200} saveError={error} onCancel={closePanel} onCreate={() => setPanel({ kind: 'create' })} onAdd={definition => { if (commitCurrent(latest => addSessionExercise(latest, definition))) { closePanel(); setQueueOpen(true); setAnnouncement(`${definition.name} added to the workout.`); } }} />}</OverlayPresence>
-    <OverlayPresence>{panel?.kind === 'create' && <CreateWorkoutExerciseDialog replacing={Boolean(panel.replacementId)} disabled={conflict || (panel.replacementId ? !draft.exercises.some(item => item.id === panel.replacementId && item.sets.some(row => !row.completed)) : draft.exercises.length >= 200)} saveError={error} onCancel={closePanel} onSave={definition => {
-      const accepted = commitCurrent(latest => panel.replacementId ? replaceSessionExercise(latest, panel.replacementId, definition) : addSessionExercise(latest, definition), definition);
-      if (accepted) { closePanel(); setQueueOpen(true); setAnnouncement(`${definition.name} created and ${panel.replacementId ? 'used as the replacement' : 'added to the workout'}.`); }
+    <OverlayPresence>{panel?.kind === 'add' && <AddExerciseDialog catalog={catalog} disabled={conflict || draft.exercises.length >= 200} saveError={error} onCancel={closePanel} exercises={draft.exercises} currentExerciseId={exercise?.id ?? null} programTarget={programTarget} onCreate={settings => setPanel({ kind: 'create', settings })} onAdd={(definition, choice) => { addExercise(definition, choice, false); }} />}</OverlayPresence>
+    <OverlayPresence>{panel?.kind === 'create' && <CreateWorkoutExerciseDialog replacing={Boolean(panel.replacementId)} disabled={conflict || (panel.replacementId ? !draft.exercises.some(item => item.id === panel.replacementId && item.sets.some(row => !row.completed)) : draft.exercises.length >= 200)} saveError={error} onCancel={closePanel} initialSettings={panel.settings} exercises={draft.exercises} currentExerciseId={exercise?.id ?? null} programTarget={programTarget} onSave={(definition, choice) => {
+      const replacementId = panel.replacementId;
+      if (!replacementId) return addExercise(definition, choice, true);
+      const accepted = commitCurrent(latest => replaceSessionExercise(latest, replacementId, definition), definition);
+      if (accepted) { closePanel(); setQueueOpen(true); setAnnouncement(`${definition.name} created and used as the replacement.`); }
       return accepted;
     }} />}</OverlayPresence>
     <OverlayPresence>{panel?.kind === 'edit' && panelExercise && <WorkoutDetailsEditor key={panelExercise.id} mode="exercise" initial={panelExercise} disabled={conflict} saveError={error} onCancel={closePanel} onSave={details => { if (commitCurrent(latest => editSessionExercise(latest, panelExercise.id, details))) { closePanel(); setAnnouncement('Exercise details saved.'); } }} />}</OverlayPresence>

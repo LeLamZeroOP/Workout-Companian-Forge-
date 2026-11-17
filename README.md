@@ -39,11 +39,17 @@ pnpm preview
 
 The service worker is registered only in production builds. Visit the production app online once before expecting it to open offline.
 
+## Exporting a workout split
+
+On **Programs**, use the download button on a program card to export that split as a `.forge.json` file. The file contains the program, its workouts, repeat schedule and targets, and the definitions of every exercise it uses, including your custom exercises. It contains no workout history, body measurements, food records or settings, so it is safe to share.
+
+To add an exported split to another device or account, open **Settings → Merge selected data**, choose the file, select the program and confirm. Do not use **Replace my data** for a split file: that replaces all your records.
+
 ## Editing an active workout
 
 Use **Add exercise** or **Replace exercise** directly below the current set entry or rest timer during a workout. Both controls search the full exercise library and saved custom exercises. Replacement preserves completed sets under the original exercise and moves unfinished sets to the replacement with blank weight/reps. The three-dot **Exercise options** button beside the current exercise, or beside an exercise in workout order, also provides replacement, detail editing, and removal. Removal asks for confirmation and removes that exercise's logged results from this session.
 
-Use **Add exercise** to append a library movement to an active workout, including an empty session. New movements start with three working sets, 8–12 rep targets, and 90 seconds rest; adjust them with the existing exercise and set controls. Adding a movement preserves current progress and running rest, and does not modify the program.
+Use **Add exercise** to add a library movement to an active workout, including an empty session. Choose its number of sets (1–10), repetition range, rest seconds and position: at the end, first, or after any exercise (the current one is marked, so you can do it next). The defaults are three working sets, 8–12 reps and 90 seconds rest. Adding a movement preserves current progress and running rest. It changes only this session unless you tick **Also add to <workout> in <program> for next time**, which also saves the movement with the same sets, reps and rest into that program workout (after the same neighbouring exercise when it exists there). The option appears only for sessions started from a program workout with fewer than 20 exercises. The workout change is saved first; if the program save fails, the exercise stays in the workout and a message asks you to add it in Programs.
 
 Both the add and replacement pickers offer **Create custom exercise**. Enter a name, equipment, primary muscle, and optional setup notes, then choose **Create and add** or **Create and replace**. The new library entry and session change save together, including in the offline account queue. Completed sets retain their original movement. The selected primary muscle counts as one direct set per working set; use the exercise editor in Programs to refine additional muscle contributions later. Failed saves retain the form, and unacknowledged custom definitions remain with the workout draft across reopening until the session save is acknowledged.
 

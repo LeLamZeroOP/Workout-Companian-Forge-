@@ -1,37 +1,43 @@
 import { useUnsavedForm } from '../../hooks/useUnsavedForm';
 import { useState } from 'react';
-import type { Equipment, ExerciseDefinition, MuscleGroup } from '../../domain/models';
+import type { Equipment, ExerciseDefinition, MuscleGroup, WorkoutExercise } from '../../domain/models';
+import { validateAddExerciseOptions } from '../../domain/sessionEditing';
+import { AddExerciseSettings, initialAddExerciseDraft, readAddExerciseDraft, type AddExerciseChoice, type AddExerciseDraft } from './AddExerciseSettings';
 import { muscleGroups, muscleLabels } from '../../domain/muscleSets';
 import { SelectControl } from '../../components/SelectControl';
 import { ValidatedField } from '../../components/ValidatedField';
 import { useValidationFocus } from '../../hooks/useValidationFocus';
 import { WorkoutEditDialog } from './WorkoutEditDialog';
 
-export function CreateWorkoutExerciseDialog({ replacing, disabled, onSave, onCancel, saveError }: {
-  replacing: boolean; disabled: boolean; onSave: (definition: ExerciseDefinition) => boolean; onCancel: () => void; saveError?: string;
+export function CreateWorkoutExerciseDialog({ replacing, disabled, onSave, onCancel, saveError, initialSettings = initialAddExerciseDraft, exercises = [], currentExerciseId = null, programTarget }: {
+  replacing: boolean; disabled: boolean; onSave: (definition: ExerciseDefinition, choice: AddExerciseChoice) => boolean; onCancel: () => void; saveError?: string;
+  initialSettings?: AddExerciseDraft; exercises?: WorkoutExercise[]; currentExerciseId?: string | null; programTarget?: string;
 }) {
   const [id] = useState(() => `custom-${crypto.randomUUID()}`);
   const [name, setName] = useState('');
   const [equipment, setEquipment] = useState<Equipment>('other');
   const [muscle, setMuscle] = useState('');
   const [notes, setNotes] = useState('');
+  const [settings, setSettings] = useState(initialSettings);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [failed, setFailed] = useState(false);
   const formRef = useValidationFocus(errors);
-  useUnsavedForm([name, equipment, muscle, notes], formRef);
+  useUnsavedForm([name, equipment, muscle, notes, settings], formRef);
   return <WorkoutEditDialog title="Create custom exercise" onCancel={onCancel} saveError={saveError}>
-    <p className="muted">Save to your exercise library and {replacing ? 'replace the unfinished sets of this movement. Completed sets keep their original exercise.' : 'add three working sets to this workout.'}</p>
+    <p className="muted">Save to your exercise library and {replacing ? 'replace the unfinished sets of this movement. Completed sets keep their original exercise.' : 'add it to this workout.'}</p>
     <form ref={formRef} className="editor-form" noValidate onSubmit={event => {
       event.preventDefault();
       if (disabled) return;
       const nextErrors: Record<string, string> = {};
       if (!name.trim() || name.trim().length > 200) nextErrors.name = 'Enter an exercise name of 1–200 characters.';
       if (!muscle) nextErrors.muscle = 'Choose a primary muscle.';
+      const choice = readAddExerciseDraft(settings);
+      if (!replacing) Object.assign(nextErrors, validateAddExerciseOptions(choice.options));
       setErrors(nextErrors);
       if (Object.keys(nextErrors).length) return;
       const definition: ExerciseDefinition = { id, name: name.trim(), equipment, isCustom: true, muscleContribution: { [muscle]: 1 }, muscleRoles: { direct: [muscle as MuscleGroup], indirect: [], source: 'user', reviewedAt: new Date().toISOString().slice(0, 10) }, setupNotes: notes.trim() };
       let saved = false;
-      try { saved = onSave(definition); } catch { /* Retain this form and ID for retry. */ }
+      try { saved = onSave(definition, choice); } catch { /* Retain this form and ID for retry. */ }
       setFailed(!saved);
     }}>
       <ValidatedField label="Exercise name" value={name} maxLength={200} error={errors.name} onChange={event => setName(event.target.value)} />
@@ -39,6 +45,7 @@ export function CreateWorkoutExerciseDialog({ replacing, disabled, onSave, onCan
       <SelectControl label="Primary muscle" value={muscle} error={errors.muscle} disabled={disabled} onChange={setMuscle} options={muscleGroups.map(value => ({ value, label: muscleLabels[value] }))} />
       <p className="field-help">Each working set counts as one direct set for this muscle. Edit additional muscle contributions later in Programs.</p>
       <label>Setup notes<textarea maxLength={2000} value={notes} onChange={event => setNotes(event.target.value)} /></label>
+      {!replacing && <AddExerciseSettings value={settings} onChange={setSettings} errors={errors} disabled={disabled} exercises={exercises} currentExerciseId={currentExerciseId} programTarget={programTarget} />}
       {disabled && <p role="alert">Close this panel and resolve the workout change before continuing.</p>}
       {failed && !saveError && <p role="alert">The exercise and workout could not be saved. Your entries are still here; try again.</p>}
       <div className="form-actions"><button type="button" className="secondary-action" onClick={onCancel}>Cancel</button><button type="submit" className="primary-action" disabled={disabled}>{replacing ? 'Create and replace' : 'Create and add'}</button></div>
