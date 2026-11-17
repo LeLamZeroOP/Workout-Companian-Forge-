@@ -9,6 +9,9 @@ test('PPL repeat schedule and muscle summary survive customization', async ({ pa
   await ppl.getByRole('button', { name: 'Customize Push / Pull / Legs' }).click();
   await expect(page.getByText('7-day cycle', { exact: true })).toBeVisible();
   await expect(page.getByText('60 performed sets')).toBeVisible();
+  // The editor's review table starts collapsed, with the total in its summary line.
+  await page.locator('.program-muscle-summary > summary').click();
+  await expect(page.getByRole('table', { name: 'Muscle sets' })).toBeVisible();
   await page.locator('.program-muscle-summary').scrollIntoViewIfNeeded();
   await page.screenshot({ animations: 'disabled', path: 'artifacts/muscle-volume-desktop.png' });
   await page.setViewportSize({ width: 375, height: 900 });

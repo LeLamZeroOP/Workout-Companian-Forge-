@@ -457,3 +457,54 @@ input[type='checkbox'], input[type='radio'] { accent-color: var(--accent); }
   .activity-days li.is-today > div { outline-color: Highlight; }
 }
 @media (forced-colors: active) { .nav-live-dot { forced-color-adjust: none; background: Highlight; box-shadow: none; } }
+
+/* Card overflow menu (ActionMenu). */
+.action-menu { position: relative; }
+.program-card:has(.action-menu-list) { position: relative; z-index: 2; }
+.action-menu-list { position: absolute; top: calc(100% + 6px); right: 0; z-index: 30; display: grid; min-width: 13rem; padding: .375rem; border: 1px solid var(--border); border-radius: var(--radius-nested); background: var(--surface); box-shadow: var(--shadow-floating); }
+.action-menu-list button { display: flex; align-items: center; gap: .5rem; min-height: 44px; padding: 0 .75rem; border: 0; border-radius: .5rem; background: transparent; color: var(--text); font: inherit; font-size: .875rem; font-weight: 500; text-align: left; cursor: pointer; }
+.action-menu-list button:focus-visible, .action-menu-list button:hover { background: var(--surface-soft); outline: none; }
+.action-menu-list button.is-danger { color: var(--danger); }
+.action-menu-list button.is-danger:focus-visible, .action-menu-list button.is-danger:hover { background: var(--danger-soft); }
+
+/* Program editor: numbered sections, a collapsible review table and a sticky save bar. */
+.editor-section { display: grid; gap: 1.25rem; min-width: 0; }
+.editor-section-title { display: flex; align-items: center; flex-wrap: wrap; gap: .375rem .625rem; margin: .5rem 0 0; font-size: 1.25rem; font-weight: 650; letter-spacing: -.02em; }
+.editor-section-title > span { display: inline-grid; place-items: center; width: 1.75rem; height: 1.75rem; border-radius: 50%; background: var(--accent-soft); color: var(--accent); font-size: .8125rem; font-weight: 700; }
+.editor-section-title small { color: var(--text-muted); font-size: .8125rem; font-weight: 500; letter-spacing: 0; }
+.program-muscle-summary.is-collapsible { margin: 0; }
+.program-muscle-summary.is-collapsible > summary { display: flex; align-items: center; justify-content: space-between; gap: .75rem 1rem; flex-wrap: wrap; min-height: 44px; cursor: pointer; list-style: none; }
+.program-muscle-summary.is-collapsible > summary::-webkit-details-marker { display: none; }
+.program-muscle-summary.is-collapsible > summary::after { content: ''; width: .5rem; height: .5rem; border-right: 2px solid var(--text-muted); border-bottom: 2px solid var(--text-muted); transform: rotate(45deg); transition: transform var(--motion-fast) var(--ease-out); }
+.program-muscle-summary.is-collapsible[open] > summary::after { transform: rotate(-135deg); }
+.program-muscle-summary.is-collapsible > summary > span:first-child { display: grid; gap: .125rem; margin-right: auto; }
+.program-muscle-summary .summary-title { color: var(--text); font-size: 1.0625rem; font-weight: 650; }
+.program-muscle-summary .summary-warning { padding: .125rem .5rem; border-radius: 999px; background: var(--warning-surface); color: var(--warning-text); font-size: .75rem; font-weight: 600; }
+.program-muscle-summary-body { margin-top: .75rem; }
+.editor-action-bar { position: sticky; bottom: 1rem; z-index: 6; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .75rem 1rem; padding: .75rem .75rem .75rem 1.125rem; border: 1px solid var(--border); border-radius: var(--radius-card); background: var(--toolbar-material); backdrop-filter: blur(18px) saturate(160%); box-shadow: var(--shadow-floating); }
+.editor-draft-status { display: flex; align-items: center; gap: .5rem; margin: 0; color: var(--text-muted); font-size: .8125rem; }
+.editor-draft-status.is-changed { color: var(--text); font-weight: 600; }
+.editor-draft-status.is-changed::before { content: ''; width: .5rem; height: .5rem; border-radius: 50%; background: var(--orange); }
+.editor-action-bar .form-actions { margin-left: auto; }
+@media (max-width: 640px) {
+  .editor-action-bar { bottom: calc(84px + env(safe-area-inset-bottom, 0px)); padding: .625rem; border-radius: 1.25rem; }
+  .editor-action-bar .form-actions { flex: 1 1 100%; flex-wrap: nowrap; }
+  .editor-action-bar .form-actions > button { flex: 1 1 0; justify-content: center; }
+  .editor-draft-status { padding-left: .375rem; }
+}
+@media (prefers-reduced-transparency: reduce) { .editor-action-bar { background: var(--surface-raised); backdrop-filter: none; } }
+@media (forced-colors: active) { .editor-draft-status.is-changed::before { forced-color-adjust: none; background: Highlight; } }
+
+/* Exercise editor: basics in one row, the two muscle grids side by side on wide screens. */
+.exercise-basics { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr); gap: 1rem; align-items: start; }
+.mapping-grids { display: grid; gap: 1rem; min-width: 0; }
+@media (min-width: 1180px) {
+  .mapping-grids { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+  .mapping-grids .contribution-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 900px) { .exercise-basics { grid-template-columns: 1fr 1fr; } .exercise-basics > :first-child { grid-column: 1 / -1; } }
+@media (max-width: 480px) { .exercise-basics { grid-template-columns: 1fr; } }
+
+/* Programs toolbar: the search field grows beside Create program. */
+.programs-page > .toolbar { align-items: flex-end; }
+.programs-page > .toolbar .search-field { flex: 1 1 18rem; max-width: 30rem; }
