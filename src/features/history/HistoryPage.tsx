@@ -8,6 +8,25 @@ import { ConfirmDialog } from '../../components/ConfirmDialog';
 import { CsvExportButton } from '../../components/CsvExportButton';
 import { workoutHistoryCsv } from '../../domain/recordExports';
 import { isCalendarDate, localDateString } from '../../domain/calendar';
+import { DateRangeFilter } from '../../components/DateRangeFilter';
+
+function formatDuration(seconds: number) {
+  const minutes = Math.round(seconds / 60);
+  return minutes >= 60 ? `${Math.floor(minutes / 60)} h ${String(minutes % 60).padStart(2, '0')} min` : `${minutes} min`;
+}
+
+/** Sessions are already newest first; keep that order within and across months. */
+function groupByMonth(sessions: WorkoutSession[]) {
+  const groups: Array<{ key: string; label: string; sessions: WorkoutSession[] }> = [];
+  for (const session of sessions) {
+    const date = new Date(session.completedAt!);
+    const key = `${date.getFullYear()}-${date.getMonth()}`;
+    const last = groups.at(-1);
+    if (last?.key === key) last.sessions.push(session);
+    else groups.push({ key, label: date.toLocaleDateString([], { month: 'long', year: 'numeric' }), sessions: [session] });
+  }
+  return groups;
+}
 
 export function HistoryPage({ sessions, onSave, onDelete, onOpenWorkout }: { onOpenWorkout?: () => void; onSave?: (session: WorkoutSession) => boolean | void; onDelete?: (sessionId: string) => boolean | void; sessions: WorkoutSession[] }) {
   const completed = sessions.filter((session) => session.completedAt).sort((a, b) => b.completedAt!.localeCompare(a.completedAt!));
@@ -25,17 +44,26 @@ export function HistoryPage({ sessions, onSave, onDelete, onOpenWorkout }: { onO
   return (
     <section className="analytics-stack">
       <div className="analytics-intro"><p className="eyebrow">Training archive</p><h2>{completed.length} completed {completed.length === 1 ? 'session' : 'sessions'}</h2><p>Open any workout to review every completed set.</p></div>
-      <CsvExportButton label="Export history CSV" fileName={`forge-workouts-${localDateString(new Date())}.csv`} disabled={!matches.length} buildCsv={() => workoutHistoryCsv(matches)} /><div className="analytics-filters"><label>Search history<input type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder="Workout, exercise or notes" /></label><label>From<input type="date" value={from} max={to || undefined} aria-invalid={invalidRange || undefined} onChange={event => setFrom(event.target.value)} /></label><label>Through<input type="date" value={to} min={from || undefined} aria-invalid={invalidRange || undefined} onChange={event => setTo(event.target.value)} /></label>{(query || from || to) && <button className="secondary-action" type="button" onClick={() => { setQuery(''); setFrom(''); setTo(''); }}>Clear filters</button>}</div>{invalidRange && <p className="field-error" role="alert">Choose valid dates with the start on or before the end.</p>}<p className="field-help" role="status">Showing {matches.length} of {completed.length} sessions</p>{!matches.length && !invalidRange && <p>No sessions match these filters.</p>}<div className="history-list">
-        {matches.map((session) => {
+      <div className="analytics-filters history-filters"><label className="history-search">Search history<input type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder="Workout, exercise or notes" /></label>
+        <DateRangeFilter from={from} to={to} invalid={invalidRange} onFrom={setFrom} onTo={setTo} />
+        {(query || from || to) && <button className="secondary-action" type="button" onClick={() => { setQuery(''); setFrom(''); setTo(''); }}>Clear filters</button>}
+        <CsvExportButton label="Export history CSV" fileName={`forge-workouts-${localDateString(new Date())}.csv`} disabled={!matches.length} buildCsv={() => workoutHistoryCsv(matches)} />
+      </div>{invalidRange && <p className="field-error" role="alert">Choose valid dates with the start on or before the end.</p>}<p className="field-help" role="status">Showing {matches.length} of {completed.length} sessions</p>{!matches.length && !invalidRange && <p>No sessions match these filters.</p>}
+      {groupByMonth(matches).map(group => <section className="history-group" key={group.key} aria-label={`${group.label}, ${group.sessions.length} ${group.sessions.length === 1 ? 'session' : 'sessions'}`}>
+        <h3 className="history-group-title">{group.label}<small>{group.sessions.length} {group.sessions.length === 1 ? 'session' : 'sessions'}</small></h3>
+        <div className="history-list">
+        {group.sessions.map((session) => {
           const summary = getSessionSummary(session);
+          const completedAt = new Date(session.completedAt!);
           return <button type="button" key={session.id} onClick={() => { setSelectedId(session.id); setDeletingId(null); }} aria-label={`Open ${session.workoutName} from ${session.programName}`}>
-            <time dateTime={session.completedAt!}><strong>{new Date(session.completedAt!).toLocaleDateString([], { month: 'short', day: 'numeric' })}</strong><span>{new Date(session.completedAt!).getFullYear()}</span></time>
+            <time dateTime={session.completedAt!}><strong>{completedAt.toLocaleDateString([], { month: 'short', day: 'numeric' })}</strong><span>{completedAt.toLocaleDateString([], { weekday: 'short' })}</span></time>
             <div><strong>{session.workoutName}</strong><span>{session.programName}</span></div>
-            <div className="history-metrics"><span>{summary.completedSets} {summary.completedSets === 1 ? 'set' : 'sets'}</span><span>{summary.volumeKg.toLocaleString()} kg</span></div>
+            <div className="history-metrics"><span>{summary.completedSets} {summary.completedSets === 1 ? 'set' : 'sets'}</span><span>{summary.volumeKg.toLocaleString()} kg</span>{summary.durationSeconds > 0 && <span>{formatDuration(summary.durationSeconds)}</span>}</div>
             <ChevronRight size={18} aria-hidden="true" />
           </button>;
         })}
-      </div>
+        </div>
+      </section>)}
     </section>
   );
 }
