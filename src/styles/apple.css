@@ -463,7 +463,8 @@ input[type='checkbox'], input[type='radio'] { accent-color: var(--accent); }
 .program-card:has(.action-menu-list) { position: relative; z-index: 2; }
 .action-menu-list { position: absolute; top: calc(100% + 6px); right: 0; z-index: 30; display: grid; min-width: 13rem; padding: .375rem; border: 1px solid var(--border); border-radius: var(--radius-nested); background: var(--surface); box-shadow: var(--shadow-floating); }
 .action-menu-list button { display: flex; align-items: center; gap: .5rem; min-height: 44px; padding: 0 .75rem; border: 0; border-radius: var(--radius-small); background: transparent; color: var(--text); font: inherit; font-size: var(--text-base); font-weight: 500; text-align: left; cursor: pointer; }
-.action-menu-list button:focus-visible, .action-menu-list button:hover { background: var(--surface-soft); outline: none; }
+.action-menu-list button:focus-visible, .action-menu-list button:hover { background: var(--surface-soft); }
+.action-menu-list button:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
 .action-menu-list button.is-danger { color: var(--danger); }
 .action-menu-list button.is-danger:focus-visible, .action-menu-list button.is-danger:hover { background: var(--danger-soft); }
 
@@ -556,3 +557,5 @@ input[type='checkbox'], input[type='radio'] { accent-color: var(--accent); }
 .body-weight-date { margin: .25rem 0 0; color: var(--text-muted); font-size: var(--text-md); }
 /* Diary rows hold four items (food, kcal, Edit, delete); a 3-column grid wrapped the delete button onto its own line. */
 .meal-card .food-row { grid-template-columns: minmax(0, 1fr) auto auto 40px; gap: .5rem; }
+/* Toggle buttons (aria-pressed), e.g. My foods: same selected tint as the filter chips. */
+.secondary-action[aria-pressed='true'] { background: var(--accent-soft); color: var(--accent); box-shadow: inset 0 0 0 1px var(--brand-border); }

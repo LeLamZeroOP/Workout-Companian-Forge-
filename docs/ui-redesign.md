@@ -82,3 +82,42 @@ Synthetic previews: `output/playwright/ui-next-completion-desktop-light.png`, `u
 Nutrition header correction, 11 October 2026: the desktop toolbar could squeeze the diary date until individual words broke into fragments, especially with enlarged text. The toolbar now wraps when its content needs more space, reserves a useful minimum width for the date, and keeps its controls within the available width. Date words wrap at spaces. The date field grows with text size, and its narrow-screen minimum width is capped by its container. A browser regression covers intermediate desktop widths, both themes, enlarged text, control bounds and previous/next-day navigation. The production build and 22 related Chromium checks passed; the header regression passed again after the date-field sizing adjustment. Normal and enlarged-text previews are saved under `output/playwright/nutrition-header-1110-16px-light.png` and `nutrition-header-1110-32px-light.png`.
 
 Automated browser checks cover responsive layouts and interactions. Physical iOS/Android verification is still needed for software keyboard behavior, input zoom, safe-area behavior, installed-PWA status bars, and touch feel; desktop emulation cannot establish those.
+
+## Design system reference (UI plan Chunk 7, 17 November 2026)
+
+### Tokens (`src/styles/tokens.css`)
+
+- **Type scale (rem, follows the browser font size):** `--text-sm` 12px · `--text-md` 13px · `--text-base` 14px (body) · `--text-body` 15px · `--text-lg` 16px · `--text-xl` 18px · `--text-2xl` 20px · `--text-3xl` 22px · `--text-4xl` 24px · `--text-5xl` 26px · `--text-6xl` 28px. Readable text never goes below `--text-sm`. Display headings use `clamp()` and stay literal.
+- **Radii:** `--radius-small` 8px · `--radius-field` 10px · `--radius-control` 12px · `--radius-nested` 14px · `--radius-panel` 16px · `--radius-card` 24px · `--radius-pill` · `--radius-round`. About ten one-off radii remain (5–22px) on specific workout and editor parts.
+- **Colours:** all colours come from tokens with light and dark values. Only `#fff` on a checked switch thumb is literal.
+- **Motion:** `--motion-fast` 120ms, `--motion-standard` 180ms, `--motion-surface` 250ms, with the existing easing tokens.
+
+### Breakpoints
+
+- **Shared:** 640px (phone, the same value as `App.tsx`'s `mobileQuery`), 1100px (tablet), 380px (very narrow phones). Plus `hover`/`pointer`, reduced motion and transparency, contrast and forced-colours queries.
+- **Layout-specific, kept on purpose:** 800px (split library grid), 880px, 960px and 1060px (workout workspace columns). Moving them would change tablet layouts that have their own browser checks.
+
+### Stylesheet order
+
+`global.css` (base) → `apple.css` (current visual layer) → `motion.css`. Chunk 7 removed 283 `global.css` declarations, emptying 38 rules, that `apple.css` always overrode: same selector list, same media query, same property. `apple.css` is now the single definition for those properties. The remaining overlap is complementary: each file sets different properties on the same selector.
+
+### Shared control states
+
+| Control | Default | Hover (fine pointer) | Pressed | Focus | Selected | Disabled | Error |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| `primary-action` | Accent fill, 44px | Sheen, icon nudges | Scale .97 (opacity only with reduced motion) | 2px focus outline, 4px offset | — | 45% opacity, not-allowed cursor | — |
+| `secondary-action` | Soft surface | Slightly darker surface | Scale .97 | Same outline | `aria-pressed` gives the accent tint and border used by filter chips (added in Chunk 7, for example My foods) | 45% opacity | — |
+| `text-action` | Accent text, no fill | Soft accent background | — | Same outline | — | 45% opacity | `danger-text` variant |
+| `icon-button` | 44 × 44, soft surface | Slightly darker surface | Scale .97 | Same outline | — | 45% opacity | `danger-icon` is rarely used now; destructive card actions go in `ActionMenu` |
+| `SegmentedControl` | Muted track | Text darkens | — | Outline on the segment | Measured sliding highlight plus `aria-pressed` | — | — |
+| `SelectControl` | Field with chevron | Border strengthens | — | Outline on the trigger; options use an inset outline | Accent row with a check | Dimmed | Linked `field-error` and `aria-invalid` |
+| Switch (`role="switch"`) | 44 × 26 track | — | — | Outline | Accent track, thumb moves (no movement with reduced motion) | — | Inline alert, previous value kept |
+| `ActionMenu` | ⋯ icon button | Item tint | — | Item outline (inset) plus tint | — | — | `is-danger` items in the danger colour |
+| `DateRangeFilter` | Summary shows the active range | Border strengthens | — | Outline | Open when a range is set | — | Opens on an invalid range; fields get `aria-invalid` |
+| Text fields | Field surface | — | — | Outline | — | Dimmed | `ValidatedField` message, `aria-invalid`, first error focused |
+
+Empty states (`empty-stage`) have an eyebrow, a title, one sentence and at most one primary action. Loading uses a text placeholder ("Loading chart…"); charts always have the accessible data table.
+
+### Visual baselines
+
+`tests/e2e/visual-baselines.spec.ts` takes nine full-page screenshots: Today, program editor, Workout, History, Progress, Body, Nutrition and Settings, at phone and desktop widths, in light and dark. They use a fixed clock, synthetic data, disabled animations and a masked workout timer. The images are for this machine (`chromium-win32`), because system fonts differ elsewhere. After an intended visual change, run `pnpm exec playwright test tests/e2e/visual-baselines.spec.ts --update-snapshots`, review the new images, and commit them with the change.
