@@ -24,7 +24,7 @@
 .nav-highlight { position: absolute; inset: 0 auto auto 0; z-index: -1; pointer-events: none; border-radius: var(--radius-control); background: var(--surface); box-shadow: var(--selection-ring); opacity: 0; transition: transform var(--motion-surface) var(--ease-out), opacity var(--motion-fast) ease; }
 .navigation .nav-item.active { background: transparent; box-shadow: none; }
 .segmented-control:has(.tab-highlight) { position: relative; isolation: isolate; }
-.tab-highlight { position: absolute; inset: 0 auto auto 0; z-index: -1; pointer-events: none; border-radius: .625rem; background: var(--selection-surface); box-shadow: var(--selection-ring); opacity: 0; transition: transform var(--motion-surface) var(--ease-out), opacity var(--motion-fast) ease; }
+.tab-highlight { position: absolute; inset: 0 auto auto 0; z-index: -1; pointer-events: none; border-radius: var(--radius-field); background: var(--selection-surface); box-shadow: var(--selection-ring); opacity: 0; transition: transform var(--motion-surface) var(--ease-out), opacity var(--motion-fast) ease; }
 .segmented-control:has(.tab-highlight) button[aria-pressed='true'] { background: transparent; box-shadow: none; color: var(--accent); }
 .nav-item > svg { transition: transform var(--motion-standard) var(--ease-out), background-color var(--motion-fast) ease, color var(--motion-fast) ease; }
 
