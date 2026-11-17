@@ -1,4 +1,5 @@
 .text-action.exercise-technique-trigger { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; white-space: nowrap; }
+.technique-label-short { display: none; }
 .dialog-surface.technique-dialog { width: min(760px, 100%); }
 .technique-player { display: block; width: 100%; min-height: 200px; aspect-ratio: 16 / 9; border: 0; border-radius: var(--radius-control); background: var(--surface-soft); }
 .technique-credit { margin-block: 16px 8px; overflow-wrap: anywhere; }
@@ -12,8 +13,10 @@
 .catalog-list .catalog-exercise-edit { flex: 1; min-width: 0; border-bottom: 0; }
 .catalog-row > .exercise-technique-trigger { flex-shrink: 0; width: auto; min-height: 44px; border: 0; padding: 8px 4px; flex-direction: row; }
 @media (max-width: 640px) {
-  .technique-compact span { display: none; }
-  .text-action.technique-compact { min-width: 44px; justify-content: center; padding: 8px; }
+  .technique-compact .technique-label-full { display: none; }
+  .technique-compact .technique-label-short { display: inline; }
+  /* A short labelled pill: the bare play icon was hard to read as a control. */
+  .text-action.technique-compact { min-width: 44px; justify-content: center; padding: 0 .75rem; border-radius: 999px; background: var(--accent-soft); color: var(--accent); font-size: .8125rem; font-weight: 600; }
   .catalog-row { flex-wrap: wrap; gap: 0; padding-block: 8px; }
   .catalog-list .catalog-exercise-edit { flex-basis: 100%; }
 }

@@ -162,7 +162,8 @@ export function GuidedWorkout({ session, catalog = emptyCatalog, history = [], s
           <div className="set-inputs"><SetValueInput key={`${set.id}:weight`} label="Weight in kilograms" displayLabel="Weight" unit="kg" field="weightKg" value={set.weightKg} onChange={edit} onBlur={() => commit()} /><SetValueInput key={`${set.id}:reps`} label="Repetitions" field="reps" value={set.reps} onChange={edit} onBlur={() => commit()} /></div>
           {set.weightKg !== null && set.reps !== null && !validSetValues(set) && <p role="alert">Use a non-negative load and a positive whole-number repetition count.</p>}
           <button className="complete-button" type="button" disabled={conflict || !validSetValues(set)} onClick={finishSet}><Check size={20} aria-hidden="true" />Complete set</button>
-          <p className="field-help draft-hint">Drafts save on this device as you type. Leaving a field or completing a set sends the change to your saved workout.</p>
+          {/* Explained once: after the first completed set the behaviour is familiar. */}
+          {!draft.exercises.some(item => item.sets.some(entry => entry.completed)) && <p className="field-help draft-hint">Drafts save on this device as you type. Leaving a field or completing a set sends the change to your saved workout.</p>}
         </fieldset>}
         <div className="workout-exercise-tools" role="group" aria-label="Workout exercise controls">
           <button data-workout-edit-trigger className="secondary-action" type="button" disabled={conflict || draft.exercises.length >= 200} onClick={() => setPanel({ kind: 'add' })}><Plus size={16} aria-hidden="true" />Add exercise</button>

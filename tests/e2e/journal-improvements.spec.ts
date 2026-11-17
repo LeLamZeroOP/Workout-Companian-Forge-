@@ -167,8 +167,9 @@ test('loads deferred charts offline and retains workout preferences after reload
   await page.goto('/#settings');
   await page.getByLabel(/Sound when rest ends/).uncheck();
   await page.getByLabel(/Keep the screen awake/).uncheck();
-  await page.getByRole('button', { name: 'Save workout preferences' }).click();
-  await expect(page.getByRole('button', { name: 'Save workout preferences' })).toBeDisabled();
+  // Switches save immediately; there is no Save button.
+  await expect(page.getByText('Workout preferences saved').first()).toBeVisible();
+  await expect(page.getByLabel(/Keep the screen awake/)).not.toBeChecked();
   await page.evaluate(() => navigator.serviceWorker.ready);
   await page.waitForFunction(() => Boolean(navigator.serviceWorker.controller));
   await context.setOffline(true);

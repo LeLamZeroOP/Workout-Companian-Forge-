@@ -80,7 +80,7 @@ export function AppUpdate({ showCheck, onToday, blockedReason, onOpenToday }: Pr
 
   if (!ready && !showCheck) return null;
   return <section className="analytics-card app-update" aria-label="App updates">
-    <h2>{ready ? 'A Forge update is ready' : 'App updates'}</h2>
+    {!ready && <p className="eyebrow">This device</p>}<h2>{ready ? 'A Forge update is ready' : 'App updates'}</h2>
     <p>{ready ? 'Save your edits before updating. Your saved records stay on this device.' : 'Check for the latest features on this device.'}</p>
     {ready && blockedReason && <p>{blockedReason}</p>}
     <div className="form-actions">

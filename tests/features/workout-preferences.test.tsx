@@ -11,7 +11,7 @@ import type { WorkoutPreferences } from '../../src/domain/models';
 
 const preferences: WorkoutPreferences = { restAlertSound: true, restAlertVibration: true, keepScreenAwake: true };
 
-it('saves chosen preferences without changing program selection or weight units', async () => {
+it('saves each switch immediately without changing program selection or weight units', async () => {
   const saved = vi.fn();
   function Harness() {
     const [settings, setSettings] = useState(preferences);
@@ -19,41 +19,37 @@ it('saves chosen preferences without changing program selection or weight units'
   }
   render(<Harness />);
   const user = userEvent.setup();
-  await user.click(screen.getByLabelText(/Sound when rest ends/));
+  expect(screen.queryByRole('button', { name: 'Save workout preferences' })).not.toBeInTheDocument();
+  await user.click(screen.getByRole('switch', { name: /Sound when rest ends/ }));
+  expect(saved).toHaveBeenLastCalledWith({ restAlertSound: false, restAlertVibration: true, keepScreenAwake: true });
   await user.click(screen.getByLabelText(/Keep the screen awake/));
-  expect(saved).not.toHaveBeenCalled();
-  await user.click(screen.getByRole('button', { name: 'Save workout preferences' }));
-  expect(saved).toHaveBeenCalledWith({ restAlertSound: false, restAlertVibration: true, keepScreenAwake: false });
+  expect(saved).toHaveBeenLastCalledWith({ restAlertSound: false, restAlertVibration: true, keepScreenAwake: false });
+  expect(saved).toHaveBeenCalledTimes(2);
   const data = createDefaultData();
-  const mutation = { kind: 'saveWorkoutPreferences' as const, preferences: saved.mock.calls[0]![0] };
+  const mutation = { kind: 'saveWorkoutPreferences' as const, preferences: saved.mock.calls[1]![0] };
   const next = applyMutation(data, mutation);
   expect(next.settings.lastSelectedProgramId).toBe(data.settings.lastSelectedProgramId);
   expect(next.settings.weightUnit).toBe('kg');
-  expect(readConflictValue(next, getConflictScope(mutation))).toEqual(saved.mock.calls[0]![0]);
-  expect(screen.getByRole('button', { name: 'Save workout preferences' })).toBeDisabled();
-  await user.click(screen.getByLabelText(/Sound when rest ends/));
+  expect(readConflictValue(next, getConflictScope(mutation))).toEqual(saved.mock.calls[1]![0]);
   expect(screen.queryByRole('alert')).not.toBeInTheDocument();
 });
 
-it('blocks saving preferences over an external change until they are reviewed', async () => {
-  const onSave = vi.fn();
-  const { rerender } = render(<WorkoutPreferencesForm settings={preferences} onSave={onSave} />);
-  const user = userEvent.setup();
-  await user.click(screen.getByLabelText(/Sound when rest ends/));
-  rerender(<WorkoutPreferencesForm settings={{ ...preferences, keepScreenAwake: false }} onSave={onSave} />);
-  expect(screen.getByRole('button', { name: 'Save workout preferences' })).toBeDisabled();
-  expect(screen.getByRole('alert')).toHaveTextContent('changed elsewhere');
-  await user.click(screen.getByRole('button', { name: 'Load saved preferences' }));
-  expect(screen.getByLabelText(/Keep the screen awake/)).not.toBeChecked();
+it('keeps the previous value and explains when a switch cannot be saved', async () => {
+  const onSave = vi.fn(() => false);
+  render(<WorkoutPreferencesForm settings={preferences} onSave={onSave} />);
+  await userEvent.click(screen.getByLabelText(/Vibrate when rest ends/));
+  expect(onSave).toHaveBeenCalledWith({ ...preferences, restAlertVibration: false });
+  expect(screen.getByLabelText(/Vibrate when rest ends/)).toBeChecked();
+  expect(screen.getByRole('alert')).toHaveTextContent('Vibrate when rest ends could not be saved');
 });
 
-it('refreshes untouched preferences after a reset or an update in another tab', () => {
+it('shows changes from a reset or another tab straight away', () => {
   const onSave = vi.fn();
   const view = render(<WorkoutPreferencesForm settings={{ ...preferences, restAlertSound: false }} onSave={onSave} />);
+  expect(screen.getByLabelText(/Sound when rest ends/)).not.toBeChecked();
   view.rerender(<WorkoutPreferencesForm settings={preferences} onSave={onSave} />);
   expect(screen.getByLabelText(/Sound when rest ends/)).toBeChecked();
   expect(screen.queryByRole('alert')).not.toBeInTheDocument();
-  expect(screen.getByRole('button', { name: 'Save workout preferences' })).toBeDisabled();
   expect(onSave).not.toHaveBeenCalled();
 });
 

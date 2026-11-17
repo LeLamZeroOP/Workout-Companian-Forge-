@@ -44,7 +44,10 @@ test('shell keeps the theme in Settings, matches nav order and marks a running w
   await expect(workoutNav.locator('.nav-live-dot')).toBeVisible();
 
   await page.setViewportSize({ width: 390, height: 844 });
-  const mobileOrder = await page.getByRole('navigation', { name: 'Mobile primary' }).getByRole('button').allInnerTexts();
+  // allInnerTexts does not wait, so wait for the phone dock to replace the sidebar first.
+  const mobileNav = page.getByRole('navigation', { name: 'Mobile primary' });
+  await expect(mobileNav.getByRole('button')).toHaveCount(5);
+  const mobileOrder = await mobileNav.getByRole('button').allInnerTexts();
   expect(mobileOrder.map(text => text.trim())).toEqual(['Today', 'Workout', 'Programs', 'Progress', 'More']);
   await expect(page.getByRole('button', { name: 'Workout', exact: true }).locator('.nav-live-dot')).toBeVisible();
   await page.goto('/#programs');

@@ -45,10 +45,10 @@ export function ExerciseTechnique({ exerciseId, exerciseName, isCustom = false, 
   const [open, setOpen] = useState(false);
   const video = !isCustom && Object.hasOwn(exerciseVideos, exerciseId) ? exerciseVideos[exerciseId] : undefined;
   const className = `text-action exercise-technique-trigger${compact ? ' technique-compact' : ''}`;
-  if (!video) return <a className={className} title="Find technique on YouTube" href={`https://www.youtube.com/results?search_query=${encodeURIComponent(`${exerciseName} exercise technique tutorial`)}`} target="_blank" rel="noopener noreferrer" aria-label={`Find technique on YouTube for ${exerciseName} (opens in a new tab)`}><Play size={14} aria-hidden="true" /><span>Find technique</span></a>;
+  if (!video) return <a className={className} title="Find technique on YouTube" href={`https://www.youtube.com/results?search_query=${encodeURIComponent(`${exerciseName} exercise technique tutorial`)}`} target="_blank" rel="noopener noreferrer" aria-label={`Find technique on YouTube for ${exerciseName} (opens in a new tab)`}><Play size={14} aria-hidden="true" /><span className="technique-label-full">Find technique</span><span className="technique-label-short" aria-hidden="true">Technique</span></a>;
 
   return <>
-    <button type="button" className={className} title="Watch technique" aria-label={`Watch technique for ${exerciseName}`} aria-haspopup="dialog" onClick={() => setOpen(true)}><Play size={14} aria-hidden="true" /><span>Watch technique</span></button>
+    <button type="button" className={className} title="Watch technique" aria-label={`Watch technique for ${exerciseName}`} aria-haspopup="dialog" onClick={() => setOpen(true)}><Play size={14} aria-hidden="true" /><span className="technique-label-full">Watch technique</span><span className="technique-label-short" aria-hidden="true">Technique</span></button>
     {open && <TechniquePlayer exerciseName={exerciseName} video={video} onClose={() => setOpen(false)} />}
   </>;
 }
