@@ -71,7 +71,10 @@ describe('Today page', () => {
     const completed = { ...session, completedAt: '2026-09-23T11:00:00.000Z' };
     render(<TodayPage programs={[program]} sessions={[completed]} onPrimaryAction={() => undefined} now={new Date('2026-09-24T12:00:00.000Z')} />);
     expect(screen.getByText('Latest workout')).toBeInTheDocument();
-    expect(screen.getByText('1 session this week')).toBeInTheDocument();
+    expect(screen.getByText('1 session · 1 active day this week')).toBeInTheDocument();
+    const tile = screen.getByText('Sessions this week').closest('section')!;
+    expect(tile).toHaveTextContent('1');
+    expect(tile).toHaveTextContent(`Last on ${new Date('2026-09-23T11:00:00.000Z').toLocaleDateString([], { month: 'short', day: 'numeric' })}`);
   });
 
   it('suggests the next workout in program order while preserving an explicit selection', async () => {
@@ -111,7 +114,7 @@ describe('Today page', () => {
     const view = render(<TodayPage programs={[program]} sessions={[]} onPrimaryAction={vi.fn()} />);
     vi.setSystemTime(new Date('2026-10-08T10:00:00Z'));
     view.rerender(<TodayPage programs={[program]} sessions={[{ ...session, completedAt: '2026-10-08T09:30:00Z' }]} onPrimaryAction={vi.fn()} />);
-    expect(screen.getByText('1 session this week')).toBeVisible();
+    expect(screen.getByText('1 session · 1 active day this week')).toBeVisible();
     view.unmount(); vi.useRealTimers();
   });
 

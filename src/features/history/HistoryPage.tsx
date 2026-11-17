@@ -1,6 +1,6 @@
 import { OverlayPresence } from '../../components/OverlayPresence';
 import { useState } from 'react';
-import { ChevronRight } from 'lucide-react';
+import { ChevronRight, Dumbbell } from 'lucide-react';
 import type { WorkoutSession } from '../../domain/models';
 import { getSessionSummary } from '../../domain/progress';
 import { WorkoutDetail } from './WorkoutDetail';
@@ -9,7 +9,7 @@ import { CsvExportButton } from '../../components/CsvExportButton';
 import { workoutHistoryCsv } from '../../domain/recordExports';
 import { isCalendarDate, localDateString } from '../../domain/calendar';
 
-export function HistoryPage({ sessions, onSave, onDelete }: { onSave?: (session: WorkoutSession) => boolean | void; onDelete?: (sessionId: string) => boolean | void; sessions: WorkoutSession[] }) {
+export function HistoryPage({ sessions, onSave, onDelete, onOpenWorkout }: { onOpenWorkout?: () => void; onSave?: (session: WorkoutSession) => boolean | void; onDelete?: (sessionId: string) => boolean | void; sessions: WorkoutSession[] }) {
   const completed = sessions.filter((session) => session.completedAt).sort((a, b) => b.completedAt!.localeCompare(a.completedAt!));
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [query, setQuery] = useState('');
@@ -20,7 +20,7 @@ export function HistoryPage({ sessions, onSave, onDelete }: { onSave?: (session:
   const matches = invalidRange ? [] : completed.filter(session => `${session.workoutName} ${session.programName} ${session.notes} ${session.exercises.map(item => `${item.exerciseName} ${item.notes}`).join(' ')}`.toLowerCase().includes(query.trim().toLowerCase()) && (!from || new Date(session.completedAt!).getTime() >= new Date(`${from}T00:00:00`).getTime()) && (!to || new Date(session.completedAt!).getTime() <= new Date(`${to}T23:59:59.999`).getTime()));
   const selected = completed.find((session) => session.id === selectedId);
   if (selected) return <><WorkoutDetail key={selected.id} onSave={onSave} session={selected} onBack={() => { setSelectedId(null); setDeletingId(null); }} />{onDelete && <button type="button" className="danger-action history-delete" onClick={() => setDeletingId(selected.id)}>Delete workout</button>}<OverlayPresence>{deletingId === selected.id && onDelete && <ConfirmDialog title={`Delete ${selected.workoutName}?`} message="This removes this session and its sets from history and training summaries. Download a backup in Settings if you need to keep a copy." confirmLabel="Delete from history" onCancel={() => setDeletingId(null)} onConfirm={() => { if (onDelete(selected.id) === false) return; setDeletingId(null); setSelectedId(null); }} />}</OverlayPresence></>;
-  if (!completed.length) return <section className="empty-stage"><p className="eyebrow">No history yet</p><h2>Complete your first workout.</h2><p>Your sets, volume, and exercise details will be saved here.</p></section>;
+  if (!completed.length) return <section className="empty-stage"><p className="eyebrow">No history yet</p><h2>Complete your first workout.</h2><p>Your sets, volume, and exercise details will be saved here.</p>{onOpenWorkout && <div className="form-actions"><button className="primary-action" type="button" onClick={onOpenWorkout}><Dumbbell size={18} aria-hidden="true" />Start a workout</button></div>}</section>;
 
   return (
     <section className="analytics-stack">

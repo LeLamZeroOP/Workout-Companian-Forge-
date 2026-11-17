@@ -2,6 +2,7 @@ import { fireEvent, render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ProgressPage } from '../../src/features/progress/ProgressPage';
 import type { WorkoutSession } from '../../src/domain/models';
+import { vi } from 'vitest';
 
 const completed: WorkoutSession = {
   id: 'done', programId: 'program', programName: 'Strength', workoutTemplateId: 'push', workoutName: 'Push',
@@ -11,6 +12,14 @@ const completed: WorkoutSession = {
 };
 
 describe('Progress page', () => {
+  it('offers to start a workout when there is no progress yet', () => {
+    const openWorkout = vi.fn();
+    render(<ProgressPage sessions={[]} onOpenWorkout={openWorkout} />);
+    expect(screen.getByText('No progress yet')).toBeInTheDocument();
+    fireEvent.click(screen.getByRole('button', { name: 'Start a workout' }));
+    expect(openWorkout).toHaveBeenCalledOnce();
+  });
+
   it('shows exercise progress with a personal best and accessible data table', () => {
     render(<ProgressPage sessions={[completed]} />);
     expect(screen.getAllByText('30 kg')).toHaveLength(2);

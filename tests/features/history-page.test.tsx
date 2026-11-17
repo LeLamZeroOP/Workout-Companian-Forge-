@@ -15,6 +15,14 @@ describe('History page', () => {
   it('shows an empty state when no workouts have been completed', () => {
     render(<HistoryPage sessions={[]} />);
     expect(screen.getByText(/complete your first workout/i)).toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: 'Start a workout' })).not.toBeInTheDocument();
+  });
+
+  it('offers to start a workout from the empty state', () => {
+    const openWorkout = vi.fn();
+    render(<HistoryPage sessions={[]} onOpenWorkout={openWorkout} />);
+    fireEvent.click(screen.getByRole('button', { name: 'Start a workout' }));
+    expect(openWorkout).toHaveBeenCalledOnce();
   });
 
   it('opens a completed workout with its set and summary details', async () => {

@@ -70,8 +70,8 @@ export function TodayPage({ programs, lastSelectedProgramId, exercises = [], onS
 
       <aside className="overview-panel" aria-label="Training overview">
         <div className="metrics-strip">
-          <section className="stat-block"><span className="metric-icon"><Flame size={18} aria-hidden="true" /></span><p>This week</p><strong>{weeklyCount}</strong><span>{weeklyCount === 1 ? '1 session this week' : `${weeklyCount} sessions this week`}</span></section>
-          <section className="stat-block"><span className="metric-icon"><CalendarCheck size={18} aria-hidden="true" /></span><p>Programs</p><strong>{programs.length}</strong><span>{programs[0]?.name ?? 'None yet'}</span></section>
+          <section className="stat-block"><span className="metric-icon"><Flame size={18} aria-hidden="true" /></span><p>Sessions this week</p><strong>{weeklyCount}</strong><span>{latest ? `Last on ${new Date(latest.completedAt!).toLocaleDateString([], { month: 'short', day: 'numeric' })}` : 'None completed yet'}</span></section>
+          <section className="stat-block"><span className="metric-icon"><CalendarCheck size={18} aria-hidden="true" /></span><p>Programs</p><strong>{programs.length}</strong><span>{programs.length > 1 ? `${programs[0]!.name} + ${programs.length - 1} more` : programs[0]?.name ?? 'None yet'}</span></section>
         </div>
         <section className="recent-card">
           <div className="section-heading"><h3>Latest workout</h3><Dumbbell size={20} aria-hidden="true" /></div>

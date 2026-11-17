@@ -1,6 +1,6 @@
 import { act, render, renderHook, screen } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { useElapsedTime } from '../../src/hooks/useElapsedTime';
+import { formatElapsed, useElapsedTime } from '../../src/hooks/useElapsedTime';
 import { RestTimer } from '../../src/features/workout/RestTimer';
 
 describe('workout timer cadence', () => {
@@ -28,5 +28,13 @@ describe('workout timer cadence', () => {
       window.dispatchEvent(new Event('pageshow'));
     });
     expect(result.current.label).toBe('0:15');
+  });
+
+  it('shows hours once a workout passes an hour', () => {
+    expect(formatElapsed(59 * 60 + 59)).toBe('59:59');
+    expect(formatElapsed(3600)).toBe('1:00:00');
+    expect(formatElapsed(2 * 3600 + 14 * 60 + 41)).toBe('2:14:41');
+    const { result } = renderHook(() => useElapsedTime('2026-09-29T07:45:00.000Z'));
+    expect(result.current.label).toBe('2:15:00');
   });
 });

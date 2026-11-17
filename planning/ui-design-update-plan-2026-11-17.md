@@ -32,7 +32,7 @@ Priority: **High** means it hurts a common flow or is a visible bug. **Medium** 
 
 | # | Problem | Where | Priority |
 | --- | --- | --- | --- |
-| P4 | Under load, a page stayed blank (header and cards invisible) for more than 2s after switching tab at 390px (Today, Programs). The nav highlight stayed on the old tab during that time. The entrance runs `.motion-enter` on up to 5 surfaces with a 40ms stagger, and the content starts invisible. On a slow phone this reads as "the app is empty". **Needs confirming** on a quiet machine and a real phone. | `components/PageScene.tsx`; `motion.css` (`.motion-enter`); `NavigationHighlight.tsx` | High if confirmed |
+| P4 | Under load, a page stayed blank (header and cards invisible) for more than 2s after switching tab at 390px (Today, Programs). The nav highlight stayed on the old tab during that time. The entrance runs `.motion-enter` on up to 5 surfaces with a 40ms stagger, and the content starts invisible. On a slow phone this reads as "the app is empty". **Update (Chunk 1 check):** this was most likely caused by the in-app browser pane being hidden. In that state the page reported itself visible, but the entrance animation sat at time 0 with the header and cards at opacity 0 after 1.5s, because no frames were drawn. Real users probably don't see this. It does show a fragility, though: if animation frames stall (a background webview, a frozen renderer), content stays invisible because the entrance starts from opacity 0. | `components/PageScene.tsx`; `motion.css` (`.motion-enter`); `NavigationHighlight.tsx` | Low (fragility only) |
 
 ### Today
 
@@ -105,7 +105,7 @@ Fixes W1, S5, S6, T1, H1, N2.
 
 ### Chunk 2 — Page entrance and nav highlight on slow devices (investigate, then fix)
 
-Fixes P4.
+Fixes P4. **Moved down in priority:** the Chunk 1 check suggests the blank pages came from the hidden in-app browser pane, so do Chunk 3 first and keep this as a robustness fix (start entrances from a visible state).
 
 - First, reproduce with Playwright CPU throttling (CDP `Emulation.setCPUThrottlingRate` 4–6×) on 390px Today and Programs. Measure the time until the main surfaces have opacity 1.
 - If confirmed: start entrances from a visible state (for example opacity .6 → 1 with a small translate), cap the total stagger (5 × 40ms already, so check the duration and fill mode), and skip the entrance when the first frame is late (for example if `performance.now()` since navigation is over 100ms) or when the route was opened by keyboard. Make sure the nav highlight never lags behind `aria-current`.

@@ -1,3 +1,5 @@
+> **Archived (17 November 2026).** This is an old style reference and is not Forge's design direction. The current design is in [docs/ui-redesign.md](../docs/ui-redesign.md), and planned changes are in [ui-design-update-plan-2026-11-17.md](ui-design-update-plan-2026-11-17.md).
+
 # Raycast — Style Reference
 > Midnight command center, coral neon
 

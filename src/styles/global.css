@@ -74,7 +74,7 @@ button:disabled { cursor: not-allowed; opacity: .45; }
 .empty-stage { max-width: 760px; min-height: 300px; padding: clamp(28px, 5vw, 48px); display: flex; flex-direction: column; justify-content: flex-end; }
 .empty-stage.compact { min-height: 220px; }
 .empty-stage h2 { max-width: 600px; margin: 10px 0; font-size: clamp(28px, 4vw, 40px); font-weight: 600; line-height: 1.12; letter-spacing: -.04em; }
-.empty-stage > p:last-child { max-width: 520px; margin: 0; color: var(--text-muted); }
+.empty-stage > p:not(.eyebrow) { max-width: 520px; margin: 0; color: var(--text-muted); }
 
 .toolbar { align-items: flex-end; margin-bottom: 20px; }
 .search-field { width: min(360px, 100%); display: grid; gap: 7px; color: var(--text-secondary); font-size: 13px; }
@@ -219,7 +219,7 @@ select { padding-right: 40px; cursor: pointer; appearance: none; background-imag
 .bar-track { height: 9px; border-radius: 999px; background: var(--surface-soft); overflow: hidden; }
 .bar-track span { display: block; height: 100%; border-radius: inherit; background: var(--text); }
 
-.body-empty .form-actions { margin-top: 24px; }
+.empty-stage > .form-actions { margin-top: 24px; }
 .body-overview-grid { display: grid; grid-template-columns: minmax(0, .8fr) minmax(360px, 1.2fr); gap: 16px; }
 .body-weight-card, .body-target-card { min-height: 260px; padding: 28px; border: 1px solid var(--border); border-radius: var(--radius-card); background: var(--surface); box-shadow: var(--shadow-key); display: flex; flex-direction: column; align-items: flex-start; }
 .body-weight-card h2, .body-target-card h2, .body-form h2, .body-history h2, .body-page .analytics-card > .section-heading h2 { margin: 4px 0 0; font-size: clamp(26px, 4vw, 38px); line-height: 1.08; font-weight: 600; letter-spacing: -.04em; }

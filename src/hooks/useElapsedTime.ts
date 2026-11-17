@@ -21,5 +21,13 @@ export function useElapsedTime(startedAt: string) {
     return () => { window.clearTimeout(timer); document.removeEventListener('visibilitychange', resume); window.removeEventListener('focus', resume); window.removeEventListener('pageshow', resume); };
   }, [startedAtMs]);
   const seconds = Math.max(0, Math.floor((now - startedAtMs) / 1000));
-  return { seconds, label: `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}` };
+  return { seconds, label: formatElapsed(seconds) };
+}
+
+/** Minutes and seconds under an hour (`59:59`), then hours (`1:00:00`). */
+export function formatElapsed(totalSeconds: number) {
+  const hours = Math.floor(totalSeconds / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = String(totalSeconds % 60).padStart(2, '0');
+  return hours ? `${hours}:${String(minutes).padStart(2, '0')}:${seconds}` : `${minutes}:${seconds}`;
 }

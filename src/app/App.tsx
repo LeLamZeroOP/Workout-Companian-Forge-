@@ -166,25 +166,19 @@ function AppContent({ guard }: { guard: (proceed: () => void) => void }) {
         ) : route === 'workout' ? (
           <WorkoutPage saveStatus={isCloudConfigured ? cloud.conflictCount ? 'Saved on this device · sync needs review' : cloud.pendingCount ? 'Saved on this device · waiting to sync' : cloud.offline ? 'Saved on this device · offline' : 'Synced' : 'Saved on this device'} catalog={data.exercises} storageScope={isCloudConfigured ? cloud.user!.id : 'local'} programs={data.programs} sessions={data.sessions} lastSelectedProgramId={data.settings.lastSelectedProgramId} keepScreenAwake={data.settings.keepScreenAwake} restAlertSound={data.settings.restAlertSound} restAlertVibration={data.settings.restAlertVibration} onStart={startWorkout} onStartCustom={startCustomWorkout} onChange={updateSession} onSaveProgram={saveProgram} onFinish={finishWorkout} onDiscard={discardWorkout} />
         ) : route === 'history' ? (
-          <HistoryPage onSave={updateSession} onDelete={source.deleteSession} sessions={data.sessions} />
+          <HistoryPage onSave={updateSession} onDelete={source.deleteSession} sessions={data.sessions} onOpenWorkout={() => setRoute('workout')} />
         ) : route === 'progress' ? (
-          <ProgressPage sessions={data.sessions} programs={data.programs} exerciseCatalog={data.exercises} />
+          <ProgressPage sessions={data.sessions} programs={data.programs} exerciseCatalog={data.exercises} onOpenWorkout={() => setRoute('workout')} />
         ) : route === 'body' ? (
           <BodyPage profile={data.body.profile} measurements={data.body.measurements} onSaveProfile={saveBodyProfile} onSaveMeasurement={measurement => announceSave(saveBodyMeasurement(measurement), 'Measurement saved')} onDeleteMeasurement={deleteBodyMeasurement} onSaveNutritionTarget={saveNutritionTarget} />
         ) : route === 'nutrition' ? (
           <NutritionPage onCopyEntries={copyFoodEntries} foods={[...commonFoods, ...data.nutrition.customFoods]} entries={data.nutrition.diary} targets={data.nutrition.targets} onAddEntry={entry => announceSave(addFoodEntry(entry), 'Food entry saved')} onDeleteEntry={deleteFoodEntry} onSaveCustomFood={saveCustomFood} onSaveNutritionTarget={saveNutritionTarget} />
         ) : route === 'settings' ? (
           <><WorkoutPreferencesForm settings={data.settings} onSave={source.saveWorkoutPreferences} />{isCloudConfigured ? <CloudDataManagement key={cloud.user?.id} accountName={cloud.user?.email ?? 'your account'} onPrepareMerge={cloud.prepareMerge} onCommitMerge={cloud.commitMerge} onReviewConflicts={cloud.reviewConflicts} onResolveConflicts={cloud.resolveConflicts} data={data} onSignOut={() => void cloud.signOut()} pendingCount={cloud.pendingCount} onImport={cloud.importData} onGetDeviceBackup={cloud.getDeviceBackup} /> : <DataManagement data={data} onImport={local.replaceData} onReset={local.resetData} />}</>
-        ) : route === 'more' ? (
+        ) : (
           <section className="more-page" aria-label="More destinations">
             <p className="more-intro">Your history, body log, meals, and local data controls.</p>
             <div className="more-list">{desktopRoutes.filter((item) => ['history', 'body', 'nutrition', 'settings'].includes(item.id)).map((item) => { const Icon = icons[item.id]; return <button type="button" key={item.id} aria-label={`Open ${item.label}`} onClick={() => setRoute(item.id)}><span className="metric-icon"><Icon size={18} aria-hidden="true" /></span><span><strong>{item.label}</strong><small>{item.description}</small></span><ChevronRight size={18} aria-hidden="true" /></button>; })}</div>
-          </section>
-        ) : (
-          <section className="empty-stage" aria-labelledby="stage-title">
-            <p className="eyebrow">Coming in the next build</p>
-            <h2 id="stage-title">{active.description}</h2>
-            <p>The foundation is ready for this feature.</p>
           </section>
         )}
         </PageScene>
