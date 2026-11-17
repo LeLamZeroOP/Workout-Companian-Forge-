@@ -566,7 +566,7 @@ select { padding-right: 40px; cursor: pointer; appearance: none; background-imag
 .split-actions { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
 .split-actions a { display: inline-flex; align-items: center; gap: 4px; color: var(--brand-ink); min-height: 44px; font-size: var(--text-sm); }
 .exercise-equipment { display: block; margin-top: 6px; color: var(--text-muted); font-size: var(--text-sm); font-weight: 400; text-transform: capitalize; }
-@media(max-width: 800px) { .split-grid { grid-template-columns: 1fr; } .split-card { padding: 20px; } }
+@media (max-width: 800px) { .split-grid { grid-template-columns: 1fr; } .split-card { padding: 20px; } }
 
 /* Program editor: numbered sessions and a compact prescription sheet. */
 .program-editor { max-width: 1060px; gap: 24px; }
@@ -602,7 +602,7 @@ select { padding-right: 40px; cursor: pointer; appearance: none; background-imag
 .editor-notes summary { cursor: pointer; padding: 10px 0; min-height: 40px; }
 .editor-notes textarea { display: block; width: 100%; min-height: 96px; padding: 12px; border: 1px solid var(--brand-border); border-radius: var(--radius-small); resize: vertical; font: inherit; line-height: 1.6; color: var(--text); background: var(--surface); }
 .exercise-notes { margin-bottom: 0; }
-@media(max-width: 640px) {
+@media (max-width: 640px) {
   .session-editor-header { padding: 20px 16px; gap: 14px; align-items: flex-start; }
   .session-editor-number { font-size: 40px; letter-spacing: -2px; margin-top: 2px; }
   .session-editor-identity .field > input { font-size: var(--text-lg); }
@@ -619,7 +619,7 @@ select { padding-right: 40px; cursor: pointer; appearance: none; background-imag
 .theme-control button { border: 0; width: 40px; height: 40px; display: grid; place-items: center; background: transparent; color: var(--text-muted); border-radius: 7px; cursor: pointer; }
 .theme-control button[aria-pressed='true'] { background: var(--brand-soft); color: var(--brand-ink); }
 .page-header { flex-wrap: wrap; }
-@media(max-width: 640px) { .page-header { gap: 12px; } }
+@media (max-width: 640px) { .page-header { gap: 12px; } }
 
 .today-session-choice { display: grid; gap: 14px; }
 .today-preview { list-style: none; margin: 0; padding: 0; }
@@ -635,7 +635,7 @@ select { padding-right: 40px; cursor: pointer; appearance: none; background-imag
 .inline-rest small { flex-basis: 100%; color: var(--text-muted); font-size: var(--text-sm); }
 .inline-rest .form-actions { margin: 0; }
 .previous-performance, .exercise-guidance { font-size: var(--text-md); line-height: 1.6; color: var(--text-secondary); }
-@media(max-width: 640px) { .workout-order:not(.open) { display: none; } .workout-set-table td, .workout-set-table th { padding: 8px 5px; font-size: var(--text-sm); } }
+@media (max-width: 640px) { .workout-order:not(.open) { display: none; } .workout-set-table td, .workout-set-table th { padding: 8px 5px; font-size: var(--text-sm); } }
 
 .set-edit-fields { border: 0; margin: 0; padding: 0; min-width: 0; }
 .analytics-filters { display: flex; flex-wrap: wrap; align-items: end; gap: 16px; }
@@ -647,7 +647,7 @@ select { padding-right: 40px; cursor: pointer; appearance: none; background-imag
 .copy-panel { display: grid; gap: 12px; }
 .meal-card .food-row { flex-wrap: wrap; }
 .meal-card .food-row > div { flex: 1 1 140px; }
-@media (max-width: 600px) { .correction-row { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 640px) { .correction-row { grid-template-columns: 1fr 1fr; } }
 /* Active workout edits */
 .saved-notes { white-space: pre-wrap; overflow-wrap: anywhere; }
 .history-delete { margin-top: 24px; }
@@ -684,13 +684,13 @@ select { padding-right: 40px; cursor: pointer; appearance: none; background-imag
 .add-exercise-numbers { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; align-items: end; }
 .add-exercise-settings .checkbox-label { display: flex; }
 .add-exercise-settings .checkbox-label input { width: 20px; flex-shrink: 0; }
-@media (max-width: 600px) { .add-exercise-numbers { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 640px) { .add-exercise-numbers { grid-template-columns: 1fr 1fr; } }
 .exercise-option-list { display: grid; gap: 12px; margin: 20px 0; }
 .replacement-preview { margin: 16px 0; padding: 12px; border: 1px solid var(--border); border-radius: var(--radius-control); }
 .queue-edit-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 4px; }
 .queue-edit-row .queue-item { min-width: 0; width: 100%; }
 .queue-options { min-height: 44px; padding: 8px; }
-@media (max-width: 600px) {
+@media (max-width: 640px) {
   .session-edit-heading > button { min-height: 44px; }
   .workout-edit-dialog .form-actions { display: flex; flex-wrap: wrap; }
   .workout-edit-dialog .form-actions button { flex: 1; min-height: 44px; }

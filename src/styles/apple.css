@@ -495,15 +495,15 @@ input[type='checkbox'], input[type='radio'] { accent-color: var(--accent); }
 @media (prefers-reduced-transparency: reduce) { .editor-action-bar { background: var(--surface-raised); backdrop-filter: none; } }
 @media (forced-colors: active) { .editor-draft-status.is-changed::before { forced-color-adjust: none; background: Highlight; } }
 
-/* Exercise editor: basics in one row, the two muscle grids side by side on wide screens. */
+/* Exercise editor: basics in one row, the two muscle grids side by side above the 1100px tablet breakpoint. */
 .exercise-basics { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr); gap: 1rem; align-items: start; }
 .mapping-grids { display: grid; gap: 1rem; min-width: 0; }
-@media (min-width: 1180px) {
+@media (min-width: 1101px) {
   .mapping-grids { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
   .mapping-grids .contribution-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
-@media (max-width: 900px) { .exercise-basics { grid-template-columns: 1fr 1fr; } .exercise-basics > :first-child { grid-column: 1 / -1; } }
-@media (max-width: 480px) { .exercise-basics { grid-template-columns: 1fr; } }
+@media (max-width: 1100px) { .exercise-basics { grid-template-columns: 1fr 1fr; } .exercise-basics > :first-child { grid-column: 1 / -1; } }
+@media (max-width: 640px) { .exercise-basics { grid-template-columns: 1fr; } }
 
 /* Programs toolbar: the search field grows beside Create program. */
 .programs-page > .toolbar { align-items: flex-end; }
