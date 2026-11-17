@@ -1,0 +1,66 @@
+{
+  "exercises": 200,
+  "uniqueSources": 186,
+  "passed": 194,
+  "unresolved": [
+    {
+      "id": "cross-body-hammer-curl",
+      "videoId": "ADE3aBSwVUo",
+      "actualSeconds": 30,
+      "problems": [
+        "duration",
+        "metadata",
+        "chapter"
+      ]
+    },
+    {
+      "id": "rope-hammer-curl",
+      "videoId": "vsarApmqJmo",
+      "actualSeconds": 46,
+      "problems": [
+        "duration",
+        "metadata",
+        "chapter"
+      ]
+    },
+    {
+      "id": "seated-hammer-curl",
+      "videoId": "7jqi2qWAUJk",
+      "actualSeconds": 409,
+      "problems": [
+        "metadata",
+        "chapter"
+      ]
+    },
+    {
+      "id": "single-arm-cable-curl",
+      "videoId": "N38K4KOcwX4",
+      "actualSeconds": 163,
+      "problems": [
+        "duration",
+        "metadata",
+        "chapter"
+      ]
+    },
+    {
+      "id": "drag-curl",
+      "videoId": "LMdNTHH6G8I",
+      "actualSeconds": 127,
+      "problems": [
+        "duration",
+        "metadata",
+        "chapter"
+      ]
+    },
+    {
+      "id": "seated-db-curl",
+      "videoId": "SW5JS2Wf2uQ",
+      "actualSeconds": 271,
+      "problems": [
+        "metadata",
+        "chapter"
+      ]
+    }
+  ],
+  "researchedEntries": 143
+}

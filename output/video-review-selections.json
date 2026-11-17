@@ -1,0 +1,472 @@
+[
+  {
+    "exerciseId": "db-chest-press",
+    "videoId": "t1iaVBMItPo",
+    "title": "Dumbbell Bench Press - Perfect Form Video Tutorial",
+    "creator": "Fit Father Project - Fitness For Busy Fathers",
+    "sourceUrl": "https://www.youtube.com/watch?v=t1iaVBMItPo",
+    "rationale": "Dedicated 4:27 technique lesson with accompanying creator-written setup, lowering, pressing and breathing instructions."
+  },
+  {
+    "exerciseId": "bench-press",
+    "videoId": "vcBig73ojpE",
+    "title": "How To Get A Huge Bench Press with Perfect Technique",
+    "creator": "Jeff Nippard",
+    "sourceUrl": "https://www.youtube.com/watch?v=vcBig73ojpE",
+    "rationale": "Detailed standalone barbell technique lesson covering setup, execution and common errors; longer than the preferred range but tightly focused."
+  },
+  {
+    "exerciseId": "incline-db-press",
+    "videoId": "0f6-uCUKqgA",
+    "title": "Incline Dumbbell Press BETTER | Targeting The Muscle Series",
+    "creator": "Renaissance Periodization",
+    "sourceUrl": "https://www.youtube.com/watch?v=0f6-uCUKqgA",
+    "rationale": "Dedicated 7:31 incline dumbbell teaching installment in the Targeting the Muscle series."
+  },
+  {
+    "exerciseId": "machine-chest-press",
+    "videoId": "gNBU7hmW2EU",
+    "title": "Chest Press Machine Tutorial | Beginner’s Guide to Gym Machines (Build Muscle & Strength)",
+    "creator": "Tim Bullici",
+    "sourceUrl": "https://www.youtube.com/watch?v=gNBU7hmW2EU",
+    "rationale": "Dedicated 3:06 machine tutorial from a sports and exercise science trained personal trainer."
+  },
+  {
+    "exerciseId": "cable-fly",
+    "videoId": "hrh0K1Oo7Yc",
+    "title": "How to PROPERLY Cable Chest Fly (FIX THIS NOW!)",
+    "creator": "Colossus Fitness",
+    "sourceUrl": "https://www.youtube.com/watch?v=hrh0K1Oo7Yc",
+    "rationale": "Dedicated 4:56 cable fly tutorial; description explicitly covers setup, execution, excess load, turning a fly into a press, elbow bend and shoulder takeover."
+  },
+  {
+    "exerciseId": "pec-deck",
+    "videoId": "H4mVGHaK2f4",
+    "title": "How to PERFECT The Pec Deck | (CHEST FLY MISTAKES & TIPS)",
+    "creator": "Colossus Fitness",
+    "sourceUrl": "https://www.youtube.com/watch?v=H4mVGHaK2f4",
+    "rationale": "Dedicated 3:03 pec deck instruction and mistakes lesson."
+  },
+  {
+    "exerciseId": "push-up",
+    "videoId": "IODxDxX7oi4",
+    "title": "The Perfect Push Up | Do it right!",
+    "creator": "Calisthenicmovement",
+    "sourceUrl": "https://www.youtube.com/watch?v=IODxDxX7oi4",
+    "rationale": "Focused 3:37 standard push-up tutorial from an established bodyweight coaching channel."
+  },
+  {
+    "exerciseId": "overhead-press",
+    "videoId": "_RlRDWO2jfg",
+    "title": "Build Bigger Shoulders With Perfect Training Technique (The Overhead Press)",
+    "creator": "Jeff Nippard",
+    "sourceUrl": "https://www.youtube.com/watch?v=_RlRDWO2jfg",
+    "rationale": "Dedicated 7:58 standing barbell overhead press technique lesson."
+  },
+  {
+    "exerciseId": "db-shoulder-press",
+    "videoId": "7C-btvC-UX4",
+    "title": "Dumbbell Shoulder press Complete Tutorial.",
+    "creator": "The Barbell path",
+    "sourceUrl": "https://www.youtube.com/watch?v=7C-btvC-UX4",
+    "rationale": "Dedicated 7:36 lesson with published chapters for bench angle, setup, elbows, wrist alignment and execution."
+  },
+  {
+    "exerciseId": "lateral-raise",
+    "videoId": "v_ZkxWzYnMc",
+    "title": "How To Build Capped Shoulders: Optimal Training Explained (Side Delts)",
+    "creator": "Jeff Nippard",
+    "sourceUrl": "https://www.youtube.com/watch?v=v_ZkxWzYnMc",
+    "rationale": "8:04 technique lesson whose description explicitly identifies lateral raises, proper technique and mistake correction."
+  },
+  {
+    "exerciseId": "cable-lateral-raise",
+    "videoId": "Sp8be0IFNvk",
+    "title": "How to Fix your Cable Lateral Raise | DB vs. CABLE",
+    "creator": "John Jewett",
+    "sourceUrl": "https://www.youtube.com/watch?v=Sp8be0IFNvk",
+    "rationale": "Dedicated 4:51 cable lateral raise instruction from a professional bodybuilding educator; exact exercise and equipment."
+  },
+  {
+    "exerciseId": "reverse-pec-deck",
+    "videoId": "LzsSQzHFuLU",
+    "title": "How to Reverse Pec Dec For HUGE round rear delts - Exercise Set up and Form with Hypertrophy Coach",
+    "creator": "Hypertrophy Coach",
+    "sourceUrl": "https://www.youtube.com/watch?v=LzsSQzHFuLU",
+    "rationale": "Dedicated 9:05 machine setup and form lesson; exact rear delt pec deck equipment."
+  },
+  {
+    "exerciseId": "face-pull",
+    "videoId": "DvjmJdEswQ4",
+    "title": "Face Pulls | Proper Form vs Common Mistakes",
+    "creator": "JONNI SHREVE",
+    "sourceUrl": "https://www.youtube.com/watch?v=DvjmJdEswQ4",
+    "rationale": "Retained after review: 11:10 landscape lesson with chapters for stance, height, arm path, initiation, eccentric control and real-time reps."
+  },
+  {
+    "exerciseId": "db-press-15",
+    "videoId": "0f6-uCUKqgA",
+    "title": "Incline Dumbbell Press BETTER | Targeting The Muscle Series",
+    "creator": "Renaissance Periodization",
+    "sourceUrl": "https://www.youtube.com/watch?v=0f6-uCUKqgA",
+    "rationale": "Reuse the dedicated incline dumbbell technique lesson with the prescribed angle explicitly called out.",
+    "note": "General incline technique tutorial. Set your bench to the 15-degree angle specified in your plan."
+  },
+  {
+    "exerciseId": "db-press-30",
+    "videoId": "0f6-uCUKqgA",
+    "title": "Incline Dumbbell Press BETTER | Targeting The Muscle Series",
+    "creator": "Renaissance Periodization",
+    "sourceUrl": "https://www.youtube.com/watch?v=0f6-uCUKqgA",
+    "rationale": "Reuse the dedicated incline dumbbell technique lesson with the prescribed angle explicitly called out.",
+    "note": "General incline technique tutorial. Set your bench to the 30-degree angle specified in your plan."
+  },
+  {
+    "exerciseId": "incline-barbell-press",
+    "videoId": "jPLdzuHckI8",
+    "title": "Incline Barbell Press | Upper Chest | How-To Exercise Tutorial",
+    "creator": "Buff Dudes Workouts",
+    "sourceUrl": "https://www.youtube.com/watch?v=jPLdzuHckI8",
+    "rationale": "Dedicated 4:46 incline barbell tutorial; creator description confirms the exact exercise."
+  },
+  {
+    "exerciseId": "smith-incline-press",
+    "videoId": "GobPtFwc_Qk",
+    "title": "How to Set Up Smith Incline Press (Upper Pecs)",
+    "creator": "Ben Yanes",
+    "sourceUrl": "https://www.youtube.com/watch?v=GobPtFwc_Qk",
+    "rationale": "Dedicated 13:46 Smith incline setup lesson; longer exact tutorial favored over brief demonstrations."
+  },
+  {
+    "exerciseId": "incline-converging-press",
+    "videoId": "GRTzUEPUqek",
+    "title": "Dr. Mike Reviews the Atlantis Converging Incline Bench Press",
+    "creator": "Atlantis Strength",
+    "sourceUrl": "https://www.youtube.com/watch?v=GRTzUEPUqek",
+    "rationale": "8:55 discussion of the exact converging incline machine with an exercise science coach.",
+    "note": "Demonstrates an Atlantis converging incline press. Match the seat, handles and pressing path to your machine."
+  },
+  {
+    "exerciseId": "low-high-cable-fly",
+    "videoId": "-EIhKMDSjBY",
+    "title": "The Best Way To Isolate The Chest For Growth (Upper Chest Focus)",
+    "creator": "Jeff Nippard",
+    "sourceUrl": "https://www.youtube.com/watch?v=-EIhKMDSjBY",
+    "rationale": "6:55 chest isolation technique lesson with upper chest cable fly focus, rather than a short rep demonstration."
+  },
+  {
+    "exerciseId": "smith-flat-press",
+    "videoId": "nFAQ35hmCqU",
+    "title": "How To Smith Machine Bench Press (BEGINNER)",
+    "creator": "Wavvy Fitness",
+    "sourceUrl": "https://www.youtube.com/watch?v=nFAQ35hmCqU",
+    "rationale": "Dedicated 4:13 tutorial; description explicitly explains Smith bench placement and setup at a gym."
+  },
+  {
+    "exerciseId": "flat-db-fly",
+    "videoId": "2dKBS61BX24",
+    "title": "8 Dumbbell Fly Mistakes and How to Fix Them",
+    "creator": "Renaissance Periodization",
+    "sourceUrl": "https://www.youtube.com/watch?v=2dKBS61BX24",
+    "rationale": "Dedicated 10:26 error-correction lesson; exact dumbbell fly equipment and execution focus."
+  },
+  {
+    "exerciseId": "standing-cable-chest-press",
+    "videoId": "fOHouR0t9Cw",
+    "title": "Standing Cable Chest Press  - Technique, Benefits, and Common Mistakes",
+    "creator": "Mike | J2FIT Strength & Conditioning",
+    "sourceUrl": "https://www.youtube.com/watch?v=fOHouR0t9Cw",
+    "rationale": "Dedicated 4:23 lesson with chapters for equipment setup, execution, form tips, mistakes and programming."
+  },
+  {
+    "exerciseId": "single-arm-cable-chest-press",
+    "videoId": "sNUWfchnLIE",
+    "title": "One Arm Cable Press exercise tutorial",
+    "creator": "Nick Tumminello - Trainer of Trainers",
+    "sourceUrl": "https://www.youtube.com/watch?v=sNUWfchnLIE",
+    "rationale": "Exact unilateral cable press setup and movement taught by Nick Tumminello; live playback confirms a regular landscape video, not a Short.",
+    "shorterTutorialReason": "A complete 2:25 landscape coaching lesson for the exact unilateral cable movement from strength coach Nick Tumminello; preferable to a generic longer cable workout."
+  },
+  {
+    "exerciseId": "chest-dip",
+    "videoId": "2z8JmcrW-As",
+    "title": "The Perfect Dip  - Do it right",
+    "creator": "Calisthenicmovement",
+    "sourceUrl": "https://www.youtube.com/watch?v=2z8JmcrW-As",
+    "rationale": "Focused 4:38 dip technique lesson covering body position and chest-emphasis variant.",
+    "note": "Use the chest-focused parallel-bar variation shown in the tutorial."
+  },
+  {
+    "exerciseId": "feet-elevated-push-up",
+    "videoId": "BeS6eOYKQ8s",
+    "title": "Grow Your UPPER CHEST With Push-Ups",
+    "creator": "FitnessFAQs",
+    "rationale": "Full coaching lesson explicitly addressing decline push-ups, with upper-chest and ring variations.",
+    "note": "Covers feet-elevated push-ups and ring variations. Use the feet-elevated version in your plan.",
+    "sourceUrl": "https://www.youtube.com/watch?v=BeS6eOYKQ8s"
+  },
+  {
+    "exerciseId": "machine-shoulder-press",
+    "videoId": "BAZkFGeUy5U",
+    "title": "Shoulder Press Machine | Tutorial for Gym Beginners",
+    "creator": "Tim Bullici",
+    "rationale": "Dedicated machine shoulder press teaching from a sports-science trained personal trainer.",
+    "sourceUrl": "https://www.youtube.com/watch?v=BAZkFGeUy5U"
+  },
+  {
+    "exerciseId": "lat-pulldown",
+    "videoId": "O94yEoGXtBY",
+    "title": "How To Build A V-Tapered Back: Lat Training Dos and Don’ts",
+    "creator": "Jeff Nippard",
+    "sourceUrl": "https://www.youtube.com/watch?v=O94yEoGXtBY",
+    "rationale": "Technique Tuesday dedicated to lat-pulldown mechanics rather than a brief repetition demonstration."
+  },
+  {
+    "exerciseId": "pull-up",
+    "videoId": "Hdc7Mw6BIEE",
+    "title": "The Best Way To Do Pull Ups For A Wide Back (Optimal Training Technique)",
+    "creator": "Jeff Nippard",
+    "sourceUrl": "https://www.youtube.com/watch?v=Hdc7Mw6BIEE",
+    "rationale": "Focused Technique Tuesday coaching replaces a long beginner live Q&A with a concise exercise-specific tutorial."
+  },
+  {
+    "exerciseId": "chin-up",
+    "videoId": "40A3NGv31lE",
+    "title": "4 Dumbest Chin-Up Mistakes Sabotaging Your BACK / BICEPS GROWTH! STOP DOING THESE!",
+    "creator": "ScottHermanFitness",
+    "sourceUrl": "https://www.youtube.com/watch?v=40A3NGv31lE",
+    "rationale": "Exact supinated bodyweight movement, with error correction and beginner progression context."
+  },
+  {
+    "exerciseId": "seated-cable-row",
+    "videoId": "7o2oolbmzeI",
+    "title": "How To: Seated Cable Low-Row || PERFECT FORM",
+    "creator": "ScottHermanFitness",
+    "sourceUrl": "https://www.youtube.com/watch?v=7o2oolbmzeI",
+    "rationale": "Updated focused cable-row tutorial replacing the two-minute vertical demonstration."
+  },
+  {
+    "exerciseId": "db-row",
+    "videoId": "djKXLt7kv7Q",
+    "title": "How To Do Dumbbell Rows: Build a Thicker Back With Proper \"Cheating\"",
+    "creator": "Jeff Nippard",
+    "sourceUrl": "https://www.youtube.com/watch?v=djKXLt7kv7Q",
+    "rationale": "Dedicated one-arm dumbbell-row Technique Tuesday, including setup and distinguishing controlled movement from excessive momentum."
+  },
+  {
+    "exerciseId": "barbell-row",
+    "videoId": "G8l_8chR5BE",
+    "title": "\"How To\" Barbell Row",
+    "creator": "Alan Thrall (Untamed Strength)",
+    "sourceUrl": "https://www.youtube.com/watch?v=G8l_8chR5BE",
+    "rationale": "Dedicated bent-over barbell-row tutorial; the creator identifies this version specifically as bent-over rowing."
+  },
+  {
+    "exerciseId": "chest-supported-row",
+    "videoId": "TXjeZsqCVsg",
+    "title": "CHEST SUPPORTED DUMBBELL ROW | how-to, tips, benefits",
+    "creator": "That Fit Friend",
+    "sourceUrl": "https://www.youtube.com/watch?v=TXjeZsqCVsg",
+    "rationale": "Retain: exact incline bench and dumbbells, with chapters for technique, benefits and practical tips."
+  },
+  {
+    "exerciseId": "straight-arm-pulldown",
+    "videoId": "vJwAbr_pVVM",
+    "title": "How to PROPERLY Straight-Arm Lat Pulldown for Bigger Lats",
+    "creator": "Colossus Fitness",
+    "sourceUrl": "https://www.youtube.com/watch?v=vJwAbr_pVVM",
+    "rationale": "Dedicated cable tutorial with chaptered pelvic positioning, elbow bending errors and proper-form coaching."
+  },
+  {
+    "exerciseId": "db-curl",
+    "videoId": "Ot2QgK5K_Hg",
+    "title": "5 Dumbest Dumbbell Bicep Curl Mistakes Sabotaging Your Bicep Growth! | STOP DOING THESE!",
+    "creator": "ScottHermanFitness",
+    "sourceUrl": "https://www.youtube.com/watch?v=Ot2QgK5K_Hg",
+    "rationale": "Exact dumbbell supinated curl and multiple technique corrections replace a brief demonstration."
+  },
+  {
+    "exerciseId": "hammer-curl",
+    "videoId": "rbOhYRsd9Ak",
+    "title": "5 Dumbest Hammer Curl Mistakes Sabotaging Your ARM GROWTH! STOP DOING THESE!",
+    "creator": "ScottHermanFitness",
+    "sourceUrl": "https://www.youtube.com/watch?v=rbOhYRsd9Ak",
+    "rationale": "Exact dumbbell neutral-grip curl with focused error correction rather than general arm training."
+  },
+  {
+    "exerciseId": "cable-curl",
+    "videoId": "16aEi1a68E0",
+    "title": "How to Do the Cable Biceps Curl With Perfect Form | Form Check | Men’s Health Muscle",
+    "creator": "Men's Health Muscle",
+    "sourceUrl": "https://www.youtube.com/watch?v=16aEi1a68E0",
+    "rationale": "Focused coached cable-curl episode with setup, execution and programming. Publisher describes a single-handle variation; retain attachment note.",
+    "note": "Demonstrates a single-arm cable curl. Use the attachment and arm position prescribed in your plan."
+  },
+  {
+    "exerciseId": "preacher-curl",
+    "videoId": "R-8Sa0_qiws",
+    "title": "How to PROPERLY Do The Machine Preacher Curl (LEARN FAST) | Eb & Swole | Men’s Health Muscle",
+    "creator": "Men's Health Muscle",
+    "sourceUrl": "https://www.youtube.com/watch?v=R-8Sa0_qiws",
+    "rationale": "Exact machine exercise in a substantial coached episode, replacing the short Ryan Jewers technique clip."
+  },
+  {
+    "exerciseId": "triceps-pushdown",
+    "videoId": "Do8_ihxoK00",
+    "title": "3 Triceps Pushdown Mistakes Everyone Makes | FIX NOW!",
+    "creator": "ScottHermanFitness",
+    "sourceUrl": "https://www.youtube.com/watch?v=Do8_ihxoK00",
+    "rationale": "Cable pushdown-specific error correction with rope and bar context, replacing the two-minute clip."
+  },
+  {
+    "exerciseId": "overhead-triceps",
+    "videoId": "dVtMz69MOb0",
+    "title": "How To Do Overhead Cable Extensions (INCREDIBLE TRICEPS BUILDER!)",
+    "creator": "Geoffrey Verity Schofield",
+    "sourceUrl": "https://www.youtube.com/watch?v=dVtMz69MOb0",
+    "rationale": "Retain: description explicitly covers execution, common errors, sets and programming for the exact overhead cable movement."
+  },
+  {
+    "exerciseId": "neutral-grip-lat-pulldown",
+    "videoId": "KgZqDuNx7rI",
+    "title": "The BEST way to Perform the Neutral Grip Lat Pulldown | Form Tutorial",
+    "creator": "Physique Development",
+    "sourceUrl": "https://www.youtube.com/watch?v=KgZqDuNx7rI",
+    "rationale": "Retain: exceptionally well-matched coached tutorial chaptered into range of motion, grip, machine setup, technique and mistakes."
+  },
+  {
+    "exerciseId": "machine-row",
+    "videoId": "6eBwGki2JuU",
+    "title": "Exercise Scientist's Top 5 Back Exercises",
+    "creator": "Renaissance Periodization",
+    "sourceUrl": "https://www.youtube.com/watch?v=6eBwGki2JuU",
+    "rationale": "Machine-row instruction is an explicitly chaptered 3m23s segment (9:37–13:00) within the longer episode; start directly at the relevant exercise.",
+    "note": "Machine-row coaching starts at 9:37 and runs to 13:00. Adjust the seat and handles for your machine.",
+    "startSeconds": 577,
+    "endSeconds": 780
+  },
+  {
+    "exerciseId": "smith-jm-press",
+    "videoId": "RO5KcSbYXho",
+    "title": "The 2 BEST JM Presses For Triceps",
+    "creator": "Alex Leonidas",
+    "sourceUrl": "https://www.youtube.com/watch?v=RO5KcSbYXho",
+    "rationale": "Exact Smith-machine JM press chapter runs 0:44–6:15, providing a substantial dedicated segment before the separate SSB variant.",
+    "note": "Smith-machine JM press coaching starts at 0:44 and runs to 6:15.",
+    "startSeconds": 44,
+    "endSeconds": 375
+  },
+  {
+    "exerciseId": "leg-press",
+    "videoId": "-Nw8EWUrJuQ",
+    "title": "Leg Press 101: How to, Tips, & Tricks w/ Steve Kuclo",
+    "creator": "Muscle & Strength",
+    "sourceUrl": "https://www.youtube.com/watch?v=-Nw8EWUrJuQ",
+    "rationale": "Retain after review: a 4:01 dedicated leg-press guide. The creator's companion article documents seat adjustment, foot placement, bracing and controlling depth."
+  },
+  {
+    "exerciseId": "squat",
+    "videoId": "8PMjqgR8Wa8",
+    "title": "How to Barbell Back Squat | A Tutorial for Beginners",
+    "creator": "Barbell Rehab",
+    "sourceUrl": "https://www.youtube.com/watch?v=8PMjqgR8Wa8",
+    "rationale": "Retain after review: focused 3:55 beginner barbell back-squat tutorial, exact movement and suitable length."
+  },
+  {
+    "exerciseId": "goblet-squat",
+    "videoId": "9KzZD_n2r64",
+    "title": "How to Goblet Squat - The Complete Guide for Beginners",
+    "creator": "Naomi Kong",
+    "sourceUrl": "https://www.youtube.com/watch?v=9KzZD_n2r64",
+    "rationale": "Retain after review: 8:28 dedicated guide. Creator description explicitly covers form, breathing, weight choice and mistakes, with form at 1:06 and mistakes at 5:28."
+  },
+  {
+    "exerciseId": "hack-squat",
+    "videoId": "4cxt_Tldugw",
+    "title": "9 Hack Squat Mistakes and How to Fix Them",
+    "creator": "Renaissance Periodization",
+    "sourceUrl": "https://www.youtube.com/watch?v=4cxt_Tldugw",
+    "rationale": "Replace brief exercise demo with a dedicated 18:47 coaching video covering nine hack-squat errors and fixes. Longer than target but exact machine and substantially more instructional."
+  },
+  {
+    "exerciseId": "rdl",
+    "videoId": "_oyxCn2iSjU",
+    "title": "HOW TO DO ROMANIAN DEADLIFTS (RDLs): Build Beefy Hamstrings With Perfect Technique",
+    "creator": "Jeff Nippard",
+    "sourceUrl": "https://www.youtube.com/watch?v=_oyxCn2iSjU",
+    "rationale": "Replace 2-minute clip with a 6:21 Technique Tuesday installment devoted to the Romanian deadlift and technique mistakes."
+  },
+  {
+    "exerciseId": "db-rdl",
+    "videoId": "2JWazArW0zw",
+    "title": "Dumbbell RDL Exercise Tutorial",
+    "creator": "Eric Roberts",
+    "rationale": "Exact dumbbell tutorial; the creator describes six minutes of execution, common mistakes and corrections.",
+    "sourceUrl": "https://www.youtube.com/watch?v=2JWazArW0zw"
+  },
+  {
+    "exerciseId": "bulgarian-split-squat",
+    "videoId": "-4LVK1crLSw",
+    "title": "The ULTIMATE Bulgarian Split Squat Tutorial",
+    "creator": "Squat University",
+    "sourceUrl": "https://www.youtube.com/watch?v=-4LVK1crLSw",
+    "rationale": "Replace 51-second clip with an 8:18 tutorial dedicated to the rear-foot-elevated split squat."
+  },
+  {
+    "exerciseId": "leg-extension",
+    "videoId": "yiEDToHWs2E",
+    "title": "Exercise Index - Leg Extension",
+    "creator": "mountaindog1",
+    "sourceUrl": "https://www.youtube.com/watch?v=yiEDToHWs2E",
+    "rationale": "Replace short machine clip with John Meadows' 5:26 dedicated leg-extension installment. His companion site identifies it as a how-to guide."
+  },
+  {
+    "exerciseId": "seated-leg-curl",
+    "videoId": "Wy1SwoY2aaQ",
+    "title": "How to PROPERLY Seated Hamstring Curl (FIX THIS NOW)",
+    "creator": "Colossus Fitness",
+    "rationale": "Dedicated seated hamstring curl tutorial covering three common mistakes, three execution tips and proper form.",
+    "sourceUrl": "https://www.youtube.com/watch?v=Wy1SwoY2aaQ"
+  },
+  {
+    "exerciseId": "hip-thrust",
+    "videoId": "jQkKeL4Cg8M",
+    "title": "HOW TO HIP THRUST | 2024 Complete Beginner's Guide",
+    "creator": "Naomi Kong",
+    "sourceUrl": "https://www.youtube.com/watch?v=jQkKeL4Cg8M",
+    "rationale": "Replace brief demonstration with 8:48 guide explicitly covering barbell setup, form, breathing, mistakes and EZ-bar setup."
+  },
+  {
+    "exerciseId": "calf-raise",
+    "videoId": "Xa18jxyeSnM",
+    "title": "8 Calf Raise Mistakes and How to Fix Them",
+    "creator": "Renaissance Periodization",
+    "sourceUrl": "https://www.youtube.com/watch?v=Xa18jxyeSnM",
+    "rationale": "Replace short standing-machine demo with a 9:24 dedicated calf-raise coaching video on errors and corrections."
+  },
+  {
+    "exerciseId": "cable-crunch",
+    "videoId": "aBd6T01PBqw",
+    "title": "How to PROPERLY Perform A Cable Crunch to Shape Your Abs (Kneeling Cable Abdominal Crunch)",
+    "creator": "Colossus Fitness",
+    "sourceUrl": "https://www.youtube.com/watch?v=aBd6T01PBqw",
+    "rationale": "Retain after review: 5:17 tutorial devoted to kneeling cable-crunch execution and common mistakes."
+  },
+  {
+    "exerciseId": "hanging-knee-raise",
+    "videoId": "QyVq5oUBpss",
+    "title": "The WORST Ab Training MISTAKES | Leg Raises",
+    "creator": "FitnessFAQs",
+    "sourceUrl": "https://www.youtube.com/watch?v=QyVq5oUBpss",
+    "rationale": "Creator description explicitly states the lesson teaches incorrect and correct form for BOTH hanging leg and knee raises; stronger instruction than a brief knee-raise demo.",
+    "note": "Covers knee raises and straight-leg progressions; use the bent-knee variation in your plan."
+  },
+  {
+    "exerciseId": "lying-leg-curl",
+    "videoId": "jobEeklwrrs",
+    "title": "9 Leg Curl Mistakes and How to Fix Them",
+    "creator": "Renaissance Periodization",
+    "sourceUrl": "https://www.youtube.com/watch?v=jobEeklwrrs",
+    "rationale": "Dedicated leg-curl error-correction lesson; source description says this series examines one exercise at a time. Search evidence associates the video with the lying-machine curl."
+  }
+]

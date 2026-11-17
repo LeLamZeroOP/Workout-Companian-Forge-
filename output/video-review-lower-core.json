@@ -1,0 +1,115 @@
+[
+  {
+    "exerciseId": "leg-press",
+    "videoId": "-Nw8EWUrJuQ",
+    "title": "Leg Press 101: How to, Tips, & Tricks w/ Steve Kuclo",
+    "creator": "Muscle & Strength",
+    "sourceUrl": "https://www.youtube.com/watch?v=-Nw8EWUrJuQ",
+    "rationale": "Retain after review: a 4:01 dedicated leg-press guide. The creator's companion article documents seat adjustment, foot placement, bracing and controlling depth."
+  },
+  {
+    "exerciseId": "squat",
+    "videoId": "8PMjqgR8Wa8",
+    "title": "How to Barbell Back Squat | A Tutorial for Beginners",
+    "creator": "Barbell Rehab",
+    "sourceUrl": "https://www.youtube.com/watch?v=8PMjqgR8Wa8",
+    "rationale": "Retain after review: focused 3:55 beginner barbell back-squat tutorial, exact movement and suitable length."
+  },
+  {
+    "exerciseId": "goblet-squat",
+    "videoId": "9KzZD_n2r64",
+    "title": "How to Goblet Squat - The Complete Guide for Beginners",
+    "creator": "Naomi Kong",
+    "sourceUrl": "https://www.youtube.com/watch?v=9KzZD_n2r64",
+    "rationale": "Retain after review: 8:28 dedicated guide. Creator description explicitly covers form, breathing, weight choice and mistakes, with form at 1:06 and mistakes at 5:28."
+  },
+  {
+    "exerciseId": "hack-squat",
+    "videoId": "4cxt_Tldugw",
+    "title": "9 Hack Squat Mistakes and How to Fix Them",
+    "creator": "Renaissance Periodization",
+    "sourceUrl": "https://www.youtube.com/watch?v=4cxt_Tldugw",
+    "rationale": "Replace brief exercise demo with a dedicated 18:47 coaching video covering nine hack-squat errors and fixes. Longer than target but exact machine and substantially more instructional."
+  },
+  {
+    "exerciseId": "rdl",
+    "videoId": "_oyxCn2iSjU",
+    "title": "HOW TO DO ROMANIAN DEADLIFTS (RDLs): Build Beefy Hamstrings With Perfect Technique",
+    "creator": "Jeff Nippard",
+    "sourceUrl": "https://www.youtube.com/watch?v=_oyxCn2iSjU",
+    "rationale": "Replace 2-minute clip with a 6:21 Technique Tuesday installment devoted to the Romanian deadlift and technique mistakes."
+  },
+  {
+    "exerciseId": "db-rdl",
+    "videoId": "2JWazArW0zw",
+    "title": "Dumbbell RDL Exercise Tutorial",
+    "creator": "Eric Roberts",
+    "sourceUrl": "https://www.youtube.com/watch?v=2JWazArW0zw",
+    "rationale": "Replace the 116-second provisional selection with an exact dumbbell RDL lesson. The creator describes a six-minute English guide covering execution, common mistakes and corrections; parent playback/runtime validation pending."
+  },
+  {
+    "exerciseId": "bulgarian-split-squat",
+    "videoId": "-4LVK1crLSw",
+    "title": "The ULTIMATE Bulgarian Split Squat Tutorial",
+    "creator": "Squat University",
+    "sourceUrl": "https://www.youtube.com/watch?v=-4LVK1crLSw",
+    "rationale": "Replace 51-second clip with an 8:18 tutorial dedicated to the rear-foot-elevated split squat."
+  },
+  {
+    "exerciseId": "leg-extension",
+    "videoId": "yiEDToHWs2E",
+    "title": "Exercise Index - Leg Extension",
+    "creator": "mountaindog1",
+    "sourceUrl": "https://www.youtube.com/watch?v=yiEDToHWs2E",
+    "rationale": "Replace short machine clip with John Meadows' 5:26 dedicated leg-extension installment. His companion site identifies it as a how-to guide."
+  },
+  {
+    "exerciseId": "seated-leg-curl",
+    "videoId": "Wy1SwoY2aaQ",
+    "title": "How to PROPERLY Seated Hamstring Curl (FIX THIS NOW)",
+    "creator": "Colossus Fitness",
+    "sourceUrl": "https://www.youtube.com/watch?v=Wy1SwoY2aaQ",
+    "rationale": "Replace the rejected portrait 60-second candidate with a dedicated seated-machine curl coaching lesson. Creator description explicitly covers three mistakes, three tips and correct execution; parent playback/runtime validation pending."
+  },
+  {
+    "exerciseId": "hip-thrust",
+    "videoId": "jQkKeL4Cg8M",
+    "title": "HOW TO HIP THRUST | 2024 Complete Beginner's Guide",
+    "creator": "Naomi Kong",
+    "sourceUrl": "https://www.youtube.com/watch?v=jQkKeL4Cg8M",
+    "rationale": "Replace brief demonstration with 8:48 guide explicitly covering barbell setup, form, breathing, mistakes and EZ-bar setup."
+  },
+  {
+    "exerciseId": "calf-raise",
+    "videoId": "Xa18jxyeSnM",
+    "title": "8 Calf Raise Mistakes and How to Fix Them",
+    "creator": "Renaissance Periodization",
+    "sourceUrl": "https://www.youtube.com/watch?v=Xa18jxyeSnM",
+    "rationale": "Replace short standing-machine demo with a 9:24 dedicated calf-raise coaching video on errors and corrections."
+  },
+  {
+    "exerciseId": "cable-crunch",
+    "videoId": "aBd6T01PBqw",
+    "title": "How to PROPERLY Perform A Cable Crunch to Shape Your Abs (Kneeling Cable Abdominal Crunch)",
+    "creator": "Colossus Fitness",
+    "sourceUrl": "https://www.youtube.com/watch?v=aBd6T01PBqw",
+    "rationale": "Retain after review: 5:17 tutorial devoted to kneeling cable-crunch execution and common mistakes."
+  },
+  {
+    "exerciseId": "hanging-knee-raise",
+    "videoId": "QyVq5oUBpss",
+    "title": "The WORST Ab Training MISTAKES | Leg Raises",
+    "creator": "FitnessFAQs",
+    "sourceUrl": "https://www.youtube.com/watch?v=QyVq5oUBpss",
+    "rationale": "Creator description explicitly states the lesson teaches incorrect and correct form for BOTH hanging leg and knee raises; stronger instruction than a brief knee-raise demo.",
+    "note": "Covers knee raises and straight-leg progressions; use the bent-knee variation in your plan."
+  },
+  {
+    "exerciseId": "lying-leg-curl",
+    "videoId": "jobEeklwrrs",
+    "title": "9 Leg Curl Mistakes and How to Fix Them",
+    "creator": "Renaissance Periodization",
+    "sourceUrl": "https://www.youtube.com/watch?v=jobEeklwrrs",
+    "rationale": "Dedicated leg-curl error-correction lesson; source description says this series examines one exercise at a time. Search evidence associates the video with the lying-machine curl."
+  }
+]

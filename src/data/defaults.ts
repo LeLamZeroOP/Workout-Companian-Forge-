@@ -1,12 +1,9 @@
+import { commonExercises } from '../domain/exerciseCatalog';
 import type { AppDataV1, AppDataV2 } from '../domain/models';
 
 const seed: AppDataV1 = {
   version: 1,
-  exercises: [
-    { id: 'db-chest-press', name: 'Dumbbell Chest Press', equipment: 'dumbbell', muscleContribution: { chest: 1, triceps: 0.5, frontDelts: 0.5 }, isCustom: false },
-    { id: 'lat-pulldown', name: 'Lat Pulldown', equipment: 'cable', muscleContribution: { lats: 1, biceps: 0.5, upperBack: 0.25 }, isCustom: false },
-    { id: 'leg-press', name: 'Leg Press', equipment: 'machine', muscleContribution: { quads: 1, glutes: 0.5, hamstrings: 0.25 }, isCustom: false },
-  ],
+  exercises: commonExercises,
   programs: [{
     id: 'starter-program', name: 'Starter Strength', notes: 'A simple three-day foundation.',
     createdAt: '2026-01-01T00:00:00.000Z', updatedAt: '2026-01-01T00:00:00.000Z',
@@ -25,5 +22,5 @@ export function createDefaultDataV1(): AppDataV1 {
 }
 
 export function createDefaultData(): AppDataV2 {
-  return { ...createDefaultDataV1(), version: 2, body: { profile: null, measurements: [] }, nutrition: { targets: [], customFoods: [], diary: [] } };
+  return { ...createDefaultDataV1(), version: 4, body: { profile: null, measurements: [] }, nutrition: { targets: [], customFoods: [], diary: [] } };
 }

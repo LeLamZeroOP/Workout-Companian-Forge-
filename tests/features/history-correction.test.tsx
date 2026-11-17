@@ -1,0 +1,21 @@
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { HistoryPage } from '../../src/features/history/HistoryPage';
+import { createDefaultData } from '../../src/data/defaults';
+import { createSession } from '../../src/domain/workout';
+it('searches history and deliberately corrects a snapshot without changing its identity', async () => {
+  const data = createDefaultData(); const session = createSession(data.programs[0]!, data.programs[0]!.workouts[0]!, data.exercises, '2026-09-23T09:00:00Z');
+  session.completedAt = '2026-09-23T10:00:00Z'; const exercise = session.exercises[0]!; Object.assign(exercise.sets[0]!, { completed: true, weightKg: 30, reps: 10 });
+  const save = vi.fn(); const user = userEvent.setup();
+  render(<HistoryPage sessions={[session]} onSave={save} />);
+  await user.type(screen.getByLabelText('Search history'), 'does not exist'); expect(screen.getByText('No sessions match these filters.')).toBeInTheDocument();
+  await user.clear(screen.getByLabelText('Search history'));
+  await user.click(screen.getByRole('button', { name: `Open ${session.workoutName} from ${session.programName}` }));
+  await user.click(screen.getByRole('button', { name: 'Correct recorded sets' }));
+  const weight = screen.getByLabelText(`${exercise.exerciseName} set 1 weight`); await user.clear(weight); await user.type(weight, '35');
+  expect(save).not.toHaveBeenCalled(); expect(screen.getByText(/350 kg volume/)).toBeInTheDocument();
+  await user.click(screen.getByRole('button', { name: 'Save corrections' }));
+  expect(save.mock.calls[0]![0].id).toBe(session.id);
+  expect(save.mock.calls[0]![0].exercises[0].sets[0].weightKg).toBe(35);
+  expect(session.exercises[0]!.sets[0]!.weightKg).toBe(30);
+});

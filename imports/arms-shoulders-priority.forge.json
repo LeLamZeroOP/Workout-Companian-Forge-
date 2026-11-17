@@ -1,0 +1,662 @@
+{
+  "version": 4,
+  "exercises": [
+    {
+      "id": "arms-shoulders-20261016-machine-shoulder-press",
+      "name": "Machine Shoulder Press",
+      "equipment": "machine",
+      "muscleContribution": {
+        "frontDelts": 1,
+        "sideDelts": 0.5,
+        "triceps": 0.5
+      },
+      "isCustom": false,
+      "muscleRoles": {
+        "direct": [
+          "frontDelts"
+        ],
+        "indirect": [
+          "sideDelts",
+          "triceps"
+        ],
+        "reviewedAt": "2026-09-30",
+        "source": "forge-reviewed"
+      }
+    },
+    {
+      "id": "arms-shoulders-20261016-smith-incline-press",
+      "name": "Smith Machine Incline Press",
+      "equipment": "machine",
+      "muscleContribution": {
+        "chest": 1,
+        "frontDelts": 0.5,
+        "triceps": 0.5
+      },
+      "isCustom": false,
+      "muscleRoles": {
+        "direct": [
+          "chest"
+        ],
+        "indirect": [
+          "frontDelts",
+          "triceps"
+        ],
+        "reviewedAt": "2026-09-30",
+        "source": "forge-reviewed"
+      },
+      "chestEmphasis": "upper",
+      "setupNotes": "Record bench angle and Smith machine load convention."
+    },
+    {
+      "id": "arms-shoulders-20261016-cable-lateral-raise",
+      "name": "Cable Lateral Raise",
+      "equipment": "cable",
+      "muscleContribution": {
+        "sideDelts": 1
+      },
+      "isCustom": false,
+      "muscleRoles": {
+        "direct": [
+          "sideDelts"
+        ],
+        "indirect": [],
+        "reviewedAt": "2026-09-30",
+        "source": "forge-reviewed"
+      }
+    },
+    {
+      "id": "arms-shoulders-20261016-overhead-triceps",
+      "name": "Overhead Cable Triceps Extension",
+      "equipment": "cable",
+      "muscleContribution": {
+        "triceps": 1
+      },
+      "isCustom": false,
+      "muscleRoles": {
+        "direct": [
+          "triceps"
+        ],
+        "indirect": [],
+        "reviewedAt": "2026-09-30",
+        "source": "forge-reviewed"
+      }
+    },
+    {
+      "id": "arms-shoulders-20261016-leg-press",
+      "name": "Leg Press",
+      "equipment": "machine",
+      "muscleContribution": {
+        "quads": 1,
+        "glutes": 0.5,
+        "hamstrings": 0.25
+      },
+      "isCustom": false,
+      "muscleRoles": {
+        "direct": [
+          "quads"
+        ],
+        "indirect": [
+          "glutes"
+        ],
+        "reviewedAt": "2026-09-30",
+        "source": "forge-reviewed"
+      }
+    },
+    {
+      "id": "arms-shoulders-20261016-cable-crunch",
+      "name": "Cable Crunch",
+      "equipment": "cable",
+      "muscleContribution": {
+        "abs": 1
+      },
+      "isCustom": false,
+      "muscleRoles": {
+        "direct": [
+          "abs"
+        ],
+        "indirect": [],
+        "reviewedAt": "2026-09-30",
+        "source": "forge-reviewed"
+      }
+    },
+    {
+      "id": "arms-shoulders-20261016-neutral-grip-lat-pulldown",
+      "name": "Neutral-grip Lat Pulldown",
+      "equipment": "cable",
+      "muscleContribution": {
+        "lats": 1,
+        "biceps": 0.5,
+        "upperBack": 0.25
+      },
+      "isCustom": false,
+      "muscleRoles": {
+        "direct": [
+          "lats"
+        ],
+        "indirect": [
+          "biceps",
+          "upperBack"
+        ],
+        "reviewedAt": "2026-09-30",
+        "source": "forge-reviewed"
+      }
+    },
+    {
+      "id": "arms-shoulders-20261016-chest-supported-row",
+      "name": "Chest-supported Dumbbell Row",
+      "equipment": "dumbbell",
+      "muscleContribution": {
+        "upperBack": 1,
+        "lats": 0.5,
+        "biceps": 0.5
+      },
+      "isCustom": false,
+      "muscleRoles": {
+        "direct": [
+          "upperBack"
+        ],
+        "indirect": [
+          "lats",
+          "biceps"
+        ],
+        "reviewedAt": "2026-09-30",
+        "source": "forge-reviewed"
+      }
+    },
+    {
+      "id": "arms-shoulders-20261016-rdl",
+      "name": "Romanian Deadlift",
+      "equipment": "barbell",
+      "muscleContribution": {
+        "hamstrings": 1,
+        "glutes": 0.75
+      },
+      "isCustom": false,
+      "muscleRoles": {
+        "direct": [
+          "hamstrings"
+        ],
+        "indirect": [
+          "glutes"
+        ],
+        "reviewedAt": "2026-09-30",
+        "source": "forge-reviewed"
+      }
+    },
+    {
+      "id": "arms-shoulders-20261016-lying-leg-curl",
+      "name": "Lying Leg Curl",
+      "equipment": "machine",
+      "muscleContribution": {
+        "hamstrings": 1
+      },
+      "isCustom": false,
+      "muscleRoles": {
+        "direct": [
+          "hamstrings"
+        ],
+        "indirect": [],
+        "reviewedAt": "2026-09-30",
+        "source": "forge-reviewed"
+      }
+    },
+    {
+      "id": "arms-shoulders-20261016-reverse-pec-deck",
+      "name": "Reverse Pec Deck",
+      "equipment": "machine",
+      "muscleContribution": {
+        "rearDelts": 1,
+        "upperBack": 0.5
+      },
+      "isCustom": false,
+      "muscleRoles": {
+        "direct": [
+          "rearDelts"
+        ],
+        "indirect": [
+          "upperBack"
+        ],
+        "reviewedAt": "2026-09-30",
+        "source": "forge-reviewed"
+      }
+    },
+    {
+      "id": "arms-shoulders-20261016-preacher-curl",
+      "name": "Machine Preacher Curl",
+      "equipment": "machine",
+      "muscleContribution": {
+        "biceps": 1
+      },
+      "isCustom": false,
+      "muscleRoles": {
+        "direct": [
+          "biceps"
+        ],
+        "indirect": [],
+        "reviewedAt": "2026-09-30",
+        "source": "forge-reviewed"
+      }
+    },
+    {
+      "id": "arms-shoulders-20261016-triceps-pushdown",
+      "name": "Triceps Pushdown",
+      "equipment": "cable",
+      "muscleContribution": {
+        "triceps": 1
+      },
+      "isCustom": false,
+      "muscleRoles": {
+        "direct": [
+          "triceps"
+        ],
+        "indirect": [],
+        "reviewedAt": "2026-09-30",
+        "source": "forge-reviewed"
+      }
+    },
+    {
+      "id": "arms-shoulders-20261016-cable-curl",
+      "name": "Cable Curl",
+      "equipment": "cable",
+      "muscleContribution": {
+        "biceps": 1
+      },
+      "isCustom": false,
+      "muscleRoles": {
+        "direct": [
+          "biceps"
+        ],
+        "indirect": [],
+        "reviewedAt": "2026-09-30",
+        "source": "forge-reviewed"
+      }
+    },
+    {
+      "id": "arms-shoulders-20261016-machine-chest-press",
+      "name": "Machine Chest Press",
+      "equipment": "machine",
+      "muscleContribution": {
+        "chest": 1,
+        "triceps": 0.5,
+        "frontDelts": 0.25
+      },
+      "isCustom": false,
+      "muscleRoles": {
+        "direct": [
+          "chest"
+        ],
+        "indirect": [
+          "triceps",
+          "frontDelts"
+        ],
+        "reviewedAt": "2026-09-30",
+        "source": "forge-reviewed"
+      },
+      "chestEmphasis": "mixed"
+    },
+    {
+      "id": "arms-shoulders-20261016-seated-cable-row",
+      "name": "Seated Cable Row",
+      "equipment": "cable",
+      "muscleContribution": {
+        "upperBack": 1,
+        "lats": 0.5,
+        "biceps": 0.5
+      },
+      "isCustom": false,
+      "muscleRoles": {
+        "direct": [
+          "upperBack"
+        ],
+        "indirect": [
+          "lats",
+          "biceps"
+        ],
+        "reviewedAt": "2026-09-30",
+        "source": "forge-reviewed"
+      }
+    },
+    {
+      "id": "arms-shoulders-20261016-calf-raise",
+      "name": "Standing Calf Raise",
+      "equipment": "machine",
+      "muscleContribution": {
+        "calves": 1
+      },
+      "isCustom": false,
+      "muscleRoles": {
+        "direct": [
+          "calves"
+        ],
+        "indirect": [],
+        "reviewedAt": "2026-09-30",
+        "source": "forge-reviewed"
+      }
+    },
+    {
+      "id": "arms-shoulders-20261016-incline-curl",
+      "name": "Incline Dumbbell Curl",
+      "equipment": "dumbbell",
+      "muscleContribution": {
+        "biceps": 1
+      },
+      "isCustom": true,
+      "muscleRoles": {
+        "direct": [
+          "biceps"
+        ],
+        "indirect": [],
+        "reviewedAt": "2026-10-16",
+        "source": "user"
+      },
+      "setupNotes": "Keep upper arms still; use a comfortable incline and controlled repetitions."
+    },
+    {
+      "id": "arms-shoulders-20261016-leg-raise",
+      "name": "Lying Leg Raise",
+      "equipment": "bodyweight",
+      "muscleContribution": {
+        "abs": 1
+      },
+      "isCustom": true,
+      "muscleRoles": {
+        "direct": [
+          "abs"
+        ],
+        "indirect": [],
+        "reviewedAt": "2026-10-16",
+        "source": "user"
+      },
+      "setupNotes": "Keep lower back controlled; raise legs and curl pelvis slightly without swinging. Bend knees if needed. Log 0 kg external load."
+    }
+  ],
+  "programs": [
+    {
+      "id": "arms-shoulders-20261016-program",
+      "name": "Arms & Shoulders Priority - Legs & Abs",
+      "createdAt": "2026-10-16T06:22:47.830Z",
+      "updatedAt": "2026-10-16T06:22:47.830Z",
+      "notes": "Intermediate recomp plan, 3 sessions weekly: Mon A / Wed B / Fri C, with rest days between. Arms and shoulders are the priority; lower-body volume is modest. Abs finish every workout: A cable crunch, B lying leg raise, C cable crunch, 2 sets each. 18 / 21 / 21 working sets. Aim for about 60 minutes using paired arm accessories; B and C may run longer depending on equipment and transitions. Warm up 5–8 minutes plus movement-specific preparation sets. Most sets: 1–2 reps in reserve. Progress when all sets reach the top of the range with clean form. Keep abs last. Review duration and recovery after 4–6 weeks. Muscle contributions are editable estimates.",
+      "workouts": [
+        {
+          "id": "arms-shoulders-20261016-workout-0",
+          "name": "A - Shoulders First + Legs & Abs",
+          "notes": "Pair incline curls with overhead triceps extensions: alternate the exercises, then rest 60–90 seconds after the pair. Keep abs last; do not pair crunches with earlier exercises. Warm-up sets are additional. Keep 1–2 good reps in reserve. When all working sets reach the top of the rep range with clean form, increase the load by the smallest available increment.",
+          "exercises": [
+            {
+              "id": "arms-shoulders-20261016-w0-e0",
+              "exerciseId": "arms-shoulders-20261016-machine-shoulder-press",
+              "targetSets": 2,
+              "targetRepMin": 6,
+              "targetRepMax": 10,
+              "restSeconds": 150,
+              "notes": ""
+            },
+            {
+              "id": "arms-shoulders-20261016-w0-e1",
+              "exerciseId": "arms-shoulders-20261016-smith-incline-press",
+              "targetSets": 3,
+              "targetRepMin": 8,
+              "targetRepMax": 12,
+              "restSeconds": 150,
+              "notes": "Use a comfortable incline around 15–30 degrees; record bench angle and load convention."
+            },
+            {
+              "id": "arms-shoulders-20261016-w0-e2",
+              "exerciseId": "arms-shoulders-20261016-cable-lateral-raise",
+              "targetSets": 3,
+              "targetRepMin": 12,
+              "targetRepMax": 20,
+              "restSeconds": 75,
+              "notes": "Use controlled reps; if performed one arm at a time, complete both sides for each set."
+            },
+            {
+              "id": "arms-shoulders-20261016-w0-e3",
+              "exerciseId": "arms-shoulders-20261016-incline-curl",
+              "targetSets": 3,
+              "targetRepMin": 8,
+              "targetRepMax": 12,
+              "restSeconds": 90,
+              "notes": ""
+            },
+            {
+              "id": "arms-shoulders-20261016-w0-e4",
+              "exerciseId": "arms-shoulders-20261016-overhead-triceps",
+              "targetSets": 3,
+              "targetRepMin": 10,
+              "targetRepMax": 15,
+              "restSeconds": 90,
+              "notes": ""
+            },
+            {
+              "id": "arms-shoulders-20261016-w0-e5",
+              "exerciseId": "arms-shoulders-20261016-leg-press",
+              "targetSets": 2,
+              "targetRepMin": 8,
+              "targetRepMax": 12,
+              "restSeconds": 150,
+              "notes": ""
+            },
+            {
+              "id": "arms-shoulders-20261016-w0-e6",
+              "exerciseId": "arms-shoulders-20261016-cable-crunch",
+              "targetSets": 2,
+              "targetRepMin": 10,
+              "targetRepMax": 15,
+              "restSeconds": 75,
+              "notes": "Final exercise: 2 working sets. Rest 60–90 seconds. Keep 1–2 clean reps in reserve. Curl ribs toward pelvis; avoid pulling only with the arms."
+            }
+          ]
+        },
+        {
+          "id": "arms-shoulders-20261016-workout-1",
+          "name": "B - Back & Arms + Posterior Legs & Abs",
+          "notes": "Pair the first 2 preacher curl sets with pushdowns; complete the third curl set separately. Perform RDLs as normal separate sets. Finish with lying leg raises; bend knees if needed to maintain control. Warm-up sets are additional. Keep 1–2 good reps in reserve. When all working sets reach the top of the rep range with clean form, increase the load by the smallest available increment.",
+          "exercises": [
+            {
+              "id": "arms-shoulders-20261016-w1-e0",
+              "exerciseId": "arms-shoulders-20261016-neutral-grip-lat-pulldown",
+              "targetSets": 3,
+              "targetRepMin": 8,
+              "targetRepMax": 12,
+              "restSeconds": 150,
+              "notes": ""
+            },
+            {
+              "id": "arms-shoulders-20261016-w1-e1",
+              "exerciseId": "arms-shoulders-20261016-chest-supported-row",
+              "targetSets": 3,
+              "targetRepMin": 8,
+              "targetRepMax": 12,
+              "restSeconds": 150,
+              "notes": ""
+            },
+            {
+              "id": "arms-shoulders-20261016-w1-e2",
+              "exerciseId": "arms-shoulders-20261016-rdl",
+              "targetSets": 2,
+              "targetRepMin": 6,
+              "targetRepMax": 10,
+              "restSeconds": 180,
+              "notes": ""
+            },
+            {
+              "id": "arms-shoulders-20261016-w1-e3",
+              "exerciseId": "arms-shoulders-20261016-lying-leg-curl",
+              "targetSets": 2,
+              "targetRepMin": 10,
+              "targetRepMax": 15,
+              "restSeconds": 90,
+              "notes": ""
+            },
+            {
+              "id": "arms-shoulders-20261016-w1-e4",
+              "exerciseId": "arms-shoulders-20261016-reverse-pec-deck",
+              "targetSets": 2,
+              "targetRepMin": 12,
+              "targetRepMax": 20,
+              "restSeconds": 75,
+              "notes": ""
+            },
+            {
+              "id": "arms-shoulders-20261016-w1-e5",
+              "exerciseId": "arms-shoulders-20261016-cable-lateral-raise",
+              "targetSets": 2,
+              "targetRepMin": 12,
+              "targetRepMax": 20,
+              "restSeconds": 75,
+              "notes": "Use controlled reps; if performed one arm at a time, complete both sides for each set."
+            },
+            {
+              "id": "arms-shoulders-20261016-w1-e6",
+              "exerciseId": "arms-shoulders-20261016-preacher-curl",
+              "targetSets": 3,
+              "targetRepMin": 10,
+              "targetRepMax": 15,
+              "restSeconds": 90,
+              "notes": ""
+            },
+            {
+              "id": "arms-shoulders-20261016-w1-e7",
+              "exerciseId": "arms-shoulders-20261016-triceps-pushdown",
+              "targetSets": 2,
+              "targetRepMin": 10,
+              "targetRepMax": 15,
+              "restSeconds": 90,
+              "notes": ""
+            },
+            {
+              "id": "arms-shoulders-20261016-w1-e8",
+              "exerciseId": "arms-shoulders-20261016-leg-raise",
+              "targetSets": 2,
+              "targetRepMin": 10,
+              "targetRepMax": 20,
+              "restSeconds": 75,
+              "notes": "Final exercise: 2 working sets. Rest 60–90 seconds. Keep 1–2 clean reps in reserve. No swinging; control the pelvis and lower back. Record 0 kg external load."
+            }
+          ]
+        },
+        {
+          "id": "arms-shoulders-20261016-workout-2",
+          "name": "C - Side Delts & Arms First + Legs & Abs",
+          "notes": "Pair cable curls with the first 2 overhead triceps sets, then complete the remaining triceps set. Side delts and arms lead this session. Finish with cable crunches. Warm-up sets are additional. Keep 1–2 good reps in reserve. When all working sets reach the top of the rep range with clean form, increase the load by the smallest available increment.",
+          "exercises": [
+            {
+              "id": "arms-shoulders-20261016-w2-e0",
+              "exerciseId": "arms-shoulders-20261016-cable-lateral-raise",
+              "targetSets": 3,
+              "targetRepMin": 12,
+              "targetRepMax": 20,
+              "restSeconds": 75,
+              "notes": "Use controlled reps; if performed one arm at a time, complete both sides for each set."
+            },
+            {
+              "id": "arms-shoulders-20261016-w2-e1",
+              "exerciseId": "arms-shoulders-20261016-cable-curl",
+              "targetSets": 2,
+              "targetRepMin": 10,
+              "targetRepMax": 15,
+              "restSeconds": 90,
+              "notes": ""
+            },
+            {
+              "id": "arms-shoulders-20261016-w2-e2",
+              "exerciseId": "arms-shoulders-20261016-overhead-triceps",
+              "targetSets": 3,
+              "targetRepMin": 10,
+              "targetRepMax": 15,
+              "restSeconds": 90,
+              "notes": ""
+            },
+            {
+              "id": "arms-shoulders-20261016-w2-e3",
+              "exerciseId": "arms-shoulders-20261016-machine-chest-press",
+              "targetSets": 3,
+              "targetRepMin": 8,
+              "targetRepMax": 12,
+              "restSeconds": 150,
+              "notes": ""
+            },
+            {
+              "id": "arms-shoulders-20261016-w2-e4",
+              "exerciseId": "arms-shoulders-20261016-seated-cable-row",
+              "targetSets": 2,
+              "targetRepMin": 8,
+              "targetRepMax": 12,
+              "restSeconds": 150,
+              "notes": ""
+            },
+            {
+              "id": "arms-shoulders-20261016-w2-e5",
+              "exerciseId": "arms-shoulders-20261016-leg-press",
+              "targetSets": 2,
+              "targetRepMin": 10,
+              "targetRepMax": 15,
+              "restSeconds": 150,
+              "notes": ""
+            },
+            {
+              "id": "arms-shoulders-20261016-w2-e6",
+              "exerciseId": "arms-shoulders-20261016-reverse-pec-deck",
+              "targetSets": 2,
+              "targetRepMin": 12,
+              "targetRepMax": 20,
+              "restSeconds": 75,
+              "notes": ""
+            },
+            {
+              "id": "arms-shoulders-20261016-w2-e7",
+              "exerciseId": "arms-shoulders-20261016-calf-raise",
+              "targetSets": 2,
+              "targetRepMin": 10,
+              "targetRepMax": 20,
+              "restSeconds": 90,
+              "notes": ""
+            },
+            {
+              "id": "arms-shoulders-20261016-w2-e8",
+              "exerciseId": "arms-shoulders-20261016-cable-crunch",
+              "targetSets": 2,
+              "targetRepMin": 10,
+              "targetRepMax": 15,
+              "restSeconds": 75,
+              "notes": "Final exercise: 2 working sets. Rest 60–90 seconds. Keep 1–2 clean reps in reserve. Curl ribs toward pelvis; avoid pulling only with the arms."
+            }
+          ]
+        }
+      ],
+      "volumePlan": {
+        "goal": "hypertrophy",
+        "targets": [],
+        "cycle": {
+          "slots": [
+            "arms-shoulders-20261016-workout-0",
+            null,
+            "arms-shoulders-20261016-workout-1",
+            null,
+            "arms-shoulders-20261016-workout-2",
+            null,
+            null
+          ]
+        }
+      }
+    }
+  ],
+  "sessions": [],
+  "settings": {
+    "weightUnit": "kg",
+    "lastSelectedProgramId": null,
+    "restAlertSound": true,
+    "restAlertVibration": true,
+    "keepScreenAwake": true
+  },
+  "body": {
+    "profile": null,
+    "measurements": []
+  },
+  "nutrition": {
+    "targets": [],
+    "customFoods": [],
+    "diary": []
+  }
+}

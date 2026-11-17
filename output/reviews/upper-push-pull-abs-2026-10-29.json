@@ -1,0 +1,216 @@
+{
+  "name": "Upper Push Pull & Abs",
+  "extractedOn": "2026-10-29",
+  "source": "https://workout-companian-forge.vercel.app/#programs",
+  "format": "Review extract of visible saved prescriptions; not a Forge import backup.",
+  "goalShown": "Muscle growth",
+  "cycle": [
+    "A",
+    "Rest",
+    "B",
+    "Rest",
+    "C",
+    "Rest",
+    "Rest"
+  ],
+  "descriptionSchedule": "Mon A / Wed B / Fri C",
+  "workouts": [
+    {
+      "name": "A - Upper Body & Abs",
+      "notes": "Pair incline curls with overhead triceps extensions: alternate the exercises, then rest 60–90 seconds after the pair. Keep abs last; do not pair crunches with earlier exercises. Warm-up sets are additional. Keep 1–2 good reps in reserve. When all working sets reach the top of the rep range with clean form, increase the load by the smallest available increment.",
+      "exercises": [
+        {
+          "name": "Incline Smith Bench Press",
+          "sets": 3,
+          "repMin": 6,
+          "repMax": 10,
+          "restSeconds": 130,
+          "notes": ""
+        },
+        {
+          "name": "Lat Pulldown",
+          "sets": 3,
+          "repMin": 8,
+          "repMax": 12,
+          "restSeconds": 100,
+          "notes": "Use a comfortable incline around 15–30 degrees; record bench angle and load convention."
+        },
+        {
+          "name": "Seated Cable Row",
+          "sets": 2,
+          "repMin": 8,
+          "repMax": 12,
+          "restSeconds": 90,
+          "notes": "Use controlled reps; if performed one arm at a time, complete both sides for each set."
+        },
+        {
+          "name": "Machine Shoulder Press",
+          "sets": 2,
+          "repMin": 6,
+          "repMax": 10,
+          "restSeconds": 120,
+          "notes": ""
+        },
+        {
+          "name": "Cable Lateral Raise",
+          "sets": 3,
+          "repMin": 10,
+          "repMax": 15,
+          "restSeconds": 60,
+          "notes": ""
+        },
+        {
+          "name": "JM Press — Smith Machine",
+          "sets": 1,
+          "repMin": 6,
+          "repMax": 10,
+          "restSeconds": 90,
+          "notes": ""
+        },
+        {
+          "name": "Reverse Curl",
+          "sets": 2,
+          "repMin": 6,
+          "repMax": 10,
+          "restSeconds": 90,
+          "notes": "Final exercise: 2 working sets. Rest 60–90 seconds. Keep 1–2 clean reps in reserve. Curl ribs toward pelvis; avoid pulling only with the arms."
+        },
+        {
+          "name": "Crunch",
+          "sets": 3,
+          "repMin": 8,
+          "repMax": 12,
+          "restSeconds": 90,
+          "notes": ""
+        }
+      ],
+      "totalSets": 19
+    },
+    {
+      "name": "B - Push & Abs",
+      "notes": "Pair the first 2 preacher curl sets with pushdowns; complete the third curl set separately. Perform RDLs as normal separate sets. Finish with lying leg raises; bend knees if needed to maintain control. Warm-up sets are additional. Keep 1–2 good reps in reserve. When all working sets reach the top of the rep range with clean form, increase the load by the smallest available increment.",
+      "exercises": [
+        {
+          "name": "Dumbbell Chest Press",
+          "sets": 3,
+          "repMin": 6,
+          "repMax": 10,
+          "restSeconds": 120,
+          "notes": ""
+        },
+        {
+          "name": "Machine Shoulder Press",
+          "sets": 3,
+          "repMin": 8,
+          "repMax": 12,
+          "restSeconds": 120,
+          "notes": ""
+        },
+        {
+          "name": "Incline Smith Bench Press",
+          "sets": 2,
+          "repMin": 6,
+          "repMax": 10,
+          "restSeconds": 120,
+          "notes": ""
+        },
+        {
+          "name": "Cable Lateral Raise",
+          "sets": 4,
+          "repMin": 10,
+          "repMax": 15,
+          "restSeconds": 60,
+          "notes": ""
+        },
+        {
+          "name": "JM Press — Smith Machine",
+          "sets": 2,
+          "repMin": 6,
+          "repMax": 10,
+          "restSeconds": 90,
+          "notes": ""
+        },
+        {
+          "name": "Single-arm Triceps Pushdown",
+          "sets": 2,
+          "repMin": 8,
+          "repMax": 12,
+          "restSeconds": 60,
+          "notes": "Use controlled reps; if performed one arm at a time, complete both sides for each set."
+        },
+        {
+          "name": "Hanging Leg Raise",
+          "sets": 3,
+          "repMin": 8,
+          "repMax": 15,
+          "restSeconds": 75,
+          "notes": "Final exercise: 2 working sets. Rest 60–90 seconds. Keep 1–2 clean reps in reserve. No swinging; control the pelvis and lower back. Record 0 kg external load."
+        }
+      ],
+      "totalSets": 19
+    },
+    {
+      "name": "C - Pull & Abs",
+      "notes": "Pair cable curls with the first 2 overhead triceps sets, then complete the remaining triceps set. Side delts and arms lead this session. Finish with cable crunches. Warm-up sets are additional. Keep 1–2 good reps in reserve. When all working sets reach the top of the rep range with clean form, increase the load by the smallest available increment.",
+      "exercises": [
+        {
+          "name": "Lat Pulldown",
+          "sets": 3,
+          "repMin": 8,
+          "repMax": 12,
+          "restSeconds": 120,
+          "notes": "Use controlled reps; if performed one arm at a time, complete both sides for each set."
+        },
+        {
+          "name": "Seated Cable Row",
+          "sets": 3,
+          "repMin": 8,
+          "repMax": 12,
+          "restSeconds": 120,
+          "notes": ""
+        },
+        {
+          "name": "Single-arm Cable Row",
+          "sets": 3,
+          "repMin": 8,
+          "repMax": 12,
+          "restSeconds": 60,
+          "notes": ""
+        },
+        {
+          "name": "Reverse Pec Deck",
+          "sets": 3,
+          "repMin": 8,
+          "repMax": 12,
+          "restSeconds": 90,
+          "notes": ""
+        },
+        {
+          "name": "Hammer Curl",
+          "sets": 3,
+          "repMin": 8,
+          "repMax": 12,
+          "restSeconds": 120,
+          "notes": ""
+        },
+        {
+          "name": "Barbell Curl",
+          "sets": 2,
+          "repMin": 8,
+          "repMax": 12,
+          "restSeconds": 120,
+          "notes": ""
+        },
+        {
+          "name": "Crunch",
+          "sets": 3,
+          "repMin": 8,
+          "repMax": 12,
+          "restSeconds": 90,
+          "notes": ""
+        }
+      ],
+      "totalSets": 20
+    }
+  ]
+}

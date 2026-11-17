@@ -1,0 +1,215 @@
+[
+  {
+    "exerciseId": "db-chest-press",
+    "videoId": "t1iaVBMItPo",
+    "title": "Dumbbell Bench Press - Perfect Form Video Tutorial",
+    "creator": "Fit Father Project - Fitness For Busy Fathers",
+    "sourceUrl": "https://www.youtube.com/watch?v=t1iaVBMItPo",
+    "rationale": "Dedicated 4:27 technique lesson with accompanying creator-written setup, lowering, pressing and breathing instructions."
+  },
+  {
+    "exerciseId": "bench-press",
+    "videoId": "vcBig73ojpE",
+    "title": "How To Get A Huge Bench Press with Perfect Technique",
+    "creator": "Jeff Nippard",
+    "sourceUrl": "https://www.youtube.com/watch?v=vcBig73ojpE",
+    "rationale": "Detailed standalone barbell technique lesson covering setup, execution and common errors; longer than the preferred range but tightly focused."
+  },
+  {
+    "exerciseId": "incline-db-press",
+    "videoId": "0f6-uCUKqgA",
+    "title": "Incline Dumbbell Press BETTER | Targeting The Muscle Series",
+    "creator": "Renaissance Periodization",
+    "sourceUrl": "https://www.youtube.com/watch?v=0f6-uCUKqgA",
+    "rationale": "Dedicated 7:31 incline dumbbell teaching installment in the Targeting the Muscle series."
+  },
+  {
+    "exerciseId": "machine-chest-press",
+    "videoId": "gNBU7hmW2EU",
+    "title": "Chest Press Machine Tutorial | Beginner’s Guide to Gym Machines (Build Muscle & Strength)",
+    "creator": "Tim Bullici",
+    "sourceUrl": "https://www.youtube.com/watch?v=gNBU7hmW2EU",
+    "rationale": "Dedicated 3:06 machine tutorial from a sports and exercise science trained personal trainer."
+  },
+  {
+    "exerciseId": "cable-fly",
+    "videoId": "hrh0K1Oo7Yc",
+    "title": "How to PROPERLY Cable Chest Fly (FIX THIS NOW!)",
+    "creator": "Colossus Fitness",
+    "sourceUrl": "https://www.youtube.com/watch?v=hrh0K1Oo7Yc",
+    "rationale": "Dedicated 4:56 cable fly tutorial; description explicitly covers setup, execution, excess load, turning a fly into a press, elbow bend and shoulder takeover."
+  },
+  {
+    "exerciseId": "pec-deck",
+    "videoId": "H4mVGHaK2f4",
+    "title": "How to PERFECT The Pec Deck | (CHEST FLY MISTAKES & TIPS)",
+    "creator": "Colossus Fitness",
+    "sourceUrl": "https://www.youtube.com/watch?v=H4mVGHaK2f4",
+    "rationale": "Dedicated 3:03 pec deck instruction and mistakes lesson."
+  },
+  {
+    "exerciseId": "push-up",
+    "videoId": "IODxDxX7oi4",
+    "title": "The Perfect Push Up | Do it right!",
+    "creator": "Calisthenicmovement",
+    "sourceUrl": "https://www.youtube.com/watch?v=IODxDxX7oi4",
+    "rationale": "Focused 3:37 standard push-up tutorial from an established bodyweight coaching channel."
+  },
+  {
+    "exerciseId": "overhead-press",
+    "videoId": "_RlRDWO2jfg",
+    "title": "Build Bigger Shoulders With Perfect Training Technique (The Overhead Press)",
+    "creator": "Jeff Nippard",
+    "sourceUrl": "https://www.youtube.com/watch?v=_RlRDWO2jfg",
+    "rationale": "Dedicated 7:58 standing barbell overhead press technique lesson."
+  },
+  {
+    "exerciseId": "db-shoulder-press",
+    "videoId": "7C-btvC-UX4",
+    "title": "Dumbbell Shoulder press Complete Tutorial.",
+    "creator": "The Barbell path",
+    "sourceUrl": "https://www.youtube.com/watch?v=7C-btvC-UX4",
+    "rationale": "Dedicated 7:36 lesson with published chapters for bench angle, setup, elbows, wrist alignment and execution."
+  },
+  {
+    "exerciseId": "lateral-raise",
+    "videoId": "v_ZkxWzYnMc",
+    "title": "How To Build Capped Shoulders: Optimal Training Explained (Side Delts)",
+    "creator": "Jeff Nippard",
+    "sourceUrl": "https://www.youtube.com/watch?v=v_ZkxWzYnMc",
+    "rationale": "8:04 technique lesson whose description explicitly identifies lateral raises, proper technique and mistake correction."
+  },
+  {
+    "exerciseId": "cable-lateral-raise",
+    "videoId": "Sp8be0IFNvk",
+    "title": "How to Fix your Cable Lateral Raise | DB vs. CABLE",
+    "creator": "John Jewett",
+    "sourceUrl": "https://www.youtube.com/watch?v=Sp8be0IFNvk",
+    "rationale": "Dedicated 4:51 cable lateral raise instruction from a professional bodybuilding educator; exact exercise and equipment."
+  },
+  {
+    "exerciseId": "reverse-pec-deck",
+    "videoId": "LzsSQzHFuLU",
+    "title": "How to Reverse Pec Dec For HUGE round rear delts - Exercise Set up and Form with Hypertrophy Coach",
+    "creator": "Hypertrophy Coach",
+    "sourceUrl": "https://www.youtube.com/watch?v=LzsSQzHFuLU",
+    "rationale": "Dedicated 9:05 machine setup and form lesson; exact rear delt pec deck equipment."
+  },
+  {
+    "exerciseId": "face-pull",
+    "videoId": "DvjmJdEswQ4",
+    "title": "Face Pulls | Proper Form vs Common Mistakes",
+    "creator": "JONNI SHREVE",
+    "sourceUrl": "https://www.youtube.com/watch?v=DvjmJdEswQ4",
+    "rationale": "Retained after review: 11:10 landscape lesson with chapters for stance, height, arm path, initiation, eccentric control and real-time reps."
+  },
+  {
+    "exerciseId": "db-press-15",
+    "videoId": "0f6-uCUKqgA",
+    "title": "Incline Dumbbell Press BETTER | Targeting The Muscle Series",
+    "creator": "Renaissance Periodization",
+    "sourceUrl": "https://www.youtube.com/watch?v=0f6-uCUKqgA",
+    "rationale": "Reuse the dedicated incline dumbbell technique lesson with the prescribed angle explicitly called out.",
+    "note": "General incline technique tutorial. Set your bench to the 15-degree angle specified in your plan."
+  },
+  {
+    "exerciseId": "db-press-30",
+    "videoId": "0f6-uCUKqgA",
+    "title": "Incline Dumbbell Press BETTER | Targeting The Muscle Series",
+    "creator": "Renaissance Periodization",
+    "sourceUrl": "https://www.youtube.com/watch?v=0f6-uCUKqgA",
+    "rationale": "Reuse the dedicated incline dumbbell technique lesson with the prescribed angle explicitly called out.",
+    "note": "General incline technique tutorial. Set your bench to the 30-degree angle specified in your plan."
+  },
+  {
+    "exerciseId": "incline-barbell-press",
+    "videoId": "jPLdzuHckI8",
+    "title": "Incline Barbell Press | Upper Chest | How-To Exercise Tutorial",
+    "creator": "Buff Dudes Workouts",
+    "sourceUrl": "https://www.youtube.com/watch?v=jPLdzuHckI8",
+    "rationale": "Dedicated 4:46 incline barbell tutorial; creator description confirms the exact exercise."
+  },
+  {
+    "exerciseId": "smith-incline-press",
+    "videoId": "GobPtFwc_Qk",
+    "title": "How to Set Up Smith Incline Press (Upper Pecs)",
+    "creator": "Ben Yanes",
+    "sourceUrl": "https://www.youtube.com/watch?v=GobPtFwc_Qk",
+    "rationale": "Dedicated 13:46 Smith incline setup lesson; longer exact tutorial favored over brief demonstrations."
+  },
+  {
+    "exerciseId": "incline-converging-press",
+    "videoId": "GRTzUEPUqek",
+    "title": "Dr. Mike Reviews the Atlantis Converging Incline Bench Press",
+    "creator": "Atlantis Strength",
+    "sourceUrl": "https://www.youtube.com/watch?v=GRTzUEPUqek",
+    "rationale": "8:55 exact-machine walkthrough; the manufacturer source description explicitly says Dr. Mike Israetel explains biomechanics, setup and execution of the converging incline press.",
+    "note": "Demonstrates an Atlantis converging incline press. Match the seat, handles and pressing path to your machine."
+  },
+  {
+    "exerciseId": "low-high-cable-fly",
+    "videoId": "-EIhKMDSjBY",
+    "title": "The Best Way To Isolate The Chest For Growth (Upper Chest Focus)",
+    "creator": "Jeff Nippard",
+    "sourceUrl": "https://www.youtube.com/watch?v=-EIhKMDSjBY",
+    "rationale": "6:55 chest isolation technique lesson with upper chest cable fly focus, rather than a short rep demonstration."
+  },
+  {
+    "exerciseId": "smith-flat-press",
+    "videoId": "nFAQ35hmCqU",
+    "title": "How To Smith Machine Bench Press (BEGINNER)",
+    "creator": "Wavvy Fitness",
+    "sourceUrl": "https://www.youtube.com/watch?v=nFAQ35hmCqU",
+    "rationale": "Dedicated 4:13 tutorial; description explicitly explains Smith bench placement and setup at a gym."
+  },
+  {
+    "exerciseId": "flat-db-fly",
+    "videoId": "2dKBS61BX24",
+    "title": "8 Dumbbell Fly Mistakes and How to Fix Them",
+    "creator": "Renaissance Periodization",
+    "sourceUrl": "https://www.youtube.com/watch?v=2dKBS61BX24",
+    "rationale": "Dedicated 10:26 error-correction lesson; exact dumbbell fly equipment and execution focus."
+  },
+  {
+    "exerciseId": "standing-cable-chest-press",
+    "videoId": "fOHouR0t9Cw",
+    "title": "Standing Cable Chest Press  - Technique, Benefits, and Common Mistakes",
+    "creator": "Mike | J2FIT Strength & Conditioning",
+    "sourceUrl": "https://www.youtube.com/watch?v=fOHouR0t9Cw",
+    "rationale": "Dedicated 4:23 lesson with chapters for equipment setup, execution, form tips, mistakes and programming."
+  },
+  {
+    "exerciseId": "single-arm-cable-chest-press",
+    "videoId": "sNUWfchnLIE",
+    "title": "One Arm Cable Press exercise tutorial",
+    "creator": "Nick Tumminello - Trainer of Trainers",
+    "sourceUrl": "https://www.youtube.com/watch?v=sNUWfchnLIE",
+    "rationale": "Exact unilateral cable exercise taught by an established strength coach; parent actual-playback audit confirmed landscape and 2:25 duration, a useful shorter exact-equipment exception."
+  },
+  {
+    "exerciseId": "chest-dip",
+    "videoId": "2z8JmcrW-As",
+    "title": "The Perfect Dip  - Do it right",
+    "creator": "Calisthenicmovement",
+    "sourceUrl": "https://www.youtube.com/watch?v=2z8JmcrW-As",
+    "rationale": "Focused 4:38 dip technique lesson covering body position and chest-emphasis variant.",
+    "note": "Use the chest-focused parallel-bar variation shown in the tutorial."
+  },
+  {
+    "exerciseId": "feet-elevated-push-up",
+    "videoId": "BeS6eOYKQ8s",
+    "title": "Grow Your UPPER CHEST With Push-Ups",
+    "creator": "FitnessFAQs",
+    "sourceUrl": "https://www.youtube.com/watch?v=BeS6eOYKQ8s",
+    "rationale": "12:40 upper-chest technique lesson from an established calisthenics educator; the source description explicitly includes feet-elevated decline push-ups.",
+    "note": "Use the feet-elevated decline push-up demonstrated in this lesson. It also covers rings and other upper-chest variations."
+  },
+  {
+    "exerciseId": "machine-shoulder-press",
+    "videoId": "3R14MnZbcpw",
+    "title": "How to PROPERLY Shoulder Machine Press (LEARN FAST)",
+    "creator": "Colossus Fitness",
+    "sourceUrl": "https://www.youtube.com/watch?v=3R14MnZbcpw",
+    "rationale": "Dedicated 2:26 tutorial for the exact shoulder press machine; source description teaches correct execution and addresses commonly incorrect form. Short landscape exception pending actual playback confirmation."
+  }
+]

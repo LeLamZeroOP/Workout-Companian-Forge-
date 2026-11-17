@@ -1,0 +1,1488 @@
+[
+  {
+    "id": "assisted-pull-up",
+    "name": "Assisted Pull-up",
+    "equipment": "machine",
+    "muscleContribution": {
+      "lats": 1,
+      "biceps": 0.5,
+      "upperBack": 0.5
+    },
+    "muscleRoles": {
+      "direct": [
+        "lats"
+      ],
+      "indirect": [
+        "biceps",
+        "upperBack"
+      ],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [
+      "Machine-assisted Pull-up",
+      "Assisted Pullup"
+    ],
+    "setupNotes": "Set the knee pad and overhand grip, enter using the step, and pull without bouncing. Log 0 kg external load; record machine assistance and settings in notes. Assistance is not lifted external weight.",
+    "isCustom": false,
+    "video": {
+      "videoId": "vKpqOpjJt18",
+      "title": "9 Assisted Pull Up Mistakes and How to Fix Them",
+      "creator": "Renaissance Periodization",
+      "durationSeconds": 922
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=vKpqOpjJt18",
+    "rationale": "Exact exercise tutorial candidate from the creator; live playback, duration and orientation must be confirmed before integration."
+  },
+  {
+    "id": "assisted-chin-up",
+    "name": "Assisted Chin-up",
+    "equipment": "machine",
+    "muscleContribution": {
+      "lats": 1,
+      "biceps": 0.5,
+      "upperBack": 0.5
+    },
+    "muscleRoles": {
+      "direct": [
+        "lats"
+      ],
+      "indirect": [
+        "biceps",
+        "upperBack"
+      ],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [
+      "Machine-assisted Chin-up",
+      "Assisted Chinup"
+    ],
+    "setupNotes": "Use a shoulder-width underhand grip on an assisted pull-up machine. Log 0 kg external load; record assistance and machine settings in notes, since more assistance reduces the demand.",
+    "isCustom": false,
+    "video": {
+      "videoId": "vKpqOpjJt18",
+      "title": "9 Assisted Pull Up Mistakes and How to Fix Them",
+      "creator": "Renaissance Periodization",
+      "durationSeconds": 922,
+      "note": "Shared assisted pull-up technique; grip choice including underhand is discussed from 8:58. Use an underhand grip for this chin-up entry."
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=vKpqOpjJt18",
+    "rationale": "Exact exercise tutorial candidate from the creator; live playback, duration and orientation must be confirmed before integration."
+  },
+  {
+    "id": "neutral-grip-pull-up",
+    "name": "Neutral-grip Pull-up",
+    "equipment": "bodyweight",
+    "muscleContribution": {
+      "lats": 1,
+      "biceps": 0.5,
+      "upperBack": 0.5
+    },
+    "muscleRoles": {
+      "direct": [
+        "lats"
+      ],
+      "indirect": [
+        "biceps",
+        "upperBack"
+      ],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [
+      "Parallel-grip Pull-up",
+      "Neutral Grip Pullup"
+    ],
+    "setupNotes": "Use parallel handles with palms facing each other. Keep the body controlled through the pull and descent. Log only added external load; use 0 kg when unweighted.",
+    "isCustom": false,
+    "video": {
+      "videoId": "ayvVeCtp83Q",
+      "title": "How To Neutral Grip Pull Ups? | Neutral Grip Pull Ups Tutorial",
+      "creator": "JustCalisthenics",
+      "durationSeconds": 287
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=ayvVeCtp83Q",
+    "rationale": "Exact exercise tutorial candidate from the creator; live playback, duration and orientation must be confirmed before integration."
+  },
+  {
+    "id": "inverted-row",
+    "name": "Inverted Row",
+    "equipment": "bodyweight",
+    "muscleContribution": {
+      "upperBack": 1,
+      "lats": 1,
+      "biceps": 0.5,
+      "rearDelts": 0.5
+    },
+    "muscleRoles": {
+      "direct": [
+        "upperBack",
+        "lats"
+      ],
+      "indirect": [
+        "biceps",
+        "rearDelts"
+      ],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [
+      "Australian Pull-up",
+      "Bodyweight Row"
+    ],
+    "setupNotes": "Secure a bar in a rack or Smith machine. Keep a straight body and row the lower chest toward the bar. Raise the bar or bend the knees to reduce difficulty. Log only added external load; 0 kg when unweighted.",
+    "isCustom": false,
+    "video": {
+      "videoId": "Fl0UMfdEzsE",
+      "title": "Inverted Rows (Beginner to Advanced Progressions)",
+      "creator": "Zack Henderson",
+      "durationSeconds": 285
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=Fl0UMfdEzsE",
+    "rationale": "Exact exercise tutorial candidate from the creator; live playback, duration and orientation must be confirmed before integration."
+  },
+  {
+    "id": "single-arm-lat-pulldown",
+    "name": "Single-arm Lat Pulldown",
+    "equipment": "cable",
+    "muscleContribution": {
+      "lats": 1,
+      "biceps": 0.5,
+      "upperBack": 0.5
+    },
+    "muscleRoles": {
+      "direct": [
+        "lats"
+      ],
+      "indirect": [
+        "biceps",
+        "upperBack"
+      ],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [
+      "One-arm Lat Pulldown"
+    ],
+    "setupNotes": "Use a single handle at a high pulley, secure the thighs, and pull one elbow down toward the ribs without twisting. Log the working-side stack setting.",
+    "unilateral": true,
+    "isCustom": false,
+    "video": {
+      "videoId": "r68DrqhNSis",
+      "title": "Exercise Index - Single Arm Pulldown",
+      "creator": "mountaindog1",
+      "durationSeconds": 229
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=r68DrqhNSis",
+    "rationale": "Exact exercise tutorial candidate from the creator; live playback, duration and orientation must be confirmed before integration."
+  },
+  {
+    "id": "underhand-lat-pulldown",
+    "name": "Underhand Lat Pulldown",
+    "equipment": "cable",
+    "muscleContribution": {
+      "lats": 1,
+      "biceps": 0.5,
+      "upperBack": 0.5
+    },
+    "muscleRoles": {
+      "direct": [
+        "lats"
+      ],
+      "indirect": [
+        "biceps",
+        "upperBack"
+      ],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [
+      "Reverse-grip Lat Pulldown",
+      "Supinated Lat Pulldown"
+    ],
+    "setupNotes": "Secure the thigh pad, take a comfortable shoulder-width underhand grip, and pull toward the upper chest with a small, consistent backward lean.",
+    "isCustom": false,
+    "video": {
+      "videoId": "GSYYXRjtkUQ",
+      "title": "How To Get Your First Pull-Up (4 Steps)",
+      "creator": "Jeremy Ethier",
+      "note": "The pull-up progression lesson includes a seated underhand close-grip pulldown among its accessory movements. Use that underhand variation; kneeling and band-assisted progressions are separate exercises in the lesson.",
+      "durationSeconds": 585
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=GSYYXRjtkUQ",
+    "rationale": "The creator article explicitly includes seated underhand close-grip pulldowns in the same lesson; reuse is conditional on sufficient form instruction in the video."
+  },
+  {
+    "id": "kneeling-lat-pulldown",
+    "name": "Kneeling Lat Pulldown",
+    "equipment": "cable",
+    "muscleContribution": {
+      "lats": 1,
+      "biceps": 0.5,
+      "upperBack": 0.5
+    },
+    "muscleRoles": {
+      "direct": [
+        "lats"
+      ],
+      "indirect": [
+        "biceps",
+        "upperBack"
+      ],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [
+      "Kneeling Cable Pulldown"
+    ],
+    "setupNotes": "Set the pulley high, hold a pulldown attachment, and kneel facing it with enough space for a full controlled reach. Keep the hips and ribs steady rather than leaning back.",
+    "isCustom": false,
+    "video": {
+      "videoId": "GSYYXRjtkUQ",
+      "title": "How To Get Your First Pull-Up (4 Steps)",
+      "creator": "Jeremy Ethier",
+      "note": "The pull-up progression lesson explicitly teaches the kneeling lat pulldown. Use the kneeling cable variation shown; the lesson also covers other progressions.",
+      "durationSeconds": 585
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=GSYYXRjtkUQ",
+    "rationale": "Exact exercise tutorial candidate from the creator; live playback, duration and orientation must be confirmed before integration."
+  },
+  {
+    "id": "wide-grip-seated-row",
+    "name": "Wide-grip Seated Cable Row",
+    "equipment": "cable",
+    "muscleContribution": {
+      "upperBack": 1,
+      "rearDelts": 1,
+      "lats": 0.5,
+      "biceps": 0.5
+    },
+    "muscleRoles": {
+      "direct": [
+        "upperBack",
+        "rearDelts"
+      ],
+      "indirect": [
+        "lats",
+        "biceps"
+      ],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [
+      "Wide-grip Cable Row"
+    ],
+    "setupNotes": "Attach a wide bar and brace the feet. Row toward the lower chest with elbows comfortably out, allowing controlled shoulder-blade motion without rocking backward.",
+    "isCustom": false,
+    "video": {
+      "videoId": "A77hAjcpN1s",
+      "title": "How To PROPERLY Perform the Seated Row | 3 Cable Row Variations for Muscle Gain",
+      "creator": "Colossus Fitness",
+      "durationSeconds": 388,
+      "note": "Shared seated-row technique and mistakes first; the exact wide-grip variation is demonstrated at 5:24."
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=A77hAjcpN1s",
+    "rationale": "Exact exercise tutorial candidate from the creator; live playback, duration and orientation must be confirmed before integration."
+  },
+  {
+    "id": "single-arm-cable-row",
+    "name": "Single-arm Cable Row",
+    "equipment": "cable",
+    "muscleContribution": {
+      "lats": 1,
+      "upperBack": 1,
+      "biceps": 0.5,
+      "rearDelts": 0.5
+    },
+    "muscleRoles": {
+      "direct": [
+        "lats",
+        "upperBack"
+      ],
+      "indirect": [
+        "biceps",
+        "rearDelts"
+      ],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [
+      "One-arm Seated Cable Row"
+    ],
+    "setupNotes": "Use a single handle at a seated low cable station. Keep the torso square and drive the elbow back while controlling the return. Log one working-side stack setting.",
+    "unilateral": true,
+    "isCustom": false,
+    "video": {
+      "videoId": "A77hAjcpN1s",
+      "title": "How To PROPERLY Perform the Seated Row | 3 Cable Row Variations for Muscle Gain",
+      "creator": "Colossus Fitness",
+      "durationSeconds": 388,
+      "note": "Shared seated-row technique and mistakes first; the exact single-arm cable variation is demonstrated at 4:14."
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=A77hAjcpN1s",
+    "rationale": "Exact exercise tutorial candidate from the creator; live playback, duration and orientation must be confirmed before integration."
+  },
+  {
+    "id": "high-machine-row",
+    "name": "High Machine Row",
+    "equipment": "machine",
+    "muscleContribution": {
+      "lats": 1,
+      "upperBack": 1,
+      "biceps": 0.5,
+      "rearDelts": 0.5
+    },
+    "muscleRoles": {
+      "direct": [
+        "lats",
+        "upperBack"
+      ],
+      "indirect": [
+        "biceps",
+        "rearDelts"
+      ],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [
+      "Machine High Row",
+      "Plate-loaded High Row"
+    ],
+    "setupNotes": "Set the seat and chest pad so you can reach the high handles without leaving the pad. Pull down and back toward the ribs, then return under control. Record machine settings for comparisons.",
+    "isCustom": false,
+    "video": {
+      "videoId": "PSFD5U2VFHw",
+      "title": "High Row Machine Tutorial: Proper Form, Technique, and Tips for a Strong Back!",
+      "creator": "Muscle Man Fitness by Shaun",
+      "durationSeconds": 152,
+      "shorterTutorialReason": "The 2:32 landscape lesson teaches the exact high-row machine setup and pulling technique, making it more useful for this machine-specific entry than a longer generic back workout."
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=PSFD5U2VFHw",
+    "rationale": "Exact exercise tutorial candidate from the creator; live playback, duration and orientation must be confirmed before integration."
+  },
+  {
+    "id": "chest-supported-t-bar-row",
+    "name": "Chest-supported T-bar Row",
+    "equipment": "machine",
+    "muscleContribution": {
+      "upperBack": 1,
+      "lats": 1,
+      "biceps": 0.5,
+      "rearDelts": 0.5
+    },
+    "muscleRoles": {
+      "direct": [
+        "upperBack",
+        "lats"
+      ],
+      "indirect": [
+        "biceps",
+        "rearDelts"
+      ],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [
+      "Supported T-bar Row"
+    ],
+    "setupNotes": "Use a purpose-built chest-supported T-bar machine, with sternum on the pad and feet braced. Row without lifting the chest. Log the plates added to the machine and keep the convention consistent.",
+    "isCustom": false,
+    "video": {
+      "videoId": "TyLoy3n_a10",
+      "title": "How to PROPERLY Machine T-Bar Row (FIX YOUR FORM)",
+      "creator": "Colossus Fitness",
+      "durationSeconds": 144,
+      "shorterTutorialReason": "The 2:24 landscape lesson addresses the exact supported T-bar machine and common technique errors; longer landmine-row lessons teach a different setup."
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=TyLoy3n_a10",
+    "rationale": "Exact exercise tutorial candidate from the creator; live playback, duration and orientation must be confirmed before integration."
+  },
+  {
+    "id": "meadows-row",
+    "name": "Meadows Row",
+    "equipment": "barbell",
+    "muscleContribution": {
+      "lats": 1,
+      "upperBack": 1,
+      "biceps": 0.5,
+      "rearDelts": 0.5
+    },
+    "muscleRoles": {
+      "direct": [
+        "lats",
+        "upperBack"
+      ],
+      "indirect": [
+        "biceps",
+        "rearDelts"
+      ],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [
+      "One-arm Meadows Row"
+    ],
+    "setupNotes": "Secure the bar in a landmine. Stand side-on near its loaded end, brace the free arm on the thigh, grip the sleeve overhand, and row without rotating. Use small plates for clearance. Record plates on the working end consistently.",
+    "unilateral": true,
+    "isCustom": false,
+    "video": {
+      "videoId": "eTn3QFAEhhU",
+      "title": "How to Perform Meadows Rows | Tiger Fitness",
+      "creator": "Tiger Fitness",
+      "durationSeconds": 137,
+      "shorterTutorialReason": "The 2:17 landscape lesson features John Meadows directly coaching his exact namesake row, explaining its stance, grip and execution; more useful than a longer generic landmine-row lesson."
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=eTn3QFAEhhU",
+    "rationale": "Exact exercise tutorial candidate from the creator; live playback, duration and orientation must be confirmed before integration."
+  },
+  {
+    "id": "pendlay-row",
+    "name": "Pendlay Row",
+    "equipment": "barbell",
+    "muscleContribution": {
+      "upperBack": 1,
+      "lats": 1,
+      "biceps": 0.5,
+      "rearDelts": 0.5
+    },
+    "muscleRoles": {
+      "direct": [
+        "upperBack",
+        "lats"
+      ],
+      "indirect": [
+        "biceps",
+        "rearDelts"
+      ],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [
+      "Dead-stop Barbell Row"
+    ],
+    "setupNotes": "Hinge with the torso close to horizontal and brace. Pull the bar from a dead stop toward the lower chest, then reset it on the floor each repetition. Log bar plus plates.",
+    "isCustom": false,
+    "video": {
+      "videoId": "RQU8wZPbioA",
+      "title": "How To Barbell Row",
+      "creator": "Alan Thrall (Untamed Strength)",
+      "durationSeconds": 317
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=RQU8wZPbioA",
+    "rationale": "Exact exercise tutorial candidate from the creator; live playback, duration and orientation must be confirmed before integration."
+  },
+  {
+    "id": "underhand-barbell-row",
+    "name": "Underhand Barbell Row",
+    "equipment": "barbell",
+    "muscleContribution": {
+      "lats": 1,
+      "upperBack": 1,
+      "biceps": 0.5,
+      "rearDelts": 0.5
+    },
+    "muscleRoles": {
+      "direct": [
+        "lats",
+        "upperBack"
+      ],
+      "indirect": [
+        "biceps",
+        "rearDelts"
+      ],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [
+      "Supinated Barbell Row",
+      "Reverse-grip Barbell Row"
+    ],
+    "setupNotes": "Use a comfortable underhand grip and a stable hip hinge. Row toward the lower ribs with elbows close, keeping the torso angle consistent. Log bar plus plates.",
+    "isCustom": false,
+    "video": {
+      "videoId": "vmHbJ_JmUS4",
+      "title": "How to PROPERLY Barbell Row | 3 Barbell Row Variations for Muscle Gain",
+      "creator": "Colossus Fitness",
+      "durationSeconds": 346
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=vmHbJ_JmUS4",
+    "rationale": "Exact exercise tutorial candidate from the creator; live playback, duration and orientation must be confirmed before integration."
+  },
+  {
+    "id": "db-pullover",
+    "name": "Dumbbell Pullover",
+    "equipment": "dumbbell",
+    "muscleContribution": {
+      "lats": 1,
+      "chest": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "lats",
+        "chest"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [
+      "Dumbbell Pull-over"
+    ],
+    "setupNotes": "Support the upper body securely on a bench and hold one dumbbell with both hands. Maintain a slight fixed elbow bend and move at the shoulders through a comfortable overhead arc. Log the single dumbbell weight.",
+    "isCustom": false,
+    "video": {
+      "videoId": "Q8l6ykgnmPM",
+      "title": "How to PROPERLY Dumbbell Pullover for a BIG Chest | Fix Your Dumbbell Pullover Form NOW!",
+      "creator": "Colossus Fitness",
+      "durationSeconds": 320
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=Q8l6ykgnmPM",
+    "rationale": "Exact exercise tutorial candidate from the creator; live playback, duration and orientation must be confirmed before integration."
+  },
+  {
+    "id": "machine-pullover",
+    "name": "Machine Pullover",
+    "equipment": "machine",
+    "muscleContribution": {
+      "lats": 1,
+      "chest": 0.5
+    },
+    "muscleRoles": {
+      "direct": [
+        "lats"
+      ],
+      "indirect": [
+        "chest"
+      ],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [
+      "Pullover Machine"
+    ],
+    "setupNotes": "Adjust the seat and range stops to the machine instructions. Keep the torso supported and pull the upper-arm pads through a controlled arc without crunching forward.",
+    "isCustom": false,
+    "video": {
+      "videoId": "ZOwR5Ar81rg",
+      "title": "PULLOVER MACHINE / TUTORIAL FOR BEGINNERS",
+      "creator": "AMOFitnessTraining",
+      "durationSeconds": 120,
+      "shorterTutorialReason": "This 2:00 landscape beginner lesson demonstrates the exact pullover machine setup and movement with spoken coaching, rather than substituting a dumbbell or cable pullover."
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=ZOwR5Ar81rg",
+    "rationale": "Exact exercise tutorial candidate from the creator; live playback, duration and orientation must be confirmed before integration."
+  },
+  {
+    "id": "db-shrug",
+    "name": "Dumbbell Shrug",
+    "equipment": "dumbbell",
+    "muscleContribution": {
+      "upperBack": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "upperBack"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [
+      "Dumbbell Shoulder Shrug"
+    ],
+    "setupNotes": "Hold dumbbells at the sides and lift the shoulders under control, keeping the elbows straight. Avoid bouncing or rolling the shoulders. Use the same per-dumbbell logging convention each time.",
+    "isCustom": false,
+    "video": {
+      "videoId": "8L6zjxBwVzM",
+      "title": "How to PROPERLY Dumbbell Shrug (FIX THIS NOW!)",
+      "creator": "Colossus Fitness",
+      "durationSeconds": 125,
+      "shorterTutorialReason": "The 2:05 landscape lesson covers the exact dumbbell shrug and corrects rolling, momentum and incomplete range in a focused coaching format."
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=8L6zjxBwVzM",
+    "rationale": "Exact exercise tutorial candidate from the creator; live playback, duration and orientation must be confirmed before integration."
+  },
+  {
+    "id": "smith-shrug",
+    "name": "Smith Machine Shrug",
+    "equipment": "machine",
+    "muscleContribution": {
+      "upperBack": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "upperBack"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [
+      "Smith Shrug"
+    ],
+    "setupNotes": "Set the Smith bar near thigh height with stops in place. Stand where the bar can travel freely, then elevate and lower the shoulders with controlled reps. Record added plates and the machine used consistently.",
+    "isCustom": false,
+    "video": {
+      "videoId": "DIIRzwJdlCE",
+      "title": "Shrugs Exercise Tips (Smith Machine Shrug)",
+      "creator": "Sean Nalewanyj",
+      "durationSeconds": 221
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=DIIRzwJdlCE",
+    "rationale": "Exact exercise tutorial candidate from the creator; live playback, duration and orientation must be confirmed before integration."
+  },
+  {
+    "id": "spider-curl",
+    "name": "Spider Curl",
+    "equipment": "barbell",
+    "muscleContribution": {
+      "biceps": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "biceps"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [
+      "Barbell Spider Curl",
+      "EZ-bar Spider Curl"
+    ],
+    "setupNotes": "Lie chest-down on an incline bench with a bar or EZ bar hanging below the shoulders. Keep upper arms still while curling and lowering. Log bar plus plates.",
+    "isCustom": false,
+    "video": {
+      "videoId": "CITtSuda0Fg",
+      "title": "HOW TO: Spider Curl (HUGE BICEPS BUILDER!) || PERFECT FORM",
+      "creator": "ScottHermanFitness",
+      "durationSeconds": 189
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=CITtSuda0Fg",
+    "rationale": "Exact exercise tutorial candidate from the creator; live playback, duration and orientation must be confirmed before integration."
+  },
+  {
+    "id": "barbell-preacher-curl",
+    "name": "Barbell Preacher Curl",
+    "equipment": "barbell",
+    "muscleContribution": {
+      "biceps": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "biceps"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [
+      "EZ-bar Preacher Curl",
+      "Scott Curl"
+    ],
+    "setupNotes": "Set the preacher bench so the upper arms rest fully on the pad. Use a bar or EZ bar, curl without lifting the upper arms, and lower without bouncing at the bottom. Log bar plus plates.",
+    "isCustom": false,
+    "video": {
+      "videoId": "nbcgEmZ0Be4",
+      "title": "3 Reasons You're Wasting Your Time With Preacher Curls! (3 FIXES!)",
+      "creator": "ScottHermanFitness",
+      "durationSeconds": 423
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=nbcgEmZ0Be4",
+    "rationale": "Exact exercise tutorial candidate from the creator; live playback, duration and orientation must be confirmed before integration."
+  },
+  {
+    "id": "db-preacher-curl",
+    "name": "Dumbbell Preacher Curl",
+    "equipment": "dumbbell",
+    "muscleContribution": {
+      "biceps": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "biceps"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [
+      "One-arm Preacher Curl",
+      "Dumbbell Scott Curl"
+    ],
+    "setupNotes": "Rest the back of one upper arm on a preacher pad or the steep face of an incline bench. Keep the shoulder stable and lower the dumbbell under control without bouncing. Log one dumbbell weight.",
+    "unilateral": true,
+    "isCustom": false,
+    "video": {
+      "videoId": "o7MBY7C5tV0",
+      "title": "Fix Your Dumbbell Preacher Curls!",
+      "creator": "Alex Leonidas",
+      "durationSeconds": 753
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=o7MBY7C5tV0",
+    "rationale": "Exact exercise tutorial candidate from the creator; live playback, duration and orientation must be confirmed before integration."
+  },
+  {
+    "id": "high-cable-curl",
+    "name": "High Cable Curl",
+    "equipment": "cable",
+    "muscleContribution": {
+      "biceps": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "biceps"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [
+      "Overhead Cable Curl",
+      "Hercules Curl"
+    ],
+    "setupNotes": "Stand between high pulleys with single handles and upper arms held out to the sides. Curl toward the head without moving the upper arms or leaning. Record the setting per stack consistently.",
+    "isCustom": false,
+    "video": {
+      "videoId": "NUoI-eDwY0U",
+      "title": "BIGGER BICEPS! - The Overhead Cable Curl - Bicep Tutorial",
+      "creator": "DutchGuyFitness",
+      "durationSeconds": 196
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=NUoI-eDwY0U",
+    "rationale": "Exact exercise tutorial candidate from the creator; live playback, duration and orientation must be confirmed before integration."
+  },
+  {
+    "id": "cable-preacher-curl",
+    "name": "Cable Preacher Curl",
+    "equipment": "cable",
+    "muscleContribution": {
+      "biceps": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "biceps"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [
+      "Low-cable Preacher Curl"
+    ],
+    "setupNotes": "Place a preacher pad in front of a low cable and attach a bar. Support the upper arms fully and curl without lifting them off the pad. Keep cable tension through a comfortable range.",
+    "isCustom": false,
+    "video": {
+      "videoId": "NplhX5NBgi0",
+      "title": "How to do Cable Preacher Curl | 2 Minute Tutorial",
+      "creator": "Jay Dunna",
+      "durationSeconds": 125,
+      "shorterTutorialReason": "The 2:05 landscape tutorial explains how to position the preacher bench and cable for this exact movement, a setup missing from generic preacher-curl lessons."
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=NplhX5NBgi0",
+    "rationale": "Exact exercise tutorial candidate from the creator; live playback, duration and orientation must be confirmed before integration."
+  },
+  {
+    "id": "band-assisted-pull-up",
+    "name": "Band-assisted Pull-up",
+    "equipment": "band",
+    "muscleContribution": {
+      "lats": 1,
+      "biceps": 0.5,
+      "upperBack": 0.5
+    },
+    "muscleRoles": {
+      "direct": [
+        "lats"
+      ],
+      "indirect": [
+        "biceps",
+        "upperBack"
+      ],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [
+      "Banded Pull-up",
+      "Resistance-band-assisted Pull-up"
+    ],
+    "setupNotes": "Loop an intact band securely over the pull-up bar and use a stable step to enter and exit. Keep the supported foot or knee steady and lower under control. Log 0 kg external load and note the band and setup; band assistance is not external weight.",
+    "isCustom": false,
+    "video": {
+      "videoId": "GSYYXRjtkUQ",
+      "title": "How To Get Your First Pull-Up (4 Steps)",
+      "creator": "Jeremy Ethier",
+      "note": "The pull-up progression lesson explicitly teaches band-assisted pull-ups and band selection. Follow the band-assisted variation shown.",
+      "durationSeconds": 585
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=GSYYXRjtkUQ",
+    "rationale": "Exact movement candidate from creator search or creator article. Pending live duration, orientation and exercise-match confirmation; do not integrate a sub-120-second or mismatched demonstration."
+  },
+  {
+    "id": "t-bar-row",
+    "name": "T-bar Row",
+    "equipment": "machine",
+    "muscleContribution": {
+      "upperBack": 1,
+      "lats": 1,
+      "biceps": 0.5,
+      "rearDelts": 0.5
+    },
+    "muscleRoles": {
+      "direct": [
+        "upperBack",
+        "lats"
+      ],
+      "indirect": [
+        "biceps",
+        "rearDelts"
+      ],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [
+      "Standing Machine T-bar Row",
+      "Unsupported T-bar Row"
+    ],
+    "setupNotes": "Use an unsupported plate-loaded T-bar row machine with a fixed pivot and handles. Hinge and brace, row toward the lower torso, then lower without standing up. This entry is distinct from a barbell landmine row. Record added plates consistently.",
+    "isCustom": false,
+    "video": {
+      "videoId": "l2jwwkyNdPo",
+      "title": "Plate Loaded Row for Beginners -Technique, Tips & Variations",
+      "creator": "Criticalbench"
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=l2jwwkyNdPo",
+    "rationale": "Exact movement candidate from creator search or creator article. Pending live duration, orientation and exercise-match confirmation; do not integrate a sub-120-second or mismatched demonstration."
+  },
+  {
+    "id": "seal-row",
+    "name": "Seal Row",
+    "equipment": "barbell",
+    "muscleContribution": {
+      "upperBack": 1,
+      "lats": 1,
+      "biceps": 0.5,
+      "rearDelts": 0.5
+    },
+    "muscleRoles": {
+      "direct": [
+        "upperBack",
+        "lats"
+      ],
+      "indirect": [
+        "biceps",
+        "rearDelts"
+      ],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [
+      "Prone Barbell Row"
+    ],
+    "setupNotes": "Lie prone on a purpose-built elevated flat bench with enough clearance for the barbell. Keep the chest supported and row without leg drive. Use a secure rated setup rather than loose unstable supports. Log bar plus plates.",
+    "isCustom": false,
+    "video": {
+      "videoId": "1PZS7k9iQDI",
+      "title": "Commercial & Garage Gym Seal Row Tutorial For an Ultra Instinct Back",
+      "creator": "Be More Shonen"
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=1PZS7k9iQDI",
+    "rationale": "Exact movement candidate from creator search or creator article. Pending live duration, orientation and exercise-match confirmation; do not integrate a sub-120-second or mismatched demonstration."
+  },
+  {
+    "id": "barbell-shrug",
+    "name": "Barbell Shrug",
+    "equipment": "barbell",
+    "muscleContribution": {
+      "upperBack": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "upperBack"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [
+      "Barbell Shoulder Shrug"
+    ],
+    "setupNotes": "Hold the bar in front of the thighs, brace the torso, and raise and lower the shoulders under control without rolling or bouncing. Log bar plus plates.",
+    "isCustom": false,
+    "video": {
+      "videoId": "C6sYjDFuq9I",
+      "title": "How To Build Bigger Traps: Optimal Training Explained",
+      "creator": "Jeff Nippard",
+      "note": "Technique lesson explicitly covers barbell shrugs along with other shrug variants."
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=C6sYjDFuq9I",
+    "rationale": "Exact movement candidate from creator search or creator article. Pending live duration, orientation and exercise-match confirmation; do not integrate a sub-120-second or mismatched demonstration."
+  },
+  {
+    "id": "band-row",
+    "name": "Band Row",
+    "equipment": "band",
+    "muscleContribution": {
+      "upperBack": 1,
+      "lats": 1,
+      "biceps": 0.5,
+      "rearDelts": 0.5
+    },
+    "muscleRoles": {
+      "direct": [
+        "upperBack",
+        "lats"
+      ],
+      "indirect": [
+        "biceps",
+        "rearDelts"
+      ],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [
+      "Resistance Band Row",
+      "Standing Band Row"
+    ],
+    "setupNotes": "Anchor an intact band to a secure fixed point in front of you. Brace in a stable stance and row toward the ribs without leaning back. Note band color, anchor height and distance; 0 kg avoids representing variable band tension as a measured free-weight load.",
+    "isCustom": false,
+    "video": {
+      "videoId": "5TtY68ktfII",
+      "title": "6 Best Band Exercises (ULTIMATE FULL BODY WORKOUT) | Mind Pump",
+      "creator": "Mind Pump TV",
+      "note": "Band exercise lesson explicitly includes anchored band rows and their technique; use the row variation shown."
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=5TtY68ktfII",
+    "rationale": "Exact movement candidate from creator search or creator article. Pending live duration, orientation and exercise-match confirmation; do not integrate a sub-120-second or mismatched demonstration."
+  },
+  {
+    "id": "band-lat-pulldown",
+    "name": "Band Lat Pulldown",
+    "equipment": "band",
+    "muscleContribution": {
+      "lats": 1,
+      "biceps": 0.5,
+      "upperBack": 0.5
+    },
+    "muscleRoles": {
+      "direct": [
+        "lats"
+      ],
+      "indirect": [
+        "biceps",
+        "upperBack"
+      ],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [
+      "Resistance-band Lat Pulldown"
+    ],
+    "setupNotes": "Anchor an intact band securely overhead and kneel facing it. Pull the elbows down toward the sides, then return slowly. Note the band and anchor setup; log 0 kg rather than treating the band label as a fixed measured load.",
+    "isCustom": false,
+    "video": {
+      "videoId": "ZezSBZ11Wqk",
+      "title": "HOW TO DO Wide Lat Pull Down with Resistance Bands",
+      "creator": "Bodylastics"
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=ZezSBZ11Wqk",
+    "rationale": "Exact movement candidate from creator search or creator article. Pending live duration, orientation and exercise-match confirmation; do not integrate a sub-120-second or mismatched demonstration."
+  },
+  {
+    "id": "standing-cable-row",
+    "name": "Standing Cable Row",
+    "equipment": "cable",
+    "muscleContribution": {
+      "upperBack": 1,
+      "lats": 1,
+      "biceps": 0.5,
+      "rearDelts": 0.5
+    },
+    "muscleRoles": {
+      "direct": [
+        "upperBack",
+        "lats"
+      ],
+      "indirect": [
+        "biceps",
+        "rearDelts"
+      ],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [
+      "Standing Low Cable Row"
+    ],
+    "setupNotes": "Face a low-to-mid cable with a two-handed attachment and step back until taut. Brace with soft knees and row toward the lower ribs without leaning backward.",
+    "isCustom": false,
+    "video": {
+      "videoId": "Ov5qMp4QPIA",
+      "title": "How to Do a Standing Row | Back Workout",
+      "creator": "Howcast",
+      "durationSeconds": 129,
+      "shorterTutorialReason": "The 2:10 landscape lesson teaches the exact standing cable row, including the braced leg and trunk position that differs from a seated row."
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=Ov5qMp4QPIA",
+    "rationale": "Exact movement candidate from creator search or creator article. Pending live duration, orientation and exercise-match confirmation; do not integrate a sub-120-second or mismatched demonstration."
+  },
+  {
+    "id": "db-bent-over-row",
+    "name": "Bent-over Dumbbell Row",
+    "equipment": "dumbbell",
+    "muscleContribution": {
+      "upperBack": 1,
+      "lats": 1,
+      "biceps": 0.5,
+      "rearDelts": 0.5
+    },
+    "muscleRoles": {
+      "direct": [
+        "upperBack",
+        "lats"
+      ],
+      "indirect": [
+        "biceps",
+        "rearDelts"
+      ],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [
+      "Two-arm Dumbbell Row",
+      "Bilateral Dumbbell Row"
+    ],
+    "setupNotes": "Hold two dumbbells and hinge at the hips with knees soft. Row both arms together while keeping the torso angle stable. Use a consistent per-dumbbell logging convention. This is the bilateral unsupported version.",
+    "isCustom": false,
+    "video": {
+      "videoId": "Lpx5zlILItg",
+      "title": "Bent Over Dumbbell Row — (WORKOUT FOR YOUR LATS)",
+      "creator": "Fit Father Project - Fitness For Busy Fathers"
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=Lpx5zlILItg",
+    "rationale": "Exact movement candidate from creator search or creator article. Pending live duration, orientation and exercise-match confirmation; do not integrate a sub-120-second or mismatched demonstration."
+  },
+  {
+    "id": "barbell-curl",
+    "name": "Barbell Curl",
+    "equipment": "barbell",
+    "muscleContribution": {
+      "biceps": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "biceps"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [
+      "Straight-bar Curl",
+      "Barbell Biceps Curl"
+    ],
+    "setupNotes": "Stand upright with an underhand grip and steady upper arms. Curl and lower under control without driving with the hips. Log bar plus plates.",
+    "isCustom": false,
+    "video": {
+      "videoId": "llqu4IFYSQw",
+      "title": "Barbell Bicep Curl Workout (GET BIGGER ARMS!)",
+      "creator": "Fit Father Project - Fitness For Busy Fathers",
+      "durationSeconds": 160,
+      "shorterTutorialReason": "The 2:40 landscape Fit Father Project lesson gives the exact barbell curl setup, controlled execution and upper-arm positioning rather than a general arm workout."
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=llqu4IFYSQw",
+    "rationale": "Exact movement candidate from creator search or creator article. Pending live duration, orientation and exercise-match confirmation; do not integrate a sub-120-second or mismatched demonstration."
+  },
+  {
+    "id": "ez-bar-curl",
+    "name": "EZ-bar Curl",
+    "equipment": "barbell",
+    "muscleContribution": {
+      "biceps": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "biceps"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [
+      "EZ Curl",
+      "EZ-bar Biceps Curl"
+    ],
+    "setupNotes": "Hold the angled EZ-bar sections in a comfortable semi-supinated grip, keeping the upper arms near the sides. Curl without leaning back. Log the EZ bar plus plates.",
+    "isCustom": false,
+    "video": {
+      "videoId": "5NsFLGUf0Fo",
+      "title": "How To EZ Bar Curl With Perfect Form (Grow Your Biceps)",
+      "creator": "Colossus Fitness"
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=5NsFLGUf0Fo",
+    "rationale": "Exact movement candidate from creator search or creator article. Pending live duration, orientation and exercise-match confirmation; do not integrate a sub-120-second or mismatched demonstration."
+  },
+  {
+    "id": "incline-db-curl",
+    "name": "Incline Dumbbell Curl",
+    "equipment": "dumbbell",
+    "muscleContribution": {
+      "biceps": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "biceps"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [
+      "Incline Dumbbell Biceps Curl"
+    ],
+    "setupNotes": "Set a bench around 45-60 degrees, sit with the back supported and let the arms hang slightly behind the torso. Curl without moving the upper arms forward. Use a consistent per-dumbbell logging convention.",
+    "isCustom": false,
+    "video": {
+      "videoId": "0U7xqYDSfxQ",
+      "title": "Incline Dumbbell Curl Tutorial For Sleeve Busting Arms",
+      "creator": "Fit Father Project - Fitness For Busy Fathers"
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=0U7xqYDSfxQ",
+    "rationale": "Exact movement candidate from creator search or creator article. Pending live duration, orientation and exercise-match confirmation; do not integrate a sub-120-second or mismatched demonstration."
+  },
+  {
+    "id": "concentration-curl",
+    "name": "Concentration Curl",
+    "equipment": "dumbbell",
+    "muscleContribution": {
+      "biceps": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "biceps"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [
+      "Dumbbell Concentration Curl"
+    ],
+    "setupNotes": "Sit with feet planted apart and brace the back of the working upper arm against the inner thigh. Curl without rotating or lifting the shoulder. Log the single dumbbell weight.",
+    "unilateral": true,
+    "isCustom": false,
+    "video": {
+      "videoId": "oPGBZHIxusU",
+      "title": "Concentration Curls Video Tutorial - Full Step-by-Step Guide",
+      "creator": "Fit Father Project - Fitness For Busy Fathers"
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=oPGBZHIxusU",
+    "rationale": "Exact movement candidate from creator search or creator article. Pending live duration, orientation and exercise-match confirmation; do not integrate a sub-120-second or mismatched demonstration."
+  },
+  {
+    "id": "reverse-barbell-curl",
+    "name": "Reverse Barbell Curl",
+    "equipment": "barbell",
+    "muscleContribution": {
+      "biceps": 0.5
+    },
+    "muscleRoles": {
+      "direct": [],
+      "indirect": [
+        "biceps"
+      ],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [
+      "Overhand Barbell Curl",
+      "Pronated Barbell Curl"
+    ],
+    "setupNotes": "Take an overhand grip and curl with steady upper arms and neutral wrists. Use a lighter load than a supinated curl. Forearm and brachialis work is not represented in the current 13-muscle tracker; biceps receives indirect credit only. Log bar plus plates.",
+    "isCustom": false,
+    "video": {
+      "videoId": "HXTXZKxUF68",
+      "title": "3 Dumbest Barbell \"Reverse\" Curl Mistakes (STOP DOING THESE!)",
+      "creator": "ScottHermanFitness"
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=HXTXZKxUF68",
+    "rationale": "Exact movement candidate from creator search or creator article. Pending live duration, orientation and exercise-match confirmation; do not integrate a sub-120-second or mismatched demonstration."
+  },
+  {
+    "id": "zottman-curl",
+    "name": "Zottman Curl",
+    "equipment": "dumbbell",
+    "muscleContribution": {
+      "biceps": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "biceps"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [
+      "Dumbbell Zottman Curl"
+    ],
+    "setupNotes": "Curl the dumbbells palm-up, rotate to palms-down at the top, and lower under control before rotating back at the bottom. Forearm work is outside the tracked muscle list. Use a consistent per-dumbbell logging convention.",
+    "isCustom": false,
+    "video": {
+      "videoId": "ZrpRBgswtHs",
+      "title": "How To: Zottman Curl",
+      "creator": "ScottHermanFitness",
+      "durationSeconds": 103,
+      "shorterTutorialReason": "The focused 1:43 landscape lesson demonstrates the exact Zottman sequence: supinated curl, deliberate grip rotation and controlled pronated lowering. Its complete spoken instruction is more useful than a longer different curl."
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=ZrpRBgswtHs",
+    "rationale": "Exact movement candidate from creator search or creator article. Pending live duration, orientation and exercise-match confirmation; do not integrate a sub-120-second or mismatched demonstration."
+  },
+  {
+    "id": "dumbbell-hammer-preacher-curl",
+    "name": "Dumbbell Hammer Preacher Curl",
+    "equipment": "dumbbell",
+    "muscleContribution": {
+      "biceps": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "biceps"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [
+      "Hammer Preacher Curl",
+      "Neutral-grip Dumbbell Preacher Curl"
+    ],
+    "setupNotes": "Rest the back of one upper arm fully on a preacher pad or the steep face of an incline bench. Hold the dumbbell with the palm facing inward and keep that neutral grip throughout. Curl without lifting the upper arm or rolling the shoulder; lower under control without bouncing. Log one dumbbell weight. Forearm and brachialis work is outside the tracked muscle list.",
+    "unilateral": true,
+    "isCustom": false,
+    "video": {
+      "videoId": "o7MBY7C5tV0",
+      "title": "Fix Your Dumbbell Preacher Curls!",
+      "creator": "Alex Leonidas",
+      "durationSeconds": 753,
+      "startSeconds": 341,
+      "note": "The exact neutral-grip hammer preacher variation is taught in the creator-published Hammer preacher chapter at 5:41; earlier chapters explain bench setup and support."
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=o7MBY7C5tV0",
+    "rationale": "A common supported neutral-grip curl with an explicit chapter in an expert technique lesson; replaces cross-body hammer curls whose available exact clips were microdemonstrations."
+  },
+  {
+    "id": "rope-hammer-curl",
+    "name": "Rope Hammer Curl",
+    "equipment": "cable",
+    "muscleContribution": {
+      "biceps": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "biceps"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [
+      "Cable Rope Hammer Curl"
+    ],
+    "setupNotes": "Attach a rope to the low pulley and hold it with palms facing each other. Keep upper arms steady and curl without swinging. Forearm and brachialis work is outside the tracked muscle list.",
+    "isCustom": false,
+    "video": {
+      "videoId": "1Quc_tOv97I",
+      "title": "How To: Rope Hammer Curl",
+      "creator": "ScottHermanFitness",
+      "durationSeconds": 88,
+      "shorterTutorialReason": "This focused 1:28 landscape lesson from Scott Herman teaches the exact low-cable rope setup, neutral grip, elbow positioning and controlled curl with spoken instruction. It is a complete conventional tutorial rather than a portrait Short; its relevant coaching is more useful than longer unrelated curl lessons or weaker microdemonstrations."
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=1Quc_tOv97I",
+    "rationale": "Exact movement candidate from creator search or creator article. Pending live duration, orientation and exercise-match confirmation; do not integrate a sub-120-second or mismatched demonstration."
+  },
+  {
+    "id": "seated-hammer-curl",
+    "name": "Seated Hammer Curl",
+    "equipment": "dumbbell",
+    "muscleContribution": {
+      "biceps": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "biceps"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [
+      "Seated Dumbbell Hammer Curl"
+    ],
+    "setupNotes": "Sit upright on a bench with feet planted, dumbbells at the sides and palms facing inward. Keep the upper arms steady and maintain a neutral grip throughout each controlled curl. Forearm and brachialis work is outside the tracked muscle list. Use a consistent per-dumbbell logging convention.",
+    "isCustom": false,
+    "video": {
+      "videoId": "7jqi2qWAUJk",
+      "title": "How To Do Hammer Curls for HUGE Biceps (BICEP GROWTH!)",
+      "creator": "Mind Pump TV",
+      "note": "The tutorial teaches the seated hammer curl, beginning with seated positioning at 0:20 and neutral grip at 0:40.",
+      "durationSeconds": 409
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=7jqi2qWAUJk",
+    "rationale": "Replaces the incline hammer curl because the available exact incline lesson blocks embedding; the common upright seated variation has detailed English instruction and is distinct from standing hammer curls."
+  },
+  {
+    "id": "bayesian-cable-curl",
+    "name": "Bayesian Cable Curl",
+    "equipment": "cable",
+    "muscleContribution": {
+      "biceps": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "biceps"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [
+      "Behind-the-back Cable Curl",
+      "Face-away Cable Curl"
+    ],
+    "setupNotes": "Face away from a low cable with the working arm slightly behind the torso. Use a split stance and curl without letting the shoulder drift forward. Log the working-side stack setting; train both sides equally.",
+    "unilateral": true,
+    "isCustom": false,
+    "video": {
+      "videoId": "VPmJ-OpCoyY",
+      "title": "Bayesian Curl Tutorial | GymSpot",
+      "creator": "GymSpot",
+      "durationSeconds": 91,
+      "shorterTutorialReason": "The focused 1:31 landscape tutorial teaches the exact Bayesian cable setup and behind-the-body curl with spoken coaching, avoiding a longer general biceps workout."
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=VPmJ-OpCoyY",
+    "rationale": "Exact movement candidate from creator search or creator article. Pending live duration, orientation and exercise-match confirmation; do not integrate a sub-120-second or mismatched demonstration."
+  },
+  {
+    "id": "single-arm-cable-curl",
+    "name": "Single-arm Cable Curl",
+    "equipment": "cable",
+    "muscleContribution": {
+      "biceps": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "biceps"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [
+      "One-arm Cable Biceps Curl"
+    ],
+    "setupNotes": "Face a low pulley with a single handle and an underhand grip. Keep the elbow beside the torso while curling and lowering under control. Log the working-side stack setting.",
+    "unilateral": true,
+    "isCustom": false,
+    "video": {
+      "videoId": "N38K4KOcwX4",
+      "title": "CABLE CURL | ARM WORKOUT",
+      "creator": "Sqii",
+      "note": "The lesson teaches common cable-curl form and errors, then the exact single-arm curl at 1:31.",
+      "durationSeconds": 163,
+      "shorterTutorialReason": "The 2:43 landscape cable-curl lesson explains setup and common form errors before teaching the exact single-arm variation at 1:31, giving useful instruction beyond a brief demonstration."
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=N38K4KOcwX4",
+    "rationale": "Exact movement candidate from creator search or creator article. Pending live duration, orientation and exercise-match confirmation; do not integrate a sub-120-second or mismatched demonstration."
+  },
+  {
+    "id": "drag-curl",
+    "name": "Drag Curl",
+    "equipment": "barbell",
+    "muscleContribution": {
+      "biceps": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "biceps"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [
+      "Barbell Drag Curl"
+    ],
+    "setupNotes": "Take an underhand barbell grip and keep the bar close to the torso as the elbows travel backward. Lower smoothly without hip drive. Log bar plus plates.",
+    "isCustom": false,
+    "video": {
+      "videoId": "LMdNTHH6G8I",
+      "title": "How To: Barbell Drag Curl (Increase Bicep Peaks!)",
+      "creator": "ScottHermanFitness",
+      "durationSeconds": 127,
+      "shorterTutorialReason": "This focused 2:07 landscape Scott Herman lesson teaches the exact barbell drag curl, including its backward elbow travel and close-to-body bar path, instead of substituting a standard curl."
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=LMdNTHH6G8I",
+    "rationale": "Exact movement candidate from creator search or creator article. Pending live duration, orientation and exercise-match confirmation; do not integrate a sub-120-second or mismatched demonstration."
+  },
+  {
+    "id": "seated-db-curl",
+    "name": "Seated Dumbbell Curl",
+    "equipment": "dumbbell",
+    "muscleContribution": {
+      "biceps": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "biceps"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [
+      "Seated Dumbbell Biceps Curl"
+    ],
+    "setupNotes": "Sit upright on a bench with feet planted and arms hanging beside the torso. Curl palm-up without rocking or moving the elbows forward. Use a consistent per-dumbbell logging convention; keep the bench upright to distinguish this from the incline curl.",
+    "isCustom": false,
+    "video": {
+      "videoId": "SW5JS2Wf2uQ",
+      "title": "Seated Dumbbell Curls (How To, Common Mistakes, Benefits of Seated)",
+      "creator": "Horton Barbell",
+      "durationSeconds": 271
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=SW5JS2Wf2uQ",
+    "rationale": "Exact movement candidate from creator search or creator article. Pending live duration, orientation and exercise-match confirmation; do not integrate a sub-120-second or mismatched demonstration."
+  },
+  {
+    "id": "band-biceps-curl",
+    "name": "Band Biceps Curl",
+    "equipment": "band",
+    "muscleContribution": {
+      "biceps": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "biceps"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [
+      "Resistance-band Biceps Curl",
+      "Band Curl"
+    ],
+    "setupNotes": "Stand securely on the middle of an intact band and grip both ends palm-up. Keep elbows near the sides and curl without leaning. Note band color and starting length; log 0 kg rather than an assumed constant band load.",
+    "isCustom": false,
+    "video": {
+      "videoId": "PXLF19Oqe3M",
+      "title": "Standing Biceps Curl with Resistance Bands",
+      "creator": "Bodylastics",
+      "durationSeconds": 147,
+      "shorterTutorialReason": "The 2:27 landscape Bodylastics lesson teaches the exact standing band curl and band-specific setup with spoken coaching; a longer barbell-curl lesson would not explain anchoring and variable resistance."
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=PXLF19Oqe3M",
+    "rationale": "Exact movement candidate from creator search or creator article. Pending live duration, orientation and exercise-match confirmation; do not integrate a sub-120-second or mismatched demonstration."
+  }
+]

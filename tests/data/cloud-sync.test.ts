@@ -4,6 +4,8 @@ import { createDefaultData } from '../../src/data/defaults';
 import { CloudRepository, type CloudDocumentRow, type DocumentGateway } from '../../src/data/cloudRepository';
 import { CloudSync } from '../../src/data/cloudSync';
 import { OfflineStore } from '../../src/data/offlineStore';
+import { createCustomSession, createSession } from '../../src/domain/workout';
+import { addSessionExercise } from '../../src/domain/sessionEditing';
 
 function testSystem() {
   const rows = new Map<string, CloudDocumentRow>();
@@ -14,10 +16,84 @@ function testSystem() {
   };
   const repository = new CloudRepository(gateway);
   const store = new OfflineStore(`forge-test-${crypto.randomUUID()}`);
-  return { rows, repository, store, sync: new CloudSync(repository, store) };
+  return { rows, repository, store, sync: new CloudSync(repository, store, async (_id, action) => action()) };
 }
 
 describe('CloudSync', () => {
+  it('queues, restores, and syncs a standalone workout without creating a program', async () => {
+    const { repository, store, sync } = testSystem();
+    const data = createDefaultData();
+    const template = data.programs[0]!.workouts[0]!;
+    data.programs = [];
+    data.settings.lastSelectedProgramId = null;
+    const session = createCustomSession(template, data.exercises, '2026-10-29T05:00:00Z');
+    await sync.open('alice', data);
+    await sync.enqueue('alice', { kind: 'startWorkout', session, programId: null });
+    expect((await store.load('alice'))!.pending).toHaveLength(1);
+    expect((await sync.view('alice'))!.data.sessions).toEqual([session]);
+    const restored = await sync.open('alice', data);
+    expect(restored.data.sessions).toEqual([session]);
+    await sync.flush('alice');
+    const remote = (await repository.load('alice'))!.data;
+    expect(remote.sessions).toEqual([session]);
+    expect(remote.programs).toEqual([]);
+    expect(remote.settings.lastSelectedProgramId).toBeNull();
+    expect((await store.load('alice'))!.pending).toHaveLength(0);
+  });
+  it.each(['cloud', 'local'] as const)('resolves custom workout creation with the %s conflict choice', async choice => {
+    const { repository, store, sync } = testSystem();
+    const data = createDefaultData();
+    const original = createSession(data.programs[0]!, data.programs[0]!.workouts[0]!, data.exercises, new Date().toISOString());
+    data.sessions = [original];
+    const definition = { id: 'conflicted-custom', name: 'My custom row', equipment: 'cable' as const, muscleContribution: { upperBack: 1 }, isCustom: true };
+    await sync.open('alice', data);
+    await sync.enqueue('alice', { kind: 'updateSession', session: addSessionExercise(original, definition), newExercises: [definition] });
+    const remote = (await repository.load('alice'))!;
+    await repository.save('alice', remote.revision, { ...data, sessions: [{ ...original, notes: 'Edited on another device' }] }, 'remote-edit');
+    await sync.flush('alice');
+    const review = await sync.reviewConflicts('alice');
+    await sync.resolveConflicts(review, { [`session:${original.id}`]: choice });
+    const saved = (await repository.load('alice'))!.data;
+    expect(saved.exercises.some(item => item.name === definition.name)).toBe(choice !== 'cloud');
+    expect(saved.sessions.some(session => session.exercises.some(item => item.exerciseName === definition.name))).toBe(choice !== 'cloud');
+    expect(saved.sessions).toHaveLength(1);
+    expect((await store.load('alice'))!.pending).toHaveLength(0);
+  });
+  it('keeps custom exercise creation and workout addition together through offline replay and sync', async () => {
+    const { repository, store, sync } = testSystem();
+    const data = createDefaultData();
+    const original = createSession(data.programs[0]!, data.programs[0]!.workouts[0]!, data.exercises, new Date().toISOString());
+    data.sessions = [original];
+    const newExercise = { id: 'custom-workout', name: 'My cable row', equipment: 'cable' as const, muscleContribution: { upperBack: 1 }, isCustom: true };
+    await sync.open('alice', data);
+    const mutation = { kind: 'updateSession' as const, session: addSessionExercise(original, newExercise), newExercises: [newExercise] };
+    await sync.enqueue('alice', mutation);
+    expect((await store.load('alice'))!.pending).toHaveLength(1);
+    const view = (await sync.view('alice'))!;
+    expect(view.data.exercises.find(item => item.id === newExercise.id)).toEqual(newExercise);
+    expect(view.data.sessions[0]!.exercises.at(-1)!.exerciseId).toBe(newExercise.id);
+    await sync.flush('alice');
+    const remote = (await repository.load('alice'))!;
+    expect(remote.data.exercises.find(item => item.id === newExercise.id)).toEqual(newExercise);
+    expect(remote.data.sessions).toEqual(view.data.sessions);
+    expect((await store.load('alice'))!.pending).toHaveLength(0);
+  });
+  it('queues history deletion offline and reviews a concurrent edit before deleting remotely', async () => {
+    const { repository, store, sync } = testSystem();
+    const data = createDefaultData();
+    const session = createSession(data.programs[0]!, data.programs[0]!.workouts[0]!, data.exercises, '2026-10-08T09:00:00.000Z');
+    session.completedAt = '2026-10-08T10:00:00.000Z';
+    data.sessions = [session];
+    await sync.open('alice', data);
+    await sync.enqueue('alice', { kind: 'deleteSession', sessionId: session.id });
+    expect((await sync.view('alice'))?.data.sessions).toHaveLength(0);
+    const remote = (await repository.load('alice'))!;
+    await repository.save('alice', remote.revision, { ...data, sessions: [{ ...session, notes: 'Edited on another device' }] }, 'edit-session');
+    await sync.flush('alice');
+    expect((await store.load('alice'))?.pending[0]?.status).toBe('conflict');
+    expect((await repository.load('alice'))?.data.sessions[0]?.notes).toBe('Edited on another device');
+  });
+
   it('persists offline work and uploads it on reconnect', async () => {
     const { repository, store, sync } = testSystem();
     await sync.open('alice', createDefaultData());

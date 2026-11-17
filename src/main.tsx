@@ -1,16 +1,12 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import '@fontsource-variable/geist';
 import { App } from './app/App';
+import { AppNotifications } from './components/AppNotifications';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <App />
+    <AppNotifications />
   </StrictMode>,
 );
 
-if (import.meta.env.PROD && 'serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js').catch(() => undefined);
-  });
-}

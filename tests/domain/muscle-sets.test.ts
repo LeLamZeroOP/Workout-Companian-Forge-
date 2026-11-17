@@ -1,4 +1,4 @@
-import { getMuscleSetsByDate, getMuscleSetTotals, getSessionMuscleSets } from '../../src/domain/muscleSets';
+import { getMuscleSetsByDate, getMuscleSetTotals, getSessionMuscleSets, summarizeCompletedMuscleVolume } from '../../src/domain/muscleSets';
 import type { WorkoutSession } from '../../src/domain/models';
 
 const workout: WorkoutSession = {
@@ -28,5 +28,15 @@ describe('muscle set analytics', () => {
   it('totals only sessions within an inclusive date range', () => {
     expect(getMuscleSetTotals([workout], new Date('2026-09-22T00:00:00'), new Date('2026-09-22T23:59:59'))).toEqual({ chest: 1, triceps: 0.5, frontDelts: 0.5 });
     expect(getMuscleSetTotals([workout], new Date('2026-09-23T00:00:00'), new Date('2026-09-24T23:59:59'))).toEqual({});
+  });
+
+  it('uses saved roles and excludes warm-ups from completed direct sets', () => {
+    const logged = structuredClone(workout);
+    logged.exercises[0]!.muscleRoles = { direct: ['chest'], indirect: ['triceps'], reviewedAt: '2026-09-30', source: 'forge-reviewed' };
+    const summary = summarizeCompletedMuscleVolume([logged]);
+    expect(summary.performedSets).toBe(1);
+    expect(summary.rows.find(row => row.muscle === 'chest')).toMatchObject({ directSets: 1, weightedSets: 1 });
+    expect(summary.rows.find(row => row.muscle === 'triceps')).toMatchObject({ indirectSets: 1, weightedSets: 0.5 });
+    expect(summarizeCompletedMuscleVolume([workout]).rows.find(row => row.muscle === 'chest')?.directSets).toBeNull();
   });
 });

@@ -6,7 +6,7 @@ describe('local workout repository', () => {
     const repository = new LocalStorageWorkoutRepository(localStorage);
     const data = repository.load();
 
-    expect(data.version).toBe(2);
+    expect(data.version).toBe(4);
     expect(data.programs.length).toBeGreaterThan(0);
     expect(localStorage.getItem('workout-tracker:data')).toBeNull();
   });
@@ -68,5 +68,19 @@ describe('local workout repository', () => {
     expect(reset.body).toEqual({ profile: null, measurements: [] });
     expect(reset.nutrition.diary).toHaveLength(1);
     expect(reset.programs).toHaveLength(data.programs.length);
+  });
+
+  it('removes hidden record metadata and library overrides on a full reset', () => {
+    const data = createDefaultData();
+    data.settings.restAlertSound = false;
+    data.settings.keepScreenAwake = false;
+    data.exercises[0]!.setupNotes = 'Private exercise note';
+    data.mergeLedger = { mappings: [{ key: 'sessions:old', sourceContent: '{"notes":"Private session note"}', destinationId: 'old', resultContent: '{"notes":"Private session note"}' }], receipts: [] };
+    const reset = resetDataScope(data, 'all');
+    expect(reset.mergeLedger).toBeUndefined();
+    expect(JSON.stringify(reset)).not.toContain('Private');
+    expect(reset.settings).toEqual({ ...createDefaultData().settings, lastSelectedProgramId: null });
+    expect(resetDataScope(data, 'workouts').settings.restAlertSound).toBe(false);
+    expect(data.mergeLedger.mappings).toHaveLength(1);
   });
 });

@@ -1,9 +1,10 @@
+import { validSetValues } from './trainingMetrics';
 import type { Id, RestTimerState, WorkoutSession } from './models';
 
 export function getNextIncompleteSet(session: WorkoutSession, fromExerciseId?: Id, fromSetId?: Id): { exerciseId: Id; setId: Id } | null {
   const flat = session.exercises.flatMap((exercise) => exercise.sets.map((set) => ({ exerciseId: exercise.id, setId: set.id, completed: set.completed })));
   const startIndex = fromExerciseId && fromSetId ? flat.findIndex((item) => item.exerciseId === fromExerciseId && item.setId === fromSetId) + 1 : 0;
-  const match = flat.slice(Math.max(0, startIndex)).find((item) => !item.completed);
+  const match = [...flat.slice(Math.max(0, startIndex)), ...flat.slice(0, Math.max(0, startIndex))].find((item) => !item.completed);
   return match ? { exerciseId: match.exerciseId, setId: match.setId } : null;
 }
 
@@ -11,7 +12,7 @@ export function completeGuidedSet(session: WorkoutSession, exerciseId: Id, setId
   const next = structuredClone(session);
   const exercise = next.exercises.find((item) => item.id === exerciseId);
   const set = exercise?.sets.find((item) => item.id === setId);
-  if (!exercise || !set) return session;
+  if (!exercise || !set || !validSetValues(set)) return session;
   set.completed = true;
   const following = getNextIncompleteSet(next, exerciseId, setId);
   if (!following) {
@@ -61,5 +62,12 @@ export function selectGuidedSet(session: WorkoutSession, exerciseId: Id, setId: 
   if (!exists) return session;
   const next = structuredClone(session);
   next.guide = { currentExerciseId: exerciseId, currentSetId: setId, restTimer: null };
+  return next;
+}
+
+export function undoGuidedSet(session: WorkoutSession, exerciseId: Id, setId: Id): WorkoutSession {
+  const next = selectGuidedSet(session, exerciseId, setId);
+  if (next === session) return session;
+  next.exercises.find(exercise => exercise.id === exerciseId)!.sets.find(set => set.id === setId)!.completed = false;
   return next;
 }

@@ -1,0 +1,83 @@
+/* Page entrances bridge navigation; no delays on actions, typing or timer ticks. */
+.overlay-presence { display: contents; }
+.select-control:has(.overlay-presence[data-exiting]) { position: relative; z-index: 5; }
+.overlay-presence[data-exiting] .select-control-popup, .dialog-backdrop[data-exiting] { opacity: 0; pointer-events: none; transition-duration: var(--motion-fast); }
+.overlay-presence[data-exiting] .select-control-popup { transform: scale(.98); }
+.dialog-backdrop[data-exiting] .dialog-surface { opacity: 0; transform: scale(.98); transition-duration: var(--motion-fast); }
+:root[data-input='pointer'] .dialog-backdrop[data-exiting] { transition-duration: var(--motion-fast); }
+.completion-check { animation: completion-arrive var(--motion-surface) var(--ease-out); }
+@keyframes completion-arrive { from { opacity: 0; transform: scale(.85); } to { opacity: 1; transform: scale(1); } }
+@media (prefers-reduced-motion: reduce) { .completion-check { animation: none; } }
+.motion-enter { animation: surface-arrive var(--motion-surface) var(--ease-out) var(--entrance-delay, 0ms) backwards; }
+.page-title { animation: title-arrive var(--motion-surface) var(--ease-out); }
+@keyframes surface-arrive {
+  from { opacity: 0; transform: translateY(12px) scale(.99); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes title-arrive {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* A shared selection surface follows the destination, even during rapid changes. */
+.navigation { position: relative; isolation: isolate; }
+.nav-highlight { position: absolute; inset: 0 auto auto 0; z-index: -1; pointer-events: none; border-radius: var(--radius-control); background: var(--surface); box-shadow: var(--selection-ring); opacity: 0; transition: transform var(--motion-surface) var(--ease-out), opacity var(--motion-fast) ease; }
+.navigation .nav-item.active { background: transparent; box-shadow: none; }
+.segmented-control:has(.tab-highlight) { position: relative; isolation: isolate; }
+.tab-highlight { position: absolute; inset: 0 auto auto 0; z-index: -1; pointer-events: none; border-radius: .625rem; background: var(--selection-surface); box-shadow: var(--selection-ring); opacity: 0; transition: transform var(--motion-surface) var(--ease-out), opacity var(--motion-fast) ease; }
+.segmented-control:has(.tab-highlight) button[aria-pressed='true'] { background: transparent; box-shadow: none; color: var(--accent); }
+.nav-item > svg { transition: transform var(--motion-standard) var(--ease-out), background-color var(--motion-fast) ease, color var(--motion-fast) ease; }
+
+/* Light on the training card adds depth without moving the information. */
+.today-layout .session-panel { position: relative; isolation: isolate; }
+.today-layout .session-panel::before { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; border-radius: inherit; background: radial-gradient(ellipse at 100% 0%, color-mix(in srgb, var(--accent) 15%, transparent), transparent 60%); opacity: .65; transition: opacity var(--motion-surface) ease; }
+.today-compact-card, .program-card, .template-card, .macro-metric { transition: transform var(--motion-standard) var(--ease-out), border-color var(--motion-fast) ease; }
+.primary-action, .complete-button { position: relative; isolation: isolate; }
+.primary-action::after, .complete-button::after { content: ''; position: absolute; inset: 0; z-index: -1; border-radius: inherit; pointer-events: none; background: linear-gradient(115deg, transparent 20%, rgb(255 255 255 / .16) 50%, transparent 80%); opacity: 0; transition: opacity var(--motion-standard) ease; }
+.primary-action > svg, .secondary-action > svg, .text-action > svg, .more-list > button > svg { transition: transform var(--motion-standard) var(--ease-out); }
+.macro-track span { width: 100%; transform-origin: left center; transition: transform var(--motion-surface) var(--ease-out); }
+@supports (interpolate-size: allow-keywords) {
+  .today-exercises { interpolate-size: allow-keywords; }
+  .today-exercises::details-content { block-size: 0; overflow: clip; transition: block-size var(--motion-surface) var(--ease-out), content-visibility var(--motion-surface) allow-discrete; }
+  .today-exercises[open]::details-content { block-size: auto; }
+}
+
+/* Feedback appears once when a set is saved or a rest surface opens. */
+.logged-set svg, .queue-item > span > svg, .workout-finished > svg { transition: transform var(--motion-surface) var(--ease-out), opacity var(--motion-surface) ease; }
+.rest-panel, .workout-finished, .editor-form { transition: opacity var(--motion-surface) var(--ease-out); }
+.workout-finished > svg { color: var(--success); }
+@starting-style {
+  .macro-track span { transform: scaleX(0); }
+  .logged-set svg, .queue-item > span > svg, .workout-finished > svg { opacity: 0; transform: scale(.9); }
+  .rest-panel, .workout-finished, .editor-form { opacity: 0; }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .today-compact-card:hover, .program-card:hover, .template-card:hover, .macro-metric:hover { transform: translateY(-3px); border-color: var(--border-strong); }
+  .today-layout .session-panel:hover::before { opacity: 1; }
+  .primary-action:enabled:hover::after, .complete-button:enabled:hover::after { opacity: 1; }
+  .primary-action:enabled:hover > svg:last-child, .today-compact-card .secondary-action:hover > svg, .more-list > button:hover > svg:last-child { transform: translateX(3px); }
+  .nav-item:hover > svg { transform: translateY(-2px); }
+  .navigation .nav-item.active:hover { background: transparent; }
+}
+@media (max-width: 640px) {
+  .nav-highlight { background: var(--accent-soft); box-shadow: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .motion-enter, .page-title { animation: none; }
+  .today-compact-card:hover, .program-card:hover, .template-card:hover, .macro-metric:hover,
+  .primary-action:enabled:hover > svg:last-child, .today-compact-card .secondary-action:hover > svg,
+  .more-list > button:hover > svg:last-child, .nav-item:hover > svg { transform: none; }
+  .nav-highlight, .tab-highlight, .macro-track span, .logged-set svg, .queue-item > span > svg, .workout-finished > svg, .today-exercises::details-content { transition: none; }
+  .progress-meter-track > span { transition: none !important; }
+}
+:root[data-input='keyboard'] .today-exercises::details-content { transition: none; }
+:root[data-input='keyboard'] .today-compact-card:hover, :root[data-input='keyboard'] .program-card:hover,
+:root[data-input='keyboard'] .template-card:hover, :root[data-input='keyboard'] .macro-metric:hover,
+:root[data-input='keyboard'] .primary-action:enabled:hover > svg:last-child,
+:root[data-input='keyboard'] .today-compact-card .secondary-action:hover > svg,
+:root[data-input='keyboard'] .more-list > button:hover > svg:last-child,
+:root[data-input='keyboard'] .nav-item:hover > svg { transform: none; }
+@media (forced-colors: active) {
+  .nav-highlight, .tab-highlight, .today-layout .session-panel::before, .primary-action::after, .complete-button::after { display: none; }
+}

@@ -1,13 +1,16 @@
+import { availableExercises } from '../domain/exerciseCatalog';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { User } from '@supabase/supabase-js';
 import { createDefaultData } from '../data/defaults';
 import { cloudClient } from '../data/cloudClient';
 import { CloudRepository, createSupabaseDocumentGateway } from '../data/cloudRepository';
-import { CloudSync, type SyncView } from '../data/cloudSync';
+import { CloudSync, type SyncView, type PreparedMerge, type ConflictReview } from '../data/cloudSync';
+import type { MergeChoice, MergeSelection } from '../domain/selectiveMerge';
 import { OfflineStore } from '../data/offlineStore';
-import { createSession } from '../domain/workout';
-import type { AppMutation } from '../domain/appMutations';
-import type { AppDataV2, BodyMeasurement, BodyProfile, ExerciseDefinition, FoodDefinition, FoodLogEntry, NutritionTarget, Program, WorkoutSession } from '../domain/models';
+import { canFinishSession, createCustomSession, createSession } from '../domain/workout';
+import type { WorkoutPreferences } from '../domain/models';
+import { applyMutation, getConflictScope, readConflictValue, type AppMutation } from '../domain/appMutations';
+import type { AppDataV2, BodyMeasurement, BodyProfile, ExerciseDefinition, FoodDefinition, FoodLogEntry, NutritionTarget, Program, WorkoutSession, WorkoutTemplate } from '../domain/models';
 
 const offlineStore = typeof indexedDB === 'undefined' ? null : new OfflineStore();
 const cloudSync = cloudClient && offlineStore ? new CloudSync(new CloudRepository(createSupabaseDocumentGateway(cloudClient)), offlineStore) : null;
@@ -22,6 +25,7 @@ export function useCloudAppData() {
   const actionChain = useRef<Promise<void>>(Promise.resolve());
   const userIdRef = useRef<string | null>(null);
   const viewRef = useRef<SyncView | null>(null);
+  const scheduled = useRef<Array<{ userId: string; mutation: AppMutation }>>([]);
 
   const showView = useCallback((next: SyncView | null) => { viewRef.current = next; setView(next); }, []);
 
@@ -55,11 +59,13 @@ export function useCloudAppData() {
       setAuthReady(true);
       if (next) void refresh(next.id);
     };
-    void cloudClient.auth.getUser().then(({ data, error: authError }) => {
-      if (authError && active) setError(authError.message);
-      selectUser(data.user);
+    let authEventReceived = false;
+    void cloudClient.auth.getSession().then(({ data, error: authError }) => {
+      if (!active || authEventReceived) return;
+      selectUser(data.session?.user ?? null);
+      if (authError) setError(authError.message);
     });
-    const { data: subscription } = cloudClient.auth.onAuthStateChange((_event, session) => selectUser(session?.user ?? null));
+    const { data: subscription } = cloudClient.auth.onAuthStateChange((_event, session) => { authEventReceived = true; selectUser(session?.user ?? null); });
     return () => { active = false; subscription.subscription.unsubscribe(); };
   }, [refresh, showView]);
 
@@ -75,9 +81,17 @@ export function useCloudAppData() {
   const dispatch = useCallback((mutation: AppMutation) => {
     const userId = userIdRef.current;
     if (!userId || !cloudSync) return;
+    const displayed = viewRef.current;
+    if (!displayed) return;
+    const projected = scheduled.current.filter((item) => item.userId === userId).reduce((data, item) => applyMutation(data, item.mutation), displayed.data);
+    const expected = { before: readConflictValue(projected, getConflictScope(mutation)), revision: displayed.revision };
+    const queued = { userId, mutation };
+    scheduled.current.push(queued);
     actionChain.current = actionChain.current.catch(() => {}).then(async () => {
       try {
-        const next = await cloudSync.enqueue(userId, mutation);
+        if (userIdRef.current !== userId) return;
+        const next = await cloudSync.enqueue(userId, mutation, expected);
+        scheduled.current = scheduled.current.filter((item) => item !== queued);
         if (userIdRef.current !== userId) return;
         showView(next);
         setError(null);
@@ -87,7 +101,7 @@ export function useCloudAppData() {
         }
       } catch (reason) {
         if (userIdRef.current === userId) setError(reason instanceof Error ? reason.message : 'Change was not saved.');
-      }
+      } finally { scheduled.current = scheduled.current.filter((item) => item !== queued); }
     });
   }, [showView]);
 
@@ -101,10 +115,16 @@ export function useCloudAppData() {
 
   async function signOut() {
     if (!cloudClient) return;
+    await actionChain.current.catch(() => {});
+    const userId = userIdRef.current;
+    if (offlineStore && userId && (await offlineStore.load(userId))?.recovery?.some((operation) => operation.status === 'prepared')) {
+      setError('Reconnect and Retry sync to reconcile the pending account operation before signing out.'); return;
+    }
     if (viewRef.current && viewRef.current.pendingCount > 0) {
-      setError('Sync or export pending changes before signing out.');
+      setError('Resolve and sync pending changes before signing out. Exporting creates a backup; it does not sync the queue.');
       return;
     }
+    if (userIdRef.current !== userId) return;
     const { error: signOutError } = await cloudClient.auth.signOut();
     if (signOutError) setError(signOutError.message);
   }
@@ -112,6 +132,8 @@ export function useCloudAppData() {
   async function importData(nextData: AppDataV2) {
     const userId = userIdRef.current;
     if (!cloudSync || !userId) return;
+    await actionChain.current.catch(() => {});
+    if (userIdRef.current !== userId) throw new Error('Account changed.');
     try {
       const next = await cloudSync.replaceExact(userId, nextData);
       if (userIdRef.current === userId) { showView(next); setError(null); }
@@ -119,6 +141,41 @@ export function useCloudAppData() {
       setError(reason instanceof Error ? reason.message : 'Cloud import failed.');
       throw reason;
     }
+  }
+
+  async function prepareMerge(source: AppDataV2, selection: MergeSelection) {
+    const userId = userIdRef.current;
+    if (!cloudSync || !userId) throw new Error('Sign in before merging.');
+    await actionChain.current.catch(() => {});
+    if (userIdRef.current !== userId) throw new Error('Account changed.');
+    const result = await cloudSync.prepareMerge(userId, source, selection);
+    if (userIdRef.current !== userId) throw new Error('Account changed.');
+    return result;
+  }
+
+  async function commitMerge(review: PreparedMerge, source: AppDataV2) {
+    if (!cloudSync || userIdRef.current !== review.userId) throw new Error('Account changed.');
+    await actionChain.current.catch(() => {});
+    const result = await cloudSync.commitMerge(review, source, () => userIdRef.current === review.userId);
+    if (userIdRef.current !== review.userId) throw new Error('Account changed.');
+    showView(result); setError(null);
+  }
+
+  async function reviewConflicts() {
+    const userId = userIdRef.current;
+    if (!cloudSync || !userId) throw new Error('Sign in to review conflicts.');
+    await actionChain.current.catch(() => {});
+    const result = await cloudSync.reviewConflicts(userId);
+    if (userIdRef.current !== userId) throw new Error('Account changed.');
+    return result;
+  }
+
+  async function resolveConflicts(review: ConflictReview, choices: Record<string, MergeChoice>) {
+    if (!cloudSync || userIdRef.current !== review.userId) throw new Error('Account changed.');
+    await actionChain.current.catch(() => {});
+    const result = await cloudSync.resolveConflicts(review, choices, () => userIdRef.current === review.userId);
+    if (userIdRef.current !== review.userId) throw new Error('Account changed.');
+    showView(result); setError(null);
   }
 
   async function getDeviceBackup() {
@@ -137,29 +194,46 @@ export function useCloudAppData() {
     if (program && workout) dispatch({ kind: 'startWorkout', session: createSession(program, workout, current.exercises, new Date().toISOString()), programId });
   }
 
+  function startCustomWorkout(workout: WorkoutTemplate) {
+    const displayed = viewRef.current?.data;
+    const current = displayed && scheduled.current.filter(item => item.userId === userIdRef.current).reduce((data, item) => applyMutation(data, item.mutation), displayed);
+    if (!current || current.sessions.some(session => session.completedAt === null)) return false;
+    try {
+      dispatch({ kind: 'startWorkout', session: createCustomSession(workout, availableExercises(current.exercises), new Date().toISOString()), programId: null });
+    } catch (reason) {
+      setError(reason instanceof Error ? reason.message : 'Could not start custom workout.');
+      return false;
+    }
+  }
+
   function finishWorkout(sessionId: string) {
-    const session = viewRef.current?.data.sessions.find((item) => item.id === sessionId);
+    const displayed = viewRef.current?.data;
+    const projected = displayed && scheduled.current.filter(item => item.userId === userIdRef.current).reduce((data,item) => applyMutation(data,item.mutation), displayed);
+    const session = projected?.sessions.find((item) => item.id === sessionId);
     if (!session || session.completedAt) return;
-    const hasCompletedSet = session.exercises.some((exercise) => exercise.sets.some((set) => set.completed && set.weightKg !== null && set.reps !== null));
-    if (hasCompletedSet) dispatch({ kind: 'finishWorkout', sessionId, completedAt: new Date().toISOString() });
+    if (canFinishSession(session)) dispatch({ kind: 'finishWorkout', sessionId, completedAt: new Date().toISOString() });
   }
 
   return {
     user, authReady, authBusy, offline, data: view?.data ?? null, error,
     pendingCount: view?.pendingCount ?? 0, conflictCount: view?.conflictCount ?? 0,
-    signIn, signOut, importData, getDeviceBackup, retry: () => user && void refresh(user.id),
+    signIn, signOut, importData, getDeviceBackup, prepareMerge, commitMerge, reviewConflicts, resolveConflicts, retry: () => user && void refresh(user.id),
     saveProgram: (program: Program) => dispatch({ kind: 'saveProgram', program }),
+    saveWorkoutPreferences: (preferences: WorkoutPreferences) => dispatch({ kind: 'saveWorkoutPreferences', preferences }),
     deleteProgram: (programId: string) => dispatch({ kind: 'deleteProgram', programId }),
     saveExercise: (exercise: ExerciseDefinition) => dispatch({ kind: 'saveExercise', exercise }),
     startWorkout,
-    updateSession: (session: WorkoutSession) => dispatch({ kind: 'updateSession', session }),
+    startCustomWorkout,
+    updateSession: (session: WorkoutSession, newExercises?: ExerciseDefinition[]) => dispatch({ kind: 'updateSession', session, ...(newExercises?.length ? { newExercises } : {}) }),
     finishWorkout,
     discardWorkout: (sessionId: string) => dispatch({ kind: 'discardWorkout', sessionId }),
+    deleteSession: (sessionId: string) => dispatch({ kind: 'deleteSession', sessionId }),
     saveBodyProfile: (profile: BodyProfile) => dispatch({ kind: 'saveBodyProfile', profile }),
     saveBodyMeasurement: (measurement: BodyMeasurement) => dispatch({ kind: 'saveBodyMeasurement', measurement }),
     deleteBodyMeasurement: (measurementId: string) => dispatch({ kind: 'deleteBodyMeasurement', measurementId }),
     saveNutritionTarget: (target: NutritionTarget) => dispatch({ kind: 'saveNutritionTarget', target }),
     saveCustomFood: (food: FoodDefinition) => dispatch({ kind: 'saveCustomFood', food }),
+    copyFoodEntries: (entries: FoodLogEntry[]) => dispatch({ kind: 'copyFoodEntries', entries }),
     addFoodEntry: (entry: FoodLogEntry) => dispatch({ kind: 'addFoodEntry', entry }),
     deleteFoodEntry: (entryId: string) => dispatch({ kind: 'deleteFoodEntry', entryId }),
   };

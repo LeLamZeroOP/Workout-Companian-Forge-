@@ -1,27 +1,39 @@
+import { SegmentedControl } from '../../components/SegmentedControl';
+import { SelectControl } from '../../components/SelectControl';
 import { useMemo, useState } from 'react';
-import type { WorkoutSession } from '../../domain/models';
+import type { ExerciseDefinition, Program, WorkoutSession } from '../../domain/models';
 import { DailyVolumeProgress } from './DailyVolumeProgress';
 import { ExerciseProgress } from './ExerciseProgress';
 import { MuscleSummaryPage } from '../muscles/MuscleSummaryPage';
+import { countedSet } from '../../domain/trainingMetrics';
+import { isCalendarDate } from '../../domain/calendar';
 
-export function ProgressPage({ sessions }: { sessions: WorkoutSession[] }) {
+export function ProgressPage({ sessions, programs = [], exerciseCatalog = [] }: { sessions: WorkoutSession[]; programs?: Program[]; exerciseCatalog?: ExerciseDefinition[] }) {
+  const [includeWarmups, setIncludeWarmups] = useState(false);
   const exercises = useMemo(() => {
     const values = new Map<string, string>();
-    sessions.filter((session) => session.completedAt).forEach((session) => session.exercises.forEach((exercise) => values.set(exercise.exerciseId, exercise.exerciseName)));
+    [...sessions].filter(session => session.completedAt).sort((a, b) => a.completedAt!.localeCompare(b.completedAt!)).forEach(session => session.exercises.forEach(exercise => {
+      if (exercise.sets.some(set => countedSet(set, includeWarmups))) values.set(exercise.exerciseId, exercise.exerciseName);
+    }));
     return [...values.entries()].map(([id, name]) => ({ id, name })).sort((a, b) => a.name.localeCompare(b.name));
-  }, [sessions]);
+  }, [sessions, includeWarmups]);
   const [section, setSection] = useState<'training' | 'muscles'>('training');
   const [view, setView] = useState<'exercise' | 'daily'>('exercise');
   const [exerciseId, setExerciseId] = useState(() => exercises[0]?.id ?? '');
 
+  const [from, setFrom] = useState('');
+  const [to, setTo] = useState('');
+  const rangeValid = (!from || isCalendarDate(from)) && (!to || isCalendarDate(to)) && (!from || !to || from <= to);
+  const filtered = sessions.filter(session => rangeValid && session.completedAt && (!from || new Date(`${from}T00:00:00`).getTime() <= new Date(session.completedAt).getTime()) && (!to || new Date(`${to}T23:59:59.999`).getTime() >= new Date(session.completedAt).getTime()));
+  const selectedExerciseId = exercises.some(item => item.id === exerciseId) ? exerciseId : exercises[0]?.id ?? '';
   return (
     <section className="analytics-stack">
-      <div className="progress-sections segmented-control" aria-label="Progress section"><button type="button" className={section === 'training' ? 'active' : ''} aria-pressed={section === 'training'} onClick={() => setSection('training')}>Training</button><button type="button" className={section === 'muscles' ? 'active' : ''} aria-pressed={section === 'muscles'} onClick={() => setSection('muscles')}>Muscles</button></div>
-      {section === 'muscles' ? <MuscleSummaryPage sessions={sessions} /> : !exercises.length ? <section className="empty-stage"><p className="eyebrow">No progress yet</p><h2>Your training trends start here.</h2><p>Complete a workout with weighted sets to unlock exercise and volume charts.</p></section> : <><div className="analytics-toolbar">
-        <div className="segmented-control" aria-label="Progress view"> <button type="button" className={view === 'exercise' ? 'active' : ''} aria-pressed={view === 'exercise'} onClick={() => setView('exercise')}>Exercise</button><button type="button" className={view === 'daily' ? 'active' : ''} aria-pressed={view === 'daily'} onClick={() => setView('daily')}>Daily volume</button></div>
-        {view === 'exercise' && <label className="compact-select">Exercise<select value={exerciseId} onChange={(event) => setExerciseId(event.target.value)}>{exercises.map((exercise) => <option value={exercise.id} key={exercise.id}>{exercise.name}</option>)}</select></label>}
+      {section === 'training' && <div className="analytics-filters"><label>From<input type="date" value={from} max={to || undefined} onChange={event => setFrom(event.target.value)} /></label><label>Through<input type="date" value={to} min={from || undefined} onChange={event => setTo(event.target.value)} /></label>{(from || to) && <button type="button" className="secondary-action" onClick={() => { setFrom(''); setTo(''); }}>Clear date filters</button>}{section === 'training' && <label className="checkbox-label"><input type="checkbox" checked={includeWarmups} onChange={event => setIncludeWarmups(event.target.checked)} />Include warm-up sets</label>}</div>}<p className="field-help">{includeWarmups && section === 'training' ? 'Completed working and warm-up sets' : 'Completed working sets only'} · valid recorded load and positive whole reps.</p><SegmentedControl className="progress-sections" label="Progress section" value={section} onChange={setSection} options={[{ value: 'training', label: 'Training' }, { value: 'muscles', label: 'Muscles' }]} />
+      {section === 'muscles' ? <MuscleSummaryPage sessions={sessions} programs={programs} exercises={exerciseCatalog} /> : !rangeValid ? <p className="error-banner" role="alert">Choose valid dates with the start on or before the end.</p> : (from || to) && !filtered.length ? <div className="analytics-card empty-analytics"><p>No completed workouts match this date range.</p></div> : !exercises.length ? <section className="empty-stage"><p className="eyebrow">No progress yet</p><h2>Your training trends start here.</h2><p>Complete a workout with valid recorded sets to unlock exercise and volume charts.</p></section> : <><div className="analytics-toolbar">
+        <SegmentedControl label="Progress view" value={view} onChange={setView} options={[{ value: 'exercise', label: 'Exercise' }, { value: 'daily', label: 'Daily volume' }]} />
+        {view === 'exercise' && <SelectControl label="Exercise" searchable value={selectedExerciseId} onChange={setExerciseId} options={exercises.map(exercise => ({ value: exercise.id, label: exercise.name }))} />}
       </div>
-      {view === 'exercise' ? <ExerciseProgress sessions={sessions} exerciseId={exerciseId} /> : <DailyVolumeProgress sessions={sessions} />}</>}
+      {view === 'exercise' ? <ExerciseProgress periodFiltered={Boolean(from || to)} sessions={filtered} exerciseId={selectedExerciseId} includeWarmups={includeWarmups} /> : <DailyVolumeProgress sessions={filtered} includeWarmups={includeWarmups} />}</>}
     </section>
   );
 }

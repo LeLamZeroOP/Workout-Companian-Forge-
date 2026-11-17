@@ -1,0 +1,182 @@
+[
+  {
+    "exerciseId": "zottman-curl",
+    "videoId": "ZrpRBgswtHs",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 103,
+    "currentTime": 0.25597611444091795,
+    "data": {
+      "title": "How To: Zottman Curl",
+      "author": "ScottHermanFitness",
+      "video_id": "ZrpRBgswtHs",
+      "isLive": false
+    },
+    "width": 854,
+    "height": 480,
+    "passed": true,
+    "checkedAt": "2026-10-16T10:03:45.683Z"
+  },
+  {
+    "exerciseId": "cross-body-hammer-curl",
+    "videoId": "ADE3aBSwVUo",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 29.681,
+    "currentTime": 0.23005906866455078,
+    "data": {
+      "title": "How to do a PINWHEEL CURL w/ Kelly Brown - GetFitWithKB",
+      "author": "Kelly Brown",
+      "video_id": "ADE3aBSwVUo",
+      "isLive": false
+    },
+    "width": 640,
+    "height": 360,
+    "passed": false,
+    "checkedAt": "2026-10-16T10:03:48.285Z"
+  },
+  {
+    "exerciseId": "rope-hammer-curl",
+    "videoId": "vsarApmqJmo",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 45.381,
+    "currentTime": 0.06753103623962402,
+    "data": {
+      "title": "How To: Cable Hammer Curl | Shaun Stafford",
+      "author": "Bodybuilding.com",
+      "video_id": "vsarApmqJmo",
+      "isLive": false
+    },
+    "width": 640,
+    "height": 360,
+    "passed": false,
+    "checkedAt": "2026-10-16T10:03:51.001Z"
+  },
+  {
+    "exerciseId": "seated-hammer-curl",
+    "videoId": "7jqi2qWAUJk",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 408.181,
+    "currentTime": 0.8212411754760742,
+    "data": {
+      "title": "How To Do Hammer Curls for HUGE Biceps (BICEP GROWTH!)",
+      "author": "Mind Pump TV",
+      "video_id": "7jqi2qWAUJk",
+      "isLive": false
+    },
+    "width": 854,
+    "height": 480,
+    "passed": true,
+    "checkedAt": "2026-10-16T10:03:54.659Z"
+  },
+  {
+    "exerciseId": "bayesian-cable-curl",
+    "videoId": "VPmJ-OpCoyY",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 90.761,
+    "currentTime": 0.6091119732971192,
+    "data": {
+      "title": "Bayesian Curl Tutorial | GymSpot",
+      "author": "GymSpot",
+      "video_id": "VPmJ-OpCoyY",
+      "isLive": false
+    },
+    "width": 854,
+    "height": 480,
+    "passed": true,
+    "checkedAt": "2026-10-16T10:03:57.560Z"
+  },
+  {
+    "exerciseId": "single-arm-cable-curl",
+    "videoId": "N38K4KOcwX4",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 162.741,
+    "currentTime": 0.5207038760223388,
+    "data": {
+      "title": "CABLE CURL | ARM WORKOUT",
+      "author": "Sqii",
+      "video_id": "N38K4KOcwX4",
+      "isLive": false
+    },
+    "width": 854,
+    "height": 480,
+    "passed": false,
+    "checkedAt": "2026-10-16T10:04:02.215Z"
+  },
+  {
+    "exerciseId": "drag-curl",
+    "videoId": "LMdNTHH6G8I",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 126.001,
+    "currentTime": 1.0238720915527344,
+    "data": {
+      "title": "How To: Barbell Drag Curl (Increase Bicep Peaks!)",
+      "author": "ScottHermanFitness",
+      "video_id": "LMdNTHH6G8I",
+      "isLive": false
+    },
+    "width": 854,
+    "height": 480,
+    "passed": false,
+    "checkedAt": "2026-10-16T10:04:06.019Z"
+  },
+  {
+    "exerciseId": "seated-db-curl",
+    "videoId": "SW5JS2Wf2uQ",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 270.401,
+    "currentTime": 1.0609211049041747,
+    "data": {
+      "title": "Seated Dumbbell Curls (How To, Common Mistakes, Benefits of Seated)",
+      "author": "Horton Barbell",
+      "video_id": "SW5JS2Wf2uQ",
+      "isLive": false
+    },
+    "width": 640,
+    "height": 360,
+    "passed": true,
+    "checkedAt": "2026-10-16T10:04:09.616Z"
+  },
+  {
+    "exerciseId": "band-biceps-curl",
+    "videoId": "PXLF19Oqe3M",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 146.401,
+    "currentTime": 0.5576280019073486,
+    "data": {
+      "title": "HOW TO DO Standing Biceps Curl with Resistance Bands",
+      "author": "Bodylastics",
+      "video_id": "PXLF19Oqe3M",
+      "isLive": false
+    },
+    "width": 640,
+    "height": 360,
+    "passed": true,
+    "checkedAt": "2026-10-16T10:04:12.103Z"
+  },
+  {
+    "exerciseId": "mountain-climber",
+    "videoId": "ZhiCSdOVJp0",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 159.001,
+    "currentTime": 0.1407430114440918,
+    "data": {
+      "title": "How to Do Mountain Climbers Properly - Great Core Exercise for Beginners",
+      "author": "Fit Father Project - Fitness For Busy Fathers",
+      "video_id": "ZhiCSdOVJp0",
+      "isLive": false
+    },
+    "width": 854,
+    "height": 480,
+    "passed": true,
+    "checkedAt": "2026-10-16T10:04:14.808Z"
+  }
+]

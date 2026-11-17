@@ -1,0 +1,102 @@
+import { expect, test } from '@playwright/test';
+
+test.use({ viewport: { width: 375, height: 812 }, isMobile: true, hasTouch: true });
+
+test('adds an exercise to an empty active workout and restores it on reload', async ({ page }) => {
+  await page.goto('/');
+  await page.getByRole('navigation', { name: 'Mobile primary' }).getByRole('button', { name: 'Workout', exact: true }).click();
+  await page.getByRole('button', { name: 'Program', exact: true }).click();
+  await page.getByRole('option', { name: /Starter Strength/ }).click();
+  await page.getByRole('radio', { name: /^Push/ }).click();
+  await page.getByRole('button', { name: 'Begin guided workout' }).click();
+  await page.getByRole('button', { name: 'Exercise options', exact: true }).click();
+  await page.getByRole('button', { name: 'Remove exercise', exact: true }).click();
+  await page.getByRole('alertdialog').getByRole('button', { name: 'Remove exercise', exact: true }).click();
+  await expect(page.getByText('No exercises remain.')).toBeVisible();
+  await page.getByRole('button', { name: 'Add exercise', exact: true }).click();
+  await page.getByRole('button', { name: 'Exercise to add', exact: true }).click();
+  await page.getByLabel('Search exercise to add').fill('Lat Pulldown');
+  await page.getByRole('option', { name: 'Lat Pulldown cable', exact: true }).click();
+  await page.getByRole('dialog').getByRole('button', { name: 'Add exercise', exact: true }).click();
+  await expect(page.getByRole('heading', { name: 'Lat Pulldown', exact: true })).toBeVisible();
+  await expect(page.getByLabel('Weight in kilograms')).toHaveValue('');
+  await page.reload();
+  await page.getByRole('navigation', { name: 'Mobile primary' }).getByRole('button', { name: 'Workout', exact: true }).click();
+  await expect(page.getByRole('heading', { name: 'Lat Pulldown', exact: true })).toBeVisible();
+  const saved = await page.evaluate(() => JSON.parse(localStorage.getItem('workout-tracker:data')!));
+  expect(saved.sessions[0].exercises[0].sets).toHaveLength(3);
+  expect(saved.programs[0].workouts[0].exercises[0].exerciseId).toBe('db-chest-press');
+});
+
+test('edits an active workout, preserves completed movement history, and restores changes on reload', async ({ page }) => {
+  await page.goto('/');
+  await page.getByRole('navigation', { name: 'Mobile primary' }).getByRole('button', { name: 'Workout', exact: true }).click();
+  await page.getByRole('button', { name: 'Program', exact: true }).click();
+  await page.getByRole('option', { name: /Starter Strength/ }).click();
+  await page.getByRole('radio', { name: /^Push/ }).click();
+  await page.getByRole('button', { name: 'Begin guided workout' }).click();
+  await page.getByLabel('Weight in kilograms').fill('30');
+  await page.getByLabel('Repetitions').fill('10');
+  await page.getByRole('button', { name: 'Complete set', exact: true }).click();
+  await page.getByRole('button', { name: 'Exercise options', exact: true }).click();
+  await page.getByRole('button', { name: 'Replace exercise', exact: true }).click();
+  await page.getByRole('button', { name: 'Replacement exercise', exact: true }).click();
+  await page.getByLabel('Search replacement exercise').fill('Lat Pulldown');
+  await page.getByRole('option', { name: 'Lat Pulldown cable', exact: true }).click();
+  await expect(page.getByText(/Completed sets stay with Dumbbell Chest Press/)).toBeVisible();
+  await page.getByRole('button', { name: 'Replace exercise', exact: true }).click();
+  await expect(page.getByRole('heading', { name: 'Lat Pulldown', exact: true })).toBeVisible();
+  await page.getByRole('button', { name: 'Exercise options', exact: true }).click();
+  await page.getByRole('button', { name: 'Edit details', exact: true }).click();
+  await page.screenshot({ path: 'artifacts/workout-editing-mobile.png', fullPage: true });
+  await page.getByLabel('Rest seconds').fill('0');
+  await page.getByLabel('Exercise notes').fill('Test tempo');
+  await page.getByRole('button', { name: 'Save changes', exact: true }).click();
+  await page.getByRole('button', { name: 'Edit workout details' }).click();
+  await page.getByLabel('Workout name').fill('Editing test');
+  await page.getByLabel('Session notes').fill('Session-only changes');
+  await page.getByRole('button', { name: 'Save changes', exact: true }).click();
+  await page.reload();
+  await page.getByRole('navigation', { name: 'Mobile primary' }).getByRole('button', { name: 'Workout', exact: true }).click();
+  await expect(page.getByRole('heading', { name: 'Editing test' })).toBeVisible();
+  await expect(page.getByText('Test tempo', { exact: true })).toBeVisible();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  const snapshot = await page.evaluate(() => JSON.parse(localStorage.getItem('workout-tracker:data')!));
+  expect(snapshot.sessions[0].exercises[0]).toMatchObject({ exerciseName: 'Dumbbell Chest Press', sets: [{ completed: true, weightKg: 30, reps: 10 }] });
+  expect(snapshot.sessions[0].exercises[1]).toMatchObject({ exerciseName: 'Lat Pulldown', restSeconds: 0, notes: 'Test tempo' });
+  expect(snapshot.programs[0].workouts[0].name).toBe('Push');
+
+  // Remove unfinished replacement, keeping the completed original result.
+  await page.getByRole('button', { name: 'Exercise options', exact: true }).click();
+  await page.getByRole('button', { name: 'Remove exercise', exact: true }).click();
+  await page.getByRole('alertdialog').getByRole('button', { name: 'Cancel', exact: true }).click();
+  await expect(page.getByRole('heading', { name: 'Lat Pulldown', exact: true })).toBeVisible();
+  await page.getByRole('button', { name: 'Exercise options', exact: true }).click();
+  await page.getByRole('button', { name: 'Remove exercise', exact: true }).click();
+  await page.getByRole('alertdialog').getByRole('button', { name: 'Remove exercise', exact: true }).click();
+  await page.getByRole('button', { name: 'Finish workout', exact: true }).click();
+  await page.getByRole('navigation', { name: 'Mobile primary' }).getByRole('button', { name: 'More', exact: true }).click();
+  await page.getByRole('region', { name: 'More destinations' }).getByRole('button', { name: /History/ }).click();
+  await page.getByRole('button', { name: 'Open Editing test from Starter Strength' }).click();
+  await expect(page.getByRole('heading', { name: 'Editing test' })).toBeVisible();
+  const finished = await page.evaluate(() => JSON.parse(localStorage.getItem('workout-tracker:data')!).sessions[0]);
+  expect(finished.completedAt).not.toBeNull();
+  expect(finished.exercises).toHaveLength(1);
+  expect(finished.exercises[0].exerciseName).toBe('Dumbbell Chest Press');
+});
+
+test('editor Escape restores focus and cancellation preserves workout details', async ({ page }) => {
+  await page.goto('/');
+  await page.getByRole('navigation', { name: 'Mobile primary' }).getByRole('button', { name: 'Workout', exact: true }).click();
+  await page.getByRole('button', { name: 'Program', exact: true }).click();
+  await page.getByRole('option', { name: /Starter Strength/ }).click();
+  await page.getByRole('radio', { name: /^Push/ }).click();
+  await page.getByRole('button', { name: 'Begin guided workout' }).click();
+  const trigger = page.getByRole('button', { name: 'Edit workout details' });
+  await trigger.click();
+  await page.getByLabel('Workout name').fill('Canceled name');
+  await page.keyboard.press('Escape');
+  await expect(page.getByRole('dialog')).toHaveCount(0);
+  await expect(trigger).toBeFocused();
+  await expect(page.getByRole('heading', { name: 'Push', exact: true })).toBeVisible();
+});

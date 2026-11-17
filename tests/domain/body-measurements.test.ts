@@ -6,6 +6,12 @@ function measurement(id: string, recordedAt: string, weightKg: number): BodyMeas
 }
 
 describe('body measurements', () => {
+  it('uses the last logged entry consistently when recorded timestamps are equal', () => {
+    const entries = [80, 50, 100].map((weight, index) => measurement(String(index), '2026-09-26T12:00:00', weight));
+    expect(getLatestMeasurement(entries)?.weightKg).toBe(100);
+    expect(getWeightChange(entries)).toBe(50);
+    expect(getWeightTrend(entries)[0]?.weightKg).toBe(100);
+  });
   it('validates required weight and optional measurement ranges', () => {
     expect(validateBodyMeasurement({ ...measurement('bad', '2026-09-20T08:00:00.000Z', 0), bodyFatPercent: 80, waistCm: 10 })).toMatchObject({
       weightKg: expect.any(String), bodyFatPercent: expect.any(String), waistCm: expect.any(String),
@@ -31,4 +37,13 @@ describe('body measurements', () => {
     expect(getWeightChange(entries)).toBeCloseTo(-0.5);
     expect(getWeightChange(entries.slice(0, 1))).toBeNull();
   });
+});
+
+it('keeps persisted same-time order after serialization and reordering, and never promotes a backdated edit', () => {
+  const entries = [80, 50, 100].map((weight, index) => ({ ...measurement(String(index), '2026-09-26T12:00:00Z', weight), entryOrder: 1000 + index, localDate: '2026-09-26' }));
+  const reloaded = JSON.parse(JSON.stringify(entries)).reverse();
+  expect(getLatestMeasurement(reloaded)?.weightKg).toBe(100); expect(getWeightChange(reloaded)).toBe(50);
+  const older = { ...measurement('older', '2026-09-25T12:00:00Z', 70), entryOrder: 9999999, localDate: '2026-09-25' };
+  expect(getLatestMeasurement([...reloaded, older])?.weightKg).toBe(100);
+  expect(getLatestMeasurement(entries.filter((entry) => entry.weightKg !== 100))?.weightKg).toBe(50);
 });

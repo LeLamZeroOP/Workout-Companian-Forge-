@@ -5,7 +5,7 @@ create table public.user_documents (
   revision bigint not null default 0 check (revision >= 0),
   data jsonb not null check (
     jsonb_typeof(data) = 'object'
-    and data->>'version' = '2'
+    and coalesce(data->>'version' in ('2', '3'), false)
     and octet_length(data::text) <= 10485760
   ),
   recent_mutation_ids text[] not null default '{}' check (coalesce(array_length(recent_mutation_ids, 1), 0) <= 100),

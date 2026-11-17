@@ -1,40 +1,29 @@
-import { useEffect, useRef, useState } from 'react';
-import { X } from 'lucide-react';
+import { useState } from 'react';
+import { DialogSurface } from '../../components/DialogSurface';
 import type { FoodDefinition, FoodLogEntry } from '../../domain/models';
-import { createFoodLogEntry, scaleNutrients } from '../../domain/nutrition';
+import { createFoodLogEntry, formatMacro, scaleNutrients, storableNutrients } from '../../domain/nutrition';
+import { isCalendarDate } from '../../domain/calendar';
 import { FoodSearch } from './FoodSearch';
+import { CustomFoodForm } from './CustomFoodForm';
+import { ValidatedField } from '../../components/ValidatedField';
 
-export function FoodEntryDialog({ foods, meal, localDate, onAdd, onClose }: { foods: FoodDefinition[]; meal: FoodLogEntry['meal']; localDate: string; onAdd: (entry: FoodLogEntry) => void; onClose: () => void }) {
+export function FoodEntryDialog({ foods, meal, localDate, onAdd, onClose, onSaveFood, recentFoodIds = [] }: { recentFoodIds?: string[]; foods: FoodDefinition[]; meal: FoodLogEntry['meal']; localDate: string; onAdd: (entry: FoodLogEntry) => boolean | void; onClose: () => void; onSaveFood?: (food: FoodDefinition) => boolean | void }) {
   const [selected, setSelected] = useState<FoodDefinition | null>(null);
-  const [grams, setGrams] = useState('100');
-  const dialogRef = useRef<HTMLElement>(null);
-  const returnFocusRef = useRef<HTMLElement | null>(document.activeElement instanceof HTMLElement ? document.activeElement : null);
-  const preview = selected ? scaleNutrients(selected.nutrientsPer100g, Number(grams) || 0) : null;
+  const [creating, setCreating] = useState(false);
+  const [amount, setAmount] = useState('100');
+  const numericAmount = Number(amount);
+  const validAmount = Number.isFinite(numericAmount) && numericAmount >= 0.001 && numericAmount <= 100000;
+  const preview = selected && validAmount ? scaleNutrients(selected.nutrientsPer100g ?? selected.portion!.nutrients, numericAmount * (selected.portion ? 100 : 1)) : null;
+  const validSnapshot = preview !== null && storableNutrients(preview) && isCalendarDate(localDate);
   const mealLabel = meal[0]!.toUpperCase() + meal.slice(1);
-  useEffect(() => {
-    const returnFocus = returnFocusRef.current;
-    const closeOnEscape = (event: KeyboardEvent) => { if (event.key === 'Escape') onClose(); };
-    document.addEventListener('keydown', closeOnEscape);
-    return () => { document.removeEventListener('keydown', closeOnEscape); returnFocus?.focus(); };
-  }, [onClose]);
-  return <div className="dialog-backdrop" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) onClose(); }}>
-    <section ref={dialogRef} className="food-dialog" role="dialog" aria-modal="true" aria-labelledby="food-dialog-title" onKeyDown={(event) => {
-      if (event.key !== 'Tab') return;
-      const controls = dialogRef.current?.querySelectorAll<HTMLElement>('button:not(:disabled), input:not(:disabled), [href], [tabindex]:not([tabindex="-1"])');
-      if (!controls?.length) return;
-      const first = controls[0];
-      const last = controls[controls.length - 1];
-      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
-      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
-    }}>
-      <div className="dialog-heading"><div><p className="eyebrow">{mealLabel}</p><h2 id="food-dialog-title">{selected ? selected.name : 'Add food'}</h2></div><button className="icon-button" type="button" aria-label="Close food dialog" onClick={onClose}><X size={17} aria-hidden="true" /></button></div>
-      {!selected ? <FoodSearch foods={foods} onSelect={(food) => { setSelected(food); setGrams(String(food.servings[0]?.grams ?? 100)); }} /> : <div className="amount-step">
-        <p className="muted">{selected.preparation} · nutrition is scaled from USDA or your saved label.</p>
-        <div className="serving-chips">{selected.servings.map((serving) => { const isSelected = Number(grams) === serving.grams; return <button type="button" key={serving.name} className={isSelected ? 'selected' : ''} aria-pressed={isSelected} onClick={() => setGrams(String(serving.grams))}>{serving.name}<small>{serving.grams} g</small></button>; })}</div>
-        <label>Amount in grams<input type="number" inputMode="decimal" min="0.1" value={grams} onChange={(event) => setGrams(event.target.value)} /></label>
-        {preview && <div className="amount-preview"><strong>{Math.round(preview.caloriesKcal)} kcal</strong><span>{Math.round(preview.proteinG)}g protein</span><span>{Math.round(preview.carbsG)}g carbs</span><span>{Math.round(preview.fatG)}g fat</span></div>}
-        <div className="form-actions"><button className="primary-action" type="button" disabled={!Number.isFinite(Number(grams)) || Number(grams) <= 0} onClick={() => { onAdd(createFoodLogEntry(selected, Number(grams), meal, localDate)); onClose(); }}>Add to {meal}</button><button className="text-action" type="button" onClick={() => setSelected(null)}>Back to search</button></div>
+  function select(food: FoodDefinition) { setSelected(food); setAmount(food.portion ? '1' : String(food.servings[0]?.grams ?? 100)); }
+  return <DialogSurface title={creating ? 'My foods' : selected ? selected.name : 'Add food'} eyebrow={mealLabel} closeLabel="Close food dialog" onClose={onClose} className="food-dialog" focusKey={creating ? 'create' : selected?.id ?? 'search'}>
+      {creating && onSaveFood ? <CustomFoodForm onSave={(food) => { if (onSaveFood(food) === false) return; setCreating(false); select(food); }} onCancel={() => setCreating(false)} /> : !selected ? <>{onSaveFood && <button className="secondary-action" type="button" onClick={() => setCreating(true)}>Create my food</button>}<FoodSearch recentFoodIds={recentFoodIds} foods={foods} onSelect={select} /></> : <div className="amount-step">
+        <p className="muted">{selected.preparation} · {selected.source === 'custom' ? 'My foods' : 'USDA'}</p>
+        {!selected.portion && <div className="serving-chips">{selected.servings.map((serving) => <button type="button" key={serving.name} className={numericAmount === serving.grams ? 'selected' : ''} aria-pressed={numericAmount === serving.grams} onClick={() => setAmount(String(serving.grams))}>{serving.name}<small>{serving.grams} g</small></button>)}</div>}
+        <ValidatedField label={selected.portion ? `Number of portions (${selected.portion.name})` : 'Amount in grams'} error={!validAmount ? 'Enter an amount from 0.001 to 100,000.' : preview && !storableNutrients(preview) ? 'This amount exceeds the supported nutrient range. Use a smaller amount.' : undefined} type="number" inputMode="decimal" step="any" min="0.001" max="100000" value={amount} onChange={(event) => setAmount(event.target.value)} />
+        {preview && <div className="amount-preview"><strong>{Math.round(preview.caloriesKcal)} kcal</strong><span>{formatMacro(preview.proteinG)} protein</span><span>{formatMacro(preview.carbsG)} carbs</span><span>{formatMacro(preview.fatG)} fat</span></div>}
+        <div className="form-actions"><button className="primary-action" type="button" disabled={!validSnapshot} onClick={() => { if (onAdd(createFoodLogEntry(selected, numericAmount, meal, localDate)) !== false) onClose(); }}>Add to {meal}</button><button className="text-action" type="button" onClick={() => setSelected(null)}>Back to search</button></div>
       </div>}
-    </section>
-  </div>;
+  </DialogSurface>;
 }

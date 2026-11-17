@@ -1,0 +1,1620 @@
+[
+  {
+    "id": "deadlift",
+    "name": "Barbell Conventional Deadlift",
+    "equipment": "barbell",
+    "muscleContribution": {
+      "glutes": 1,
+      "hamstrings": 1,
+      "quads": 0.5,
+      "upperBack": 0.5
+    },
+    "muscleRoles": {
+      "direct": [
+        "glutes",
+        "hamstrings"
+      ],
+      "indirect": [
+        "quads",
+        "upperBack"
+      ],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [],
+    "setupNotes": "Brace before lifting and keep the bar close; record the total barbell load.",
+    "isCustom": false,
+    "video": {
+      "videoId": "Y1IGeJEXpF4",
+      "title": "Deadlift Tutorial",
+      "creator": "Alan Thrall (Untamed Strength)"
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=Y1IGeJEXpF4",
+    "rationale": "Specific instructional source for the named movement; metadata and in-app playback require the parent validation pass."
+  },
+  {
+    "id": "sumo-deadlift",
+    "name": "Sumo Deadlift",
+    "equipment": "barbell",
+    "muscleContribution": {
+      "glutes": 1,
+      "quads": 1,
+      "hamstrings": 0.5,
+      "upperBack": 0.5
+    },
+    "muscleRoles": {
+      "direct": [
+        "glutes",
+        "quads"
+      ],
+      "indirect": [
+        "hamstrings",
+        "upperBack"
+      ],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [],
+    "setupNotes": "Use a comfortable wide stance and keep knees aligned with toes. Record total barbell load.",
+    "isCustom": false,
+    "video": {
+      "videoId": "LGIS9vs65Sk",
+      "title": "How To Sumo Deadlift: The Definitive Guide",
+      "creator": "Calgary Barbell"
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=LGIS9vs65Sk",
+    "rationale": "Specific instructional source for the named movement; metadata and in-app playback require the parent validation pass."
+  },
+  {
+    "id": "trap-bar-deadlift",
+    "name": "Trap Bar Deadlift",
+    "equipment": "other",
+    "muscleContribution": {
+      "glutes": 1,
+      "quads": 1,
+      "hamstrings": 0.5,
+      "upperBack": 0.5
+    },
+    "muscleRoles": {
+      "direct": [
+        "glutes",
+        "quads"
+      ],
+      "indirect": [
+        "hamstrings",
+        "upperBack"
+      ],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [
+      "hex bar deadlift"
+    ],
+    "setupNotes": "Stand centered inside the trap/hex bar. Record the total bar and plate load.",
+    "isCustom": false,
+    "video": {
+      "videoId": "la0tQgLlHV0",
+      "title": "How To Do The Trap Bar Deadlift",
+      "creator": "Mind Pump TV"
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=la0tQgLlHV0",
+    "rationale": "Specific instructional source for the named movement; metadata and in-app playback require the parent validation pass."
+  },
+  {
+    "id": "front-squat",
+    "name": "Barbell Front Squat",
+    "equipment": "barbell",
+    "muscleContribution": {
+      "quads": 1,
+      "glutes": 1,
+      "abs": 0.5
+    },
+    "muscleRoles": {
+      "direct": [
+        "quads",
+        "glutes"
+      ],
+      "indirect": [
+        "abs"
+      ],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [],
+    "setupNotes": "Support the bar across the front shoulders with elbows up. Record total barbell load.",
+    "isCustom": false,
+    "video": {
+      "videoId": "uQeCK1vfj4E",
+      "title": "How to Perform A Front Squat",
+      "creator": "Squat University"
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=uQeCK1vfj4E",
+    "rationale": "Specific instructional source for the named movement; metadata and in-app playback require the parent validation pass."
+  },
+  {
+    "id": "smith-squat",
+    "name": "Smith Machine Squat",
+    "equipment": "machine",
+    "muscleContribution": {
+      "quads": 1,
+      "glutes": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "quads",
+        "glutes"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [],
+    "setupNotes": "Set safety stops and choose a foot position suited to the machine. Record load consistently across sessions.",
+    "isCustom": false,
+    "video": {
+      "videoId": "fEuYM-miK5U",
+      "title": "9 Smith Machine Squat Mistakes and How to Fix Them",
+      "creator": "Renaissance Periodization"
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=fEuYM-miK5U",
+    "rationale": "Specific instructional source for the named movement; metadata and in-app playback require the parent validation pass."
+  },
+  {
+    "id": "db-squat",
+    "name": "Dumbbell Squat",
+    "equipment": "dumbbell",
+    "muscleContribution": {
+      "quads": 1,
+      "glutes": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "quads",
+        "glutes"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [
+      "suitcase squat"
+    ],
+    "setupNotes": "Hold one dumbbell at each side and squat under control. Record the combined load of both dumbbells.",
+    "isCustom": false,
+    "video": {
+      "videoId": "R_xX7L6jgNA",
+      "title": "Suitcase Squat with Dumbbells – Leg & Core Strength",
+      "creator": "FITBODY with Julie Lohre"
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=R_xX7L6jgNA",
+    "rationale": "Specific instructional source for the named movement; metadata and in-app playback require the parent validation pass."
+  },
+  {
+    "id": "kettlebell-goblet-squat",
+    "name": "Kettlebell Goblet Squat",
+    "equipment": "other",
+    "muscleContribution": {
+      "quads": 1,
+      "glutes": 1,
+      "abs": 0.5
+    },
+    "muscleRoles": {
+      "direct": [
+        "quads",
+        "glutes"
+      ],
+      "indirect": [
+        "abs"
+      ],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [],
+    "setupNotes": "Hold one kettlebell at the chest and keep the whole foot planted. Record kettlebell weight.",
+    "isCustom": false,
+    "video": {
+      "videoId": "e4mizgRSqcg",
+      "title": "Kettlebell Squat Progression for Every Fitness Level | Kettlebell Manual 6",
+      "creator": "Mark Wildman",
+      "startSeconds": 598,
+      "endSeconds": 938,
+      "note": "Goblet squat demonstration and common mistakes; the source also covers other kettlebell squat progressions."
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=e4mizgRSqcg",
+    "rationale": "Specific instructional source for the named movement; metadata and in-app playback require the parent validation pass."
+  },
+  {
+    "id": "box-squat",
+    "name": "Barbell Box Squat",
+    "equipment": "barbell",
+    "muscleContribution": {
+      "quads": 1,
+      "glutes": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "quads",
+        "glutes"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [],
+    "setupNotes": "Use a stable box and controlled contact without dropping onto it. Record total barbell load.",
+    "isCustom": false,
+    "video": {
+      "videoId": "rRihE4weYg4",
+      "title": "How to Box Squat (feat. Donnie Thompson)",
+      "creator": "Squat University"
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=rRihE4weYg4",
+    "rationale": "Specific instructional source for the named movement; metadata and in-app playback require the parent validation pass."
+  },
+  {
+    "id": "safety-bar-squat",
+    "name": "Safety Bar Squat",
+    "equipment": "barbell",
+    "muscleContribution": {
+      "quads": 1,
+      "glutes": 1,
+      "upperBack": 0.5
+    },
+    "muscleRoles": {
+      "direct": [
+        "quads",
+        "glutes"
+      ],
+      "indirect": [
+        "upperBack"
+      ],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [],
+    "setupNotes": "Use the padded safety squat bar and keep the handles steady. Record the specific bar plus plate load.",
+    "isCustom": false,
+    "video": {
+      "videoId": "1t8pd41XoWI",
+      "title": "BEST Tips for Safety Squat Bar (HOW TO: SS Yoke Bar)",
+      "creator": "elitefts"
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=1t8pd41XoWI",
+    "rationale": "Specific instructional source for the named movement; metadata and in-app playback require the parent validation pass."
+  },
+  {
+    "id": "belt-squat",
+    "name": "Belt Squat",
+    "equipment": "machine",
+    "muscleContribution": {
+      "quads": 1,
+      "glutes": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "quads",
+        "glutes"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [],
+    "setupNotes": "Secure the belt at the hips and set the machine safeties. Record machine load consistently.",
+    "isCustom": false,
+    "video": {
+      "videoId": "vlES1_S2NiY",
+      "title": "Get Bigger Legs On One Simple Machine! (ft. Marc Lobliner)",
+      "creator": "Renaissance Periodization",
+      "startSeconds": 384,
+      "endSeconds": 585,
+      "note": "Belt squat setup and hypertrophy tutorial."
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=vlES1_S2NiY",
+    "rationale": "Specific instructional source for the named movement; metadata and in-app playback require the parent validation pass."
+  },
+  {
+    "id": "reverse-lunge",
+    "name": "Dumbbell Reverse Lunge",
+    "equipment": "dumbbell",
+    "muscleContribution": {
+      "quads": 1,
+      "glutes": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "quads",
+        "glutes"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [],
+    "setupNotes": "Step backward and lower under control. Log repetitions per side and combined dumbbell load.",
+    "isCustom": false,
+    "unilateral": true,
+    "video": {
+      "videoId": "SXYrUTUwFoc",
+      "title": "How To Reverse Lunge",
+      "creator": "Mind Pump TV"
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=SXYrUTUwFoc",
+    "rationale": "Specific instructional source for the named movement; metadata and in-app playback require the parent validation pass."
+  },
+  {
+    "id": "forward-lunge",
+    "name": "Dumbbell Forward Lunge",
+    "equipment": "dumbbell",
+    "muscleContribution": {
+      "quads": 1,
+      "glutes": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "quads",
+        "glutes"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [],
+    "setupNotes": "Step forward and push back to the starting position. Log repetitions per side and combined dumbbell load.",
+    "isCustom": false,
+    "unilateral": true,
+    "video": {
+      "videoId": "2CvWwCYmxm4",
+      "title": "The BEST Beginner Lower Body Exercise (LUNGE VARIATIONS)",
+      "creator": "Mind Pump TV"
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=2CvWwCYmxm4",
+    "rationale": "Specific instructional source for the named movement; metadata and in-app playback require the parent validation pass."
+  },
+  {
+    "id": "walking-lunge",
+    "name": "Dumbbell Walking Lunge",
+    "equipment": "dumbbell",
+    "muscleContribution": {
+      "quads": 1,
+      "glutes": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "quads",
+        "glutes"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [],
+    "setupNotes": "Advance with controlled steps. Log steps per side and combined dumbbell load.",
+    "isCustom": false,
+    "unilateral": true,
+    "video": {
+      "videoId": "0MZd3iKzzPM",
+      "title": "10 Lunge Mistakes and How to Fix Them",
+      "creator": "Renaissance Periodization"
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=0MZd3iKzzPM",
+    "rationale": "Specific instructional source for the named movement; metadata and in-app playback require the parent validation pass."
+  },
+  {
+    "id": "lateral-lunge",
+    "name": "Lateral Lunge",
+    "equipment": "bodyweight",
+    "muscleContribution": {
+      "glutes": 1,
+      "quads": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "glutes",
+        "quads"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [],
+    "setupNotes": "Step to the side and sit into the working hip. Log repetitions per side and 0 kg when unweighted.",
+    "isCustom": false,
+    "unilateral": true,
+    "video": {
+      "videoId": "liFeq7swKfc",
+      "title": "Side (Lateral) Lunge Technique",
+      "creator": "Mind Pump TV"
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=liFeq7swKfc",
+    "rationale": "Specific instructional source for the named movement; metadata and in-app playback require the parent validation pass."
+  },
+  {
+    "id": "step-up",
+    "name": "Dumbbell Step-Up",
+    "equipment": "dumbbell",
+    "muscleContribution": {
+      "quads": 1,
+      "glutes": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "quads",
+        "glutes"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [],
+    "setupNotes": "Use a stable platform and a height you can control. Log repetitions per side and combined dumbbell load.",
+    "isCustom": false,
+    "unilateral": true,
+    "video": {
+      "videoId": "d4p6Jy6KUO4",
+      "title": "How To PROPERLY Perform Step Ups | 3 Muscle Gain Variations Included",
+      "creator": "Colossus Fitness",
+      "note": "Step-up technique and common mistakes first, followed by optional variations."
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=d4p6Jy6KUO4",
+    "rationale": "Specific instructional source for the named movement; metadata and in-app playback require the parent validation pass."
+  },
+  {
+    "id": "split-squat",
+    "name": "Dumbbell Split Squat",
+    "equipment": "dumbbell",
+    "muscleContribution": {
+      "quads": 1,
+      "glutes": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "quads",
+        "glutes"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [],
+    "setupNotes": "Keep the rear foot on the floor and lower in a split stance. Log repetitions per side and combined dumbbell load.",
+    "isCustom": false,
+    "unilateral": true,
+    "video": {
+      "videoId": "4bNQITw0VdY",
+      "title": "How To Perform PERFECT Split Squats (Everything You Need To Know)",
+      "creator": "E3 Rehab",
+      "startSeconds": 69,
+      "endSeconds": 208,
+      "note": "Floor-supported split squat section; the later source also covers rear-foot-elevated variations."
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=4bNQITw0VdY",
+    "rationale": "Specific instructional source for the named movement; metadata and in-app playback require the parent validation pass."
+  },
+  {
+    "id": "single-leg-leg-press",
+    "name": "Single-Leg Leg Press",
+    "equipment": "machine",
+    "muscleContribution": {
+      "quads": 1,
+      "glutes": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "quads",
+        "glutes"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [],
+    "setupNotes": "Use one leg without rotating the pelvis; set the machine safeties. Log repetitions per side and machine load.",
+    "isCustom": false,
+    "unilateral": true,
+    "video": {
+      "videoId": "ZYDTJaAM-gE",
+      "title": "SINGLE LEG PRESS | Legs | How-To Exercise Tutorial",
+      "creator": "Buff Dudes Workouts"
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=ZYDTJaAM-gE",
+    "rationale": "Specific instructional source for the named movement; metadata and in-app playback require the parent validation pass."
+  },
+  {
+    "id": "single-leg-rdl",
+    "name": "Single-Leg Romanian Deadlift",
+    "equipment": "dumbbell",
+    "muscleContribution": {
+      "hamstrings": 1,
+      "glutes": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "hamstrings",
+        "glutes"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [],
+    "setupNotes": "Hinge on one leg with the hips square. Log repetitions per side and combined held dumbbell load.",
+    "isCustom": false,
+    "unilateral": true,
+    "video": {
+      "videoId": "Zfr6wizR8rs",
+      "title": "The BEST Single-Leg RDL Tutorial (Romanian Deadlift)",
+      "creator": "Squat University"
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=Zfr6wizR8rs",
+    "rationale": "Specific instructional source for the named movement; metadata and in-app playback require the parent validation pass."
+  },
+  {
+    "id": "good-morning",
+    "name": "Barbell Good Morning",
+    "equipment": "barbell",
+    "muscleContribution": {
+      "hamstrings": 1,
+      "glutes": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "hamstrings",
+        "glutes"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [],
+    "setupNotes": "Brace and hinge at the hips with a modest knee bend. Record total barbell load.",
+    "isCustom": false,
+    "video": {
+      "videoId": "y_o_GeEClWs",
+      "title": "10 Good Morning Mistakes and How to Fix Them",
+      "creator": "Renaissance Periodization"
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=y_o_GeEClWs",
+    "rationale": "Specific instructional source for the named movement; metadata and in-app playback require the parent validation pass."
+  },
+  {
+    "id": "back-extension",
+    "name": "45-Degree Back Extension",
+    "equipment": "other",
+    "muscleContribution": {
+      "glutes": 1,
+      "hamstrings": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "glutes",
+        "hamstrings"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [],
+    "setupNotes": "Set the pad below the hip crease and hinge at the hips. Lower-back work is not separately tracked. Log added external load, or 0 kg unweighted.",
+    "isCustom": false,
+    "video": {
+      "videoId": "jh45myksaEs",
+      "title": "Back Extension Instructional Video",
+      "creator": "Bret Contreras Glute Guy"
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=jh45myksaEs",
+    "rationale": "Specific instructional source for the named movement; metadata and in-app playback require the parent validation pass."
+  },
+  {
+    "id": "glute-bridge",
+    "name": "Glute Bridge",
+    "equipment": "bodyweight",
+    "muscleContribution": {
+      "glutes": 1,
+      "hamstrings": 0.5
+    },
+    "muscleRoles": {
+      "direct": [
+        "glutes"
+      ],
+      "indirect": [
+        "hamstrings"
+      ],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [],
+    "setupNotes": "Press through the feet and extend the hips without arching the lower back. Log added external load, or 0 kg unweighted.",
+    "isCustom": false,
+    "video": {
+      "videoId": "m35vpVeHIWA",
+      "title": "These 3 Exercises Will Grow Your Butt!",
+      "creator": "Mind Pump TV",
+      "note": "The first exercise is the floor glute bridge; later sections cover other glute exercises."
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=m35vpVeHIWA",
+    "rationale": "Specific instructional source for the named movement; metadata and in-app playback require the parent validation pass."
+  },
+  {
+    "id": "single-leg-glute-bridge",
+    "name": "Single-Leg Glute Bridge",
+    "equipment": "bodyweight",
+    "muscleContribution": {
+      "glutes": 1,
+      "hamstrings": 0.5
+    },
+    "muscleRoles": {
+      "direct": [
+        "glutes"
+      ],
+      "indirect": [
+        "hamstrings"
+      ],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [],
+    "setupNotes": "Keep the pelvis level while driving through one foot. Log repetitions per side and 0 kg unweighted.",
+    "isCustom": false,
+    "unilateral": true,
+    "video": {
+      "videoId": "_K_di6h2-Wg",
+      "title": "How to do a Single-Leg Glute Bridge | The Right Way",
+      "creator": "Well+Good"
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=_K_di6h2-Wg",
+    "rationale": "Specific instructional source for the named movement; metadata and in-app playback require the parent validation pass."
+  },
+  {
+    "id": "machine-hip-thrust",
+    "name": "Machine Hip Thrust",
+    "equipment": "machine",
+    "muscleContribution": {
+      "glutes": 1,
+      "hamstrings": 0.5
+    },
+    "muscleRoles": {
+      "direct": [
+        "glutes"
+      ],
+      "indirect": [
+        "hamstrings"
+      ],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [],
+    "setupNotes": "Secure the machine belt or pad and extend through the hips. Record machine load consistently.",
+    "isCustom": false,
+    "video": {
+      "videoId": "Qf-QyAR59mM",
+      "title": "Unleash Insane Growth In Glutes And Hamstrings With This Science Based Workout",
+      "creator": "Renaissance Periodization",
+      "startSeconds": 251,
+      "endSeconds": 475,
+      "note": "Machine hip thrust coaching and working set; this source also covers other lower-body movements."
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=Qf-QyAR59mM",
+    "rationale": "Specific instructional source for the named movement; metadata and in-app playback require the parent validation pass."
+  },
+  {
+    "id": "cable-pull-through",
+    "name": "Cable Pull-Through",
+    "equipment": "cable",
+    "muscleContribution": {
+      "glutes": 1,
+      "hamstrings": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "glutes",
+        "hamstrings"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [],
+    "setupNotes": "Face away from the low pulley, hold the rope between the legs, and hinge at the hips. Record cable stack load.",
+    "isCustom": false,
+    "video": {
+      "videoId": "DbSF7ipBh5Y",
+      "title": "How to PROPERLY Perform a Glute Pull Through | Fix Your Cable Pull Through Form NOW!",
+      "creator": "Colossus Fitness"
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=DbSF7ipBh5Y",
+    "rationale": "Specific instructional source for the named movement; metadata and in-app playback require the parent validation pass."
+  },
+  {
+    "id": "cable-glute-kickback",
+    "name": "Cable Glute Kickback",
+    "equipment": "cable",
+    "muscleContribution": {
+      "glutes": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "glutes"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [],
+    "setupNotes": "Use an ankle cuff and extend one hip without swinging the trunk. Log repetitions per side and stack load.",
+    "isCustom": false,
+    "unilateral": true,
+    "video": {
+      "videoId": "5jJNfIlKTmg",
+      "title": "How to PROPERLY Cable Glute Kickback (GROW YOUR GLUTES)",
+      "creator": "Colossus Fitness"
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=5jJNfIlKTmg",
+    "rationale": "Specific instructional source for the named movement; metadata and in-app playback require the parent validation pass."
+  },
+  {
+    "id": "kettlebell-deadlift",
+    "name": "Kettlebell Deadlift",
+    "equipment": "other",
+    "muscleContribution": {
+      "glutes": 1,
+      "hamstrings": 1,
+      "quads": 0.5
+    },
+    "muscleRoles": {
+      "direct": [
+        "glutes",
+        "hamstrings"
+      ],
+      "indirect": [
+        "quads"
+      ],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [
+      "kettlebell",
+      "KB"
+    ],
+    "setupNotes": "Set the kettlebell between the feet and stand by extending the hips. Record kettlebell weight.",
+    "isCustom": false,
+    "video": {
+      "videoId": "sQx_ChXs2BY",
+      "title": "How to Use a Kettlebell | Kettlebell Manual Part 1",
+      "creator": "Mark Wildman",
+      "startSeconds": 19,
+      "endSeconds": 198,
+      "note": "Two-hand kettlebell deadlift section of the instructor's kettlebell manual."
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=sQx_ChXs2BY",
+    "rationale": "Specific instructional source for the named movement; metadata and in-app playback require the parent validation pass."
+  },
+  {
+    "id": "hip-abduction-machine",
+    "name": "Hip Abduction Machine",
+    "equipment": "machine",
+    "muscleContribution": {
+      "glutes": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "glutes"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [],
+    "setupNotes": "Place the pads outside the thighs and open the knees under control. Record machine stack load.",
+    "isCustom": false,
+    "video": {
+      "videoId": "OjI5OpV6IWA",
+      "title": "How to PROPERLY Use The Abductor Machine (STOP DOING THIS)",
+      "creator": "Colossus Fitness"
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=OjI5OpV6IWA",
+    "rationale": "Specific instructional source for the named movement; metadata and in-app playback require the parent validation pass."
+  },
+  {
+    "id": "band-lateral-walk",
+    "name": "Band Lateral Walk",
+    "equipment": "band",
+    "muscleContribution": {
+      "glutes": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "glutes"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [],
+    "setupNotes": "Maintain band tension with controlled side steps. Log steps per side at 0 kg and note band strength.",
+    "isCustom": false,
+    "unilateral": true,
+    "video": {
+      "videoId": "tdEPiVcxfcQ",
+      "title": "3 Most Common Lateral Band Walk Mistakes (and how to fix them!)",
+      "creator": "Horton Barbell",
+      "shorterTutorialReason": "Focused landscape coaching covers the three common band-walk faults: losing band tension, initiating with the foot, and toe alignment. The complete 140-second lesson directly addresses setup and execution without needing a longer workout compilation."
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=tdEPiVcxfcQ",
+    "rationale": "Specific instructional source for the named movement; metadata and in-app playback require the parent validation pass."
+  },
+  {
+    "id": "clamshell",
+    "name": "Clamshell",
+    "equipment": "bodyweight",
+    "muscleContribution": {
+      "glutes": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "glutes"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [],
+    "setupNotes": "Lie on the side with hips stacked and open the top knee without rolling backward. Log repetitions per side at 0 kg; note any band.",
+    "isCustom": false,
+    "unilateral": true,
+    "video": {
+      "videoId": "b64WSjvwnYU",
+      "title": "CLAMSHELL EXERCISE | Common Mistakes, Correct Form, & Progressions",
+      "creator": "The Durable Body"
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=b64WSjvwnYU",
+    "rationale": "Specific instructional source for the named movement; metadata and in-app playback require the parent validation pass."
+  },
+  {
+    "id": "seated-calf-raise",
+    "name": "Seated Calf Raise",
+    "equipment": "machine",
+    "muscleContribution": {
+      "calves": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "calves"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [],
+    "setupNotes": "Secure the knee pad above the knees, raise the heels, and lower under control. Record machine load consistently.",
+    "isCustom": false,
+    "video": {
+      "videoId": "y2ueC0LggrI",
+      "title": "SEATED CALF RAISE TUTORIAL",
+      "creator": "AMOFitnessTraining",
+      "shorterTutorialReason": "This focused 144-second landscape lesson teaches the actual seated calf-raise machine and demonstrates its setup and movement. It matches the catalog equipment directly and provides a complete explanation for this simple isolation exercise."
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=y2ueC0LggrI",
+    "rationale": "Specific instructional source for the named movement; metadata and in-app playback require the parent validation pass."
+  },
+  {
+    "id": "leg-press-calf-raise",
+    "name": "Leg Press Calf Raise",
+    "equipment": "machine",
+    "muscleContribution": {
+      "calves": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "calves"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [],
+    "setupNotes": "Keep the balls of the feet securely on the sled and move through the ankles. Use machine safeties and record sled load consistently.",
+    "isCustom": false,
+    "video": {
+      "videoId": "unJ50MjqhBs",
+      "title": "How To Grow Your Calves",
+      "creator": "E3 Rehab",
+      "note": "The exercise-options section demonstrates calf raises on a leg press; later coaching covers controlled range of motion, foot placement and common calf-training mistakes.",
+      "startSeconds": 211
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=unJ50MjqhBs",
+    "rationale": "Specific instructional source for the named movement; metadata and in-app playback require the parent validation pass."
+  },
+  {
+    "id": "single-leg-calf-raise",
+    "name": "Single-Leg Calf Raise",
+    "equipment": "bodyweight",
+    "muscleContribution": {
+      "calves": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "calves"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [],
+    "setupNotes": "Use stable hand support and move through the ankle on one leg. Log repetitions per side and added external load, or 0 kg.",
+    "isCustom": false,
+    "unilateral": true,
+    "video": {
+      "videoId": "HmgXnST4Mdw",
+      "title": "The Calf Raise - Exercise Progression | Tim Keeley | Physio REHAB",
+      "creator": "Physio REHAB",
+      "note": "Calf-raise progression from bilateral work through single-leg raises on a step. Use the single-leg version appropriate to your control."
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=HmgXnST4Mdw",
+    "rationale": "Specific instructional source for the named movement; metadata and in-app playback require the parent validation pass."
+  },
+  {
+    "id": "donkey-calf-raise",
+    "name": "Donkey Calf Raise",
+    "equipment": "other",
+    "muscleContribution": {
+      "calves": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "calves"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [],
+    "setupNotes": "Hinge forward with stable hand support and use a properly secured dip belt. Record the added belt load.",
+    "isCustom": false,
+    "video": {
+      "videoId": "LKznEbiXod8",
+      "title": "How To Build Your Calves With The Donkey Calf Raise",
+      "creator": "Mind Pump TV",
+      "note": "Dip-belt donkey calf raise setup and execution; use secure support and a stable platform."
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=LKznEbiXod8",
+    "rationale": "Specific instructional source for the named movement; metadata and in-app playback require the parent validation pass."
+  },
+  {
+    "id": "standing-leg-curl",
+    "name": "Standing Machine Leg Curl",
+    "equipment": "machine",
+    "muscleContribution": {
+      "hamstrings": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "hamstrings"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [
+      "standing leg curl",
+      "unilateral machine leg curl"
+    ],
+    "setupNotes": "Use the standing unilateral leg-curl machine, aligning the working knee with the pivot and keeping the pelvis steady. Log repetitions per side and machine load.",
+    "isCustom": false,
+    "unilateral": true,
+    "video": {
+      "videoId": "CZVTv9T_Ml8",
+      "title": "STANDING LEG CURL MACHINE / TUTORIAL FOR BEGINNERS",
+      "creator": "AMOFitnessTraining",
+      "shorterTutorialReason": "This focused 157-second landscape machine tutorial explains adjustment and unilateral knee-flexion technique on the standing leg-curl apparatus. The display name and setup notes identify that apparatus explicitly rather than implying a different machine."
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=CZVTv9T_Ml8",
+    "rationale": "Specific instructional source for the named movement; metadata and in-app playback require the parent validation pass."
+  },
+  {
+    "id": "nordic-curl",
+    "name": "Nordic Hamstring Curl",
+    "equipment": "bodyweight",
+    "muscleContribution": {
+      "hamstrings": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "hamstrings"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [],
+    "setupNotes": "Secure the ankles in an appropriate anchor and lower only as far as controlled. Log repetitions at 0 kg; record assistance in notes.",
+    "isCustom": false,
+    "video": {
+      "videoId": "_e9vFU9-tkc",
+      "title": "How to Set Up, Perform, & Program Nordic Hamstring Curls (Progressions | Regressions | Alternatives)",
+      "creator": "E3 Rehab"
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=_e9vFU9-tkc",
+    "rationale": "Specific instructional source for the named movement; metadata and in-app playback require the parent validation pass."
+  },
+  {
+    "id": "swiss-ball-leg-curl",
+    "name": "Swiss Ball Leg Curl",
+    "equipment": "other",
+    "muscleContribution": {
+      "hamstrings": 1,
+      "glutes": 0.5
+    },
+    "muscleRoles": {
+      "direct": [
+        "hamstrings"
+      ],
+      "indirect": [
+        "glutes"
+      ],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [],
+    "setupNotes": "Place the heels on the ball, lift the hips, and curl the ball toward you. Log repetitions at 0 kg.",
+    "isCustom": false,
+    "video": {
+      "videoId": "WNB90xXLEOg",
+      "title": "Build Your Hamstrings with the Stability Ball Leg Curl",
+      "creator": "Mind Pump TV"
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=WNB90xXLEOg",
+    "rationale": "Specific instructional source for the named movement; metadata and in-app playback require the parent validation pass."
+  },
+  {
+    "id": "sliding-leg-curl",
+    "name": "Sliding Leg Curl",
+    "equipment": "other",
+    "muscleContribution": {
+      "hamstrings": 1,
+      "glutes": 0.5
+    },
+    "muscleRoles": {
+      "direct": [
+        "hamstrings"
+      ],
+      "indirect": [
+        "glutes"
+      ],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [],
+    "setupNotes": "Use sliders or towels on an appropriate surface and curl the heels toward the hips. Log repetitions at 0 kg.",
+    "isCustom": false,
+    "video": {
+      "videoId": "_e9vFU9-tkc",
+      "title": "How to Set Up, Perform, & Program Nordic Hamstring Curls (Progressions | Regressions | Alternatives)",
+      "creator": "E3 Rehab",
+      "startSeconds": 297,
+      "note": "The alternatives section demonstrates hamstring sliders: bilateral eccentric, full bilateral, single-leg eccentric and full single-leg curls. This broader tutorial also covers Nordic curls and other hamstring movements."
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=_e9vFU9-tkc",
+    "rationale": "Specific instructional source for the named movement; metadata and in-app playback require the parent validation pass."
+  },
+  {
+    "id": "kettlebell-swing",
+    "name": "Kettlebell Swing",
+    "equipment": "other",
+    "muscleContribution": {
+      "glutes": 1,
+      "hamstrings": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "glutes",
+        "hamstrings"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [
+      "kettlebell",
+      "KB"
+    ],
+    "setupNotes": "Use a two-handed hip hinge swing and let the hips drive the bell. Record kettlebell weight.",
+    "isCustom": false,
+    "video": {
+      "videoId": "sQx_ChXs2BY",
+      "title": "How to Use a Kettlebell | Kettlebell Manual Part 1",
+      "creator": "Mark Wildman",
+      "startSeconds": 198,
+      "endSeconds": 510,
+      "note": "Two-hand kettlebell swing instruction and common mistakes."
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=sQx_ChXs2BY",
+    "rationale": "Specific instructional source for the named movement; metadata and in-app playback require the parent validation pass."
+  },
+  {
+    "id": "frog-pump",
+    "name": "Frog Pump",
+    "equipment": "bodyweight",
+    "muscleContribution": {
+      "glutes": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "glutes"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [],
+    "setupNotes": "Lie with soles together and knees open, then extend the hips in a comfortable range. Log added external load, or 0 kg.",
+    "isCustom": false,
+    "video": {
+      "videoId": "jbJBXErKD-U",
+      "title": "How To Frog Pump",
+      "creator": "Bret Contreras Glute Guy"
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=jbJBXErKD-U",
+    "rationale": "Specific instructional source for the named movement; metadata and in-app playback require the parent validation pass."
+  },
+  {
+    "id": "cable-hip-abduction",
+    "name": "Cable Hip Abduction",
+    "equipment": "cable",
+    "muscleContribution": {
+      "glutes": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "glutes"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [],
+    "setupNotes": "Use an ankle cuff on the outside leg and move the leg sideways without tilting the pelvis. Log repetitions per side and stack load.",
+    "isCustom": false,
+    "unilateral": true,
+    "video": {
+      "videoId": "seRBLLNIa-s",
+      "title": "How To Train Your Gluteus Medius (Best Strengthening Exercises | Myth Busting | Mistakes To Avoid)",
+      "creator": "E3 Rehab",
+      "note": "This exercise overview includes standing hip abduction using a cable at the ankle, followed by training mistakes and programming. Other hip exercises are also demonstrated.",
+      "startSeconds": 185
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=seRBLLNIa-s",
+    "rationale": "Specific instructional source for the named movement; metadata and in-app playback require the parent validation pass."
+  },
+  {
+    "id": "crunch",
+    "name": "Crunch",
+    "equipment": "bodyweight",
+    "muscleContribution": {
+      "abs": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "abs"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [],
+    "setupNotes": "Curl the ribs toward the pelvis without pulling the head forward. Log repetitions at 0 kg.",
+    "isCustom": false,
+    "video": {
+      "videoId": "hYRNSJwhVPw",
+      "title": "How to Do Crunches Correctly | 8 Mistakes to Avoid",
+      "creator": "Funfitt women with Susana Yábar",
+      "note": "Eight crunch form mistakes and corrections."
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=hYRNSJwhVPw",
+    "rationale": "Specific instructional source for the named movement; metadata and in-app playback require the parent validation pass."
+  },
+  {
+    "id": "reverse-crunch",
+    "name": "Reverse Crunch",
+    "equipment": "bodyweight",
+    "muscleContribution": {
+      "abs": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "abs"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [],
+    "setupNotes": "Curl the pelvis toward the ribs without swinging the legs. Log repetitions at 0 kg.",
+    "isCustom": false,
+    "video": {
+      "videoId": "-FZ9ymA2V7c",
+      "title": "10 Minute Abs & Core Workout (VERY INTENSE)",
+      "creator": "Mind Pump TV",
+      "note": "Reverse crunch technique appears first; the source also teaches a cable or band side chop and a plank."
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=-FZ9ymA2V7c",
+    "rationale": "Specific instructional source for the named movement; metadata and in-app playback require the parent validation pass."
+  },
+  {
+    "id": "bicycle-crunch",
+    "name": "Bicycle Crunch",
+    "equipment": "bodyweight",
+    "muscleContribution": {
+      "abs": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "abs"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [],
+    "setupNotes": "Rotate the ribcage toward the opposite knee under control. Log repetitions per side at 0 kg.",
+    "isCustom": false,
+    "unilateral": true,
+    "video": {
+      "videoId": "8zJPaJcFpF4",
+      "title": "Stop Doing Bicycle Crunches WRONG! (Fix Your Form for Better Abs)",
+      "creator": "beingfitwith_drnitika anand",
+      "note": "Bicycle crunch form, common errors, and beginner variations."
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=8zJPaJcFpF4",
+    "rationale": "Specific instructional source for the named movement; metadata and in-app playback require the parent validation pass."
+  },
+  {
+    "id": "decline-sit-up",
+    "name": "Decline Sit-Up",
+    "equipment": "bodyweight",
+    "muscleContribution": {
+      "abs": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "abs"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [],
+    "setupNotes": "Secure the legs on a decline bench and sit up without jerking. Log added external load, or 0 kg.",
+    "isCustom": false,
+    "video": {
+      "videoId": "uCYybClJ5Zk",
+      "title": "Core Strength 1: Decline sit-ups, long version.",
+      "creator": "Joshua Naterman",
+      "note": "Full decline sit-up technique lesson rather than the instructor's short demonstration."
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=uCYybClJ5Zk",
+    "rationale": "Specific instructional source for the named movement; metadata and in-app playback require the parent validation pass."
+  },
+  {
+    "id": "sit-up",
+    "name": "Sit-Up",
+    "equipment": "bodyweight",
+    "muscleContribution": {
+      "abs": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "abs"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [
+      "floor situp",
+      "sit ups"
+    ],
+    "setupNotes": "Lie on the floor with knees bent and sit up smoothly without pulling the neck. Log repetitions at 0 kg.",
+    "isCustom": false,
+    "video": {
+      "videoId": "NIANHU8d9m4",
+      "title": "How To Do A Sit Up Properly - 3 Tips To Help",
+      "creator": "Redefining Strength",
+      "note": "Floor sit-up technique, core control and ways to build toward full repetitions."
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=NIANHU8d9m4",
+    "rationale": "Specific instructional source for the named movement; metadata and in-app playback require the parent validation pass."
+  },
+  {
+    "id": "hanging-leg-raise",
+    "name": "Hanging Leg Raise",
+    "equipment": "bodyweight",
+    "muscleContribution": {
+      "abs": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "abs"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [],
+    "setupNotes": "Hang from a secure bar and raise the legs while curling the pelvis without swinging. Log repetitions at 0 kg.",
+    "isCustom": false,
+    "video": {
+      "videoId": "gBu16ijqpEg",
+      "title": "Hanging Leg Raise Progression | How To Do Toes To Bar",
+      "creator": "Minus The Gym"
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=gBu16ijqpEg",
+    "rationale": "Specific instructional source for the named movement; metadata and in-app playback require the parent validation pass."
+  },
+  {
+    "id": "captain-chair-leg-raise",
+    "name": "Captain's Chair Leg Raise",
+    "equipment": "bodyweight",
+    "muscleContribution": {
+      "abs": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "abs"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [
+      "captain's chair knee raise",
+      "vertical leg raise",
+      "vertical knee raise"
+    ],
+    "setupNotes": "Support the forearms on the pads and curl the pelvis as the legs rise without swinging. Bend the knees to reduce the difficulty. Log repetitions at 0 kg.",
+    "isCustom": false,
+    "video": {
+      "videoId": "PkaRgiKXxB8",
+      "title": "6 Gut Busting Ab Exercises (NO CRUNCHES!)",
+      "creator": "ATHLEAN-X",
+      "note": "The first demonstration is a captain's chair leg lift. Later sections cover other abdominal movements."
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=PkaRgiKXxB8",
+    "rationale": "Specific instructional source for the named movement; metadata and in-app playback require the parent validation pass."
+  },
+  {
+    "id": "ab-wheel-rollout",
+    "name": "Ab Wheel Rollout",
+    "equipment": "other",
+    "muscleContribution": {
+      "abs": 1,
+      "lats": 0.5
+    },
+    "muscleRoles": {
+      "direct": [
+        "abs"
+      ],
+      "indirect": [
+        "lats"
+      ],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [],
+    "setupNotes": "Start from the knees and roll only as far as you can keep the trunk controlled. Log repetitions at 0 kg.",
+    "isCustom": false,
+    "video": {
+      "videoId": "9ZCoAbI7uX0",
+      "title": "Ab Wheel For Beginners | Rollout Progression and Extra Exercises",
+      "creator": "Minus The Gym"
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=9ZCoAbI7uX0",
+    "rationale": "Specific instructional source for the named movement; metadata and in-app playback require the parent validation pass."
+  },
+  {
+    "id": "cable-woodchop",
+    "name": "Cable Woodchop",
+    "equipment": "cable",
+    "muscleContribution": {
+      "abs": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "abs"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [],
+    "setupNotes": "Stand side-on to the cable and rotate through a controlled chop. Log repetitions per side and cable stack load.",
+    "isCustom": false,
+    "unilateral": true,
+    "video": {
+      "videoId": "-FZ9ymA2V7c",
+      "title": "10 Minute Abs & Core Workout (VERY INTENSE)",
+      "creator": "Mind Pump TV",
+      "note": "Use the side-chop demonstration with a cable; the coach also demonstrates reverse crunches and planks."
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=-FZ9ymA2V7c",
+    "rationale": "Specific instructional source for the named movement; metadata and in-app playback require the parent validation pass."
+  },
+  {
+    "id": "pallof-press",
+    "name": "Band Pallof Press",
+    "equipment": "band",
+    "muscleContribution": {
+      "abs": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "abs"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [],
+    "setupNotes": "Anchor a resistance band securely at chest height, stand side-on, and press away without rotating. Log press repetitions per side at 0 kg and record band strength in notes.",
+    "isCustom": false,
+    "unilateral": true,
+    "video": {
+      "videoId": "dBAmQ9bx3JA",
+      "title": "Pallof Press Tutorial | Best Anti-Rotation Core Exercise",
+      "creator": "Movement Based Therapy",
+      "note": "Standing band anti-rotation press setup, bracing, execution and common mistakes."
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=dBAmQ9bx3JA",
+    "rationale": "Specific instructional source for the named movement; metadata and in-app playback require the parent validation pass."
+  },
+  {
+    "id": "russian-twist",
+    "name": "Russian Twist",
+    "equipment": "bodyweight",
+    "muscleContribution": {
+      "abs": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "abs"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [],
+    "setupNotes": "Rotate the ribcage through a controlled range. Log repetitions per side and added external load, or 0 kg unweighted.",
+    "isCustom": false,
+    "unilateral": true,
+    "video": {
+      "videoId": "9V9csctSKj0",
+      "title": "How To Do The Russian Twist Properly & The Best Progression For Beginners",
+      "creator": "Fit Father Project"
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=9V9csctSKj0",
+    "rationale": "Specific instructional source for the named movement; metadata and in-app playback require the parent validation pass."
+  },
+  {
+    "id": "dead-bug",
+    "name": "Dead Bug",
+    "equipment": "bodyweight",
+    "muscleContribution": {
+      "abs": 1
+    },
+    "muscleRoles": {
+      "direct": [
+        "abs"
+      ],
+      "indirect": [],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [],
+    "setupNotes": "Extend the opposite arm and leg while maintaining trunk control. Log repetitions per side at 0 kg.",
+    "isCustom": false,
+    "unilateral": true,
+    "video": {
+      "videoId": "0XVbn86Btj0",
+      "title": "You're Doing Dead Bugs WRONG! Fix This for Stronger Abs & a Bulletproof Core",
+      "creator": "Squat University"
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=0XVbn86Btj0",
+    "rationale": "Specific instructional source for the named movement; metadata and in-app playback require the parent validation pass."
+  },
+  {
+    "id": "bird-dog",
+    "name": "Bird Dog",
+    "equipment": "bodyweight",
+    "muscleContribution": {
+      "abs": 1,
+      "glutes": 0.5
+    },
+    "muscleRoles": {
+      "direct": [
+        "abs"
+      ],
+      "indirect": [
+        "glutes"
+      ],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [],
+    "setupNotes": "From hands and knees, extend the opposite arm and leg without rotating the trunk. Log repetitions per side at 0 kg.",
+    "isCustom": false,
+    "unilateral": true,
+    "video": {
+      "videoId": "GSuicJneDQU",
+      "title": "Bird Dog Technique",
+      "creator": "Squat University"
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=GSuicJneDQU",
+    "rationale": "Specific instructional source for the named movement; metadata and in-app playback require the parent validation pass."
+  },
+  {
+    "id": "mountain-climber",
+    "name": "Mountain Climber",
+    "equipment": "bodyweight",
+    "muscleContribution": {
+      "abs": 1,
+      "frontDelts": 0.5
+    },
+    "muscleRoles": {
+      "direct": [
+        "abs"
+      ],
+      "indirect": [
+        "frontDelts"
+      ],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [],
+    "setupNotes": "From a high plank, bring alternating knees forward while keeping the trunk steady. Log knee-drive repetitions per side at 0 kg.",
+    "isCustom": false,
+    "unilateral": true,
+    "video": {
+      "videoId": "ZhiCSdOVJp0",
+      "title": "How To Do Mountain Climbers the Right Way",
+      "creator": "Fit Father Project - Fitness For Busy Fathers",
+      "note": "Technique, variations and how to include mountain climbers in training. In this app record knee drives per side rather than timed intervals.",
+      "shorterTutorialReason": "This focused 160-second landscape tutorial teaches mountain-climber setup, trunk control, knee drive and training variations. It directly matches the movement, gives practical instruction, and was verified playing inside the app; a longer conditioning workout would add little technique value."
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=ZhiCSdOVJp0",
+    "rationale": "Specific instructional source for the named movement; metadata and in-app playback require the parent validation pass."
+  },
+  {
+    "id": "plank-shoulder-tap",
+    "name": "Plank Shoulder Tap",
+    "equipment": "bodyweight",
+    "muscleContribution": {
+      "abs": 1,
+      "frontDelts": 0.5,
+      "triceps": 0.5
+    },
+    "muscleRoles": {
+      "direct": [
+        "abs"
+      ],
+      "indirect": [
+        "frontDelts",
+        "triceps"
+      ],
+      "reviewedAt": "2026-10-16",
+      "source": "forge-reviewed"
+    },
+    "aliases": [],
+    "setupNotes": "From a high plank, tap the opposite shoulder without rotating the hips. Log taps per side at 0 kg.",
+    "isCustom": false,
+    "unilateral": true,
+    "video": {
+      "videoId": "gKA5LBy7WAI",
+      "title": "How To Properly Do a Plank with Shoulder Taps - Strength Exercises - Wellen",
+      "creator": "Wellen",
+      "note": "High-plank shoulder-tap setup, controlled execution and common mistakes.",
+      "shorterTutorialReason": "This complete 118-second landscape coaching lesson separates setup, execution and common mistakes into clear chapters. It explains hip stability, shoulder position and breathing, matches the exact exercise, and has already played successfully inside the app. It meets the documented 90-second minimum for a focused tutorial."
+    },
+    "sourceUrl": "https://www.youtube.com/watch?v=gKA5LBy7WAI",
+    "rationale": "Specific instructional source for the named movement; metadata and in-app playback require the parent validation pass."
+  }
+]

@@ -41,6 +41,7 @@ describe('workout domain', () => {
     expect(session.workoutName).toBe('Push');
     expect(session.exercises[0]).toMatchObject({
       exerciseName: 'Dumbbell Chest Press',
+      targetRepMin: 8, targetRepMax: 12,
       restSeconds: 90,
       muscleContribution: { chest: 1, triceps: 0.5, frontDelts: 0.5 },
     });
@@ -49,7 +50,14 @@ describe('workout domain', () => {
     expect(session.guide.currentSetId).toBe(session.exercises[0]?.sets[0]?.id);
   });
 
-  it('counts volume from completed valid sets only', () => {
+  it('copies workout notes into the session without keeping a template reference', () => {
+    const workout = { ...program.workouts[0]!, notes: 'Keep this session easy.' };
+    const session = createSession(program, workout, exercises, '2026-09-23T10:00:00.000Z');
+    workout.notes = 'A later template edit';
+    expect(session.notes).toBe('Keep this session easy.');
+  });
+
+  it('counts working-set volume by default with an explicit warm-up option', () => {
     const session = createSession(program, program.workouts[0]!, exercises, '2026-09-23T10:00:00.000Z');
     session.exercises[0]!.sets = [
       { id: 'a', weightKg: 30, reps: 10, kind: 'working', completed: true },
@@ -57,7 +65,8 @@ describe('workout domain', () => {
       { id: 'c', weightKg: 40, reps: 6, kind: 'working', completed: false },
     ];
 
-    expect(calculateSessionVolume(session)).toBe(500);
+    expect(calculateSessionVolume(session)).toBe(300);
+    expect(calculateSessionVolume(session, true)).toBe(500);
   });
 
   it('validates program names, workout contents, ranges, and contributions', () => {

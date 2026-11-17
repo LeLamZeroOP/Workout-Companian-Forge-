@@ -24,8 +24,16 @@ describe('validateAppData', () => {
 
   it('rejects unsupported versions and oversized input', () => {
     const data = createDefaultData();
-    expect(() => validateAppData({ ...data, version: 3 })).toThrow(/version/i);
+    expect(() => validateAppData({ ...data, version: 99 })).toThrow(/version/i);
     data.programs[0]!.notes = 'x'.repeat(10 * 1024 * 1024);
     expect(() => validateAppData(data)).toThrow(/size/i);
   });
+});
+
+it('refuses invalid dates, missing portion bases, and invalid merge ledgers before writing', () => {
+  const data = createDefaultData();
+  data.nutrition.targets = [{ id: 'target', effectiveFrom: '2026-02-31', mode: 'manual', caloriesKcal: 2000, proteinG: 100, carbsG: 200, fatG: 60, formulaVersion: null }];
+  expect(() => validateAppData(data)).toThrow(/date/i);
+  data.nutrition.targets = [];
+  expect(() => validateAppData({ ...data, mergeLedger: { mappings: [], receipts: [{ id: 'receipt', at: '2026-09-27T12:00:00Z', counts: { added: -1, replaced: 0, copied: 0, skipped: 0, linked: 0 } }] } })).toThrow(/added/i);
 });

@@ -16,6 +16,17 @@ export interface OfflineAccountState {
   userId: string;
   snapshot: CloudSnapshot;
   pending: PendingMutation[];
+  recovery?: RecoveryOperation[];
+}
+
+export interface RecoveryOperation {
+  id: string;
+  kind: 'merge' | 'resolve';
+  before: CloudSnapshot;
+  source: unknown;
+  queue: PendingMutation[];
+  proposed: CloudSnapshot['data'];
+  status: 'prepared' | 'acknowledged' | 'stale';
 }
 
 export class OfflineStore {
@@ -61,7 +72,7 @@ export class OfflineStore {
 
   async writeSnapshot(userId: string, snapshot: CloudSnapshot): Promise<void> {
     if (snapshot.userId !== userId) throw new Error('Snapshot belongs to another account.');
-    await this.modify(userId, (state) => ({ userId, snapshot, pending: state?.pending ?? [] }));
+    await this.modify(userId, (state) => ({ ...state, userId, snapshot, pending: state?.pending ?? [] }));
   }
 
   async enqueue(userId: string, mutation: PendingMutation): Promise<void> {
@@ -85,6 +96,23 @@ export class OfflineStore {
     await this.modify(userId, (state) => {
       if (!state) throw new Error('Offline account is missing.');
       return { ...state, pending: state.pending.map((item) => item.id === mutationId ? { ...item, status: 'conflict' } : item) };
+    });
+  }
+
+  async prepareRecovery(userId: string, operation: RecoveryOperation): Promise<void> {
+    await this.modify(userId, (state) => {
+      if (!state || operation.before.userId !== userId) throw new Error('Recovery account does not match.');
+      return { ...state, recovery: [...(state.recovery ?? []).filter((item) => item.id !== operation.id), operation] };
+    });
+  }
+
+  async finishRecovery(userId: string, operationId: string, snapshot: CloudSnapshot | null): Promise<void> {
+    await this.modify(userId, (state) => {
+      if (!state || (snapshot && snapshot.userId !== userId)) throw new Error('Recovery account does not match.');
+      const operation = state.recovery?.find((item) => item.id === operationId);
+      if (!operation) throw new Error('Recovery operation is missing.');
+      const acknowledged = new Set(snapshot ? operation.queue.map((item) => item.id) : []);
+      return { ...state, snapshot: snapshot ?? state.snapshot, pending: state.pending.filter((item) => !acknowledged.has(item.id)), recovery: state.recovery?.map((item) => item.id === operationId ? { ...item, status: snapshot ? 'acknowledged' : 'stale' } : item) };
     });
   }
 }

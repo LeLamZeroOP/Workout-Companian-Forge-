@@ -24,7 +24,8 @@ describe('ManualTargetForm', () => {
     render(<ManualTargetForm effectiveFrom="2026-09-24" activeTarget={null} onSave={onSave} onCancel={vi.fn()} />);
 
     await user.click(screen.getByRole('button', { name: 'Save target' }));
-    expect(screen.getByRole('alert')).toHaveTextContent(/enter valid/i);
+    expect(screen.getByLabelText('Calories per day')).toHaveAccessibleDescription(/Enter calories/);
+    expect(screen.getByLabelText('Calories per day')).toHaveFocus();
     await user.type(screen.getByLabelText('Calories per day'), '-500');
     await user.click(screen.getByRole('button', { name: 'Save target' }));
     expect(onSave).not.toHaveBeenCalled();

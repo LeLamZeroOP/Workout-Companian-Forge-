@@ -1,0 +1,30 @@
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { NutritionPage } from '../../src/features/nutrition/NutritionPage';
+import { createDefaultData } from '../../src/data/defaults';
+import { applyMutation } from '../../src/domain/appMutations';
+import type { FoodLogEntry } from '../../src/domain/models';
+const entry: FoodLogEntry = { id: 'food-log', localDate: '2026-09-24', meal: 'lunch', foodId: 'removed-food', foodName: 'Saved bowl', grams: 200, servingDescription: '1 bowl', nutrients: { caloriesKcal: 500, proteinG: null, carbsG: 40, fatG: 10, fiberG: null, sodiumMg: null }, source: 'custom', sourceId: null };
+it('edits using saved nutrients even when the catalog food is gone', async () => {
+  const save = vi.fn(); const user = userEvent.setup();
+  render(<NutritionPage foods={[]} entries={[entry]} targets={[]} onAddEntry={save} onDeleteEntry={vi.fn()} onSaveCustomFood={vi.fn()} date="2026-09-24" />);
+  await user.click(screen.getByRole('button', { name: 'Edit entry Saved bowl' }));
+  await user.clear(screen.getByLabelText('Amount in grams')); await user.type(screen.getByLabelText('Amount in grams'), '100');
+  await user.click(screen.getByRole('button', { name: 'Save entry' }));
+  expect(save).toHaveBeenCalledWith(expect.objectContaining({ id: entry.id, grams: 100, nutrients: expect.objectContaining({ caloriesKcal: 250, proteinG: null }) }));
+  const original = createDefaultData(); original.nutrition.diary = [entry];
+  expect(applyMutation(original, { kind: 'addFoodEntry', entry: save.mock.calls[0]![0] }).nutrition.diary).toHaveLength(1);
+});
+it('previews copies and sends a single idempotent batch only after confirmation', async () => {
+  const copy = vi.fn(); const user = userEvent.setup();
+  render(<NutritionPage foods={[]} entries={[entry]} targets={[]} onCopyEntries={copy} onAddEntry={vi.fn()} onDeleteEntry={vi.fn()} onSaveCustomFood={vi.fn()} date="2026-09-24" />);
+  await user.click(screen.getByRole('button', { name: 'Copy lunch' }));
+  await user.click(screen.getByRole('button', { name: 'Review copy' })); expect(copy).not.toHaveBeenCalled();
+  await user.click(screen.getByRole('button', { name: 'Confirm copy' }));
+  const batch = copy.mock.calls[0]![0] as FoodLogEntry[];
+  expect(batch[0]).toMatchObject({ localDate: '2026-09-25', meal: 'lunch', nutrients: entry.nutrients });
+  expect(batch[0]!.id).not.toBe(entry.id);
+  const original = createDefaultData(); original.nutrition.diary = [entry];
+  const next = applyMutation(original, { kind: 'copyFoodEntries', entries: batch });
+  expect(applyMutation(next, { kind: 'copyFoodEntries', entries: batch }).nutrition.diary).toHaveLength(2);
+});

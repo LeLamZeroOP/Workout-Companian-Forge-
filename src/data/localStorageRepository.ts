@@ -1,24 +1,27 @@
 import type { AppDataV2 } from '../domain/models';
 import { createDefaultData } from './defaults';
 import { parseAppData } from './migrations';
+import { validateAppData } from './validateAppData';
 import type { WorkoutRepository } from './repository';
 
-const STORAGE_KEY = 'workout-tracker:data';
+export const STORAGE_KEY = 'workout-tracker:data';
 export type DataResetScope = 'workouts' | 'body' | 'nutrition' | 'all';
 
 export function resetDataScope(data: AppDataV2, scope: DataResetScope): AppDataV2 {
   const resetWorkouts = scope === 'workouts' || scope === 'all';
   const resetBody = scope === 'body' || scope === 'all';
   const resetNutrition = scope === 'nutrition' || scope === 'all';
-  return {
+  const next: AppDataV2 = {
     ...data,
-    exercises: resetWorkouts ? data.exercises.filter((exercise) => !exercise.isCustom) : data.exercises,
+    exercises: scope === 'all' ? createDefaultData().exercises : resetWorkouts ? data.exercises.filter((exercise) => !exercise.isCustom) : data.exercises,
     programs: resetWorkouts ? [] : data.programs,
     sessions: resetWorkouts ? [] : data.sessions,
-    settings: resetWorkouts ? { ...data.settings, lastSelectedProgramId: null } : data.settings,
+    settings: scope === 'all' ? { ...createDefaultData().settings, lastSelectedProgramId: null } : resetWorkouts ? { ...data.settings, lastSelectedProgramId: null } : data.settings,
     body: resetBody ? { profile: null, measurements: [] } : data.body,
     nutrition: resetNutrition ? { targets: [], customFoods: [], diary: [] } : data.nutrition,
   };
+  if (scope === 'all') delete next.mergeLedger;
+  return next;
 }
 
 export class StorageDataError extends Error {
@@ -32,7 +35,7 @@ export class LocalStorageWorkoutRepository implements WorkoutRepository {
     if (stored === null) return createDefaultData();
     return this.importJson(stored);
   }
-  save(data: AppDataV2): void { this.storage.setItem(STORAGE_KEY, JSON.stringify(data)); }
+  save(data: AppDataV2): void { this.storage.setItem(STORAGE_KEY, JSON.stringify(validateAppData(data))); }
   exportJson(): string { return JSON.stringify(this.load(), null, 2); }
   importJson(json: string): AppDataV2 {
     try { return parseAppData(JSON.parse(json)); }

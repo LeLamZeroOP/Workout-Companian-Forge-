@@ -5,7 +5,7 @@ import { BodyPage } from '../../src/features/body/BodyPage';
 import type { BodyMeasurement, BodyProfile } from '../../src/domain/models';
 
 const measurement: BodyMeasurement = { id: 'measure-1', recordedAt: '2026-09-24T08:00:00.000Z', weightKg: 80, bodyFatPercent: null, waistCm: null, chestCm: null, hipsCm: null, upperArmCm: null, thighCm: null, notes: '' };
-const profile: BodyProfile = { birthDate: '1996-01-01', heightCm: 180, equationSex: 'male', activityLevel: 'moderate', goal: 'maintain', targetMode: 'calculated' };
+const profile: BodyProfile = { birthDate: '1996-01-01', heightCm: 180, equationSex: 'male', activityLevel: 'moderate', goal: 'maintain', targetMode: 'calculated', estimateEligibilityConfirmed: true };
 
 function BodyHarness({ initialProfile = null, initialMeasurements = [] }: { initialProfile?: BodyProfile | null; initialMeasurements?: BodyMeasurement[] }) {
   const [savedProfile, setSavedProfile] = useState(initialProfile);
@@ -14,6 +14,16 @@ function BodyHarness({ initialProfile = null, initialMeasurements = [] }: { init
 }
 
 describe('Body page', () => {
+  it('logs 80, 50, then 100 on the same date and shows the latest save', async () => {
+    render(<BodyHarness />);
+    for (const weight of ['80', '50', '100']) {
+      await userEvent.click(screen.getByRole('button', { name: weight === '80' ? /log weight/i : /^log measurement$/i }));
+      await userEvent.type(screen.getByLabelText(/weight in kilograms/i), weight);
+      await userEvent.click(screen.getByRole('button', { name: /save measurement/i }));
+    }
+    expect(screen.getByRole('heading', { name: '100 kg' })).toBeInTheDocument();
+    expect(screen.getByText('+50.0 kg from previous entry')).toBeInTheDocument();
+  });
   it('guides first use and saves a quick weight entry', async () => {
     render(<BodyHarness />);
     expect(screen.getByText(/start with today's weight/i)).toBeInTheDocument();
@@ -53,4 +63,10 @@ describe('Body page', () => {
     await userEvent.click(screen.getByRole('button', { name: /^delete$/i }));
     expect(screen.getByText(/start with today's weight/i)).toBeInTheDocument();
   });
+});
+
+it('requires renewed eligibility for legacy profiles instead of assuming consent', () => {
+  render(<BodyHarness initialProfile={{ ...profile, estimateEligibilityConfirmed: undefined }} initialMeasurements={[measurement]} />);
+  expect(screen.getByText(/confirm eligibility to see an optional estimate/i)).toBeInTheDocument();
+  expect(screen.queryByRole('button', { name: 'Use this target' })).not.toBeInTheDocument();
 });

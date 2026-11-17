@@ -40,7 +40,7 @@ function oneOf(value: unknown, path: string, options: readonly string[]): void {
 
 function date(value: unknown, path: string): void {
   string(value, path, 10, true);
-  if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(value) || Number.isNaN(Date.parse(`${value}T12:00:00Z`))) throw new Error(`${path} must be a date.`);
+  if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(value) || Number.isNaN(Date.parse(`${value}T12:00:00Z`)) || new Date(`${value}T12:00:00Z`).toISOString().slice(0, 10) !== value) throw new Error(`${path} must be a date.`);
 }
 
 function timestamp(value: unknown, path: string): void {
@@ -68,9 +68,40 @@ function contributions(value: unknown, path: string): void {
   }
 }
 
+function muscleRoles(value: unknown, path: string): void {
+  const roles = record(value, path);
+  const direct = array(roles.direct, `${path}.direct`, muscles.size);
+  const indirect = array(roles.indirect, `${path}.indirect`, muscles.size);
+  if (!direct.length && !indirect.length) throw new Error(`${path} needs at least one muscle.`);
+  const seen = new Set<string>();
+  for (const [index, muscle] of [...direct, ...indirect].entries()) {
+    if (typeof muscle !== 'string' || !muscles.has(muscle) || seen.has(muscle)) throw new Error(`${path}[${index}] has an invalid or repeated muscle.`);
+    seen.add(muscle);
+  }
+  date(roles.reviewedAt, `${path}.reviewedAt`);
+  oneOf(roles.source, `${path}.source`, ['forge-reviewed', 'user']);
+}
+
+function exerciseMetadata(item: Record<string, unknown>, path: string): void {
+  if (item.muscleRoles !== undefined) muscleRoles(item.muscleRoles, `${path}.muscleRoles`);
+  if (item.chestEmphasis !== undefined) oneOf(item.chestEmphasis, `${path}.chestEmphasis`, ['upper', 'mid', 'mixed']);
+  if (item.aliases !== undefined) {
+    const aliases = array(item.aliases, `${path}.aliases`, 20);
+    const names = new Set<string>();
+    aliases.forEach((alias, index) => {
+      const name = string(alias, `${path}.aliases[${index}]`, 100, true).trim().toLowerCase();
+      if (names.has(name)) throw new Error(`${path}.aliases has a duplicate.`);
+      names.add(name);
+    });
+  }
+  if (item.setupNotes !== undefined) string(item.setupNotes, `${path}.setupNotes`, 2000);
+  if (item.unilateral !== undefined) boolean(item.unilateral, `${path}.unilateral`);
+}
+
 function nutrients(value: unknown, path: string): void {
   const item = record(value, path);
-  for (const field of ['caloriesKcal', 'proteinG', 'carbsG', 'fatG']) number(item[field], `${path}.${field}`);
+  number(item.caloriesKcal, `${path}.caloriesKcal`);
+  for (const field of ['proteinG', 'carbsG', 'fatG']) nullableNumber(item[field], `${path}.${field}`);
   nullableNumber(item.fiberG, `${path}.fiberG`);
   nullableNumber(item.sodiumMg, `${path}.sodiumMg`);
 }
@@ -82,6 +113,7 @@ function exercise(value: unknown, path: string): void {
   oneOf(item.equipment, `${path}.equipment`, ['barbell', 'dumbbell', 'machine', 'cable', 'bodyweight', 'band', 'other']);
   contributions(item.muscleContribution, `${path}.muscleContribution`);
   boolean(item.isCustom, `${path}.isCustom`);
+  exerciseMetadata(item, path);
 }
 
 function program(value: unknown, path: string): void {
@@ -108,6 +140,33 @@ function program(value: unknown, path: string): void {
       string(entry.notes, `${entryPath}.notes`);
     });
   });
+  if (item.volumePlan !== undefined) {
+    const plan = record(item.volumePlan, `${path}.volumePlan`);
+    oneOf(plan.goal, `${path}.volumePlan.goal`, ['hypertrophy', 'strength', 'maintenance', 'custom']);
+    if (plan.cycle !== undefined) {
+      const cycle = record(plan.cycle, `${path}.volumePlan.cycle`);
+      const slots = array(cycle.slots, `${path}.volumePlan.cycle.slots`, 28);
+      if (!slots.length || slots.length > 28 || slots.every(slot => slot === null)) throw new Error(`${path}.volumePlan.cycle needs a training day.`);
+      const workoutIds = new Set(workouts.map(workout => record(workout, path).id));
+      slots.forEach((slot, index) => { if (slot !== null && (typeof slot !== 'string' || !workoutIds.has(slot))) throw new Error(`${path}.volumePlan.cycle.slots[${index}] must reference this program.`); });
+    }
+    const targets = array(plan.targets, `${path}.volumePlan.targets`, muscles.size);
+    const targetMuscles = new Set<string>();
+    targets.forEach((targetValue, index) => {
+      const targetPath = `${path}.volumePlan.targets[${index}]`;
+      const target = record(targetValue, targetPath);
+      oneOf(target.muscle, `${targetPath}.muscle`, [...muscles]);
+      if (targetMuscles.has(target.muscle as string)) throw new Error(`${targetPath}.muscle is repeated.`);
+      targetMuscles.add(target.muscle as string);
+      number(target.lower, `${targetPath}.lower`, 0, 1000);
+      number(target.upper, `${targetPath}.upper`, 0, 1000);
+      if ((target.lower as number) > (target.upper as number)) throw new Error(`${targetPath} lower exceeds upper.`);
+      oneOf(target.basis, `${targetPath}.basis`, ['direct', 'weighted']);
+      oneOf(target.period, `${targetPath}.period`, ['cycle', 'sevenDayAverage']);
+      oneOf(target.priority, `${targetPath}.priority`, ['focus', 'maintain']);
+      if (target.period === 'sevenDayAverage' && plan.cycle === undefined) throw new Error(`${targetPath} needs a cycle for a seven-day target.`);
+    });
+  }
 }
 
 function session(value: unknown, path: string): void {
@@ -128,7 +187,10 @@ function session(value: unknown, path: string): void {
     string(entry.exerciseId, `${entryPath}.exerciseId`, 200, true);
     string(entry.exerciseName, `${entryPath}.exerciseName`, 200, true);
     contributions(entry.muscleContribution, `${entryPath}.muscleContribution`);
+    if (entry.muscleRoles !== undefined) muscleRoles(entry.muscleRoles, `${entryPath}.muscleRoles`);
+    if (entry.chestEmphasis !== undefined) oneOf(entry.chestEmphasis, `${entryPath}.chestEmphasis`, ['upper', 'mid', 'mixed']);
     number(entry.restSeconds, `${entryPath}.restSeconds`, 0, 10000);
+    for (const key of ['targetRepMin', 'targetRepMax']) if (entry[key] !== undefined) number(entry[key], `${entryPath}.${key}`, 1, 10000);
     string(entry.notes, `${entryPath}.notes`);
     const sets = array(entry.sets, `${entryPath}.sets`, 1000);
     uniqueIds(sets, `${entryPath}.sets`);
@@ -164,7 +226,16 @@ function food(value: unknown, path: string): void {
   oneOf(item.source, `${path}.source`, ['usda', 'custom']);
   nullableString(item.sourceId, `${path}.sourceId`);
   string(item.dataVersion, `${path}.dataVersion`, 100, true);
-  nutrients(item.nutrientsPer100g, `${path}.nutrientsPer100g`);
+  if (item.nutrientsPer100g !== null) nutrients(item.nutrientsPer100g, `${path}.nutrientsPer100g`);
+  else if (!item.portion) throw new Error(`${path} needs a portion basis.`);
+  if (item.portion !== undefined) {
+    const portion = record(item.portion, `${path}.portion`);
+    string(portion.name, `${path}.portion.name`, 100, true);
+    nutrients(portion.nutrients, `${path}.portion.nutrients`);
+    if (item.nutrientsPer100g !== null) throw new Error(`${path} must have exactly one nutrient basis.`);
+  }
+  if (item.favorite !== undefined) boolean(item.favorite, `${path}.favorite`);
+  if (item.archived !== undefined) boolean(item.archived, `${path}.archived`);
   const servings = array(item.servings, `${path}.servings`, 100);
   servings.forEach((servingValue, index) => {
     const servingPath = `${path}.servings[${index}]`;
@@ -178,7 +249,7 @@ export function validateAppData(value: unknown): AppDataV2 {
   const serialized = JSON.stringify(value);
   if (!serialized || new TextEncoder().encode(serialized).length > MAX_DOCUMENT_BYTES) throw new Error('Workout data exceeds the size limit.');
   const data = record(value, 'Workout data');
-  if (data.version !== 2) throw new Error(`Unsupported workout data version: ${String(data.version)}`);
+  if (data.version !== 2 && data.version !== 3 && data.version !== 4) throw new Error(`Unsupported workout data version: ${String(data.version)}`);
   const exercises = array(data.exercises, 'exercises');
   uniqueIds(exercises, 'exercises');
   exercises.forEach((item, index) => exercise(item, `exercises[${index}]`));
@@ -195,6 +266,7 @@ export function validateAppData(value: unknown): AppDataV2 {
   const body = record(data.body, 'body');
   if (body.profile !== null) {
     const profile = record(body.profile, 'body.profile');
+    if (profile.estimateEligibilityConfirmed !== undefined) boolean(profile.estimateEligibilityConfirmed, 'body.profile.estimateEligibilityConfirmed');
     date(profile.birthDate, 'body.profile.birthDate');
     number(profile.heightCm, 'body.profile.heightCm', 1, 300);
     oneOf(profile.equationSex, 'body.profile.equationSex', ['female', 'male']);
@@ -208,6 +280,8 @@ export function validateAppData(value: unknown): AppDataV2 {
     const path = `body.measurements[${index}]`;
     const item = record(value, path);
     timestamp(item.recordedAt, `${path}.recordedAt`);
+    if (item.localDate !== undefined) date(item.localDate, `${path}.localDate`);
+    if (item.entryOrder !== undefined && (!Number.isSafeInteger(item.entryOrder) || (item.entryOrder as number) < 0)) throw new Error(`${path}.entryOrder must be a non-negative safe integer.`);
     number(item.weightKg, `${path}.weightKg`, 0.001, 1000);
     nullableNumber(item.bodyFatPercent, `${path}.bodyFatPercent`, 0, 100);
     for (const field of ['waistCm', 'chestCm', 'hipsCm', 'upperArmCm', 'thighCm']) nullableNumber(item[field], `${path}.${field}`, 0, 1000);
@@ -237,11 +311,39 @@ export function validateAppData(value: unknown): AppDataV2 {
     oneOf(item.meal, `${path}.meal`, ['breakfast', 'lunch', 'dinner', 'snack']);
     nullableString(item.foodId, `${path}.foodId`);
     string(item.foodName, `${path}.foodName`, 200, true);
-    number(item.grams, `${path}.grams`);
+    nullableNumber(item.grams, `${path}.grams`);
+    if (item.portionQuantity !== undefined) number(item.portionQuantity, `${path}.portionQuantity`, 0.001, 100000);
+    if (item.grams === null && item.portionQuantity === undefined) throw new Error(`${path} needs a portion quantity.`);
+    if (item.preparation !== undefined) string(item.preparation, `${path}.preparation`, 200);
     string(item.servingDescription, `${path}.servingDescription`, 200);
     nutrients(item.nutrients, `${path}.nutrients`);
     oneOf(item.source, `${path}.source`, ['usda', 'custom']);
     nullableString(item.sourceId, `${path}.sourceId`);
   });
-  return value as AppDataV2;
+  if (data.mergeLedger !== undefined) {
+    const ledger = record(data.mergeLedger, 'mergeLedger');
+    const mappings = array(ledger.mappings, 'mergeLedger.mappings');
+    const keys = new Set<string>();
+    mappings.forEach((value) => {
+      const item = record(value, 'merge mapping');
+      const key = string(item.key, 'merge mapping key', 240, true);
+      if (!/^(exercises|programs|sessions|measurements|foods|diary):/.test(key) || keys.has(key)) throw new Error('Invalid or duplicate merge mapping.');
+      keys.add(key);
+      string(item.sourceContent, 'merge source content', MAX_DOCUMENT_BYTES, true);
+      string(item.resultContent, 'merge result content', MAX_DOCUMENT_BYTES, true);
+      string(item.destinationId, 'merge destination ID', 200, true);
+    });
+    const receipts = array(ledger.receipts, 'mergeLedger.receipts');
+    uniqueIds(receipts, 'merge receipts');
+    receipts.forEach((value) => {
+      const receipt = record(value, 'merge receipt');
+      timestamp(receipt.at, 'merge receipt date');
+      const counts = record(receipt.counts, 'merge counts');
+      for (const key of ['added', 'replaced', 'copied', 'skipped', 'linked']) {
+        number(counts[key], `merge counts.${key}`, 0, 100000);
+        if (!Number.isInteger(counts[key])) throw new Error('Invalid merge counts.');
+      }
+    });
+  }
+  return data as unknown as AppDataV2;
 }

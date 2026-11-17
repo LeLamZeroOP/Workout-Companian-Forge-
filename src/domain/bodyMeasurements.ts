@@ -2,9 +2,24 @@ import type { BodyMeasurement } from './models';
 
 export type BodyMeasurementErrors = Partial<Record<'recordedAt' | 'weightKg' | 'bodyFatPercent' | 'waistCm' | 'chestCm' | 'hipsCm' | 'upperArmCm' | 'thighCm', string>>;
 
-function localDateKey(value: string): string {
+export function localDateKey(value: string): string {
   const date = new Date(value);
   return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+}
+
+// Legacy ties retain their original array order. New logs persist a logical clock;
+// edits retain it. An ID only breaks simultaneous logical-clock ties, not chronology.
+export function sortMeasurements(entries: BodyMeasurement[]): BodyMeasurement[] {
+  return entries.map((entry, index) => ({ entry, index })).sort((a, b) =>
+    (b.entry.localDate ?? localDateKey(b.entry.recordedAt)).localeCompare(a.entry.localDate ?? localDateKey(a.entry.recordedAt)) ||
+    Date.parse(b.entry.recordedAt) - Date.parse(a.entry.recordedAt) ||
+    (b.entry.entryOrder ?? b.index) - (a.entry.entryOrder ?? a.index) ||
+    b.entry.id.localeCompare(a.entry.id)
+  ).map(({ entry }) => entry);
+}
+
+export function nextMeasurementOrder(entries: BodyMeasurement[], now = Date.now()): number {
+  return entries.reduce((order, entry, index) => Math.max(order, (entry.entryOrder ?? index) + 1), now);
 }
 
 export function validateBodyMeasurement(entry: BodyMeasurement): BodyMeasurementErrors {
@@ -21,17 +36,17 @@ export function validateBodyMeasurement(entry: BodyMeasurement): BodyMeasurement
 }
 
 export function getLatestMeasurement(entries: BodyMeasurement[]): BodyMeasurement | null {
-  return [...entries].sort((a, b) => b.recordedAt.localeCompare(a.recordedAt))[0] ?? null;
+  return sortMeasurements(entries)[0] ?? null;
 }
 
 export function getWeightChange(entries: BodyMeasurement[]): number | null {
-  const sorted = [...entries].sort((a, b) => b.recordedAt.localeCompare(a.recordedAt));
+  const sorted = sortMeasurements(entries);
   return sorted.length > 1 ? sorted[0]!.weightKg - sorted[1]!.weightKg : null;
 }
 
 export function getWeightTrend(entries: BodyMeasurement[]): Array<{ date: string; weightKg: number; movingAverageKg: number }> {
   const finalByDate = new Map<string, BodyMeasurement>();
-  for (const entry of [...entries].sort((a, b) => a.recordedAt.localeCompare(b.recordedAt))) finalByDate.set(localDateKey(entry.recordedAt), entry);
+  for (const entry of sortMeasurements(entries).reverse()) finalByDate.set(entry.localDate ?? localDateKey(entry.recordedAt), entry);
   const daily = [...finalByDate.entries()].sort(([a], [b]) => a.localeCompare(b));
   return daily.map(([date, entry], index) => {
     const window = daily.slice(Math.max(0, index - 6), index + 1);

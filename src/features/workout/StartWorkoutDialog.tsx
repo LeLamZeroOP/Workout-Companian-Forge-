@@ -1,13 +1,19 @@
-import type { Program } from '../../domain/models';
+import { SelectControl } from '../../components/SelectControl';
+import { ChoiceGroup } from '../../components/ChoiceGroup';
+import type { ExerciseDefinition, Program } from '../../domain/models';
 import { useState } from 'react';
-import { Play } from 'lucide-react';
-export function StartWorkoutDialog({ programs, onStart, initialProgramId = null }: { programs: Program[]; onStart: (programId: string, workoutId: string) => void; initialProgramId?: string | null }) {
+import { ArrowRight, Dumbbell, Play } from 'lucide-react';
+export function StartWorkoutDialog({ programs, catalog = [], onStart, onCustomWorkout, initialProgramId = null }: { programs: Program[]; catalog?: ExerciseDefinition[]; onStart: (programId: string, workoutId: string) => void; onCustomWorkout?: () => void; initialProgramId?: string | null }) {
   const [programId, setProgramId] = useState(() => programs.some((program) => program.id === initialProgramId) ? initialProgramId! : '');
   const [workoutId, setWorkoutId] = useState('');
   const program = programs.find((item) => item.id === programId);
-  return <section className="start-panel"><p className="eyebrow">New session</p><h2>Choose today's workout</h2><p>Select the program and workout you want Forge to guide.</p>
-    <div className="field"><label htmlFor="start-program">Program</label><select id="start-program" value={programId} onChange={(e) => { setProgramId(e.target.value); setWorkoutId(''); }}><option value="">Select program</option>{programs.map((item) => <option value={item.id} key={item.id}>{item.name}</option>)}</select></div>
-    <div className="field"><label htmlFor="start-workout">Workout</label><select id="start-workout" value={workoutId} disabled={!program} onChange={(e) => setWorkoutId(e.target.value)}><option value="">Select workout</option>{program?.workouts.map((item) => <option value={item.id} key={item.id}>{item.name}</option>)}</select></div>
-    <button className="primary-action" type="button" disabled={!programId || !workoutId} onClick={() => onStart(programId, workoutId)}><Play size={18}/>Begin guided workout</button>
+  const workout = program?.workouts.find(item => item.id === workoutId);
+  if (!programs.length) return <section className="start-panel start-empty"><p className="eyebrow">Your first session</p><h2>Choose how to train.</h2><p>Build a custom workout for today, or create a program to follow over time.</p>{onCustomWorkout && <button className="primary-action" type="button" onClick={onCustomWorkout}>Custom workout</button>}<a className="primary-action" href="#programs">Create your first program<ArrowRight size={18} aria-hidden="true" /></a></section>;
+  return <section className="start-panel"><header className="start-heading"><div><p className="eyebrow">New session</p><h2>Choose today's workout</h2><p className="muted">Your plan, one set at a time.</p></div><Dumbbell size={28} aria-hidden="true" /></header><div className="start-layout"><div className="start-selection">
+    {onCustomWorkout && <div className="custom-workout-choice"><h3>Train without a program</h3><p className="muted">Choose your own exercises for this session.</p><button className="secondary-action" type="button" onClick={onCustomWorkout}>Custom workout</button></div>}
+    <SelectControl label="Program" value={programId} options={programs.map(item => ({ value: item.id, label: item.name, description: `${item.workouts.length} workouts` }))} onChange={value => { setProgramId(value); setWorkoutId(''); }} />
+    {program ? program.workouts.length ? <ChoiceGroup label="Workout" value={workoutId} options={program.workouts.map(item => ({ value: item.id, label: item.name, description: `${item.exercises.length} ${item.exercises.length === 1 ? 'exercise' : 'exercises'} · ${item.exercises.reduce((total, exercise) => total + exercise.targetSets, 0)} sets` }))} onChange={setWorkoutId} /> : <p className="selection-hint">This program has no workouts yet. Add one in Programs to begin.</p> : <p className="selection-hint">Choose a program to see your workouts.</p>}
+    <button className="primary-action" type="button" disabled={!program || !workout} onClick={() => onStart(programId, workoutId)}><Play size={18} aria-hidden="true" />Begin guided workout</button>
+    </div><aside className="start-preview" aria-label="Workout preview">{workout ? <><p className="eyebrow">On the plan</p><h3>{workout.name}</h3><p className="muted">{workout.exercises.length} {workout.exercises.length === 1 ? 'exercise' : 'exercises'} · {workout.exercises.reduce((total, exercise) => total + exercise.targetSets, 0)} sets</p><ol>{workout.exercises.map((item, index) => <li key={item.id}><span>{String(index + 1).padStart(2, '0')}</span><div><strong>{catalog.find(exercise => exercise.id === item.exerciseId)?.name ?? 'Exercise'}</strong><small>{item.targetSets} sets · {item.targetRepMin}–{item.targetRepMax} reps · {item.restSeconds}s rest</small></div></li>)}</ol>{workout.notes && <p className="saved-notes muted">{workout.notes}</p>}</> : <div className="start-preview-empty"><ArrowRight size={24} aria-hidden="true" /><h3>See your session before you start.</h3><p>Choose a workout to preview its exercises, sets and rest times.</p></div>}</aside></div>
   </section>;
 }

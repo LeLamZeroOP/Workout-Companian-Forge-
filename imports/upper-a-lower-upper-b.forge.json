@@ -1,0 +1,446 @@
+{
+  "version": 3,
+  "exercises": [
+    {
+      "id": "user-upper-lower-20260927-press15",
+      "name": "15° Dumbbell Chest Press",
+      "equipment": "dumbbell",
+      "muscleContribution": {
+        "chest": 1,
+        "frontDelts": 0.5,
+        "triceps": 0.5
+      },
+      "isCustom": true
+    },
+    {
+      "id": "user-upper-lower-20260927-neutral-pulldown",
+      "name": "Neutral-grip Lat Pulldown",
+      "equipment": "cable",
+      "muscleContribution": {
+        "lats": 1,
+        "biceps": 0.5,
+        "upperBack": 0.25
+      },
+      "isCustom": true
+    },
+    {
+      "id": "user-upper-lower-20260927-machine-shoulder",
+      "name": "Machine Shoulder Press",
+      "equipment": "machine",
+      "muscleContribution": {
+        "frontDelts": 1,
+        "sideDelts": 0.5,
+        "triceps": 0.5
+      },
+      "isCustom": true
+    },
+    {
+      "id": "user-upper-lower-20260927-machine-row",
+      "name": "Machine Row",
+      "equipment": "machine",
+      "muscleContribution": {
+        "upperBack": 1,
+        "lats": 0.5,
+        "biceps": 0.5
+      },
+      "isCustom": true
+    },
+    {
+      "id": "user-upper-lower-20260927-lateral",
+      "name": "Lateral Raise",
+      "equipment": "other",
+      "muscleContribution": {
+        "sideDelts": 1
+      },
+      "isCustom": true
+    },
+    {
+      "id": "user-upper-lower-20260927-jm",
+      "name": "JM Press — Smith Machine",
+      "equipment": "machine",
+      "muscleContribution": {
+        "triceps": 1,
+        "chest": 0.25
+      },
+      "isCustom": true
+    },
+    {
+      "id": "user-upper-lower-20260927-incline-curl",
+      "name": "Incline Curl",
+      "equipment": "dumbbell",
+      "muscleContribution": {
+        "biceps": 1
+      },
+      "isCustom": true
+    },
+    {
+      "id": "user-upper-lower-20260927-crunch",
+      "name": "Cable Crunch",
+      "equipment": "cable",
+      "muscleContribution": {
+        "abs": 1
+      },
+      "isCustom": true
+    },
+    {
+      "id": "user-upper-lower-20260927-squat",
+      "name": "Squat",
+      "equipment": "barbell",
+      "muscleContribution": {
+        "quads": 1,
+        "glutes": 0.5
+      },
+      "isCustom": true
+    },
+    {
+      "id": "user-upper-lower-20260927-rdl",
+      "name": "Romanian Deadlift",
+      "equipment": "barbell",
+      "muscleContribution": {
+        "hamstrings": 1,
+        "glutes": 0.75
+      },
+      "isCustom": true
+    },
+    {
+      "id": "user-upper-lower-20260927-unilateral",
+      "name": "Split Squat or Step-up — per leg",
+      "equipment": "other",
+      "muscleContribution": {
+        "quads": 1,
+        "glutes": 0.75
+      },
+      "isCustom": true
+    },
+    {
+      "id": "user-upper-lower-20260927-lying-curl",
+      "name": "Lying Leg Curl",
+      "equipment": "machine",
+      "muscleContribution": {
+        "hamstrings": 1
+      },
+      "isCustom": true
+    },
+    {
+      "id": "user-upper-lower-20260927-extension",
+      "name": "Leg Extension",
+      "equipment": "machine",
+      "muscleContribution": {
+        "quads": 1
+      },
+      "isCustom": true
+    },
+    {
+      "id": "user-upper-lower-20260927-calf",
+      "name": "Calf Raise",
+      "equipment": "other",
+      "muscleContribution": {
+        "calves": 1
+      },
+      "isCustom": true
+    },
+    {
+      "id": "user-upper-lower-20260927-dead-bug",
+      "name": "Dead Bug — per side",
+      "equipment": "bodyweight",
+      "muscleContribution": {
+        "abs": 1
+      },
+      "isCustom": true
+    },
+    {
+      "id": "user-upper-lower-20260927-shoulder",
+      "name": "Shoulder Press",
+      "equipment": "other",
+      "muscleContribution": {
+        "frontDelts": 1,
+        "sideDelts": 0.5,
+        "triceps": 0.5
+      },
+      "isCustom": true
+    },
+    {
+      "id": "user-upper-lower-20260927-pec",
+      "name": "Pec Deck Fly",
+      "equipment": "machine",
+      "muscleContribution": {
+        "chest": 1
+      },
+      "isCustom": true
+    },
+    {
+      "id": "user-upper-lower-20260927-hammer",
+      "name": "Hammer Curl",
+      "equipment": "dumbbell",
+      "muscleContribution": {
+        "biceps": 1
+      },
+      "isCustom": true
+    },
+    {
+      "id": "user-upper-lower-20260927-plank",
+      "name": "Side Plank — 20–40 s per side",
+      "equipment": "bodyweight",
+      "muscleContribution": {
+        "abs": 1
+      },
+      "isCustom": true
+    }
+  ],
+  "programs": [
+    {
+      "id": "user-upper-lower-20260927-program",
+      "name": "Upper A / Lower / Upper B — rotating split",
+      "notes": "User-supplied rotation: Upper A → Lower → Upper B → rest → repeat (a four-day cycle, not a fixed weekly schedule). All prescriptions retained. Cable crunch rest is 60–90 s; timer defaults to 90 s. Side plank is 2 × 20–40 s per side; timed prescription is in its name and notes, with a 1-hold logging placeholder because Forge has no duration field. Muscle-contribution values are editable tracking estimates. Equipment marked other is unspecified in the supplied plan.",
+      "createdAt": "2026-09-27T12:14:49.029853Z",
+      "updatedAt": "2026-09-27T12:14:49.029853Z",
+      "workouts": [
+        {
+          "id": "user-upper-lower-20260927-upper-a",
+          "name": "Upper A — chest emphasis",
+          "notes": "Rotation: Upper A → Lower → Upper B → rest → repeat. Working sets as supplied.",
+          "exercises": [
+            {
+              "id": "user-upper-lower-20260927-upper-a-1",
+              "exerciseId": "user-upper-lower-20260927-press15",
+              "targetSets": 3,
+              "targetRepMin": 5,
+              "targetRepMax": 8,
+              "restSeconds": 180,
+              "notes": "Bench angle: 15 degrees."
+            },
+            {
+              "id": "user-upper-lower-20260927-upper-a-2",
+              "exerciseId": "user-upper-lower-20260927-neutral-pulldown",
+              "targetSets": 3,
+              "targetRepMin": 8,
+              "targetRepMax": 12,
+              "restSeconds": 120,
+              "notes": "Neutral grip."
+            },
+            {
+              "id": "user-upper-lower-20260927-upper-a-3",
+              "exerciseId": "user-upper-lower-20260927-machine-shoulder",
+              "targetSets": 2,
+              "targetRepMin": 8,
+              "targetRepMax": 12,
+              "restSeconds": 120,
+              "notes": ""
+            },
+            {
+              "id": "user-upper-lower-20260927-upper-a-4",
+              "exerciseId": "user-upper-lower-20260927-machine-row",
+              "targetSets": 2,
+              "targetRepMin": 8,
+              "targetRepMax": 12,
+              "restSeconds": 120,
+              "notes": ""
+            },
+            {
+              "id": "user-upper-lower-20260927-upper-a-5",
+              "exerciseId": "user-upper-lower-20260927-lateral",
+              "targetSets": 2,
+              "targetRepMin": 12,
+              "targetRepMax": 20,
+              "restSeconds": 90,
+              "notes": ""
+            },
+            {
+              "id": "user-upper-lower-20260927-upper-a-6",
+              "exerciseId": "user-upper-lower-20260927-jm",
+              "targetSets": 2,
+              "targetRepMin": 8,
+              "targetRepMax": 12,
+              "restSeconds": 90,
+              "notes": "Smith machine."
+            },
+            {
+              "id": "user-upper-lower-20260927-upper-a-7",
+              "exerciseId": "user-upper-lower-20260927-incline-curl",
+              "targetSets": 2,
+              "targetRepMin": 8,
+              "targetRepMax": 12,
+              "restSeconds": 90,
+              "notes": ""
+            },
+            {
+              "id": "user-upper-lower-20260927-upper-a-8",
+              "exerciseId": "user-upper-lower-20260927-crunch",
+              "targetSets": 2,
+              "targetRepMin": 10,
+              "targetRepMax": 15,
+              "restSeconds": 90,
+              "notes": "Prescribed rest: 60–90 seconds. The app timer uses 90 seconds; shorten it to 60 seconds if desired."
+            }
+          ]
+        },
+        {
+          "id": "user-upper-lower-20260927-lower",
+          "name": "Lower",
+          "notes": "Rotation: Upper A → Lower → Upper B → rest → repeat. Working sets as supplied.",
+          "exercises": [
+            {
+              "id": "user-upper-lower-20260927-lower-1",
+              "exerciseId": "user-upper-lower-20260927-squat",
+              "targetSets": 2,
+              "targetRepMin": 8,
+              "targetRepMax": 12,
+              "restSeconds": 180,
+              "notes": ""
+            },
+            {
+              "id": "user-upper-lower-20260927-lower-2",
+              "exerciseId": "user-upper-lower-20260927-rdl",
+              "targetSets": 2,
+              "targetRepMin": 6,
+              "targetRepMax": 10,
+              "restSeconds": 180,
+              "notes": ""
+            },
+            {
+              "id": "user-upper-lower-20260927-lower-3",
+              "exerciseId": "user-upper-lower-20260927-unilateral",
+              "targetSets": 2,
+              "targetRepMin": 8,
+              "targetRepMax": 12,
+              "restSeconds": 120,
+              "notes": "Choose split squat OR step-up. 8–12 repetitions per leg; complete both legs for each set."
+            },
+            {
+              "id": "user-upper-lower-20260927-lower-4",
+              "exerciseId": "user-upper-lower-20260927-lying-curl",
+              "targetSets": 2,
+              "targetRepMin": 8,
+              "targetRepMax": 12,
+              "restSeconds": 120,
+              "notes": ""
+            },
+            {
+              "id": "user-upper-lower-20260927-lower-5",
+              "exerciseId": "user-upper-lower-20260927-extension",
+              "targetSets": 2,
+              "targetRepMin": 8,
+              "targetRepMax": 12,
+              "restSeconds": 120,
+              "notes": ""
+            },
+            {
+              "id": "user-upper-lower-20260927-lower-6",
+              "exerciseId": "user-upper-lower-20260927-calf",
+              "targetSets": 3,
+              "targetRepMin": 12,
+              "targetRepMax": 15,
+              "restSeconds": 90,
+              "notes": ""
+            },
+            {
+              "id": "user-upper-lower-20260927-lower-7",
+              "exerciseId": "user-upper-lower-20260927-dead-bug",
+              "targetSets": 2,
+              "targetRepMin": 8,
+              "targetRepMax": 12,
+              "restSeconds": 60,
+              "notes": "8–12 repetitions per side. Log the per-side repetition count and 0 kg external weight."
+            }
+          ]
+        },
+        {
+          "id": "user-upper-lower-20260927-upper-b",
+          "name": "Upper B — shoulder and back emphasis",
+          "notes": "Rotation: Upper A → Lower → Upper B → rest → repeat. Working sets as supplied.",
+          "exercises": [
+            {
+              "id": "user-upper-lower-20260927-upper-b-1",
+              "exerciseId": "user-upper-lower-20260927-shoulder",
+              "targetSets": 3,
+              "targetRepMin": 8,
+              "targetRepMax": 12,
+              "restSeconds": 120,
+              "notes": ""
+            },
+            {
+              "id": "user-upper-lower-20260927-upper-b-2",
+              "exerciseId": "user-upper-lower-20260927-machine-row",
+              "targetSets": 3,
+              "targetRepMin": 8,
+              "targetRepMax": 12,
+              "restSeconds": 120,
+              "notes": ""
+            },
+            {
+              "id": "user-upper-lower-20260927-upper-b-3",
+              "exerciseId": "user-upper-lower-20260927-pec",
+              "targetSets": 3,
+              "targetRepMin": 8,
+              "targetRepMax": 12,
+              "restSeconds": 120,
+              "notes": ""
+            },
+            {
+              "id": "user-upper-lower-20260927-upper-b-4",
+              "exerciseId": "user-upper-lower-20260927-neutral-pulldown",
+              "targetSets": 2,
+              "targetRepMin": 8,
+              "targetRepMax": 12,
+              "restSeconds": 120,
+              "notes": "Neutral grip."
+            },
+            {
+              "id": "user-upper-lower-20260927-upper-b-5",
+              "exerciseId": "user-upper-lower-20260927-lateral",
+              "targetSets": 2,
+              "targetRepMin": 12,
+              "targetRepMax": 20,
+              "restSeconds": 90,
+              "notes": ""
+            },
+            {
+              "id": "user-upper-lower-20260927-upper-b-6",
+              "exerciseId": "user-upper-lower-20260927-hammer",
+              "targetSets": 2,
+              "targetRepMin": 8,
+              "targetRepMax": 12,
+              "restSeconds": 90,
+              "notes": ""
+            },
+            {
+              "id": "user-upper-lower-20260927-upper-b-7",
+              "exerciseId": "user-upper-lower-20260927-jm",
+              "targetSets": 2,
+              "targetRepMin": 8,
+              "targetRepMax": 12,
+              "restSeconds": 90,
+              "notes": "Smith machine."
+            },
+            {
+              "id": "user-upper-lower-20260927-upper-b-8",
+              "exerciseId": "user-upper-lower-20260927-plank",
+              "targetSets": 2,
+              "targetRepMin": 1,
+              "targetRepMax": 1,
+              "restSeconds": 60,
+              "notes": "TIMED HOLD: 2 sets of 20–40 seconds per side, resting 60 seconds. Forge currently stores repetitions, not hold durations. Target 1 means one completed hold on BOTH sides for this set; log 1 rep and 0 kg. Use an external timer for 20–40 seconds per side. This is not a one-second or one-repetition plank prescription."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "sessions": [],
+  "settings": {
+    "weightUnit": "kg",
+    "lastSelectedProgramId": null,
+    "restAlertSound": true,
+    "restAlertVibration": true,
+    "keepScreenAwake": true
+  },
+  "body": {
+    "profile": null,
+    "measurements": []
+  },
+  "nutrition": {
+    "targets": [],
+    "customFoods": [],
+    "diary": []
+  }
+}

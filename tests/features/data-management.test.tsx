@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { vi } from 'vitest';
 import { createDefaultData } from '../../src/data/defaults';
@@ -28,7 +28,8 @@ describe('DataManagement', () => {
 
     expect(createObjectUrl).toHaveBeenCalledWith(expect.any(Blob));
     expect(click).toHaveBeenCalledOnce();
-    expect(revokeObjectUrl).toHaveBeenCalledWith('blob:forge-backup');
+    expect(revokeObjectUrl).not.toHaveBeenCalled();
+    await waitFor(() => expect(revokeObjectUrl).toHaveBeenCalledWith('blob:forge-backup'), { timeout: 1500 });
     click.mockRestore();
   });
 
@@ -48,7 +49,7 @@ describe('DataManagement', () => {
     await user.click(screen.getByRole('button', { name: /replace my data/i }));
     expect(screen.getByRole('alertdialog', { name: /replace all local data/i })).toBeInTheDocument();
     await user.click(screen.getByRole('button', { name: /^replace data$/i }));
-    expect(onImport).toHaveBeenCalledWith(expect.objectContaining({ version: 2 }));
+    expect(onImport).toHaveBeenCalledWith(expect.objectContaining({ version: 4 }));
   });
 
   it('rejects an invalid import without exposing a replacement action', async () => {
@@ -73,5 +74,47 @@ describe('DataManagement', () => {
     expect(screen.getByRole('alertdialog', { name: /reset body data/i })).toBeInTheDocument();
     await user.click(screen.getByRole('button', { name: /^reset body$/i }));
     expect(onReset).toHaveBeenCalledWith('body');
+  });
+
+  it('retains the reviewed backup and dialog after a failed replacement', async () => {
+    const onImport = vi.fn(() => false);
+    const user = userEvent.setup();
+    render(<DataManagement data={createDefaultData()} onImport={onImport} onReset={vi.fn()} />);
+    await user.upload(screen.getByLabelText(/choose backup file/i), new File([JSON.stringify(populatedData())], 'reviewed.json', { type: 'application/json' }));
+    await user.click(await screen.findByRole('button', { name: 'Replace my data' }));
+    await user.click(screen.getByRole('button', { name: 'Replace data' }));
+    expect(screen.getByRole('alertdialog')).toBeInTheDocument();
+    expect(screen.getByText('reviewed.json')).toBeInTheDocument();
+    onImport.mockReturnValueOnce(true);
+    await user.click(screen.getByRole('button', { name: 'Replace data' }));
+    expect(screen.queryByRole('alertdialog')).not.toBeInTheDocument();
+  });
+
+  it('rejects files over 10 MB before reading their contents', async () => {
+    const user = userEvent.setup();
+    const file = new File(['{}'], 'large.json', { type: 'application/json' });
+    Object.defineProperty(file, 'size', { value: 10 * 1024 * 1024 + 1 });
+    const read = vi.spyOn(FileReader.prototype, 'readAsText');
+    render(<DataManagement data={createDefaultData()} onImport={vi.fn()} onReset={vi.fn()} />);
+    await user.upload(screen.getByLabelText(/choose backup file/i), file);
+    expect(await screen.findByRole('alert')).toHaveTextContent('10 MB');
+    expect(read).not.toHaveBeenCalled();
+    read.mockRestore();
+  });
+
+  it('explains a failed backup download and lets the user retry', async () => {
+    const createObjectUrl = vi.fn().mockImplementationOnce(() => { throw new Error('Unavailable'); }).mockReturnValue('blob:backup-retry');
+    Object.defineProperty(URL, 'createObjectURL', { configurable: true, value: createObjectUrl });
+    const click = vi.spyOn(HTMLAnchorElement.prototype, 'click').mockImplementation(() => undefined);
+    const data = populatedData();
+    render(<DataManagement data={data} onImport={vi.fn()} onReset={vi.fn()} />);
+    const user = userEvent.setup();
+    await user.click(screen.getByRole('button', { name: 'Download backup' }));
+    expect(screen.getByRole('alert')).toHaveTextContent('Could not download your backup. Please retry.');
+    expect(click).not.toHaveBeenCalled();
+    await user.click(screen.getByRole('button', { name: 'Download backup' }));
+    expect(click).toHaveBeenCalledOnce();
+    expect(screen.queryByRole('alert')).not.toBeInTheDocument();
+    click.mockRestore();
   });
 });

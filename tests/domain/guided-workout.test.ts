@@ -1,4 +1,4 @@
-import { completeGuidedSet, extendRest, getNextIncompleteSet, getRemainingRestSeconds, selectGuidedSet, skipRest } from '../../src/domain/guidedWorkout';
+import { completeGuidedSet, extendRest, getNextIncompleteSet, getRemainingRestSeconds, selectGuidedSet, skipRest, undoGuidedSet } from '../../src/domain/guidedWorkout';
 import type { WorkoutSession } from '../../src/domain/models';
 
 function session(restSeconds = 90): WorkoutSession {
@@ -69,4 +69,16 @@ describe('guided workout progression', () => {
     expect(updated.guide.currentExerciseId).toBe('triceps');
     expect(updated.exercises[0]!.sets[0]!.completed).toBe(false);
   });
+});
+
+it('returns to skipped sets and can undo completion during rest', () => {
+  const next = completeGuidedSet(session(), 'triceps', 'tri-1', '2026-09-23T10:00:00.000Z');
+  expect(skipRest(next).guide.currentSetId).toBe('chest-1');
+  const undone = undoGuidedSet(next, 'triceps', 'tri-1');
+  expect(undone.guide.restTimer).toBeNull();
+  expect(undone.exercises[1]!.sets[0]!.completed).toBe(false);
+});
+it.each([0, -1, 1.5, Infinity])('rejects invalid reps %s', reps => {
+  const current = session(); current.exercises[0]!.sets[0]!.reps = reps;
+  expect(completeGuidedSet(current, 'chest', 'chest-1', '2026-09-23T10:00:00.000Z')).toBe(current);
 });

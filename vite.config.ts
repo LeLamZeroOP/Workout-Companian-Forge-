@@ -3,6 +3,31 @@ import react from '@vitejs/plugin-react';
 import { createHash } from 'node:crypto';
 import type { Plugin } from 'vite';
 
+// A production preview may previously have installed a worker on this origin.
+// Serve a replacement in development so its cached HTML cannot hide source edits.
+function retireDevelopmentWorker(): Plugin {
+  return {
+    name: 'forge-retire-development-worker',
+    apply: 'serve',
+    configureServer(server) {
+      server.middlewares.use((request, response, next) => {
+        if (request.url?.split('?')[0] !== '/sw.js') return next();
+        response.setHeader('Content-Type', 'text/javascript');
+        response.setHeader('Cache-Control', 'no-store');
+        response.end(`self.addEventListener('install', () => self.skipWaiting());
+self.addEventListener('activate', event => event.waitUntil((async () => {
+  await self.clients.claim();
+  await self.registration.unregister();
+  const keys = await caches.keys();
+  await Promise.all(keys.filter(key => key.startsWith('forge-shell-')).map(key => caches.delete(key)));
+  const windows = await self.clients.matchAll({ type: 'window' });
+  await Promise.all(windows.map(client => client.navigate(client.url)));
+})()));`);
+      });
+    },
+  };
+}
+
 function offlineShell(): Plugin {
   return {
     name: 'forge-offline-shell',
@@ -14,15 +39,32 @@ function offlineShell(): Plugin {
       this.emitFile({
         type: 'asset',
         fileName: 'sw.js',
-        source: `const CACHE_NAME = 'forge-shell-${revision}';\nconst SHELL_FILES = ${JSON.stringify(shellFiles)};\nself.addEventListener('install', (event) => { event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(SHELL_FILES)).then(() => self.skipWaiting())); });\nself.addEventListener('activate', (event) => { event.waitUntil(caches.keys().then((keys) => Promise.all(keys.filter((key) => key.startsWith('forge-shell-') && key !== CACHE_NAME).map((key) => caches.delete(key)))).then(() => self.clients.claim())); });\nself.addEventListener('fetch', (event) => { const url = new URL(event.request.url); if (event.request.method !== 'GET' || url.origin !== self.location.origin) return; event.respondWith(caches.open(CACHE_NAME).then(async (cache) => { const cacheKey = event.request.mode === 'navigate' ? '/index.html' : url.pathname; const cached = await cache.match(cacheKey, { ignoreSearch: true }); if (cached) return cached; try { const response = await fetch(event.request); if (response.ok) await cache.put(url.pathname, response.clone()); return response; } catch { return event.request.mode === 'navigate' ? cache.match('/index.html') : Response.error(); } })); });\n`,
+        source: `const CACHE_NAME = 'forge-shell-${revision}';
+const SHELL_FILES = ${JSON.stringify(shellFiles)};
+self.addEventListener('install', (event) => { event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(SHELL_FILES))); });
+self.addEventListener('activate', (event) => { event.waitUntil(caches.keys().then((keys) => Promise.all(keys.filter((key) => key.startsWith('forge-shell-') && key !== CACHE_NAME).map((key) => caches.delete(key)))).then(() => self.clients.claim())); });
+self.addEventListener('message', (event) => {
+  if (event.data?.type !== 'FORGE_APPLY_UPDATE') return;
+  event.waitUntil((async () => {
+    const windows = await self.clients.matchAll({ type: 'window', includeUncontrolled: true });
+    if (windows.length !== 1 || windows[0].id !== event.source?.id) {
+      event.ports[0]?.postMessage({ type: 'FORGE_UPDATE_BLOCKED' });
+      return;
+    }
+    await self.skipWaiting();
+  })());
+});
+self.addEventListener('fetch', (event) => { const url = new URL(event.request.url); if (event.request.method !== 'GET' || url.origin !== self.location.origin) return; event.respondWith(caches.open(CACHE_NAME).then(async (cache) => { const cacheKey = event.request.mode === 'navigate' ? '/index.html' : url.pathname; const cached = await cache.match(cacheKey, { ignoreSearch: true }); if (cached) return cached; try { const response = await fetch(event.request); if (response.ok) await cache.put(url.pathname, response.clone()); return response; } catch { return event.request.mode === 'navigate' ? cache.match('/index.html') : Response.error(); } })); });
+`,
       });
     },
   };
 }
 
 export default defineConfig({
-  plugins: [react(), offlineShell()],
+  plugins: [react(), retireDevelopmentWorker(), offlineShell()],
   test: {
+    maxWorkers: 2,
     globals: true,
     environment: 'jsdom',
     setupFiles: ['./tests/setup.ts'],

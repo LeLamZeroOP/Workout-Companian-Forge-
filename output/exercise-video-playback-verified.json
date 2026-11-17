@@ -1,0 +1,992 @@
+[
+  {
+    "exerciseId": "db-chest-press",
+    "videoId": "t1iaVBMItPo",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 267,
+    "currentTime": 0.045000095367431645,
+    "data": {
+      "title": "Dumbbell Bench Press - Perfect Form Video Tutorial",
+      "author": "Fit Father Project - Fitness For Busy Fathers",
+      "video_id": "t1iaVBMItPo",
+      "isLive": false
+    },
+    "width": 854,
+    "height": 480,
+    "passed": true,
+    "checkedAt": "2026-10-16T06:54:32.802Z"
+  },
+  {
+    "exerciseId": "bench-press",
+    "videoId": "vcBig73ojpE",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 734,
+    "currentTime": 0.5751538531341553,
+    "data": {
+      "title": "How To Get A Huge Bench Press with Perfect Technique",
+      "author": "Jeff Nippard",
+      "video_id": "vcBig73ojpE",
+      "isLive": false
+    },
+    "width": 854,
+    "height": 480,
+    "passed": true,
+    "checkedAt": "2026-10-16T06:54:39.673Z"
+  },
+  {
+    "exerciseId": "incline-db-press",
+    "videoId": "0f6-uCUKqgA",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 451.141,
+    "currentTime": 0.7931638245239258,
+    "data": {
+      "title": "Incline Dumbbell Press BETTER | Targeting The Muscle Series",
+      "author": "Renaissance Periodization",
+      "video_id": "0f6-uCUKqgA",
+      "isLive": false
+    },
+    "width": 854,
+    "height": 480,
+    "passed": true,
+    "checkedAt": "2026-10-16T06:54:44.371Z"
+  },
+  {
+    "exerciseId": "machine-chest-press",
+    "videoId": "gNBU7hmW2EU",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 186,
+    "currentTime": 0.4887440591278076,
+    "data": {
+      "title": "Chest Press Machine Tutorial | Beginner’s Guide to Gym Machines (Build Muscle & Strength)",
+      "author": "Tim Bullici",
+      "video_id": "gNBU7hmW2EU",
+      "isLive": false
+    },
+    "width": 854,
+    "height": 480,
+    "passed": true,
+    "checkedAt": "2026-10-16T06:54:49.961Z"
+  },
+  {
+    "exerciseId": "cable-fly",
+    "videoId": "hrh0K1Oo7Yc",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 295.46183333333335,
+    "currentTime": 0.6424809809265137,
+    "data": {
+      "title": "How to PROPERLY Cable Chest Fly (FIX THIS NOW!)",
+      "author": "Colossus Fitness",
+      "video_id": "hrh0K1Oo7Yc",
+      "isLive": false
+    },
+    "width": 854,
+    "height": 480,
+    "passed": true,
+    "checkedAt": "2026-10-16T06:54:54.974Z"
+  },
+  {
+    "exerciseId": "pec-deck",
+    "videoId": "H4mVGHaK2f4",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 183,
+    "currentTime": 0.6733090267028808,
+    "data": {
+      "title": "How to PERFECT The Pec Deck | (CHEST FLY MISTAKES & TIPS)",
+      "author": "Colossus Fitness",
+      "video_id": "H4mVGHaK2f4",
+      "isLive": false
+    },
+    "width": 854,
+    "height": 480,
+    "passed": true,
+    "checkedAt": "2026-10-16T06:54:59.651Z"
+  },
+  {
+    "exerciseId": "push-up",
+    "videoId": "IODxDxX7oi4",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 218,
+    "currentTime": 0.519619135421753,
+    "data": {
+      "title": "The Perfect Push Up | Do it right!",
+      "author": "Calisthenicmovement",
+      "video_id": "IODxDxX7oi4",
+      "isLive": false
+    },
+    "width": 854,
+    "height": 480,
+    "passed": true,
+    "checkedAt": "2026-10-16T06:55:06.376Z"
+  },
+  {
+    "exerciseId": "overhead-press",
+    "videoId": "_RlRDWO2jfg",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 479,
+    "currentTime": 1.0225891640319824,
+    "data": {
+      "title": "Build Bigger Shoulders With Perfect Training Technique (The Overhead Press)",
+      "author": "Jeff Nippard",
+      "video_id": "_RlRDWO2jfg",
+      "isLive": false
+    },
+    "width": 854,
+    "height": 480,
+    "passed": true,
+    "checkedAt": "2026-10-16T06:55:10.138Z"
+  },
+  {
+    "exerciseId": "db-shoulder-press",
+    "videoId": "7C-btvC-UX4",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 457,
+    "currentTime": 0.1579358779296875,
+    "data": {
+      "title": "Dumbbell Shoulder press Complete Tutorial.",
+      "author": "The Barbell path",
+      "video_id": "7C-btvC-UX4",
+      "isLive": false
+    },
+    "width": 640,
+    "height": 360,
+    "passed": true,
+    "checkedAt": "2026-10-16T06:55:12.964Z"
+  },
+  {
+    "exerciseId": "lateral-raise",
+    "videoId": "v_ZkxWzYnMc",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 483.641,
+    "currentTime": 0.45384619264221193,
+    "data": {
+      "title": "How To Build Capped Shoulders: Optimal Training Explained (Side Delts)",
+      "author": "Jeff Nippard",
+      "video_id": "v_ZkxWzYnMc",
+      "isLive": false
+    },
+    "width": 854,
+    "height": 480,
+    "passed": true,
+    "checkedAt": "2026-10-16T06:55:17.282Z"
+  },
+  {
+    "exerciseId": "cable-lateral-raise",
+    "videoId": "Sp8be0IFNvk",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 290.741,
+    "currentTime": 0.5620900133514404,
+    "data": {
+      "title": "How to Fix your Cable Lateral Raise | DB vs. CABLE",
+      "author": "John Jewett",
+      "video_id": "Sp8be0IFNvk",
+      "isLive": false
+    },
+    "width": 854,
+    "height": 480,
+    "passed": true,
+    "checkedAt": "2026-10-16T06:55:21.747Z"
+  },
+  {
+    "exerciseId": "reverse-pec-deck",
+    "videoId": "LzsSQzHFuLU",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 545,
+    "currentTime": 0.23667786457824708,
+    "data": {
+      "title": "How to Reverse Pec Dec For HUGE round rear delts - Exercise Set up and Form with Hypertrophy Coach",
+      "author": "Hypertrophy Coach",
+      "video_id": "LzsSQzHFuLU",
+      "isLive": false
+    },
+    "width": 854,
+    "height": 480,
+    "passed": true,
+    "checkedAt": "2026-10-16T06:55:24.661Z"
+  },
+  {
+    "exerciseId": "face-pull",
+    "videoId": "DvjmJdEswQ4",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 670,
+    "currentTime": 0.17677695231628418,
+    "data": {
+      "title": "Face Pulls | Proper Form vs Common Mistakes",
+      "author": "JONNI SHREVE",
+      "video_id": "DvjmJdEswQ4",
+      "isLive": false
+    },
+    "width": 854,
+    "height": 480,
+    "passed": true,
+    "checkedAt": "2026-10-16T06:55:28.836Z"
+  },
+  {
+    "exerciseId": "incline-barbell-press",
+    "videoId": "jPLdzuHckI8",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 286,
+    "currentTime": 0.13831496757507325,
+    "data": {
+      "title": "Incline Barbell Press | Upper Chest | How-To Exercise Tutorial",
+      "author": "Buff Dudes Workouts",
+      "video_id": "jPLdzuHckI8",
+      "isLive": false
+    },
+    "width": 854,
+    "height": 480,
+    "passed": true,
+    "checkedAt": "2026-10-16T06:55:31.800Z"
+  },
+  {
+    "exerciseId": "smith-incline-press",
+    "videoId": "GobPtFwc_Qk",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 825.781,
+    "currentTime": 0.3567959523162842,
+    "data": {
+      "title": "How to Set Up Smith Incline Press (Upper Pecs)",
+      "author": "Ben Yanes",
+      "video_id": "GobPtFwc_Qk",
+      "isLive": false
+    },
+    "width": 640,
+    "height": 360,
+    "passed": true,
+    "checkedAt": "2026-10-16T06:55:34.740Z"
+  },
+  {
+    "exerciseId": "incline-converging-press",
+    "videoId": "GRTzUEPUqek",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 534.821,
+    "currentTime": 0.348402921798706,
+    "data": {
+      "title": "Dr. Mike Reviews the Atlantis Converging Incline Bench Press",
+      "author": "Atlantis Strength",
+      "video_id": "GRTzUEPUqek",
+      "isLive": false
+    },
+    "width": 854,
+    "height": 450,
+    "passed": true,
+    "checkedAt": "2026-10-16T06:55:37.709Z"
+  },
+  {
+    "exerciseId": "low-high-cable-fly",
+    "videoId": "-EIhKMDSjBY",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 415,
+    "currentTime": 0.5462890514984131,
+    "data": {
+      "title": "The Best Way To Isolate The Chest For Growth (Upper Chest Focus)",
+      "author": "Jeff Nippard",
+      "video_id": "-EIhKMDSjBY",
+      "isLive": false
+    },
+    "width": 854,
+    "height": 480,
+    "passed": true,
+    "checkedAt": "2026-10-16T06:55:40.524Z"
+  },
+  {
+    "exerciseId": "smith-flat-press",
+    "videoId": "nFAQ35hmCqU",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 252.921,
+    "currentTime": 0.2700890534057617,
+    "data": {
+      "title": "How To Smith Machine Bench Press (BEGINNER)",
+      "author": "Wavvy Fitness",
+      "video_id": "nFAQ35hmCqU",
+      "isLive": false
+    },
+    "width": 640,
+    "height": 360,
+    "passed": true,
+    "checkedAt": "2026-10-16T06:55:43.244Z"
+  },
+  {
+    "exerciseId": "flat-db-fly",
+    "videoId": "2dKBS61BX24",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 626.021,
+    "currentTime": 0.3797768550415039,
+    "data": {
+      "title": "8 Dumbbell Fly Mistakes and How to Fix Them",
+      "author": "Renaissance Periodization",
+      "video_id": "2dKBS61BX24",
+      "isLive": false
+    },
+    "width": 854,
+    "height": 480,
+    "passed": true,
+    "checkedAt": "2026-10-16T06:55:46.098Z"
+  },
+  {
+    "exerciseId": "standing-cable-chest-press",
+    "videoId": "fOHouR0t9Cw",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 263,
+    "currentTime": 0.4956760133514404,
+    "data": {
+      "title": "Standing Cable Chest Press  - Technique, Benefits, and Common Mistakes",
+      "author": "Mike | J2FIT Strength & Conditioning",
+      "video_id": "fOHouR0t9Cw",
+      "isLive": false
+    },
+    "width": 854,
+    "height": 480,
+    "passed": true,
+    "checkedAt": "2026-10-16T06:55:50.132Z"
+  },
+  {
+    "exerciseId": "single-arm-cable-chest-press",
+    "videoId": "sNUWfchnLIE",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 145,
+    "currentTime": 0.07501206675720215,
+    "data": {
+      "title": "One Arm Cable Press exercise tutorial",
+      "author": "Nick Tumminello - Trainer of Trainers",
+      "video_id": "sNUWfchnLIE",
+      "isLive": false
+    },
+    "width": 854,
+    "height": 480,
+    "passed": true,
+    "checkedAt": "2026-10-16T06:55:53.533Z"
+  },
+  {
+    "exerciseId": "chest-dip",
+    "videoId": "2z8JmcrW-As",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 277.901,
+    "currentTime": 0.8227350762939453,
+    "data": {
+      "title": "The Perfect Dip  - Do it right",
+      "author": "Calisthenicmovement",
+      "video_id": "2z8JmcrW-As",
+      "isLive": false
+    },
+    "width": 854,
+    "height": 480,
+    "passed": true,
+    "checkedAt": "2026-10-16T06:55:57.718Z"
+  },
+  {
+    "exerciseId": "feet-elevated-push-up",
+    "videoId": "BeS6eOYKQ8s",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 760,
+    "currentTime": 0.05645890844726562,
+    "data": {
+      "title": "Grow Your UPPER CHEST With Push-Ups",
+      "author": "FitnessFAQs",
+      "video_id": "BeS6eOYKQ8s",
+      "isLive": false
+    },
+    "width": 640,
+    "height": 360,
+    "passed": true,
+    "checkedAt": "2026-10-16T06:56:00.621Z"
+  },
+  {
+    "exerciseId": "machine-shoulder-press",
+    "videoId": "BAZkFGeUy5U",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 180,
+    "currentTime": 0.8340679008178711,
+    "data": {
+      "title": "Shoulder Press Machine | Tutorial for Gym Beginners",
+      "author": "Tim Bullici",
+      "video_id": "BAZkFGeUy5U",
+      "isLive": false
+    },
+    "width": 854,
+    "height": 480,
+    "passed": true,
+    "checkedAt": "2026-10-16T06:56:04.365Z"
+  },
+  {
+    "exerciseId": "lat-pulldown",
+    "videoId": "O94yEoGXtBY",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 501,
+    "currentTime": 0.23921678828430176,
+    "data": {
+      "title": "How To Build A V-Tapered Back: Lat Training Dos and Don’ts",
+      "author": "Jeff Nippard",
+      "video_id": "O94yEoGXtBY",
+      "isLive": false
+    },
+    "width": 854,
+    "height": 480,
+    "passed": true,
+    "checkedAt": "2026-10-16T06:56:07.093Z"
+  },
+  {
+    "exerciseId": "pull-up",
+    "videoId": "Hdc7Mw6BIEE",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 512.561,
+    "currentTime": 0.47689097520446777,
+    "data": {
+      "title": "The Best Way To Do Pull Ups For A Wide Back (Optimal Training Technique)",
+      "author": "Jeff Nippard",
+      "video_id": "Hdc7Mw6BIEE",
+      "isLive": false
+    },
+    "width": 854,
+    "height": 480,
+    "passed": true,
+    "checkedAt": "2026-10-16T06:56:11.565Z"
+  },
+  {
+    "exerciseId": "chin-up",
+    "videoId": "40A3NGv31lE",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 569.841,
+    "currentTime": 0.5724200839233399,
+    "data": {
+      "title": "4 Dumbest Chin-Up Mistakes Sabotaging Your BACK / BICEPS GROWTH! STOP DOING THESE!",
+      "author": "ScottHermanFitness",
+      "video_id": "40A3NGv31lE",
+      "isLive": false
+    },
+    "width": 854,
+    "height": 480,
+    "passed": true,
+    "checkedAt": "2026-10-16T06:56:15.307Z"
+  },
+  {
+    "exerciseId": "seated-cable-row",
+    "videoId": "7o2oolbmzeI",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 365.441,
+    "currentTime": 0.4833319542236328,
+    "data": {
+      "title": "How To: Seated Cable Low-Row || PERFECT FORM",
+      "author": "ScottHermanFitness",
+      "video_id": "7o2oolbmzeI",
+      "isLive": false
+    },
+    "width": 854,
+    "height": 480,
+    "passed": true,
+    "checkedAt": "2026-10-16T06:56:18.083Z"
+  },
+  {
+    "exerciseId": "db-row",
+    "videoId": "djKXLt7kv7Q",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 442.421,
+    "currentTime": 0.4422701354217529,
+    "data": {
+      "title": "How To Do Dumbbell Rows: Build a Thicker Back With Proper \"Cheating\"",
+      "author": "Jeff Nippard",
+      "video_id": "djKXLt7kv7Q",
+      "isLive": false
+    },
+    "width": 854,
+    "height": 480,
+    "passed": true,
+    "checkedAt": "2026-10-16T06:56:20.869Z"
+  },
+  {
+    "exerciseId": "barbell-row",
+    "videoId": "G8l_8chR5BE",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 314.861,
+    "currentTime": 0.41798009727478025,
+    "data": {
+      "title": "\"How To\" Barbell Row",
+      "author": "Alan Thrall (Untamed Strength)",
+      "video_id": "G8l_8chR5BE",
+      "isLive": false
+    },
+    "width": 854,
+    "height": 480,
+    "passed": true,
+    "checkedAt": "2026-10-16T06:56:23.888Z"
+  },
+  {
+    "exerciseId": "chest-supported-row",
+    "videoId": "TXjeZsqCVsg",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 373,
+    "currentTime": 0.06695799046325684,
+    "data": {
+      "title": "CHEST SUPPORTED DUMBBELL ROW | how-to, tips, benefits",
+      "author": "That Fit Friend",
+      "video_id": "TXjeZsqCVsg",
+      "isLive": false
+    },
+    "width": 854,
+    "height": 480,
+    "passed": true,
+    "checkedAt": "2026-10-16T06:56:26.645Z"
+  },
+  {
+    "exerciseId": "straight-arm-pulldown",
+    "videoId": "vJwAbr_pVVM",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 264,
+    "currentTime": 0.6209718950958252,
+    "data": {
+      "title": "How to PROPERLY Straight-Arm Lat Pulldown for Bigger Lats",
+      "author": "Colossus Fitness",
+      "video_id": "vJwAbr_pVVM",
+      "isLive": false
+    },
+    "width": 854,
+    "height": 480,
+    "passed": true,
+    "checkedAt": "2026-10-16T06:56:31.600Z"
+  },
+  {
+    "exerciseId": "db-curl",
+    "videoId": "Ot2QgK5K_Hg",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 579.021,
+    "currentTime": 0.22173389891052248,
+    "data": {
+      "title": "5 Dumbest Dumbbell Bicep Curl Mistakes Sabotaging Your Bicep Growth! | STOP DOING THESE!",
+      "author": "ScottHermanFitness",
+      "video_id": "Ot2QgK5K_Hg",
+      "isLive": false
+    },
+    "width": 640,
+    "height": 360,
+    "passed": true,
+    "checkedAt": "2026-10-16T06:56:34.530Z"
+  },
+  {
+    "exerciseId": "hammer-curl",
+    "videoId": "rbOhYRsd9Ak",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 452,
+    "currentTime": 0.9312102326965332,
+    "data": {
+      "title": "5 Dumbest Hammer Curl Mistakes Sabotaging Your ARM GROWTH! STOP DOING THESE!",
+      "author": "ScottHermanFitness",
+      "video_id": "rbOhYRsd9Ak",
+      "isLive": false
+    },
+    "width": 640,
+    "height": 360,
+    "passed": true,
+    "checkedAt": "2026-10-16T06:56:38.625Z"
+  },
+  {
+    "exerciseId": "cable-curl",
+    "videoId": "16aEi1a68E0",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 372,
+    "currentTime": 0.39270899618530275,
+    "data": {
+      "title": "How to Do the Cable Biceps Curl With Perfect Form | Form Check | Men’s Health Muscle",
+      "author": "Men’s Health Muscle",
+      "video_id": "16aEi1a68E0",
+      "isLive": false
+    },
+    "width": 640,
+    "height": 360,
+    "passed": true,
+    "checkedAt": "2026-10-16T06:56:41.567Z"
+  },
+  {
+    "exerciseId": "preacher-curl",
+    "videoId": "R-8Sa0_qiws",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 459.581,
+    "currentTime": 0.22566702670288086,
+    "data": {
+      "title": "How to PROPERLY Do The Machine Preacher Curl (LEARN FAST) | Eb & Swole | Men’s Health Muscle",
+      "author": "Men’s Health Muscle",
+      "video_id": "R-8Sa0_qiws",
+      "isLive": false
+    },
+    "width": 640,
+    "height": 360,
+    "passed": true,
+    "checkedAt": "2026-10-16T06:56:44.263Z"
+  },
+  {
+    "exerciseId": "triceps-pushdown",
+    "videoId": "Do8_ihxoK00",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 501.021,
+    "currentTime": 0.2158349713897705,
+    "data": {
+      "title": "3 Triceps Pushdown Mistakes Everyone Makes | FIX NOW!",
+      "author": "ScottHermanFitness",
+      "video_id": "Do8_ihxoK00",
+      "isLive": false
+    },
+    "width": 640,
+    "height": 360,
+    "passed": true,
+    "checkedAt": "2026-10-16T06:56:47.575Z"
+  },
+  {
+    "exerciseId": "overhead-triceps",
+    "videoId": "dVtMz69MOb0",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 401.261,
+    "currentTime": 0.6155618950958253,
+    "data": {
+      "title": "How To Do Overhead Cable Extensions (INCREDIBLE TRICEPS BUILDER!)",
+      "author": "Geoffrey Verity Schofield",
+      "video_id": "dVtMz69MOb0",
+      "isLive": false
+    },
+    "width": 854,
+    "height": 480,
+    "passed": true,
+    "checkedAt": "2026-10-16T06:56:50.620Z"
+  },
+  {
+    "exerciseId": "neutral-grip-lat-pulldown",
+    "videoId": "KgZqDuNx7rI",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 295,
+    "currentTime": 0.4323920286102295,
+    "data": {
+      "title": "The BEST way to Perform the Neutral Grip Lat Pulldown | Form Tutorial",
+      "author": "Physique Development",
+      "video_id": "KgZqDuNx7rI",
+      "isLive": false
+    },
+    "width": 854,
+    "height": 480,
+    "passed": true,
+    "checkedAt": "2026-10-16T06:56:54.576Z"
+  },
+  {
+    "exerciseId": "machine-row",
+    "videoId": "6eBwGki2JuU",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 1441,
+    "currentTime": 577.211063830246,
+    "data": {
+      "title": "Exercise Scientist's Top 5 Back Exercises",
+      "author": "Renaissance Periodization",
+      "video_id": "6eBwGki2JuU",
+      "isLive": false
+    },
+    "width": 854,
+    "height": 428,
+    "passed": true,
+    "checkedAt": "2026-10-16T06:56:57.585Z"
+  },
+  {
+    "exerciseId": "smith-jm-press",
+    "videoId": "RO5KcSbYXho",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 706,
+    "currentTime": 44.78364987792969,
+    "data": {
+      "title": "The 2 BEST JM Presses For Triceps",
+      "author": "Alex Leonidas",
+      "video_id": "RO5KcSbYXho",
+      "isLive": false
+    },
+    "width": 854,
+    "height": 480,
+    "passed": true,
+    "checkedAt": "2026-10-16T06:57:01.732Z"
+  },
+  {
+    "exerciseId": "leg-press",
+    "videoId": "-Nw8EWUrJuQ",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 241,
+    "currentTime": 0.35462792942810056,
+    "data": {
+      "title": "Leg Press 101: How to, Tips, & Tricks w/ Steve Kuclo",
+      "author": "Muscle & Strength",
+      "video_id": "-Nw8EWUrJuQ",
+      "isLive": false
+    },
+    "width": 854,
+    "height": 480,
+    "passed": true,
+    "checkedAt": "2026-10-16T06:57:04.751Z"
+  },
+  {
+    "exerciseId": "squat",
+    "videoId": "8PMjqgR8Wa8",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 235.041,
+    "currentTime": 0.932288129699707,
+    "data": {
+      "title": "How to Barbell Back Squat | A Tutorial for Beginners",
+      "author": "Barbell Rehab",
+      "video_id": "8PMjqgR8Wa8",
+      "isLive": false
+    },
+    "width": 854,
+    "height": 480,
+    "passed": true,
+    "checkedAt": "2026-10-16T06:57:08.811Z"
+  },
+  {
+    "exerciseId": "goblet-squat",
+    "videoId": "9KzZD_n2r64",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 509,
+    "currentTime": 0.42918789700317383,
+    "data": {
+      "title": "How to Goblet Squat - The Complete Guide for Beginners",
+      "author": "Naomi Kong",
+      "video_id": "9KzZD_n2r64",
+      "isLive": false
+    },
+    "width": 854,
+    "height": 480,
+    "passed": true,
+    "checkedAt": "2026-10-16T06:57:11.631Z"
+  },
+  {
+    "exerciseId": "hack-squat",
+    "videoId": "4cxt_Tldugw",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 1127,
+    "currentTime": 0.804696072479248,
+    "data": {
+      "title": "9 Hack Squat Mistakes and How to Fix Them",
+      "author": "Renaissance Periodization",
+      "video_id": "4cxt_Tldugw",
+      "isLive": false
+    },
+    "width": 854,
+    "height": 480,
+    "passed": true,
+    "checkedAt": "2026-10-16T06:57:15.586Z"
+  },
+  {
+    "exerciseId": "rdl",
+    "videoId": "_oyxCn2iSjU",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 381.201,
+    "currentTime": 0.19171098092651367,
+    "data": {
+      "title": "HOW TO DO ROMANIAN DEADLIFTS (RDLs): Build Beefy Hamstrings With Perfect Technique",
+      "author": "Jeff Nippard",
+      "video_id": "_oyxCn2iSjU",
+      "isLive": false
+    },
+    "width": 854,
+    "height": 480,
+    "passed": true,
+    "checkedAt": "2026-10-16T06:57:18.462Z"
+  },
+  {
+    "exerciseId": "db-rdl",
+    "videoId": "2JWazArW0zw",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 317,
+    "currentTime": 0.20400001525878905,
+    "data": {
+      "title": "Dumbbell RDL Exercise Tutorial",
+      "author": "Eric Roberts",
+      "video_id": "2JWazArW0zw",
+      "isLive": false
+    },
+    "width": 640,
+    "height": 360,
+    "passed": true,
+    "checkedAt": "2026-10-16T06:57:21.693Z"
+  },
+  {
+    "exerciseId": "bulgarian-split-squat",
+    "videoId": "-4LVK1crLSw",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 497.621,
+    "currentTime": 0.3467488207092285,
+    "data": {
+      "title": "The ULTIMATE Bulgarian Split Squat Tutorial",
+      "author": "Squat University",
+      "video_id": "-4LVK1crLSw",
+      "isLive": false
+    },
+    "width": 854,
+    "height": 480,
+    "passed": true,
+    "checkedAt": "2026-10-16T06:57:24.575Z"
+  },
+  {
+    "exerciseId": "leg-extension",
+    "videoId": "yiEDToHWs2E",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 327,
+    "currentTime": 0.1915139713897705,
+    "data": {
+      "title": "Exercise Index - Leg Extension",
+      "author": "mountaindog1",
+      "video_id": "yiEDToHWs2E",
+      "isLive": false
+    },
+    "width": 640,
+    "height": 360,
+    "passed": true,
+    "checkedAt": "2026-10-16T06:57:27.611Z"
+  },
+  {
+    "exerciseId": "seated-leg-curl",
+    "videoId": "Wy1SwoY2aaQ",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 210.021,
+    "currentTime": 0.15171692942810058,
+    "data": {
+      "title": "How to PROPERLY Seated Hamstring Curl (FIX THIS NOW)",
+      "author": "Colossus Fitness",
+      "video_id": "Wy1SwoY2aaQ",
+      "isLive": false
+    },
+    "width": 854,
+    "height": 480,
+    "passed": true,
+    "checkedAt": "2026-10-16T06:57:33.409Z"
+  },
+  {
+    "exerciseId": "hip-thrust",
+    "videoId": "jQkKeL4Cg8M",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 528,
+    "currentTime": 0.15264309536743165,
+    "data": {
+      "title": "HOW TO HIP THRUST | 2024 Complete Beginner's Guide",
+      "author": "Naomi Kong",
+      "video_id": "jQkKeL4Cg8M",
+      "isLive": false
+    },
+    "width": 854,
+    "height": 480,
+    "passed": true,
+    "checkedAt": "2026-10-16T06:57:36.283Z"
+  },
+  {
+    "exerciseId": "calf-raise",
+    "videoId": "Xa18jxyeSnM",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 564.421,
+    "currentTime": 0.19400004386901856,
+    "data": {
+      "title": "8 Calf Raise Mistakes and How to Fix Them",
+      "author": "Renaissance Periodization",
+      "video_id": "Xa18jxyeSnM",
+      "isLive": false
+    },
+    "width": 640,
+    "height": 360,
+    "passed": true,
+    "checkedAt": "2026-10-16T06:57:39.616Z"
+  },
+  {
+    "exerciseId": "cable-crunch",
+    "videoId": "aBd6T01PBqw",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 317,
+    "currentTime": 0.9827539847412109,
+    "data": {
+      "title": "How to PROPERLY Perform A Cable Crunch to Shape Your Abs (Kneeling Cable Abdominal Crunch)",
+      "author": "Colossus Fitness",
+      "video_id": "aBd6T01PBqw",
+      "isLive": false
+    },
+    "width": 854,
+    "height": 480,
+    "passed": true,
+    "checkedAt": "2026-10-16T06:57:43.285Z"
+  },
+  {
+    "exerciseId": "hanging-knee-raise",
+    "videoId": "QyVq5oUBpss",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 310.681,
+    "currentTime": 0.9369480743865967,
+    "data": {
+      "title": "The WORST Ab Training MISTAKES | Leg Raises",
+      "author": "FitnessFAQs",
+      "video_id": "QyVq5oUBpss",
+      "isLive": false
+    },
+    "width": 854,
+    "height": 480,
+    "passed": true,
+    "checkedAt": "2026-10-16T06:57:45.489Z"
+  },
+  {
+    "exerciseId": "lying-leg-curl",
+    "videoId": "jobEeklwrrs",
+    "error": null,
+    "state": 1,
+    "durationSeconds": 743,
+    "currentTime": 0.5642630915527344,
+    "data": {
+      "title": "9 Leg Curl Mistakes and How to Fix Them",
+      "author": "Renaissance Periodization",
+      "video_id": "jobEeklwrrs",
+      "isLive": false
+    },
+    "width": 854,
+    "height": 480,
+    "passed": true,
+    "checkedAt": "2026-10-16T06:57:49.359Z"
+  }
+]
